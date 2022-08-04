@@ -1,0 +1,3 @@
+<template>
+  <desktop-layout />
+</template>

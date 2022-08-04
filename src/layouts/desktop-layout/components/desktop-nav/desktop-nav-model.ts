@@ -1,0 +1,75 @@
+import { ComponentModelBase } from "@/components/base-classes/component-model-base";
+import { EbSidebarItem } from "@/components/eb-sidebar/eb-sidebar-types";
+import router from "@/router";
+import { ScreenUtilities } from "@/utilities/screen-utilities";
+
+/**
+ * Component model for the desktop navigation component.
+ */
+export class DesktopNavModel extends ComponentModelBase {
+	/**
+	 * Specifies the localization namespace to use for getting localized text values.
+	 */
+	protected getLocalizationNamespace(): string {
+		return "sidebar";
+	}
+		
+	/**
+	 * Returns a list of navigation items for the sidebar.
+	 */
+	public items: Array<EbSidebarItem> = [
+		{
+			key: "home",
+			title: "Home",
+			icon: ["fad", "home"]
+		},
+		{
+			key: "editor",
+			title: "Editor",
+			icon: ["fad", "code"]
+		},
+		{
+			key: "projects",
+			title: "Projects",
+			icon: ["fad", "folder-open"]
+		},
+		{
+			key: "showcase",
+			title: "Showcase",
+			icon: ["fad", "film"]
+		},
+		{
+			key: "learn",
+			title: "Learn",
+			icon: ["fad", "book-open"]
+		},
+		{
+			key: "classroom",
+			title: "Classroom",
+			icon: ["fad", "users"]
+		},
+	];
+
+	/**
+	 * Returns the current active item based on the current route.
+	 */
+	public getActiveItem(): string {
+		return router.currentRoute.value.meta.key as string;
+	}
+
+	/**
+	 * Returns if the sidebar should be in minimized mode because current device is a tablet (Width 1024px).
+	 */
+	public shouldSidebarBeMinimized(): boolean {
+		if (ScreenUtilities.size.value <= 1024) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+}
+
+// Export the component model.
+export const component: DesktopNavModel = new DesktopNavModel();
