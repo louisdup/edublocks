@@ -1,6 +1,6 @@
 <template>
   <eb-sidebar
-    :items="component.items"
+    :items="component.getItems()"
     :logo="true"
     :active="component.getActiveItem()"
     :minimize="component.shouldSidebarBeMinimized()"

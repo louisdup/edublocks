@@ -11,44 +11,46 @@ export class DesktopNavModel extends ComponentModelBase {
 	 * Specifies the localization namespace to use for getting localized text values.
 	 */
 	protected getLocalizationNamespace(): string {
-		return "sidebar";
+		return "navigation";
 	}
 		
 	/**
 	 * Returns a list of navigation items for the sidebar.
 	 */
-	public items: Array<EbSidebarItem> = [
-		{
-			key: "home",
-			title: "Home",
-			icon: ["fad", "home"]
-		},
-		{
-			key: "editor",
-			title: "Editor",
-			icon: ["fad", "code"]
-		},
-		{
-			key: "projects",
-			title: "Projects",
-			icon: ["fad", "folder-open"]
-		},
-		{
-			key: "showcase",
-			title: "Showcase",
-			icon: ["fad", "film"]
-		},
-		{
-			key: "learn",
-			title: "Learn",
-			icon: ["fad", "book-open"]
-		},
-		{
-			key: "classroom",
-			title: "Classroom",
-			icon: ["fad", "users"]
-		},
-	];
+	public getItems(): Array<EbSidebarItem> {
+		return [
+			{
+				key: "home",
+				title: this.getText("home"),
+				icon: ["fad", "home"]
+			},
+			{
+				key: "editor",
+				title: this.getText("editor"),
+				icon: ["fad", "code"]
+			},
+			{
+				key: "projects",
+				title: this.getText("projects"),
+				icon: ["fad", "folder-open"]
+			},
+			{
+				key: "showcase",
+				title: this.getText("showcase"),
+				icon: ["fad", "film"]
+			},
+			{
+				key: "learn",
+				title: this.getText("learn"),
+				icon: ["fad", "book-open"]
+			},
+			{
+				key: "classroom",
+				title: this.getText("classroom"),
+				icon: ["fad", "users"]
+			},
+		];
+	}
 
 	/**
 	 * Returns the current active item based on the current route.

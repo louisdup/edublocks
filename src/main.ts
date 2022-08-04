@@ -10,6 +10,7 @@ import { autoAnimatePlugin } from "@formkit/auto-animate/vue";
 // Import providers
 import "@/data/providers/icon-provider";
 import { ScreenUtilities } from "./utilities/screen-utilities";
+import { LocalizationUtilities } from "./utilities/localization-utilities";
 
 let app: ComponentPublicInstance | undefined;
 
@@ -25,4 +26,7 @@ function startApplication(): void {
 		.mount("#app");
 }
 
-startApplication();
+// Load language file for localization and start application.
+LocalizationUtilities.loadPreferredLanguageAsync().then(() => {
+	startApplication();
+});

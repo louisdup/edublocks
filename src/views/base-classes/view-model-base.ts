@@ -1,3 +1,5 @@
+import { LocalizationUtilities } from "@/utilities/localization-utilities";
+
 /**
  * Base class exposing common functionality to all view models.
  */
@@ -12,6 +14,6 @@ export abstract class ViewModelBase {
 	 * Uses the specified key (and value of the 'localizationNamespace' property) to lookup localized text for displaying in the view.
 	 */
 	public getText(key: string): string {
-		return "";
+		return LocalizationUtilities.getLocalizedText(this.getLocalizationNamespace(), key);
 	}
 }
