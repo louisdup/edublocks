@@ -22,32 +22,37 @@ export class DesktopNavModel extends ComponentModelBase {
 			{
 				key: "home",
 				title: this.getText("home"),
-				icon: ["fad", "home"]
+				icon: ["fad", "home"],
+				href: "/"
 			},
 			{
 				key: "editor",
 				title: this.getText("editor"),
-				icon: ["fad", "code"]
+				icon: ["fad", "code"],
 			},
 			{
 				key: "projects",
 				title: this.getText("projects"),
-				icon: ["fad", "folder-open"]
+				icon: ["fad", "folder-open"],
+				href: "/projects"
 			},
 			{
 				key: "showcase",
 				title: this.getText("showcase"),
-				icon: ["fad", "film"]
+				icon: ["fad", "film"],
+				href: "/showcase"
 			},
 			{
 				key: "learn",
 				title: this.getText("learn"),
-				icon: ["fad", "book-open"]
+				icon: ["fad", "book-open"],
+				href: "/learn"
 			},
 			{
 				key: "classroom",
 				title: this.getText("classroom"),
-				icon: ["fad", "users"]
+				icon: ["fad", "users"],
+				href: "/classroom"
 			},
 		];
 	}

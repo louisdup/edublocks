@@ -13,8 +13,9 @@
       <button
         v-for="item in items"
         :key="item.key"
-        :class="active === item.key ? 'bg-white/10' : 'focus:ring-2 focus:ring-navy-400 focus:ring-offset-2 focus:ring-offset-navy-500 cursor-pointer hover:bg-white/10 transition-all'"
+        :class="component.getItemActiveClassList(item)"
         class="flex items-center space-x-4 rounded-md p-4 text-left text-gray-200 outline-none"
+        @click="component.onItemClick(item)"
       >
         <div class="flex h-5 w-5 items-center justify-center">
           <eb-icon
