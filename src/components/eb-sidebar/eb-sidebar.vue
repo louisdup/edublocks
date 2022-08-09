@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-navy-500 h-full flex-none">
+  <div class="bg-navy-500 h-full flex-none flex flex-col overflow-hidden">
     <div
       v-if="logo"
       class="px-6 pt-6 pb-2"
@@ -9,7 +9,7 @@
         class="h-10"
       >
     </div>
-    <div class="overflow-y-auto p-4 space-y-1">
+    <div class="h-full overflow-y-auto p-4 space-y-1">
       <button
         v-for="item in items"
         :key="item.key"

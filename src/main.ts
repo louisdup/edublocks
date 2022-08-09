@@ -11,6 +11,10 @@ import { autoAnimatePlugin } from "@formkit/auto-animate/vue";
 import "@/data/providers/icon-provider";
 import { ScreenUtilities } from "./utilities/screen-utilities";
 import { LocalizationUtilities } from "./utilities/localization-utilities";
+import "./utilities/firebase-utilities";
+import { onAuthStateChanged, User } from "@firebase/auth";
+import { AuthenticationUtilities } from "./utilities/authentication-utilities";
+import { FirebaseUtilities } from "./utilities/firebase-utilities";
 
 let app: ComponentPublicInstance | undefined;
 
@@ -26,7 +30,21 @@ function startApplication(): void {
 		.mount("#app");
 }
 
-// Load language file for localization and start application.
-LocalizationUtilities.loadPreferredLanguageAsync().then(() => {
-	startApplication();
+// Initialize firebase.
+FirebaseUtilities.initalizeFirebase();
+
+// Get current logged in user and start the vue app.
+onAuthStateChanged(AuthenticationUtilities.auth(), (user: User | null) => {
+	if (!app) {
+		// Load language file for localization and start application.
+		LocalizationUtilities.loadPreferredLanguageAsync().then(() => {
+			startApplication();
+		});
+	}
+
+	// Set current user instance if a logged in user already exists on app load.
+	if (user) {
+		AuthenticationUtilities.currentUser.value = user;
+	}
 });
+

@@ -19,6 +19,13 @@ const blue_300 = "#8F99C9";
 const blue_400 = "#6977B7";
 const blue_500 = "#4455A5";
 
+// Green
+const green_100 = "#EDF7ED";
+const green_200 = "#C8E7CA";
+const green_300 = "#92D094";
+const green_400 = "#6DC071";
+const green_500 = "#49B04D";
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -49,8 +56,17 @@ module.exports = {
           400: blue_400,
           500: blue_500,
         },
+        green: {
+          100: green_100,
+          200: green_200,
+          300: green_300,
+          400: green_400,
+          500: green_500,
+        },
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms')
+  ],
 }

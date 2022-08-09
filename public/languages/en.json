@@ -4,5 +4,10 @@
     "navigation.projects": "Projects",
     "navigation.showcase": "Showcase",
     "navigation.learn": "Learn",
-    "navigation.classroom": "Classroom"
+    "navigation.classroom": "Classroom",
+    "home.home": "Home",
+    "home.new-project": "New Project",
+    "home.create-new-project": "Create New Project",
+    "home.showcase": "Showcase",
+    "home.recent-projects": "Recent Projects"
 }

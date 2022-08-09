@@ -5,11 +5,6 @@ import { ref, Ref } from "vue";
  */
 export class ScreenUtilities {
 	/**
-	 * Returns if views should show their desktop layout.
-	 */
-	public static isDesktopLayout: Ref<boolean> = ref(false);
-
-	/**
 	 * Returns current screen size in pixels.
 	 */
 	public static size: Ref<number> = ref(0);
@@ -22,12 +17,6 @@ export class ScreenUtilities {
     
 		const onResize: Function = () => {
 			this.size.value = window.innerWidth;
-			if (window.innerWidth > 768) {
-				this.isDesktopLayout.value = true;
-			}
-			else {
-				this.isDesktopLayout.value = false;
-			}
 		};
         
 		onResize();
@@ -36,5 +25,19 @@ export class ScreenUtilities {
 			clearTimeout(resize);
 			resize = setTimeout(onResize, 50);
 		});
+	}
+
+	/**
+	 * True if screen size is below or equal to 768px (Mobile).
+	 */
+	public static isMobile(): boolean {
+		return this.size.value <= 768;
+	}
+
+	/**
+	 * True if screen size is more than 769px (Desktop).
+	 */
+	public static isDesktop(): boolean {
+		return this.size.value >= 769;
 	}
 }

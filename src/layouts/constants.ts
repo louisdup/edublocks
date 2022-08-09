@@ -2,5 +2,6 @@
  * List of layout names
  */
 export enum LayoutName {
-	DesktopLayout = "DesktopLayout"
+	DesktopLayout = "DesktopLayout",
+	MobileLayout = "MobileLayout"
 }

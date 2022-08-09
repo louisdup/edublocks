@@ -3,5 +3,9 @@
  */
 export enum ComponentName {
 	EbSidebar = "EbSidebar",
-	EbIcon = "EbIcon"
+	EbIcon = "EbIcon",
+	EbInput = "EbInput",
+	EbHeading = "EbHeading",
+	EbButton = "EbButton",
+	EbBottombar = "EbBottombar"
 }
