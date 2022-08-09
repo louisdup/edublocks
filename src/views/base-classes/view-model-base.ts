@@ -1,5 +1,4 @@
 import { LocalizationUtilities } from "@/utilities/localization-utilities";
-import { PropUtilities } from "@/utilities/prop-utilities";
 import { ScreenUtilities } from "@/utilities/screen-utilities";
 
 /**
