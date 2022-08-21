@@ -47,6 +47,7 @@
           "no-multi-spaces": "error",
           "vue/no-mutating-props": 0,
           "vue/multi-word-component-names": 0,
+          "vue/no-use-v-if-with-v-for": 0,
           "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }],
           "no-return-await": "error",
           "no-return-assign": "error",

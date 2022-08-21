@@ -6,6 +6,8 @@ import EbIcon from "./eb-icon/eb-icon.vue";
 import EbHeading from "./eb-heading/eb-heading.vue";
 import EbButton from "./eb-button/eb-button.vue";
 import EbBottombar from "./eb-bottombar/eb-bottombar.vue";
+import EbCard from "./eb-card/eb-card.vue";
+import EbGrid from "./eb-grid/eb-grid.vue";
 
 /**
  * Export & install application components for use globally
@@ -17,5 +19,7 @@ export default {
 		app.component(ComponentName.EbHeading, EbHeading);
 		app.component(ComponentName.EbButton, EbButton);
 		app.component(ComponentName.EbBottombar, EbBottombar);
+		app.component(ComponentName.EbCard, EbCard);
+		app.component(ComponentName.EbGrid, EbGrid);
 	}
 };

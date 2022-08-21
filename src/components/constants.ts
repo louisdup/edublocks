@@ -6,5 +6,7 @@ export enum ComponentName {
 	EbIcon = "EbIcon",
 	EbHeading = "EbHeading",
 	EbButton = "EbButton",
-	EbBottombar = "EbBottombar"
+	EbBottombar = "EbBottombar",
+	EbCard = "EbCard",
+	EbGrid = "EbGrid"
 }
