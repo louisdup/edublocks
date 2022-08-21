@@ -1,4 +1,5 @@
 import { ComponentPublicInstance, createApp } from "vue";
+import firebase from "firebase/compat/app";
 import App from "./App.vue";
 import router from "./router";
 import "./assets/css/tailwind.css";
@@ -12,7 +13,6 @@ import "@/data/providers/icon-provider";
 import { ScreenUtilities } from "./utilities/screen-utilities";
 import { LocalizationUtilities } from "./utilities/localization-utilities";
 import "./utilities/firebase-utilities";
-import { onAuthStateChanged, User } from "@firebase/auth";
 import { AuthenticationUtilities } from "./utilities/authentication-utilities";
 import { FirebaseUtilities } from "./utilities/firebase-utilities";
 
@@ -30,21 +30,25 @@ function startApplication(): void {
 		.mount("#app");
 }
 
-// Initialize firebase.
-FirebaseUtilities.initalizeFirebase();
+// Setup firebase & vue app.
+function setupApplication(): void {
+	// Initialize firebase.
+	FirebaseUtilities.initalizeFirebase();
 
-// Get current logged in user and start the vue app.
-onAuthStateChanged(AuthenticationUtilities.auth(), (user: User | null) => {
-	if (!app) {
-		// Load language file for localization and start application.
-		LocalizationUtilities.loadPreferredLanguageAsync().then(() => {
-			startApplication();
-		});
-	}
+	// Get current logged in user and start the vue app.
+	AuthenticationUtilities.auth().onAuthStateChanged((user: firebase.User | null) => {
+		if (!app) {
+			// Load language file for localization and start application.
+			LocalizationUtilities.loadPreferredLanguageAsync().then(() => {
+				startApplication();
+			});
+		}
 
-	// Set current user instance if a logged in user already exists on app load.
-	if (user) {
-		AuthenticationUtilities.currentUser.value = user;
-	}
-});
+		// 	// Set current user instance if a logged in user already exists on app load.
+		if (user) {
+			AuthenticationUtilities.currentUser.value = user;
+		}
+	});
+}
 
+setupApplication();

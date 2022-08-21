@@ -1,4 +1,8 @@
-import { FirebaseApp, FirebaseOptions, initializeApp } from "firebase/app";
+import { FirebaseOptions } from "@firebase/app";
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/firestore";
+
 /**
  * Utility functions for firebase.
  */
@@ -21,7 +25,7 @@ export class FirebaseUtilities {
 	 * Initalize firebase app.
 	 */
 	public static initalizeFirebase(): void {
-		initializeApp(FirebaseUtilities.config);
+		firebase.initializeApp(FirebaseUtilities.config);
 	}
 }
 
