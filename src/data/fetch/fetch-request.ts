@@ -1,3 +1,6 @@
+/**
+ * Define a firestore fetch request for the helper function.
+ */
 export class FetchRequest {
 	private _url: string;
 	private _body: BodyInit | null | undefined;
