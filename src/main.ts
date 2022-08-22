@@ -1,12 +1,15 @@
 import { ComponentPublicInstance, createApp } from "vue";
-import firebase from "firebase/compat/app";
 import App from "./App.vue";
 import router from "./router";
 import "./assets/css/tailwind.css";
 import "@/data/state/state";
 import components from "./components";
 import layouts from "./layouts";
+
+// Import third-party plugins
+import firebase from "firebase/compat/app";
 import { autoAnimatePlugin } from "@formkit/auto-animate/vue";
+import "@splidejs/vue-splide/css";
 
 // Import providers
 import "@/data/providers/icon-provider";

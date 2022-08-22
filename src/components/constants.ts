@@ -8,5 +8,7 @@ export enum ComponentName {
 	EbButton = "EbButton",
 	EbBottombar = "EbBottombar",
 	EbCard = "EbCard",
-	EbGrid = "EbGrid"
+	EbGrid = "EbGrid",
+	EbSlider = "EbSlider",
+	EbSliderSlide = "EbSliderSlide"
 }

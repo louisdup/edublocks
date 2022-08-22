@@ -41,7 +41,7 @@ class HomeModel extends ViewModelBase {
 	public loadShowcaseProjects(): void {
 		this.state.isLoadingShowcaseProjects = true;
 
-		ShowcaseProvider.getShowcaseProjectsAsync(4).then((response: FetchResponse<Array<ShowcaseProjectModel>>) => {
+		ShowcaseProvider.getShowcaseProjectsAsync(10).then((response: FetchResponse<Array<ShowcaseProjectModel>>) => {
 			if (response.wasSuccessful && response.data) {
 				this.state.showcaseProjects = response.data;
 			}

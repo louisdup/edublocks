@@ -19,23 +19,26 @@
     />
 
     <!-- Grid of recent showcase projects. -->
-    <eb-grid :label="view.getText('showcase')">
+    <eb-slider :label="view.getText('showcase')">
       <eb-card
-        v-for="card in 4"
+        v-for="card in 10"
         v-if="view.state.isLoadingShowcaseProjects"
         :key="card"
         :is-loading="true"
       />
 
-      <eb-card
+      <eb-slider-slide
         v-for="project in view.state.showcaseProjects"
         v-else
         :key="project.id"
-        :title="project.title"
-        :subtitle="project.platform"
-        :image="project.image"
-      />
-    </eb-grid>
+      >
+        <eb-card
+          :title="project.title"
+          :subtitle="project.platform"
+          :image="project.image"
+        />
+      </eb-slider-slide>
+    </eb-slider>
 
     <!-- List of recent user projects, if a user is logged in. -->
     <eb-heading
