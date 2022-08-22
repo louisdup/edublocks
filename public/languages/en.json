@@ -1,13 +1,17 @@
 {
-    "navigation.home": "Home",
-    "navigation.editor": "Editor",
-    "navigation.projects": "Projects",
-    "navigation.showcase": "Showcase",
-    "navigation.learn": "Learn",
-    "navigation.classroom": "Classroom",
-    "home.home": "Home",
-    "home.new-project": "New Project",
-    "home.create-new-project": "Create New Project",
-    "home.showcase": "Showcase",
-    "home.recent-projects": "Recent Projects"
+    "navigation": {
+        "home": "Home",
+        "editor": "Editor",
+        "projects": "Projects",
+        "showcase": "Showcase",
+        "learn": "Learn",
+        "classroom": "Classroom"
+    },
+    "home": {
+        "home": "Home",
+        "new-project": "New Project",
+        "create-new-project": "Create New Project",
+        "showcase": "Showcase",
+        "recent-projects": "Recent Projects"
+    }
 }

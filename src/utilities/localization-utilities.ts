@@ -14,9 +14,9 @@ export class LocalizationUtilities {
 	 */
 	public static getLocalizedText(namespace: string, key: string): string {
 		const target: string = `${namespace}.${key}`;
-		const result: string = this.textLookupTable[target];
+		const result: string = this.textLookupTable[namespace][key];
 
-		if (result === undefined || result === null)	{
+		if (!this.textLookupTable[namespace] || result === null)	{
 			return `!! ${target} !!`;
 		}
 
