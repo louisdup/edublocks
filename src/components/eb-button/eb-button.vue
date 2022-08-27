@@ -1,9 +1,10 @@
 <template>
-  <button :class="component.variants({ size, color, width: component.getWidthVariant() })">
+  <button :class="component.variants({ size, color, isFullWidth })">
     <template v-if="!isLoading">
       <eb-icon
         v-if="icon"
         :icon="icon"
+        color="white"
         class="text-lg -ml-1 mr-3"
       />
       <span v-if="label">{{ label }}</span>
