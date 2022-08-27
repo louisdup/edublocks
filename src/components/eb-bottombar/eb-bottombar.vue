@@ -3,7 +3,7 @@
     <button
       v-for="item in items"
       :key="item.key"
-      class="h-16 text-gray-100 flex-1 flex items-center justify-center"
+      class="h-[3.75rem] text-gray-100 flex-1 flex items-center justify-center"
       :class="component.getItemActiveClassList(item)"
       @click="component.onItemClick(item)"
     >
@@ -19,11 +19,12 @@
         <eb-icon
           v-if="item.icon"
           :icon="item.icon"
-          class="text-xl"
+          class="text-lg"
+          color="white"
         />
         <h1
           v-if="item.title"
-          class="-mb-1 pt-0.5 text-sm font-medium"
+          class="-mb-1 pt-0.5 text-xs font-medium"
         >
           {{ item.title }}
         </h1>
