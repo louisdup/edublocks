@@ -10,5 +10,10 @@ export enum ComponentName {
 	EbCard = "EbCard",
 	EbGrid = "EbGrid",
 	EbSlider = "EbSlider",
-	EbSliderSlide = "EbSliderSlide"
+	EbSliderSlide = "EbSliderSlide",
+	EbModal = "EbModal",
+	EbModalHeader = "EbModalHeader",
+	EbModalContent = "EbModalContent",
+	EbModalFooter = "EbModalFooter",
+	EbDropdown = "EbDropdown"
 }

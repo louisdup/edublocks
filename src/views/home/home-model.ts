@@ -4,6 +4,8 @@ import { ViewModelBase } from "../base-classes/view-model-base";
 import { HomeState } from "./home-state";
 import * as ShowcaseProvider from "@/data/providers/showcase-provider";
 import { ShowcaseProjectModel } from "@/data/models/showcase-project-model";
+import { ShowcaseUtilities } from "@/utilities/showcase-utilities";
+import { EbDropdownOption } from "@/components/eb-dropdown/eb-dropdown-types";
 
 /**
  * View model for the home view.
@@ -49,6 +51,12 @@ class HomeModel extends ViewModelBase {
 		});
 	}
 
+	/**
+	 * Returns a list of options for a showcase project dropdown.
+	 */
+	public getShowcaseProjectDropdownOptions(project: ShowcaseProjectModel): Array<Array<EbDropdownOption>> {
+		return ShowcaseUtilities.getShowcaseProjectDropdownOptions(project);
+	}
 }
 
 // Export the view model.

@@ -2,9 +2,10 @@ import { ComponentPublicInstance, createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import "./assets/css/tailwind.css";
-import "@/data/state/state";
+import "@/data/state";
 import components from "./components";
 import layouts from "./layouts";
+import modals from "./modals";
 
 // Import third-party plugins
 import firebase from "firebase/compat/app";
@@ -28,6 +29,7 @@ function startApplication(): void {
 	app = createApp(App)
 		.use(router)
 		.use(components)
+		.use(modals)
 		.use(layouts)
 		.use(autoAnimatePlugin)
 		.mount("#app");

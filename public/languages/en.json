@@ -13,5 +13,17 @@
         "create-new-project": "Create New Project",
         "showcase": "Showcase",
         "recent-projects": "Recent Projects"
+    },
+    "delete-project": {
+        "delete-project": "Delete Project",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "delete-confirmation": "Are you sure you want to delete the following project:"
+    },
+    "delete-showcase-project": {
+        "delete-project": "Delete Showcase Project",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "delete-confirmation": "Are you sure you want to delete the following showcase project:"
     }
 }

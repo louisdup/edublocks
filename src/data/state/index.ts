@@ -1,3 +1,4 @@
+import { ModalModel } from "@/utilities/modal-utilities";
 import { reactive } from "vue";
 
 /**
@@ -8,6 +9,11 @@ class State {
 	 * Store application language for localization. Assumes english by default.
 	 */
 	public language: string = "en";
+
+	/**
+	 * Store current modal for the active view.
+	 */
+	public modal: ModalModel | undefined;
 }
 
 /**

@@ -17,10 +17,16 @@
         :src="image"
         class="object-cover h-full w-full rounded-md"
       >
-      <div class="hidden group-hover:block">
-        <div class="bg-white h-7 w-7 rounded-md absolute right-2 top-2 transition-all flex items-center justify-center text-gray-900 shadow">
-          <eb-icon :icon="['far', 'ellipsis']" />
-        </div>
+      <div class="absolute right-2 top-2 hidden group-hover:block">
+        <eb-dropdown
+          v-if="dropdownOptions"
+          :options="dropdownOptions"
+          placement="bottom-end"
+        >
+          <button class="bg-white h-7 w-7 rounded-md transition-all flex items-center justify-center text-gray-900 shadow">
+            <eb-icon :icon="['far', 'ellipsis']" />
+          </button>
+        </eb-dropdown>
       </div>
     </div>
     <div
@@ -38,10 +44,13 @@
 </template>
 
 <script setup lang="ts">
+import { EbDropdownOption } from "../eb-dropdown/eb-dropdown-types";
+
 defineProps<{
 	title: string;
 	subtitle: string;
 	image: string;
 	isLoading: boolean;
+	dropdownOptions: Array<Array<EbDropdownOption>>;
 }>();
 </script>

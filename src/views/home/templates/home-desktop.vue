@@ -32,12 +32,13 @@
         v-else
         :key="project.id"
       >
-        <eb-card
+        <eb-card 
           :title="project.title"
           :subtitle="project.platform"
           :image="project.image"
+          :dropdown-options="view.getShowcaseProjectDropdownOptions(project)"
         />
-      </eb-slider-slide>
+      </eb-slider-slide> 
     </eb-slider>
 
     <!-- List of recent user projects, if a user is logged in. -->

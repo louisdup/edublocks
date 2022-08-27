@@ -1,4 +1,4 @@
-import { state } from "@/data/state/state";
+import { state } from "@/data/state";
 
 /**
  * Utility functions for localization.
