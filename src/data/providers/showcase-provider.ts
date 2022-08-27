@@ -1,4 +1,4 @@
-import { fetchCollectionAsync } from "../fetch/fetch";
+import * as Fetch from "../fetch/fetch";
 import { FetchRequest } from "../fetch/fetch-request";
 import { FetchResponse } from "../fetch/types";
 import { ShowcaseProjectModel } from "../models/showcase-project-model";
@@ -11,5 +11,19 @@ import { ShowcaseProjectModel } from "../models/showcase-project-model";
  * Get a paged list of showcase projects.
  */
 export async function getShowcaseProjectsAsync(limit: number): Promise<FetchResponse<Array<ShowcaseProjectModel>>> {
-	return fetchCollectionAsync(new FetchRequest("showcase", undefined, limit));
+	return Fetch.fetchCollectionAsync(new FetchRequest("showcase", undefined, limit));
+}
+
+/**
+ * Get a single project from the showcase.
+ */
+export async function getShowcaseProjectAsync(id: string): Promise<FetchResponse<Array<ShowcaseProjectModel>>> {
+	return Fetch.fetchDocumentAsync(new FetchRequest(`showcase/${id}`));
+}
+
+/**
+ * Delete a single project from the showcase.
+ */
+export async function deleteShowcaseProjectAsync(id: string): Promise<FetchResponse<void>> {
+	return Fetch.deleteDocumentAsync(new FetchRequest(`showcase/${id}`));
 }

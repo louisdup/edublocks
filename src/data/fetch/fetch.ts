@@ -63,3 +63,55 @@ export async function fetchCollectionAsync<T>(request: FetchRequest): Promise<Fe
 
 	return result;
 }
+
+/**
+ * Helper function for getting a document from a firestore collection.
+ */
+export async function fetchDocumentAsync<T>(request: FetchRequest): Promise<FetchResponse<T>> {
+	const result: FetchResponse<T> = createFetchResponse();
+
+	try {
+		const response: firebase.firestore.DocumentSnapshot = await FirestoreUtilities
+			.firestore()
+			.doc(request.url)
+			.get();
+
+		const data: unknown = {
+			id: response.id,
+			...response.data()
+		};
+
+		result.data = data as T;
+		result.wasSuccessful = true;
+	}
+	catch (e) {
+		const error: firebase.firestore.FirestoreError = e as firebase.firestore.FirestoreError;
+		result.error = error;
+		result.hasError = true;
+	}
+
+	return result;
+}
+
+/**
+ * Helper function for deleting a document from a firestore collection.
+ */
+export async function deleteDocumentAsync<T>(request: FetchRequest): Promise<FetchResponse<T>> {
+	const result: FetchResponse<T> = createFetchResponse();
+
+	try {
+		await FirestoreUtilities
+			.firestore()
+			.doc(request.url)
+			.delete();
+
+		result.wasSuccessful = true;
+	}
+	catch (e) {
+		const error: firebase.firestore.FirestoreError = e as firebase.firestore.FirestoreError;
+		result.error = error;
+		result.hasError = true;
+	}
+
+	return result;
+}
