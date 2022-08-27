@@ -34,6 +34,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: "inter"
+      },
       colors: {
         navy: {
           100: navy_100,
