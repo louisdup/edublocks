@@ -3,5 +3,6 @@
  */
 export enum ModalName {
 	DeleteProject = "DeleteProject",
-	DeleteShowcaseProject = "DeleteShowcaseProject"
+	DeleteShowcaseProject = "DeleteShowcaseProject",
+	Error = "Error"
 }

@@ -2,6 +2,7 @@ import { FirestoreUtilities } from "@/utilities/firestore-utilities";
 import { FetchResponse } from "./types";
 import { FetchRequest } from "./fetch-request";
 import firebase from "firebase/compat/app";
+import { ModalUtilities } from "@/utilities/modal-utilities";
 
 /**
  * Setup and create a firestore fetch response.
@@ -59,6 +60,9 @@ export async function fetchCollectionAsync<T>(request: FetchRequest): Promise<Fe
 		const error: firebase.firestore.FirestoreError = e as firebase.firestore.FirestoreError;
 		result.error = error;
 		result.hasError = true;
+		ModalUtilities.showModal({
+			modal: "Error"
+		});
 	}
 
 	return result;
@@ -88,6 +92,9 @@ export async function fetchDocumentAsync<T>(request: FetchRequest): Promise<Fetc
 		const error: firebase.firestore.FirestoreError = e as firebase.firestore.FirestoreError;
 		result.error = error;
 		result.hasError = true;
+		ModalUtilities.showModal({
+			modal: "Error"
+		});
 	}
 
 	return result;
@@ -111,6 +118,9 @@ export async function deleteDocumentAsync<T>(request: FetchRequest): Promise<Fet
 		const error: firebase.firestore.FirestoreError = e as firebase.firestore.FirestoreError;
 		result.error = error;
 		result.hasError = true;
+		ModalUtilities.showModal({
+			modal: "Error"
+		});
 	}
 
 	return result;

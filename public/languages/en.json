@@ -25,5 +25,10 @@
         "cancel": "Cancel",
         "delete": "Delete",
         "delete-confirmation": "Are you sure you want to delete the following showcase project:"
+    },
+    "error": {
+        "something-went-wrong": "Something went wrong",
+        "problem-processing-request": "Sorry, there was a problem processing your request. Please try again later. If this problem continues, please contact the EduBlocks team.",
+        "close": "Close"
     }
 }
