@@ -13,20 +13,24 @@
           :key="index"
           class="py-1"
         >
-          <button
+          <template
             v-for="option in group"
             :key="option.title"
-            class="text-gray-700 hover:text-gray-900 flex w-full hover:bg-gray-100 px-4 py-2 text-sm transition-all group"
-            @click="component.onOptionClicked(option)"
           >
-            <div
-              v-if="option.icon"
-              class="h-5 w-3 mr-3 flex justify-center items-center text-gray-400 hover:text-gray-500 text-sm"
+            <button
+              v-if="option.visible !== false"
+              class="text-gray-700 hover:text-gray-900 flex w-full hover:bg-gray-100 px-4 py-2 text-sm transition-all group"
+              @click="component.onOptionClicked(option)"
             >
-              <eb-icon :icon="option.icon" />
-            </div>
-            {{ option.title }}
-          </button>
+              <div
+                v-if="option.icon"
+                class="h-5 w-3 mr-3 flex justify-center items-center text-gray-400 hover:text-gray-500 text-sm"
+              >
+                <eb-icon :icon="option.icon" />
+              </div>
+              {{ option.title }}
+            </button>
+          </template>
         </div>
       </div>
     </template>
