@@ -22,6 +22,7 @@
             v-if="item.icon"
             :icon="item.icon"
             class="fa-fw text-xl"
+            color="white"
           />
         </div>
         <span
