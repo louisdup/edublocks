@@ -17,8 +17,14 @@ class EbHeadingModel extends ComponentModelBase {
 	 */
 	public variants: Function = cva(undefined, {
 		variants: {
+			align: {
+				left: "text-left",
+				center: "text-center",
+				right: "text-right"
+			},
 			size: {
 				small: "text-lg",
+				medium: "text-2xl",
 				normal: "text-3xl",
 				large: "text-4xl"
 			},
@@ -32,11 +38,16 @@ class EbHeadingModel extends ComponentModelBase {
 				gray: "text-gray-700",
 				black: "text-gray-900"
 			},
+			fullWidth: {
+				true: "w-full"
+			}
 		},
 		defaultVariants: {
+			align: "left",
 			size: "normal",
 			weight: "semibold",
-			color: "black"
+			color: "black",
+			fullWidth: false
 		}
 	});
 }
