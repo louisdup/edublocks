@@ -1,6 +1,6 @@
 import { EbDropdownOption } from "@/components/eb-dropdown/eb-dropdown-types";
 import { ShowcaseProjectModel } from "@/data/models/showcase-project-model";
-import { state } from "@/data/state";
+import router from "@/router";
 import { AuthenticationUtilities } from "./authentication-utilities";
 import { ModalUtilities } from "./modal-utilities";
 
@@ -21,10 +21,26 @@ export class ShowcaseUtilities {
 	}
 
 	/**
+	 * Redirect to a showcase project page.
+	 */
+	public static openShowcaseProject(id: string): void {
+		router.push(`/showcase/${id}`);
+	}
+
+	/**
 	 * Returns a list of options for showcase project dropdowns.
 	 */
 	public static getShowcaseProjectDropdownOptions(project: ShowcaseProjectModel): Array<Array<EbDropdownOption>> {
 		return [
+			[
+				{
+					title: "Open Project",
+					icon: ["far", "file"],
+					action: (): void => {
+						this.openShowcaseProject(project.id);
+					}
+				}
+			],
 			[
 				{
 					title: "Delete",
@@ -37,7 +53,6 @@ export class ShowcaseUtilities {
 								project
 							}
 						});
-						console.log(state.modal);
 					}
 				}
 			]
