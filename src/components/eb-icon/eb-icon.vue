@@ -1,12 +1,18 @@
 <template>
-  <font-awesome-icon :icon="icon" />
+  <font-awesome-icon
+    :icon="icon"
+    :class="component.getClassesForIcon(color, backgroundColor)"
+  />
 </template>
 
 <script setup lang="ts">
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import type { Data } from "@/components/types";
+import { component } from "./eb-icon-model";
 
-const props: Data = defineProps<{
-	icon: Array<string>
+defineProps<{
+	icon: Array<string>;
+	color: string;
+	backgroundColor: string;
+	align: string;
 }>();
 </script>
