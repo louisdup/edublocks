@@ -30,5 +30,23 @@
         "something-went-wrong": "Something went wrong",
         "problem-processing-request": "Sorry, there was a problem processing your request. Please try again later. If this problem continues, please contact the EduBlocks team.",
         "close": "Close"
+    },
+    "login": {
+        "sign-into-account": "Sign in to your account",
+        "login": "Login",
+        "cancel": "Cancel",
+        "email-address": "Email Address",
+        "password": "Password",
+        "incorrect-email-password": "Incorrect email or password"
+    },
+    "user-menu": {
+        "login": "Login",
+        "my-account": "My account",
+        "logout": "Logout",
+        "account-settings": "Account settings"
+    },
+    "validation": {
+        "email": "Must be a valid email address",
+        "required": "{1} is required"
     }
 }

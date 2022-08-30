@@ -15,7 +15,7 @@ export class EbModalFooterModel extends ComponentModelBase {
 	/**
 	 * Returns alignment class list.
 	 */
-	 public variants: Function = cva(["space-x-6"], {
+	public variants: Function = cva(["space-x-6", "flex", "items-center"], {
 		variants: {
 			align: {
 				left: "",

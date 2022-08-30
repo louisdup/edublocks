@@ -4,6 +4,7 @@
     interactive
     :placement="placement"
     :show="component.state.isOpen"
+    class="!m-0 !border-none"
   >
     <slot />
     <template #content>

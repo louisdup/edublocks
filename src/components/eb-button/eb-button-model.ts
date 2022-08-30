@@ -38,6 +38,10 @@ export class EbButtonModel extends ComponentModelBase {
 			isFullWidth: {
 				true: "w-full"
 			},
+			isDisabled: {
+				true: "!bg-gray-300 !cursor-not-allowed focus:!ring-gray-300"
+			}
+
 		},
 		defaultVariants: {
 			size: "normal",

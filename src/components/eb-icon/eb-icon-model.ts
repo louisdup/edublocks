@@ -19,17 +19,20 @@ class EbIconModel extends ComponentModelBase {
 		variants: {
 			color: {
 				black: "text-gray-900",
+				gray: "text-gray-500",
 				white: "text-gray-200",
 				red: "text-red-500",
 				blue: "text-blue-500",
 				green: "text-green-500",
-				orange: "text-orange-500"
+				orange: "text-orange-500",
+				pink: "text-pink-500"
 			},
 			backgroundColor: {
 				red: "bg-red-100",
 				blue: "bg-blue-100",
 				green: "bg-green-100",
 				orange: "bg-orange-100",
+				pink: "bg-pink-100",
 				transparent: "bg-transparent"
 			}
 		},

@@ -14,8 +14,8 @@ export abstract class ViewModelBase {
 	/**
 	 * Uses the specified key (and value of the 'localizationNamespace' property) to lookup localized text for displaying in the view.
 	 */
-	public getText(key: string): string {
-		return LocalizationUtilities.getLocalizedText(this.getLocalizationNamespace(), key);
+	public getText(key: string, placeholderValues?: Array<string>): string {
+		return LocalizationUtilities.getLocalizedText(this.getLocalizationNamespace(), key, placeholderValues);
 	}
 
 	/**

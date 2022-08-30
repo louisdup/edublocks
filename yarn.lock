@@ -2216,6 +2216,11 @@ magic-string@^0.25.7:
   dependencies:
     sourcemap-codec "^1.4.8"
 
+md5js@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/md5js/-/md5js-1.0.7.tgz#d665e560b40f45ad49add61684ecc6b58a511554"
+  integrity sha512-97fZ6+8JijezAk/n37Lnswo4aJ67utCeCXlIsDid3uZ/khIeof0hWpIYeSvf0kiyqB0i9XfQvOyZPuBSR7g2Ng==
+
 merge2@^1.3.0, merge2@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/merge2/-/merge2-1.4.1.tgz#4368892f885e907455a6fd7dc55c0c9d404990ae"

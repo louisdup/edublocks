@@ -1,10 +1,11 @@
 import { state } from "@/data/state";
+import { Modal } from "@/modals/constants";
 
 /**
  * Data model for a modal.
  */
 export interface ModalModel {
-	modal: string;
+	modal: Modal;
 	options?: ModalOptions;
 }
 

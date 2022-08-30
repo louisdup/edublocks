@@ -1,11 +1,12 @@
 <template>
-  <button :class="component.variants({ size, color, isFullWidth })">
+  <button :class="component.variants({ size, color, isFullWidth, isDisabled })">
     <template v-if="!isLoading">
       <eb-icon
         v-if="icon"
         :icon="icon"
-        color="white"
-        class="text-lg -ml-1 mr-3"
+        :color="iconColor ? iconColor : 'white'"
+        class="text-lg"
+        :class="label ? '-ml-1 mr-3' : ''"
       />
       <span v-if="label">{{ label }}</span>
     </template>
@@ -41,10 +42,12 @@ import { EbButtonModel } from "./eb-button-model";
 const props: Data = defineProps<{
 	label: string;
 	icon: Array<string>;
+	iconColor: string;
 	size: string;
 	color: string;
 	isLoading: boolean;
 	isFullWidth: boolean;
+	isDisabled: boolean;
 }>();
 
 const component: EbButtonModel = new EbButtonModel(props);

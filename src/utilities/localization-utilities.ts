@@ -12,11 +12,18 @@ export class LocalizationUtilities {
 	/**
 	 * Take namespace for view/component and key to return a translated value from the lookup table.
 	 */
-	public static getLocalizedText(namespace: string, key: string): string {
+	public static getLocalizedText(namespace: string, key: string, placeholderValues?: Array<string>): string {
 		const target: string = `${namespace}.${key}`;
-		const result: string = this.textLookupTable[namespace][key];
+		let result: string = this.textLookupTable[namespace][key];
 
-		if (!this.textLookupTable[namespace] || result === null)	{
+		// Iterate through placeholder values and replace them in the result string.
+		if (placeholderValues) {
+			placeholderValues.forEach((placeholder: string, index: number) => {
+				result = result.replace(`{${index+1}}`, placeholder);
+			});
+		}
+
+		if (!this.textLookupTable[namespace] || result === null) {
 			return `!! ${target} !!`;
 		}
 

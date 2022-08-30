@@ -2,14 +2,14 @@
   <div class="bg-navy-500 h-full flex-none flex flex-col overflow-hidden">
     <div
       v-if="logo"
-      class="px-6 pt-6 pb-2"
+      class="px-6 pt-6 pb-2 flex flex-col lg:items-start items-center"
     >
       <img
         :src="component.getSidebarLogoImage()"
         class="h-10"
       >
     </div>
-    <div class="h-full overflow-y-auto p-4 space-y-1">
+    <div class="h-full overflow-y-auto p-4 space-y-1 flex flex-col items-center">
       <button
         v-for="item in items"
         :key="item.key"
@@ -32,6 +32,9 @@
           {{ item.title }} 
         </span>
       </button>
+    </div>
+    <div class="p-4">
+      <slot />
     </div>
   </div>
 </template>

@@ -1,4 +1,5 @@
 import * as yup from "yup";
+import { LocalizationUtilities } from "./localization-utilities";
 
 // Define an object for building a form validation schema with yup.
 export interface ValidationSchema {
@@ -50,5 +51,12 @@ export class FormUtilities {
 				isValid = false;
 			});
 		return isValid;
+	}
+
+	/**
+	 * Returns a localized validation message for a form. 
+	 */
+	public static getValidationMessage(key: string, placeholderValues?: Array<string>): string {
+		return LocalizationUtilities.getLocalizedText("validation", key, placeholderValues);
 	}
 }

@@ -16,7 +16,6 @@ import "@splidejs/vue-splide/css";
 import "@/data/providers/icon-provider";
 import { ScreenUtilities } from "./utilities/screen-utilities";
 import { LocalizationUtilities } from "./utilities/localization-utilities";
-import "./utilities/firebase-utilities";
 import { AuthenticationUtilities } from "./utilities/authentication-utilities";
 import { FirebaseUtilities } from "./utilities/firebase-utilities";
 

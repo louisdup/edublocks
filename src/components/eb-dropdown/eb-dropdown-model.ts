@@ -20,16 +20,9 @@ class EbDropdownModel extends ComponentModelBase {
 	public state: EbDropdownState = reactive(new EbDropdownState());
 
 	/**
-	 * Opens the dropdown.
-	 */
-	public openDropdown(): void {
-		this.state.isOpen = true;
-	}
-
-	/**
 	 * Closes the dropdown by setting isOpen to false and then setting isOpen to undefined so it can be reopened by the user.
 	 */
-	public closeDropdown(): void {
+	private closeDropdown(): void {
 		this.state.isOpen = false;
 		nextTick(() => {
 			this.state.isOpen = undefined;

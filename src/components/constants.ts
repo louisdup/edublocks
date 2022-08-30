@@ -15,5 +15,8 @@ export enum ComponentName {
 	EbModalHeader = "EbModalHeader",
 	EbModalContent = "EbModalContent",
 	EbModalFooter = "EbModalFooter",
-	EbDropdown = "EbDropdown"
+	EbDropdown = "EbDropdown",
+	EbInput = "EbInput",
+	EbLink = "EbLink",
+	EbListItem = "EbListItem"
 }
