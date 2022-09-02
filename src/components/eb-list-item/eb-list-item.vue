@@ -1,5 +1,8 @@
 <template>
-  <button class="flex items-center space-x-4 justify-between p-4 hover:bg-gray-200 focus:bg-white/10 transition-colors rounded-md cursor-pointer w-full text-left">
+  <component
+    :is="component.getComponentName(isButton)"
+    :class="component.variants({ isButton })"
+  >
     <div class="flex items-center space-x-4">
       <img
         v-if="thumbnail"
@@ -30,7 +33,7 @@
         {{ rightSubtitle }}
       </p>
     </div>
-  </button>
+  </component>
 </template>
 
 <script setup lang="ts">
@@ -44,5 +47,6 @@ defineProps<{
 	rightTitle: string;
 	leftSubtitle: string;
 	rightSubtitle: string;
+	isButton: boolean;
 }>();
 </script>

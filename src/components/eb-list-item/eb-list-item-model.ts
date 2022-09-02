@@ -11,6 +11,17 @@ class EbListItem extends ComponentModelBase {
 	protected getLocalizationNamespace(): string {
 		return "list-item";
 	}
+
+	/**
+	 * Returns list of classes for the list item component.
+	 */
+	public variants: Function = cva(["flex", "items-center", "space-x-4", "justify-between", "w-full", "text-left"], {
+		variants: {
+			isButton: {
+				true: "p-4 hover:bg-gray-200 focus:bg-white/10 transition-colors rounded-md cursor-pointer"
+			}
+		}
+	});
 		
 	/**
 	 * Returns list of classes for title variants.
@@ -41,6 +52,13 @@ class EbListItem extends ComponentModelBase {
 			color: "black"
 		}
 	});
+
+	/**
+	 * Returns name of component based on isButton prop.
+	 */
+	public getComponentName(isButton: boolean): string {
+		return isButton ? "button" : "div";
+	}
 }
 
 // Export the component model
