@@ -9,6 +9,7 @@
       v-if="minimize"
       :thumbnail="component.getCurrentUserProfilePicture()"
       rounded-thumbnail
+      is-button
       class="hover:bg-opacity-10"
     />
     <eb-list-item
@@ -18,6 +19,7 @@
       :thumbnail="component.getCurrentUserProfilePicture()"
       color="white"
       rounded-thumbnail
+      is-button
       class="hover:bg-opacity-10"
     />
   </eb-dropdown>
