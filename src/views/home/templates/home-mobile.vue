@@ -35,12 +35,16 @@
     </eb-slider>
 
     <!-- List of recent user projects, if a user is logged in. -->
-    <eb-heading
-      :label="view.getText('recent-projects')"
-      size="small"
-      color="gray"
-      weight="medium"
-    />
+    <eb-list :label="view.getText('recent-projects')">
+      <eb-list-item
+        v-for="project in view.state.recentProjects"
+        :key="project.id"
+        :left-title="project.name"
+        :left-subtitle="project.platform"
+        :right-subtitle="project.type"
+        thumbnail="https://upload.wikimedia.org/wikipedia/commons/archive/c/c3/20220821153845%21Python-logo-notext.svg"
+      />
+    </eb-list>
   </mobile-layout>
 </template>
 

@@ -1,5 +1,8 @@
 import { LocalizationUtilities } from "@/utilities/localization-utilities";
 import { ScreenUtilities } from "@/utilities/screen-utilities";
+import { FormatUtilities } from "@/utilities/format-utilities";
+import { PlatformModelBase } from "@/platforms/base-classes/platform-model-base";
+import { PlatformUtilities } from "@/utilities/platform-utilities";
 
 /**
  * Base class exposing common functionality to all view models.
@@ -30,5 +33,26 @@ export abstract class ViewModelBase {
 	 */
 	public showDesktopTemplate(): boolean {
 		return ScreenUtilities.isDesktop();
+	}
+
+	/**
+	 * Returns formatted size string with units.
+	 */
+	public formatSize(size: number): string {
+		return FormatUtilities.formatSize(size);
+	}
+
+	/**
+	 * Returns formatted date.
+	 */
+	public formatDate(date: string): string {
+		return FormatUtilities.formatDate(date);
+	}
+
+	/**
+	 * Returns a platform from its key.
+	 */
+	public getPlatformFromKey(key: string): PlatformModelBase {
+		return PlatformUtilities.getPlatformFromKey(key);
 	}
 }

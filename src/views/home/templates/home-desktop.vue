@@ -42,12 +42,49 @@
     </eb-slider>
 
     <!-- List of recent user projects, if a user is logged in. -->
-    <eb-heading
+    <eb-table
       :label="view.getText('recent-projects')"
-      size="small"
-      color="gray"
-      weight="medium"
-    />
+      :headers="view.getRecentProjectsTableHeaders()"
+    >
+      <eb-table-row
+        v-for="project in view.state.recentProjects"
+        :key="project.id"
+      >
+        <!-- Project Column -->
+        <eb-table-cell>
+          <eb-list-item
+            :left-title="project.name"
+            :left-subtitle="view.getPlatformFromKey(project.platform).config.name"
+            :thumbnail="view.getPlatformFromKey(project.platform).config.logo"
+          />
+        </eb-table-cell>
+        <!-- Type Column -->
+        <eb-table-cell>
+          <eb-label
+            :label="view.getText(project.type)"
+            color="gray"
+          />
+        </eb-table-cell>
+        <!-- Updated Column -->
+        <eb-table-cell>
+          <eb-label
+            :label="view.formatDate(project.updated)"
+            color="gray"
+          />
+        </eb-table-cell>
+        <!-- Size Column -->
+        <eb-table-cell>
+          <eb-label
+            :label="view.formatSize(project.size)"
+            color="gray"
+          />
+        </eb-table-cell>
+        <!-- Actions Column -->
+        <eb-table-cell class="text-right">
+          <eb-icon :icon="['far', 'ellipsis-h']" />
+        </eb-table-cell>
+      </eb-table-row>
+    </eb-table>
   </desktop-layout>
 </template>
 

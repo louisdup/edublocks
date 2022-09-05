@@ -1,9 +1,9 @@
 <template>
   <eb-sidebar
     :items="component.getItems()"
-    :logo="true"
     :active="component.getActiveItem()"
     :minimize="component.shouldSidebarBeMinimized()"
+    has-logo
   >
     <user-menu :minimize="component.shouldSidebarBeMinimized()" />
   </eb-sidebar>

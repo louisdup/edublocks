@@ -1,10 +1,11 @@
-import { AuthenticationUtilities, SocialAuthProvider } from "@/utilities/authentication-utilities";
+import { AuthenticationUtilities } from "@/utilities/authentication-utilities";
 import { FormUtilities, ValidationSchema } from "@/utilities/form-utilities";
 import { ModalUtilities } from "@/utilities/modal-utilities";
-import { reactive, watchEffect } from "vue";
+import { reactive } from "vue";
 import { ModalModelBase } from "../base-classes/modal-model-base";
 import { LoginState } from "./login-state";
 import * as yup from "yup";
+import { SocialAuthProviderModel } from "@/data/models/social-auth-provider-model";
 
 /**
  * Modal model for the login modal.
@@ -48,14 +49,14 @@ class LoginModal extends ModalModelBase {
 	/**
 	 * Returns a list of social authentication providers.
 	 */
-	public getSocialAuthProviders(): Array<SocialAuthProvider> {
+	public getSocialAuthProviders(): Array<SocialAuthProviderModel> {
 		return AuthenticationUtilities.socialAuthProviders;
 	}
 
 	/**
 	 * Called when a social provider is clicked and attempts to login, if successful the login modal will close.
 	 */
-	public async onSocialAuthProviderClicked(provider: SocialAuthProvider): Promise<void> {
+	public async onSocialAuthProviderClicked(provider: SocialAuthProviderModel): Promise<void> {
 		this.state.isBusy = true;
 		await AuthenticationUtilities.loginWithSocialAuthProvider(provider.provider).then(() => {
 			ModalUtilities.closeModal();

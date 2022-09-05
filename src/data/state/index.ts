@@ -1,3 +1,4 @@
+import { PlatformModelBase } from "@/platforms/base-classes/platform-model-base";
 import { ModalModel } from "@/utilities/modal-utilities";
 import { reactive } from "vue";
 
@@ -14,6 +15,11 @@ class State {
 	 * Store current modal for the active view.
 	 */
 	public modal: ModalModel | undefined;
+
+	/**
+	 * Store current active platform.
+	 */
+	public platform: PlatformModelBase | undefined;
 }
 
 /**

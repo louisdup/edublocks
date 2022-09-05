@@ -1,16 +1,9 @@
 import { AuthError, GoogleAuthProvider, OAuthProvider } from "@firebase/auth";
 import firebase from "firebase/compat/app";
+import "firebase/compat/storage";
 import { ref, Ref } from "vue";
 import { md5 } from "md5js";
-
-/**
- * Data model for a firebase social authentication provider.
- */
-export interface SocialAuthProvider {
-	name: string;
-	icon: Array<string>;
-	provider: OAuthProvider | GoogleAuthProvider;
-}
+import { SocialAuthProviderModel } from "@/data/models/social-auth-provider-model";
 
 /**
  * Utility functions for authentication with firebase.
@@ -61,7 +54,7 @@ export class AuthenticationUtilities {
 	/**
 	 * Returns a list of social authentication providers.
 	 */
-	public static socialAuthProviders: Array<SocialAuthProvider> = [
+	public static socialAuthProviders: Array<SocialAuthProviderModel> = [
 		{
 			name: "Google",
 			icon: ["fab", "google"],

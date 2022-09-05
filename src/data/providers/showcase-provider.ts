@@ -17,7 +17,7 @@ export async function getShowcaseProjectsAsync(limit: number): Promise<FetchResp
 /**
  * Get a single project from the showcase.
  */
-export async function getShowcaseProjectAsync(id: string): Promise<FetchResponse<Array<ShowcaseProjectModel>>> {
+export async function getShowcaseProjectAsync(id: string): Promise<FetchResponse<ShowcaseProjectModel>> {
 	return Fetch.fetchDocumentAsync(new FetchRequest(`showcase/${id}`));
 }
 

@@ -12,7 +12,9 @@
         "new-project": "New Project",
         "create-new-project": "Create New Project",
         "showcase": "Showcase",
-        "recent-projects": "Recent Projects"
+        "recent-projects": "Recent Projects",
+        "text": "Text",
+        "blocks": "Blocks"
     },
     "delete-project": {
         "delete-project": "Delete Project",
@@ -48,5 +50,32 @@
     "validation": {
         "email": "Must be a valid email address",
         "required": "{1} is required"
+    },
+    "showcase": {
+        "project": "Project",
+        "required": "{1} is required",
+        "open-project": "Open Project",
+        "delete-project": "Delete Project"
+    },
+    "projects": {
+        "project": "Project",
+        "type": "Type",
+        "updated": "Updated",
+        "size": "Size",
+        "actions": "Actions",
+        "open-project": "Open Project",
+        "rename-project": "Rename Project",
+        "delete-project": "Delete Project"
+    },
+    "format": {
+        "just-now": "Just now",
+        "seconds-ago": "{1} seconds ago",
+        "minutes-ago": "{1} minutes ago",
+        "hours-ago": "{1} hours ago",
+        "1-minute-ago": "1 minute ago",
+        "1-hour-ago": "1 hour ago",
+        "today-at": "Today at {1}",
+        "yesterday-at": "Yesterday at {1}",
+        "at": "{1} at {2}"
     }
 }

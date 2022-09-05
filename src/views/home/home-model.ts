@@ -2,10 +2,14 @@ import { FetchResponse } from "@/data/fetch/types";
 import { reactive } from "vue";
 import { ViewModelBase } from "../base-classes/view-model-base";
 import { HomeState } from "./home-state";
-import * as ShowcaseProvider from "@/data/providers/showcase-provider";
 import { ShowcaseProjectModel } from "@/data/models/showcase-project-model";
 import { ShowcaseUtilities } from "@/utilities/showcase-utilities";
 import { EbDropdownOption } from "@/components/eb-dropdown/eb-dropdown-types";
+import { ProjectModel } from "@/data/models/project-model";
+import * as ShowcaseProvider from "@/data/providers/showcase-provider";
+import * as ProjectsProvider from "@/data/providers/projects-provider";
+import { ProjectsUtilities } from "@/utilities/projects-utilities";
+import { EbTableHeader } from "@/components/eb-table/eb-table-types";
 
 /**
  * View model for the home view.
@@ -35,6 +39,7 @@ class HomeModel extends ViewModelBase {
 	 */
 	public init(): void {
 		this.loadShowcaseProjects();
+		this.loadRecentProjects();
 	}
 
 	/**
@@ -56,6 +61,27 @@ class HomeModel extends ViewModelBase {
 	 */
 	public getShowcaseProjectDropdownOptions(project: ShowcaseProjectModel): Array<Array<EbDropdownOption>> {
 		return ShowcaseUtilities.getShowcaseProjectDropdownOptions(project);
+	}
+
+	/**
+	 * Loads 10 projects from the showcase to display on the homepage.
+	 */
+	public loadRecentProjects(): void {
+		this.state.isLoadingRecentProjects = true;
+	
+		ProjectsProvider.getProjectsAsync(10).then((response: FetchResponse<Array<ProjectModel>>) => {
+			if (response.wasSuccessful && response.data) {
+				this.state.recentProjects = response.data;
+			}
+			this.state.isLoadingRecentProjects = false;
+		});
+	}
+
+	/**
+	 * Returns a list of headers for the recent projects table.
+	 */
+	public getRecentProjectsTableHeaders(): Array<EbTableHeader> {
+		return ProjectsUtilities.getProjectsTableHeaders();
 	}
 }
 

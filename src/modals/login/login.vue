@@ -60,8 +60,4 @@
 
 <script setup lang="ts">
 import { modal } from "./login-model";
-
-defineProps<{
-	projectName: string;
-}>();
 </script>

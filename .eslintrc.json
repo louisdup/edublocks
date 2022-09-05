@@ -67,6 +67,7 @@
           "vue/component-tags-order": ["error"],
           "@typescript-eslint/array-type": ["error", { "default": "generic" }],
           "@typescript-eslint/no-inferrable-types": "off",
+          "@typescript-eslint/restrict-template-expressions": "off",
           "no-magic-numbers": "off",
           "vue/this-in-template": 0,
           "@typescript-eslint/naming-convention": ["error",
