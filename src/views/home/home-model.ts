@@ -38,6 +38,19 @@ class HomeModel extends ViewModelBase {
 	 * Initialise the view model.
 	 */
 	public init(): void {
+		// Load the initial data.
+		this.loadInitialData();
+
+		// Reload the initial set of data if a content refresh is triggered.
+		this.observeContentRefresh(() => {
+			this.loadInitialData();
+		});
+	}
+
+	/**
+	 * Load the initial set of data required by the view.
+	 */
+	private loadInitialData(): void {
 		this.loadShowcaseProjects();
 		this.loadRecentProjects();
 	}
@@ -64,17 +77,19 @@ class HomeModel extends ViewModelBase {
 	}
 
 	/**
-	 * Loads 10 projects from the showcase to display on the homepage.
+	 * Loads 10 recent projects belonging to the current user to display on the homepage.
 	 */
 	public loadRecentProjects(): void {
 		this.state.isLoadingRecentProjects = true;
-	
-		ProjectsProvider.getProjectsAsync(10).then((response: FetchResponse<Array<ProjectModel>>) => {
-			if (response.wasSuccessful && response.data) {
-				this.state.recentProjects = response.data;
-			}
-			this.state.isLoadingRecentProjects = false;
-		});
+		
+		if (this.isCurrentUserLoggedIn()) {
+			ProjectsProvider.getProjectsAsync(10).then((response: FetchResponse<Array<ProjectModel>>) => {
+				if (response.wasSuccessful && response.data) {
+					this.state.recentProjects = response.data;
+				}
+				this.state.isLoadingRecentProjects = false;
+			});
+		}
 	}
 
 	/**

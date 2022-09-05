@@ -43,6 +43,7 @@
 
     <!-- List of recent user projects, if a user is logged in. -->
     <eb-table
+      v-if="view.isCurrentUserLoggedIn()"
       :label="view.getText('recent-projects')"
       :headers="view.getRecentProjectsTableHeaders()"
     >

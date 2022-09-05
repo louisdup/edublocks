@@ -12,12 +12,12 @@ import { ProjectModel } from "../models/project-model";
  * Get a paged list of projects.
  */
 export async function getProjectsAsync(limit: number): Promise<FetchResponse<Array<ProjectModel>>> {
-	return Fetch.fetchCollectionAsync(new FetchRequest(`users/1mSFefRFBwaCl2U3UE2G4MfTDqr2/projects`, undefined, limit));
+	return Fetch.fetchCollectionAsync(new FetchRequest(`users/${AuthenticationUtilities.currentUser.value?.uid}/projects`, undefined, limit));
 }
 
 /**
  * Get a single project.
  */
 export async function getProjectAsync(id: string): Promise<FetchResponse<ProjectModel>> {
-	return Fetch.fetchDocumentAsync(new FetchRequest(`/users/${AuthenticationUtilities.currentUser.value?.uid}/projects/${id}`));
+	return Fetch.fetchDocumentAsync(new FetchRequest(`users/${AuthenticationUtilities.currentUser.value?.uid}/projects/${id}`));
 }

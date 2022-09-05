@@ -4,6 +4,7 @@ import "firebase/compat/storage";
 import { ref, Ref } from "vue";
 import { md5 } from "md5js";
 import { SocialAuthProviderModel } from "@/data/models/social-auth-provider-model";
+import { ContentUtilities } from "./content-utilities";
 
 /**
  * Utility functions for authentication with firebase.
@@ -27,6 +28,7 @@ export class AuthenticationUtilities {
 	public static async loginWithEmailAndPassword(email: string, password: string): Promise<void | AuthError> {
 		return this.auth().signInWithEmailAndPassword(email, password).then((user: firebase.auth.UserCredential) => {
 			this.currentUser.value = user.user;
+			ContentUtilities.triggerContentRefresh();
 		}).catch((error: AuthError) => {
 			throw error;
 		});
@@ -38,6 +40,7 @@ export class AuthenticationUtilities {
 	public static async loginWithSocialAuthProvider(provider: OAuthProvider | GoogleAuthProvider): Promise<void | AuthError> {
 		return this.auth().signInWithPopup(provider).then((user: firebase.auth.UserCredential) => {
 			this.currentUser.value = user.user;
+			ContentUtilities.triggerContentRefresh();
 		}).catch((error: AuthError) => {
 			throw error;
 		});
@@ -49,6 +52,7 @@ export class AuthenticationUtilities {
 	public static async logout(): Promise<void> {
 		await this.auth().signOut();
 		this.currentUser.value = null;
+		ContentUtilities.triggerContentRefresh();
 	}
 
 	/**

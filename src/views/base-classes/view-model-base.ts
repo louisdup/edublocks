@@ -3,6 +3,8 @@ import { ScreenUtilities } from "@/utilities/screen-utilities";
 import { FormatUtilities } from "@/utilities/format-utilities";
 import { PlatformModelBase } from "@/platforms/base-classes/platform-model-base";
 import { PlatformUtilities } from "@/utilities/platform-utilities";
+import { ContentUtilities } from "@/utilities/content-utilities";
+import { AuthenticationUtilities } from "@/utilities/authentication-utilities";
 
 /**
  * Base class exposing common functionality to all view models.
@@ -15,6 +17,34 @@ export abstract class ViewModelBase {
 	protected abstract getLocalizationNamespace(): string;
 
 	/**
+	 * True if screen size is mobile.
+	 */
+	protected showMobileTemplate(): boolean {
+		return ScreenUtilities.isMobile();
+	}
+	
+	/**
+	 * True if screen size is desktop.
+	 */
+	protected showDesktopTemplate(): boolean {
+		return ScreenUtilities.isDesktop();
+	}
+
+	/**
+	 * Watch for external trigger to refresh the content, and execute the specified callback function when it occurs.
+	 */
+	protected observeContentRefresh(callback: Function): void {
+		ContentUtilities.observeContentRefresh(callback);
+	}
+
+	/**
+	 * Triggers a content refresh.
+	 */
+	protected triggerContentRefresh(): void {
+		ContentUtilities.triggerContentRefresh();
+	}
+
+	/**
 	 * Uses the specified key (and value of the 'localizationNamespace' property) to lookup localized text for displaying in the view.
 	 */
 	public getText(key: string, placeholderValues?: Array<string>): string {
@@ -22,17 +52,10 @@ export abstract class ViewModelBase {
 	}
 
 	/**
-	 * True if screen size is mobile.
+	 * True if the current user is logged in.
 	 */
-	public showMobileTemplate(): boolean {
-		return ScreenUtilities.isMobile();
-	}
-	
-	/**
-	 * True if screen size is desktop.
-	 */
-	public showDesktopTemplate(): boolean {
-		return ScreenUtilities.isDesktop();
+	public isCurrentUserLoggedIn(): boolean {
+		return AuthenticationUtilities.currentUser.value ? true : false;
 	}
 
 	/**
