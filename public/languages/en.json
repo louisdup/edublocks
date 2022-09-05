@@ -14,7 +14,8 @@
         "showcase": "Showcase",
         "recent-projects": "Recent Projects",
         "text": "Text",
-        "blocks": "Blocks"
+        "blocks": "Blocks",
+        "blank-project": "Blank project"
     },
     "delete-project": {
         "delete-project": "Delete Project",

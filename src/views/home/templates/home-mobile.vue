@@ -43,6 +43,7 @@
         :left-subtitle="project.platform"
         :right-subtitle="project.type"
         thumbnail="https://upload.wikimedia.org/wikipedia/commons/archive/c/c3/20220821153845%21Python-logo-notext.svg"
+        is-full-width
       />
     </eb-list>
   </mobile-layout>

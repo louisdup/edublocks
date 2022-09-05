@@ -78,4 +78,11 @@ export abstract class ViewModelBase {
 	public getPlatformFromKey(key: string): PlatformModelBase {
 		return PlatformUtilities.getPlatformFromKey(key);
 	}
+
+	/**
+	 * Returns a list of available platforms.
+	 */
+	public getPlatforms(): Array<PlatformModelBase> {
+		return PlatformUtilities.getPlatforms();
+	}
 }

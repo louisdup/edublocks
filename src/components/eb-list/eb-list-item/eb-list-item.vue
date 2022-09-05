@@ -1,7 +1,7 @@
 <template>
   <component
     :is="component.getComponentName(isButton)"
-    :class="component.variants({ isButton })"
+    :class="component.variants({ isButton, isFullWidth })"
   >
     <div class="flex items-center space-x-4">
       <img
@@ -48,5 +48,6 @@ defineProps<{
 	rightTitle?: string;
 	rightSubtitle?: string;
 	isButton?: boolean;
+	isFullWidth?: boolean;
 }>();
 </script>

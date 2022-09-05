@@ -15,10 +15,14 @@ class EbListItemModel extends ComponentModelBase {
 	/**
 	 * Returns list of classes for the list item component.
 	 */
-	public variants: Function = cva(["flex", "items-center", "space-x-4", "justify-between", "w-full", "text-left"], {
+	public variants: Function = cva(["flex", "items-center", "space-x-4", "justify-between", "text-left"], {
 		variants: {
 			isButton: {
 				true: "p-4 hover:bg-gray-200 focus:bg-white/10 transition-colors rounded-md cursor-pointer"
+			},
+			isFullWidth: {
+				true: "w-full",
+				false: "w-[16.5rem]"
 			}
 		}
 	});

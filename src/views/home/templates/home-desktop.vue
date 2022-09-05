@@ -10,13 +10,20 @@
       />
     </eb-heading>
 
-    <!-- Grid of modes to create a new project. -->
-    <eb-heading
-      :label="view.getText('create-new-project')"
-      size="small"
-      color="gray"
-      weight="medium"
-    />
+    <!-- Grid of platforms to create a new project. -->
+    <eb-slider :label="view.getText('create-new-project')">
+      <eb-slider-slide
+        v-for="platform in view.getPlatforms()"
+        :key="platform.config.key"
+      >
+        <eb-list-item 
+          :left-title="platform.config.name"
+          :left-subtitle="view.getText('blank-project')"
+          :thumbnail="platform.config.logo"
+          is-button
+        />
+      </eb-slider-slide> 
+    </eb-slider>
 
     <!-- Grid of recent showcase projects. -->
     <eb-slider :label="view.getText('showcase')">
@@ -57,6 +64,7 @@
             :left-title="project.name"
             :left-subtitle="view.getPlatformFromKey(project.platform).config.name"
             :thumbnail="view.getPlatformFromKey(project.platform).config.logo"
+            is-full-width
           />
         </eb-table-cell>
         <!-- Type Column -->

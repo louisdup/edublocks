@@ -10,6 +10,7 @@
       :thumbnail="component.getCurrentUserProfilePicture()"
       rounded-thumbnail
       is-button
+      is-full-width
       class="hover:bg-opacity-10"
     />
     <eb-list-item
@@ -20,6 +21,7 @@
       color="white"
       rounded-thumbnail
       is-button
+      is-full-width
       class="hover:bg-opacity-10"
     />
   </eb-dropdown>
