@@ -11,8 +11,8 @@ import { component } from "./eb-icon-model";
 
 defineProps<{
 	icon: Array<string>;
-	color: string;
-	backgroundColor: string;
-	align: string;
+	color?: string;
+	backgroundColor?: string;
+	align?: string;
 }>();
 </script>

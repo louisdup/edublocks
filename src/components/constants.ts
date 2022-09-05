@@ -18,5 +18,11 @@ export enum ComponentName {
 	EbDropdown = "EbDropdown",
 	EbInput = "EbInput",
 	EbLink = "EbLink",
-	EbListItem = "EbListItem"
+	EbList = "EbList",
+	EbListItem = "EbListItem",
+	EbTable = "EbTable",
+	EbTableRow = "EbTableRow",
+	EbTableCell = "EbTableCell",
+	EbLabel = "EbLabel",
+	EbVStack = "EbVStack"
 }

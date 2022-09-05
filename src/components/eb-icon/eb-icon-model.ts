@@ -44,7 +44,7 @@ class EbIconModel extends ComponentModelBase {
 	/**
 	 * Returns list of classes for the icon component.
 	 */
-	public getClassesForIcon(color: string, backgroundColor: string): Array<unknown> {
+	public getClassesForIcon(color?: string, backgroundColor?: string): Array<unknown> {
 		return [this.variants({ color, backgroundColor }), backgroundColor ? "p-3 h-7 w-7 rounded-full" : ""];
 	}
 }

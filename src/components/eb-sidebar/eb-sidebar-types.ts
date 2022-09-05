@@ -1,4 +1,6 @@
-// Define a sidebar nav item
+/**
+ * Sidebar item for the sidebar component.
+ */
 export interface EbSidebarItem {
 	key: string;
 	title?: string;

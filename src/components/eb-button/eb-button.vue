@@ -40,14 +40,14 @@ import { Data } from "../types";
 import { EbButtonModel } from "./eb-button-model";
 
 const props: Data = defineProps<{
-	label: string;
-	icon: Array<string>;
-	iconColor: string;
-	size: string;
-	color: string;
-	isLoading: boolean;
-	isFullWidth: boolean;
-	isDisabled: boolean;
+	label?: string;
+	icon?: Array<string>;
+	iconColor?: string;
+	size?: string;
+	color?: string;
+	isLoading?: boolean;
+	isFullWidth?: boolean;
+	isDisabled?: boolean;
 }>();
 
 const component: EbButtonModel = new EbButtonModel(props);

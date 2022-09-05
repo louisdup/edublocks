@@ -47,10 +47,10 @@
 import { EbDropdownOption } from "../eb-dropdown/eb-dropdown-types";
 
 defineProps<{
-	title: string;
-	subtitle: string;
-	image: string;
-	isLoading: boolean;
-	dropdownOptions: Array<Array<EbDropdownOption>>;
+	title?: string;
+	subtitle?: string;
+	image?: string;
+	isLoading?: boolean;
+	dropdownOptions?: Array<Array<EbDropdownOption>>;
 }>();
 </script>

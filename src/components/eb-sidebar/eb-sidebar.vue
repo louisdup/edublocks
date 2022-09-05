@@ -1,7 +1,7 @@
 <template>
   <div class="bg-navy-500 h-full flex-none flex flex-col overflow-hidden">
     <div
-      v-if="logo"
+      v-if="hasLogo"
       class="px-6 pt-6 pb-2 flex flex-col lg:items-start items-center"
     >
       <img
@@ -47,8 +47,8 @@ import { EbSidebarItem } from "./eb-sidebar-types";
 const props: Data = defineProps<{
 	items: Array<EbSidebarItem>;
 	minimize: boolean;
-	logo: boolean;
 	active: string;
+	hasLogo: boolean;
 }>();
 
 const component: EbSidebarModel = new EbSidebarModel(props);

@@ -1,10 +1,10 @@
 import { cva } from "class-variance-authority";
-import { ComponentModelBase } from "../base-classes/component-model-base";
+import { ComponentModelBase } from "../../base-classes/component-model-base";
 
 /**
- * Component model for the heading component.
+ * Component model for the list item component.
  */
-class EbListItem extends ComponentModelBase {
+class EbListItemModel extends ComponentModelBase {
 	/**
 	 * Specifies the localization namespace to use for getting localized text values.
 	 */
@@ -41,7 +41,7 @@ class EbListItem extends ComponentModelBase {
 	/**
 	 * Returns list of classes for subtitle variants.
 	 */
-	public subtitleVariants: Function = cva(undefined, {
+	public subtitleVariants: Function = cva(["font-normal"], {
 		variants: {
 			color: {
 				black: "text-gray-500",
@@ -56,10 +56,10 @@ class EbListItem extends ComponentModelBase {
 	/**
 	 * Returns name of component based on isButton prop.
 	 */
-	public getComponentName(isButton: boolean): string {
+	public getComponentName(isButton?: boolean): string {
 		return isButton ? "button" : "div";
 	}
 }
 
 // Export the component model
-export const component: EbListItem = new EbListItem();
+export const component: EbListItemModel = new EbListItemModel();

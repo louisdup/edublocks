@@ -17,7 +17,13 @@ import EbModalFooter from "./eb-modal/eb-modal-footer/eb-modal-footer.vue";
 import EbDropdown from "./eb-dropdown/eb-dropdown.vue";
 import EbInput from "./eb-input/eb-input.vue";
 import EbLink from "./eb-link/eb-link.vue";
-import EbListItem from "./eb-list-item/eb-list-item.vue";
+import EbList from "./eb-list/eb-list.vue";
+import EbListItem from "./eb-list/eb-list-item/eb-list-item.vue";
+import EbTable from "./eb-table/eb-table.vue";
+import EbTableRow from "./eb-table/eb-table-row/eb-table-row.vue";
+import EbTableCell from "./eb-table/eb-table-cell/eb-table-cell.vue";
+import EbLabel from "./eb-label/eb-label.vue";
+import EbVStack from "./eb-v-stack/eb-v-stack.vue";
 
 /**
  * Export & install application components for use globally
@@ -40,6 +46,12 @@ export default {
 		app.component(ComponentName.EbDropdown, EbDropdown);
 		app.component(ComponentName.EbInput, EbInput);
 		app.component(ComponentName.EbLink, EbLink);
+		app.component(ComponentName.EbList, EbList);
 		app.component(ComponentName.EbListItem, EbListItem);
+		app.component(ComponentName.EbTable, EbTable);
+		app.component(ComponentName.EbTableRow, EbTableRow);
+		app.component(ComponentName.EbTableCell, EbTableCell);
+		app.component(ComponentName.EbLabel, EbLabel);
+		app.component(ComponentName.EbVStack, EbVStack);
 	}
 };

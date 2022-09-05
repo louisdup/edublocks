@@ -33,10 +33,10 @@ import { component } from "./eb-input-model";
 defineProps<{
 	label: string;
 	type: string;
-	placeholder: string;
-	modelValue: string;
-	required: boolean;
-	error: string;
+	placeholder?: string;
+	modelValue?: string;
+	required?: boolean;
+	error?: string;
 }>();
 
 defineEmits(["update:modelValue"]);

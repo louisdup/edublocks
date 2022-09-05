@@ -14,10 +14,10 @@ import { component } from "./eb-heading-model";
 
 defineProps<{
 	label: string;
-	align: string;
-	size: string;
-	weight: string;
-	color: string;
-	fullWidth: boolean;
+	align?: string;
+	size?: string;
+	weight?: string;
+	color?: string;
+	fullWidth?: boolean;
 }>();
 </script>

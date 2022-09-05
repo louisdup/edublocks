@@ -40,13 +40,13 @@
 import { component } from "./eb-list-item-model";
 
 defineProps<{
-	color: string;
-	thumbnail: string;
-	roundedThumbnail: boolean;
 	leftTitle: string;
-	rightTitle: string;
 	leftSubtitle: string;
-	rightSubtitle: string;
-	isButton: boolean;
+	color?: string;
+	thumbnail?: string;
+	roundedThumbnail?: boolean;
+	rightTitle?: string;
+	rightSubtitle?: string;
+	isButton?: boolean;
 }>();
 </script>
