@@ -83,6 +83,20 @@ class LoginModal extends ModalModelBase {
 			this.state.isBusy = false;
 		}
 	}
+
+	/**
+	 * True if the login modal is busy. 
+	 */
+	public isLoginButtonLoading(): boolean {
+		return this.state.isBusy;
+	}
+
+	/**
+	 * True if the login form is not valid. 
+	 */
+	public isLoginButtonDisabled(): boolean {
+		return !this.state.isValid;
+	}
 }
 
 // Export the modal model.

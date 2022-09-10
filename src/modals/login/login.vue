@@ -50,8 +50,8 @@
       <eb-button
         :label="modal.getText('login')"
         color="pink"
-        :is-disabled="!modal.state.isValid"
-        :is-loading="modal.state.isBusy"
+        :is-disabled="modal.isLoginButtonDisabled()"
+        :is-loading="modal.isLoginButtonLoading()"
         @click="modal.onLoginClicked()"
       />
     </eb-modal-footer>

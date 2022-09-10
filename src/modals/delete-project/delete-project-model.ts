@@ -1,4 +1,7 @@
 import { ModalModelBase } from "../base-classes/modal-model-base";
+import * as ProjectsProvider from "@/data/providers/projects-provider";
+import { ProjectModel } from "@/data/models/project-model";
+import { ContentUtilities } from "@/utilities/content-utilities";
 
 /**
  * Modal model for the delete project modal.
@@ -9,6 +12,14 @@ class DeleteProjectModal extends ModalModelBase {
 	 */
 	protected getLocalizationNamespace(): string {
 		return "delete-project";
+	}
+
+	/**
+	 * Called when the delete button is clicked and deletes the project.
+	 */
+	public async onDeleteClicked(project: ProjectModel): Promise<void> {
+		await ProjectsProvider.deleteProjectAsync(project.id);
+		ContentUtilities.triggerContentRefresh();
 	}
 }
 

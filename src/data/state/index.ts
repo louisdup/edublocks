@@ -7,22 +7,27 @@ import { reactive } from "vue";
  */
 class State {
 	/**
-	 * Store application language for localization. Assumes english by default.
+	 * Returns application language for localization. Assumes english by default.
 	 */
 	public language: string = "en";
 
 	/**
-	 * Store current modal for the active view.
+	 * Returns current modal for the active view.
 	 */
 	public modal: ModalModel | undefined;
 
 	/**
-	 * Store current active platform.
+	 * Returns current active platform.
 	 */
 	public platform: PlatformModelBase | undefined;
+
+	/**
+	 * Returns layout for data tables based on users choice. Assumes list by default.
+	 */
+	public dataLayout: "list" | "grid" = "list";
 }
 
 /**
- * Application state for storing settings such as language and layouts
+ * Export application state for storing settings such as language and layouts
  */
 export const state: State = reactive(new State());

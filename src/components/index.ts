@@ -24,6 +24,9 @@ import EbTableRow from "./eb-table/eb-table-row/eb-table-row.vue";
 import EbTableCell from "./eb-table/eb-table-cell/eb-table-cell.vue";
 import EbLabel from "./eb-label/eb-label.vue";
 import EbVStack from "./eb-v-stack/eb-v-stack.vue";
+import EbHStack from "./eb-h-stack/eb-h-stack.vue";
+import EbSearch from "./eb-search/eb-search.vue";
+import EbIconButton from "./eb-icon/eb-icon-button/eb-icon-button.vue";
 
 /**
  * Export & install application components for use globally
@@ -53,5 +56,8 @@ export default {
 		app.component(ComponentName.EbTableCell, EbTableCell);
 		app.component(ComponentName.EbLabel, EbLabel);
 		app.component(ComponentName.EbVStack, EbVStack);
+		app.component(ComponentName.EbHStack, EbHStack);
+		app.component(ComponentName.EbSearch, EbSearch);
+		app.component(ComponentName.EbIconButton, EbIconButton);
 	}
 };

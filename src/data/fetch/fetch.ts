@@ -26,21 +26,40 @@ export async function fetchCollectionAsync<T>(request: FetchRequest): Promise<Fe
 	try {
 		let response: firebase.firestore.QuerySnapshot;
 
-		// Decide whether to include startAt() based on whether an offset is passed.
-		if (request.offset !== undefined) {
+		// Decide whether to include startAfter() based on whether an offset is passed.
+		if (request.offset !== undefined && request.orderBy) {
 			response = await FirestoreUtilities
 				.firestore()
 				.collection(request.url)
-				.orderBy("created", "desc")
+				.orderBy(request.orderBy ? request.orderBy : "created", "desc")
 				.limit(request.limit ? request.limit : 50)
-				.startAt(request.offset)
+				.startAfter(request.offset)
+				.get();
+		}
+		else if (request.offset !== undefined && request.searchTerm !== undefined && request.searchTerm.length > 2) {
+			response = await FirestoreUtilities
+				.firestore()
+				.collection(request.url)
+				.where("name", ">=", request.searchTerm)
+				.where("name", "<=", `${request.searchTerm}\uf8ff"`)
+				.limit(request.limit ? request.limit : 50)
+				.startAfter(request.offset)
+				.get();
+		}
+		else if (request.offset === undefined && request.searchTerm !== undefined && request.searchTerm.length > 2) {
+			response = await FirestoreUtilities
+				.firestore()
+				.collection(request.url)
+				.where("name", ">=", request.searchTerm)
+				.where("name", "<=", `${request.searchTerm}\uf8ff"`)
+				.limit(request.limit ? request.limit : 50)
 				.get();
 		}
 		else {
 			response = await FirestoreUtilities
 				.firestore()
 				.collection(request.url)
-				.orderBy("created", "desc")
+				.orderBy(request.orderBy ? request.orderBy : "created", "desc")
 				.limit(request.limit ? request.limit : 50)
 				.get();
 		}
@@ -49,6 +68,7 @@ export async function fetchCollectionAsync<T>(request: FetchRequest): Promise<Fe
 		response.docs.forEach((doc: firebase.firestore.QueryDocumentSnapshot) => {
 			data.push({
 				id: doc.id,
+				snapshot: doc,
 				...doc.data()
 			});
 		});
@@ -58,6 +78,7 @@ export async function fetchCollectionAsync<T>(request: FetchRequest): Promise<Fe
 	}
 	catch (e) {
 		const error: firebase.firestore.FirestoreError = e as firebase.firestore.FirestoreError;
+		console.log(error);
 		result.error = error;
 		result.hasError = true;
 		ModalUtilities.showModal({
@@ -95,6 +116,34 @@ export async function fetchDocumentAsync<T>(request: FetchRequest): Promise<Fetc
 		ModalUtilities.showModal({
 			modal: "Error"
 		});
+	}
+
+	return result;
+}
+
+/**
+ * Helper function for updating document in a firestore collection.
+ */
+export async function updateDocumentAsync<T>(request: FetchRequest): Promise<FetchResponse<T>> {
+	const result: FetchResponse<T> = createFetchResponse();
+
+	if (request.body) {
+		try {
+			await FirestoreUtilities
+				.firestore()
+				.doc(request.url)
+				.update(request.body);
+
+			result.wasSuccessful = true;
+		}
+		catch (e) {
+			const error: firebase.firestore.FirestoreError = e as firebase.firestore.FirestoreError;
+			result.error = error;
+			result.hasError = true;
+			ModalUtilities.showModal({
+				modal: "Error"
+			});
+		}
 	}
 
 	return result;

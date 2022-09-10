@@ -51,7 +51,7 @@ export class ShowcaseUtilities {
 			],
 			[
 				{
-					title: this.getText("delete"),
+					title: this.getText("delete-project"),
 					icon: ["far", "trash"],
 					visible: this.isAuthor(project.uid),
 					action: (): void => {

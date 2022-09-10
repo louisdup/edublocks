@@ -3,6 +3,7 @@
  */
 export enum ModalName {
 	DeleteProject = "DeleteProject",
+	RenameProject = "RenameProject",
 	DeleteShowcaseProject = "DeleteShowcaseProject",
 	Error = "Error",
 	Login = "Login"
@@ -13,6 +14,7 @@ export enum ModalName {
  */
 export type Modal = 
  | "DeleteProject"
+ | "RenameProject"
  | "DeleteShowcaseProject"
  | "Error"
  | "Login"

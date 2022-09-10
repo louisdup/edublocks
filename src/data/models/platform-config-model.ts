@@ -6,4 +6,5 @@ export interface PlatformConfigModel {
 	key: string;
 	color: string;
 	logo: string;
+	image: string;
 }

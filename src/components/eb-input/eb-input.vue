@@ -15,6 +15,7 @@
         class="block w-full rounded-md border-gray-300 shadow-sm focus:border-pink-500 focus:ring-pink-500 px-4 py-2"
         :class="error ? 'border-red-500' : 'border-gray-300'"
         :placeholder="placeholder"
+        :value="modelValue"
         @input="$emit('update:modelValue', component.getInputValue($event))"
       >
     </div>

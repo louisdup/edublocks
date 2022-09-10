@@ -11,7 +11,7 @@ import { ShowcaseProjectModel } from "../models/showcase-project-model";
  * Get a paged list of showcase projects.
  */
 export async function getShowcaseProjectsAsync(limit: number): Promise<FetchResponse<Array<ShowcaseProjectModel>>> {
-	return Fetch.fetchCollectionAsync(new FetchRequest("showcase", undefined, limit));
+	return Fetch.fetchCollectionAsync(new FetchRequest("showcase", undefined, undefined, limit));
 }
 
 /**

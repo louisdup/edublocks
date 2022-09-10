@@ -33,7 +33,7 @@ export class EbSidebarModel extends ComponentModelBase {
 	 * Returns dynamic class list based on whether the item is active.
 	 */
 	 public getItemActiveClassList(item: EbSidebarItem): string {
-		return this.props.active === item.key ? "bg-white/10" : "focus:ring-2 focus:ring-navy-400 focus:ring-offset-2 focus:ring-offset-navy-500 cursor-pointer hover:bg-white/10 transition-all opacity-80";
+		return this.props.active === item.key ? "bg-white/10" : "focus:ring-2 focus:ring-navy-400 focus:ring-offset-2 focus:ring-offset-navy-500 cursor-pointer hover:bg-white/10 transition-all opacity-50";
 	}
 
 	/**

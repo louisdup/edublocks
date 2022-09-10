@@ -14,17 +14,20 @@ export class LocalizationUtilities {
 	 */
 	public static getLocalizedText(namespace: string, key: string, placeholderValues?: Array<string>): string {
 		const target: string = `${namespace}.${key}`;
-		let result: string = this.textLookupTable[namespace][key];
+		let result: string = "";
 
-		// Iterate through placeholder values and replace them in the result string.
-		if (placeholderValues) {
-			placeholderValues.forEach((placeholder: string, index: number) => {
-				result = result.replace(`{${index+1}}`, placeholder);
-			});
-		}
-
-		if (!this.textLookupTable[namespace] || result === null) {
-			return `!! ${target} !!`;
+		if (this.textLookupTable[namespace]) {
+			result = this.textLookupTable[namespace][key];
+			// Iterate through placeholder values and replace them in the result string.
+			if (placeholderValues) {
+				placeholderValues.forEach((placeholder: string, index: number) => {
+					result = result.replace(`{${index+1}}`, placeholder);
+				});
+			}
+		
+			if (!this.textLookupTable[namespace][key]) {
+				return `!! ${target} !!`;
+			}
 		}
 
 		return result;

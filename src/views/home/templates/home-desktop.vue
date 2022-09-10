@@ -90,7 +90,12 @@
         </eb-table-cell>
         <!-- Actions Column -->
         <eb-table-cell class="text-right">
-          <eb-icon :icon="['far', 'ellipsis-h']" />
+          <eb-dropdown
+            :options="view.getProjectDropdownOptions(project)"
+            placement="bottom-end"
+          >
+            <eb-icon :icon="['far', 'ellipsis-h']" />
+          </eb-dropdown>
         </eb-table-cell>
       </eb-table-row>
     </eb-table>

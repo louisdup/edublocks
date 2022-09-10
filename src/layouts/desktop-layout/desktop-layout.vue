@@ -2,8 +2,15 @@
   <div class="h-screen w-screen bg-gray-100 flex flex-col">
     <div class="h-full w-full flex">
       <desktop-nav />
-      <div class="h-full w-full overflow-y-auto p-10 max-w-7xl mx-auto space-y-6">
-        <slot />
+      <div
+        class="h-full w-full overflow-y-auto px-10"
+        @scroll="$emit('scroll', $event)"
+      >
+        <div class="h-full w-full max-w-7xl mx-auto">
+          <div class="py-10 space-y-6">
+            <slot />
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -27,6 +34,8 @@
 <script setup lang="ts">
 import DesktopNav from "./components/desktop-nav/desktop-nav.vue";
 import { state } from "@/data/state";
+
+defineEmits(["scroll"]);
 </script>
 
 <style>

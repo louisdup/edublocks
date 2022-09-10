@@ -12,7 +12,8 @@ export class PythonModel extends PlatformModelBase {
 		name: "Python 3",
 		key: "Python",
 		color: "blue",
-		logo: "/images/platforms/python/logo.svg"
+		logo: "/images/platforms/python/logo.svg",
+		image: "/images/platforms/python/thumbnail.svg"
 	};
 }
 

@@ -15,7 +15,7 @@
         "recent-projects": "Recent Projects",
         "text": "Text",
         "blocks": "Blocks",
-        "blank-project": "Blank project"
+        "blank-project": "Blank Project"
     },
     "delete-project": {
         "delete-project": "Delete Project",
@@ -59,6 +59,7 @@
         "delete-project": "Delete Project"
     },
     "projects": {
+        "projects": "Projects",
         "project": "Project",
         "type": "Type",
         "updated": "Updated",
@@ -66,7 +67,13 @@
         "actions": "Actions",
         "open-project": "Open Project",
         "rename-project": "Rename Project",
-        "delete-project": "Delete Project"
+        "delete-project": "Delete Project",
+        "import-project": "Import Project",
+        "share-project": "Share Project",
+        "new-project": "New Project",
+        "text": "Text",
+        "blocks": "Blocks",
+        "search-projects": "Search Projects..."
     },
     "format": {
         "just-now": "Just now",
@@ -78,5 +85,11 @@
         "today-at": "Today at {1}",
         "yesterday-at": "Yesterday at {1}",
         "at": "{1} at {2}"
+    },
+    "rename-project": {
+        "rename-project": "Rename Project",
+        "please-enter-new-name": "Please enter a new name for",
+        "cancel": "Cancel",
+        "name": "Name"
     }
 }

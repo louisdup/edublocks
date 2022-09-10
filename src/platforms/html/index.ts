@@ -12,7 +12,8 @@ export class HTMLModel extends PlatformModelBase {
 		name: "HTML",
 		key: "HTML",
 		color: "orange",
-		logo: "/images/platforms/html/logo.svg"
+		logo: "/images/platforms/html/logo.svg",
+		image: "/images/platforms/html/thumbnail.svg"
 	};
 }
 

@@ -1,3 +1,5 @@
+import { QueryDocumentSnapshot } from "@firebase/firestore";
+
 /**
  * Data model for a project.
  */
@@ -10,4 +12,5 @@ export interface ProjectModel {
 	created: string;
 	updated: string;
 	type: "blocks" | "text";
+	snapshot: QueryDocumentSnapshot;
 }

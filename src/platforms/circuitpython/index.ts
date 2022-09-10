@@ -12,7 +12,8 @@ export class CircuitPythonModel extends PlatformModelBase {
 		name: "CircuitPython",
 		key: "CircuitPython",
 		color: "purple",
-		logo: "/images/platforms/circuitpython/logo.svg"
+		logo: "/images/platforms/circuitpython/logo.svg",
+		image: "/images/platforms/circuitpython/thumbnail.svg"
 	};
 }
 

@@ -5,6 +5,8 @@ import { PlatformModelBase } from "@/platforms/base-classes/platform-model-base"
 import { PlatformUtilities } from "@/utilities/platform-utilities";
 import { ContentUtilities } from "@/utilities/content-utilities";
 import { AuthenticationUtilities } from "@/utilities/authentication-utilities";
+import { state } from "@/data/state";
+import { EventUtilities } from "@/utilities/event-utilities";
 
 /**
  * Base class exposing common functionality to all view models.
@@ -15,20 +17,6 @@ export abstract class ViewModelBase {
 	 * This is an abstract property that needs to be defined in the view model that extends this base class.
 	 */
 	protected abstract getLocalizationNamespace(): string;
-
-	/**
-	 * True if screen size is mobile.
-	 */
-	protected showMobileTemplate(): boolean {
-		return ScreenUtilities.isMobile();
-	}
-	
-	/**
-	 * True if screen size is desktop.
-	 */
-	protected showDesktopTemplate(): boolean {
-		return ScreenUtilities.isDesktop();
-	}
 
 	/**
 	 * Watch for external trigger to refresh the content, and execute the specified callback function when it occurs.
@@ -49,6 +37,41 @@ export abstract class ViewModelBase {
 	 */
 	public getText(key: string, placeholderValues?: Array<string>): string {
 		return LocalizationUtilities.getLocalizedText(this.getLocalizationNamespace(), key, placeholderValues);
+	}
+
+	/**
+	 * True if screen size is mobile.
+	 */
+	public showMobileTemplate(): boolean {
+		return ScreenUtilities.isMobile();
+	}
+		
+	/**
+	 * True if screen size is desktop.
+	 */
+	public showDesktopTemplate(): boolean {
+		return ScreenUtilities.isDesktop();
+	}
+
+	/**
+	 * True if data layout is list.
+	 */
+	public isDataLayoutList(): boolean {
+		return state.dataLayout === "list";
+	}
+
+	/**
+	 * True if data layout is list.
+	 */
+	public isDataLayoutGrid(): boolean {
+		return state.dataLayout === "grid";
+	}
+
+	/**
+	 * Sets the current data layout.
+	 */
+	public setDataLayout(layout: "list" | "grid"): void {
+		state.dataLayout = layout;
 	}
 
 	/**
@@ -84,5 +107,13 @@ export abstract class ViewModelBase {
 	 */
 	public getPlatforms(): Array<PlatformModelBase> {
 		return PlatformUtilities.getPlatforms();
+	}
+
+	/**
+	 * Called when an element is scrolled.
+	 * Takes a percent as a number for a function to be called.
+	 */
+	public onScroll(event: Event, percentageTrigger: number, action: VoidFunction): void {
+		EventUtilities.onScroll(event, percentageTrigger, action);
 	}
 }

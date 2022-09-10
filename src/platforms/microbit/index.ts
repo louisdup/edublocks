@@ -12,7 +12,8 @@ export class MicrobitModel extends PlatformModelBase {
 		name: "micro:bit",
 		key: "microbit",
 		color: "green",
-		logo: "/images/platforms/microbit/logo.svg"
+		logo: "/images/platforms/microbit/logo.svg",
+		image: "/images/platforms/microbit/thumbnail.svg"
 	};
 }
 

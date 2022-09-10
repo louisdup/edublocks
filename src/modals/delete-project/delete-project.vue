@@ -10,7 +10,7 @@
 
     <eb-modal-content>
       <p class="w-full max-w-lg text-center mx-auto text-gray-500">
-        {{ modal.getText('delete-confirmation') }} <span class="font-bold">{{ projectName }}</span>?
+        {{ modal.getText('delete-confirmation') }} <span class="font-bold">{{ project.name }}</span>?
       </p>
     </eb-modal-content>
 
@@ -23,15 +23,17 @@
       <eb-button
         :label="modal.getText('delete')"
         color="red"
+        @click="modal.onDeleteClicked(project)"
       />
     </eb-modal-footer>
   </eb-modal>
 </template>
 
 <script setup lang="ts">
+import { ProjectModel } from "@/data/models/project-model";
 import { modal } from "./delete-project-model";
-
+  
 defineProps<{
-	projectName: string;
+	project: ProjectModel;
 }>();
 </script>

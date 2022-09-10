@@ -2,7 +2,7 @@ import { cva } from "class-variance-authority";
 import { ComponentModelBase } from "../base-classes/component-model-base";
 
 /**
- * Component model for the label component.
+ * Component model for the v-stack component.
  */
 class EbVStackModel extends ComponentModelBase {
 	/**

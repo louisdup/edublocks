@@ -12,7 +12,8 @@ export class RaspberryPiModel extends PlatformModelBase {
 		name: "Raspberry Pi",
 		key: "RPi",
 		color: "pink",
-		logo: "/images/platforms/raspberry-pi/logo.svg"
+		logo: "/images/platforms/raspberry-pi/logo.svg",
+		image: "/images/platforms/raspberry-pi/thumbnail.svg"
 	};
 }
 

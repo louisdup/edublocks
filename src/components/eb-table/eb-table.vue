@@ -1,6 +1,7 @@
 <template>
-  <div class="space-y-2">
+  <div class="space-y-5">
     <eb-heading
+      v-if="label"
       :label="label"
       size="small"
       color="gray"
@@ -14,7 +15,7 @@
             <th
               v-for="header in headers"
               :key="header.label"
-              class="py-3.5 pl-4 pr-3 text-left text-sm font-medium text-gray-500 sm:pl-6 md:pl-0"
+              class="pb-3.5 pl-4 pr-3 text-left text-sm font-medium text-gray-500 sm:pl-6 md:pl-0"
             >
               <span
                 v-if="!header.hidden"
@@ -37,7 +38,7 @@
 import { EbTableHeader } from "./eb-table-types";
 
 defineProps<{
-	label: string;
+	label?: string;
 	headers: Array<EbTableHeader>;
 }>();
 </script>

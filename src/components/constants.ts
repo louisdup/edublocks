@@ -24,5 +24,8 @@ export enum ComponentName {
 	EbTableRow = "EbTableRow",
 	EbTableCell = "EbTableCell",
 	EbLabel = "EbLabel",
-	EbVStack = "EbVStack"
+	EbVStack = "EbVStack",
+	EbHStack = "EbHStack",
+	EbSearch = "EbSearch",
+	EbIconButton = "EbIconButton"
 }

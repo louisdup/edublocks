@@ -98,6 +98,13 @@ class HomeModel extends ViewModelBase {
 	public getRecentProjectsTableHeaders(): Array<EbTableHeader> {
 		return ProjectsUtilities.getProjectsTableHeaders();
 	}
+
+	/**
+	 * Returns a list of options for a project dropdown.
+	 */
+	public getProjectDropdownOptions(project: ProjectModel): Array<Array<EbDropdownOption>> {
+		return ProjectsUtilities.getProjectDropdownOptions(project);
+	}
 }
 
 // Export the view model.
