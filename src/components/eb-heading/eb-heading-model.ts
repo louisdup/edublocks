@@ -23,16 +23,28 @@ class EbHeadingModel extends ComponentModelBase {
 				right: "text-right"
 			},
 			size: {
-				small: "text-lg",
-				medium: "text-2xl",
-				normal: "text-3xl",
-				large: "text-4xl"
+				"xs": "text-xs",
+				"sm": "text-sm",
+				"normal": "text-base",
+				"md": "text-md",
+				"lg": "text-lg",
+				"xl": "text-xl",
+				"2xl": "text-2xl",
+				"3xl": "text-3xl",
+				"4xl": "text-4xl",
+				"5xl": "text-5xl",
+				"6xl": "text-6xl",
+				"7xl": "text-7xl",
+				"8xl": "text-8xl",
+				"9xl": "text-9xl"
 			},
 			weight: {
-				light: "font-base",
+				light: "font-light",
+				normal: "font-normal",
 				medium: "font-medium",
 				semibold: "font-semibold",
-				bold: "font-bold"
+				bold: "font-bold",
+				black: "font-black"
 			},
 			color: {
 				gray: "text-gray-700",
@@ -44,7 +56,7 @@ class EbHeadingModel extends ComponentModelBase {
 		},
 		defaultVariants: {
 			align: "left",
-			size: "normal",
+			size: "3xl",
 			weight: "semibold",
 			color: "black",
 			fullWidth: false

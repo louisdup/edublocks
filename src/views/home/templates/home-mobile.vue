@@ -1,16 +1,5 @@
 <template>
-  <mobile-layout>
-    <!-- Title bar for home page. -->
-    <eb-heading :label="view.getPageTitle()" />
-
-    <!-- Grid of modes to create a new project. -->
-    <eb-heading
-      :label="view.getText('create-new-project')"
-      size="small"
-      color="gray"
-      weight="medium"
-    />
-
+  <mobile-layout :title="view.getPageTitle()">
     <!-- Grid of recent showcase projects. -->
     <eb-slider :label="view.getText('showcase')">
       <eb-card
@@ -40,9 +29,9 @@
         v-for="project in view.state.recentProjects"
         :key="project.id"
         :left-title="project.name"
-        :left-subtitle="project.platform"
+        :left-subtitle="view.getPlatformFromKey(project.platform).config.name"
         :right-subtitle="project.type"
-        thumbnail="https://upload.wikimedia.org/wikipedia/commons/archive/c/c3/20220821153845%21Python-logo-notext.svg"
+        :thumbnail="view.getPlatformFromKey(project.platform).config.logo"
         is-full-width
       />
     </eb-list>
