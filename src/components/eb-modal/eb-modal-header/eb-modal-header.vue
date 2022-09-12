@@ -9,9 +9,9 @@
       />
       <eb-heading
         :label="title"
-        size="medium"
+        size="2xl"
         :align="align"
-        full-width
+        is-full-width
       />
     </div>
 

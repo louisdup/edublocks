@@ -51,4 +51,6 @@ const props: Data = defineProps<{
 }>();
 
 const component: EbButtonModel = new EbButtonModel(props);
+
+defineEmits(["click"]);
 </script>

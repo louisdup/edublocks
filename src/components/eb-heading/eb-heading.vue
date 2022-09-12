@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center w-full">
-    <h1 :class="component.variants({ align, size, weight, color, fullWidth })">
+    <h1 :class="component.variants({ align, size, weight, color, isFullWidth })">
       {{ label }}
     </h1>
     <div class="ml-auto">
@@ -18,6 +18,6 @@ defineProps<{
 	size?: string;
 	weight?: string;
 	color?: string;
-	fullWidth?: boolean;
+	isFullWidth?: boolean;
 }>();
 </script>

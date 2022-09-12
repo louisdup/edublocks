@@ -29,8 +29,8 @@ export class EbButtonModel extends ComponentModelBase {
 				normal: ["text-sm", "py-3", "px-5"]
 			},
 			color: {
-				white: ["bg-white", "text-gray-700", "focus:ring-gray-300", "hover:bg-gray-50", "border-gray-300"],
 				pink: ["bg-pink-500", "text-gray-100", "focus:ring-pink-400", "hover:bg-pink-400", "border-transparent"],
+				white: ["bg-white", "text-gray-700", "focus:ring-gray-300", "hover:bg-gray-50", "border-gray-300"],
 				green: ["bg-green-500", "text-gray-100", "focus:ring-green-400", "hover:bg-green-400", "border-transparent"],
 				navy: ["bg-navy-500", "text-gray-100", "focus:ring-navy-400", "hover:bg-navy-400", "border-transparent"],
 				red: ["bg-red-500", "text-gray-100", "focus:ring-red-400", "hover:bg-red-400", "border-transparent"]

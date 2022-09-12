@@ -53,4 +53,6 @@ defineProps<{
 	isLoading?: boolean;
 	dropdownOptions?: Array<Array<EbDropdownOption>>;
 }>();
+
+defineEmits(["click"]);
 </script>

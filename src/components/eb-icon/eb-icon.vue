@@ -13,6 +13,5 @@ defineProps<{
 	icon: Array<string>;
 	color?: string;
 	backgroundColor?: string;
-	align?: string;
 }>();
 </script>
