@@ -1,11 +1,11 @@
 <template>
-  <div class="space-y-5">
+  <div class="space-y-4">
     <eb-heading
       v-if="label"
       :label="label"
       size="small"
       color="gray"
-      weight="medium"
+      weight="semibold"
     />
 
     <div class="w-full">

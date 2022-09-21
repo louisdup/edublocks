@@ -2,7 +2,7 @@ import { FetchResponse } from "@/data/fetch/types";
 import { reactive } from "vue";
 import { ViewModelBase } from "../base-classes/view-model-base";
 import { ProjectsState } from "./projects-state";
-import { ProjectModel } from "@/data/models/project-model";
+import { FirestoreProjectModel } from "@/data/models/firestore-project-model";
 import * as ProjectsProvider from "@/data/providers/projects-provider";
 import { ProjectsUtilities } from "@/utilities/projects-utilities";
 import { EbTableHeader } from "@/components/eb-table/eb-table-types";
@@ -58,7 +58,7 @@ class ProjectsModel extends ViewModelBase {
 		this.state.isLoadingInitialProjects = true;
 		
 		if (this.isCurrentUserLoggedIn()) {
-			ProjectsProvider.getProjectsAsync(20, this.state.search).then((response: FetchResponse<Array<ProjectModel>>) => {
+			ProjectsProvider.getProjectsAsync(20, this.state.search).then((response: FetchResponse<Array<FirestoreProjectModel>>) => {
 				if (response.wasSuccessful && response.data) {
 					this.state.projects = response.data;
 				}
@@ -76,9 +76,9 @@ class ProjectsModel extends ViewModelBase {
 		if (this.isCurrentUserLoggedIn()) {
 			const lastProjectSnapshot: QueryDocumentSnapshot = this.state.projects[this.state.projects.length-1].snapshot;
 
-			ProjectsProvider.getProjectsAsync(20, this.state.search, lastProjectSnapshot).then((response: FetchResponse<Array<ProjectModel>>) => {
+			ProjectsProvider.getProjectsAsync(20, this.state.search, lastProjectSnapshot).then((response: FetchResponse<Array<FirestoreProjectModel>>) => {
 				if (response.wasSuccessful && response.data) {
-					response.data.forEach((project: ProjectModel) => {
+					response.data.forEach((project: FirestoreProjectModel) => {
 						this.state.projects.push(project);
 					});
 				}
@@ -104,7 +104,7 @@ class ProjectsModel extends ViewModelBase {
 	/**
 	 * Returns a list of options for a project dropdown.
 	 */
-	public getProjectDropdownOptions(project: ProjectModel): Array<Array<EbDropdownOption>> {
+	public getProjectDropdownOptions(project: FirestoreProjectModel): Array<Array<EbDropdownOption>> {
 		return ProjectsUtilities.getProjectDropdownOptions(project);
 	}
 

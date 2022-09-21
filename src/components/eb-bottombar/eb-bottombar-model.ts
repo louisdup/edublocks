@@ -24,8 +24,15 @@ export class EbBottombarModel extends ComponentModelBase {
 	/**
 	 * Returns dynamic class list based on whether the item is active.
 	 */
-	 public getItemActiveClassList(item: EbBottombarItem): string {
-		return this.props.active === item.key ? "bg-navy-400/40" : "opacity-50 hover:opacity-100 transition-opacity";
+	public getItemActiveClassList(item: EbBottombarItem): string {
+		return this.props.active === item.key ? "text-pink-500 font-semibold" : "text-gray-500 font-medium";
+	}
+
+	/**
+	 * Returns dynamic icon color based on whether the item is active.
+	 */
+	public getIconActiveColor(item: EbBottombarItem): string {
+		return this.props.active === item.key ? "pink" : "gray";
 	}
 
 	/**

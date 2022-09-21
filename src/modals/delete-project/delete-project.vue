@@ -30,10 +30,10 @@
 </template>
 
 <script setup lang="ts">
-import { ProjectModel } from "@/data/models/project-model";
+import { FirestoreProjectModel } from "@/data/models/firestore-project-model";
 import { modal } from "./delete-project-model";
   
 defineProps<{
-	project: ProjectModel;
+	project: FirestoreProjectModel;
 }>();
 </script>

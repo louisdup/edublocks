@@ -8,6 +8,12 @@
         class="text-lg"
         :class="label ? '-ml-1 mr-3' : ''"
       />
+      <img
+        v-if="image"
+        :src="image"
+        class="h-4"
+        :class="label ? '-ml-1 mr-3' : ''"
+      >
       <span v-if="label">{{ label }}</span>
     </template>
     <template v-else>
@@ -42,6 +48,7 @@ import { EbButtonModel } from "./eb-button-model";
 const props: Data = defineProps<{
 	label?: string;
 	icon?: Array<string>;
+	image?: string;
 	iconColor?: string;
 	size?: string;
 	color?: string;
@@ -51,6 +58,4 @@ const props: Data = defineProps<{
 }>();
 
 const component: EbButtonModel = new EbButtonModel(props);
-
-defineEmits(["click"]);
 </script>

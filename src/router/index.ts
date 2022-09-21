@@ -2,10 +2,12 @@ import { createRouter, createWebHistory, Router, RouteRecordRaw } from "vue-rout
 
 import { homeRoutes } from "@/views/home/routes";
 import { projectsRoutes } from "@/views/projects/routes";
+import { editorRoutes } from "@/views/editor/routes";
 
 const routes: Array<RouteRecordRaw> = [
 	...homeRoutes,
-	...projectsRoutes
+	...projectsRoutes,
+	...editorRoutes
 ];
 
 const router: Router = createRouter({

@@ -15,7 +15,7 @@ class EbDropdownModel extends ComponentModelBase {
 	}
 
 	/**
-	 * Reactive instance of the view state.
+	 * Reactive instance of the component state.
 	 */
 	public state: EbDropdownState = reactive(new EbDropdownState());
 

@@ -1,4 +1,4 @@
-import { ProjectModel } from "@/data/models/project-model";
+import { FirestoreProjectModel } from "@/data/models/firestore-project-model";
 import { ShowcaseProjectModel } from "@/data/models/showcase-project-model";
 
 /**
@@ -23,5 +23,5 @@ export class HomeState {
 	/**
 	 * The list of recent projects to display.
 	 */
-	public recentProjects: Array<ProjectModel> = [];
+	public recentProjects: Array<FirestoreProjectModel> = [];
 }

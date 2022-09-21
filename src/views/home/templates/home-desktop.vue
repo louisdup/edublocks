@@ -21,6 +21,7 @@
           :left-subtitle="view.getText('blank-project')"
           :thumbnail="platform.config.logo"
           is-button
+          @click="view.onCreateNewProjectListItemClicked(platform)"
         />
       </eb-slider-slide> 
     </eb-slider>

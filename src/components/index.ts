@@ -27,6 +27,11 @@ import EbVStack from "./eb-v-stack/eb-v-stack.vue";
 import EbHStack from "./eb-h-stack/eb-h-stack.vue";
 import EbSearch from "./eb-search/eb-search.vue";
 import EbIconButton from "./eb-icon/eb-icon-button/eb-icon-button.vue";
+import EbTabs from "./eb-tabs/eb-tabs.vue";
+import EbContainer from "./eb-container/eb-container.vue";
+import EbSplitView from "./eb-split-view/eb-split-view.vue";
+import EbSplitViewPane from "./eb-split-view/eb-split-view-pane/eb-split-view-pane.vue";
+import EbSheet from "./eb-sheet/eb-sheet.vue";
 
 /**
  * Export & install application components for use globally
@@ -59,5 +64,10 @@ export default {
 		app.component(ComponentName.EbHStack, EbHStack);
 		app.component(ComponentName.EbSearch, EbSearch);
 		app.component(ComponentName.EbIconButton, EbIconButton);
+		app.component(ComponentName.EbTabs, EbTabs);
+		app.component(ComponentName.EbContainer, EbContainer);
+		app.component(ComponentName.EbSplitView, EbSplitView);
+		app.component(ComponentName.EbSplitViewPane, EbSplitViewPane);
+		app.component(ComponentName.EbSheet, EbSheet);
 	}
 };

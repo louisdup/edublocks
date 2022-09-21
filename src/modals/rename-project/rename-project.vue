@@ -42,12 +42,12 @@
 
 <script setup lang="ts">
 import { Data } from "@/components/types";
-import { ProjectModel } from "@/data/models/project-model";
+import { FirestoreProjectModel } from "@/data/models/firestore-project-model";
 import { onMounted } from "vue";
 import { modal } from "./rename-project-model";
 
 const props: Data = defineProps<{
-	project: ProjectModel;
+	project: FirestoreProjectModel;
 }>();
 
 onMounted(() => {

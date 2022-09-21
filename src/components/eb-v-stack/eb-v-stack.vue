@@ -1,5 +1,5 @@
 <template>
-  <div :class="component.variants({ spacing })">
+  <div :class="component.variants({ spacing, isFullHeight, isFullWidth })">
     <slot />
   </div>
 </template>
@@ -9,5 +9,7 @@ import { component } from "./eb-v-stack-model";
 
 defineProps<{
 	spacing?: number;
+	isFullHeight?: boolean;
+	isFullWidth?: boolean;
 }>();
 </script>

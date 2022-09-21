@@ -27,5 +27,10 @@ export enum ComponentName {
 	EbVStack = "EbVStack",
 	EbHStack = "EbHStack",
 	EbSearch = "EbSearch",
-	EbIconButton = "EbIconButton"
+	EbIconButton = "EbIconButton",
+	EbTabs = "EbTabs",
+	EbContainer = "EbContainer",
+	EbSplitView = "EbSplitView",
+	EbSplitViewPane = "EbSplitViewPane",
+	EbSheet = "EbSheet"
 }

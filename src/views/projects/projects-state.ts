@@ -1,4 +1,4 @@
-import { ProjectModel } from "@/data/models/project-model";
+import { FirestoreProjectModel } from "@/data/models/firestore-project-model";
 
 /**
  * View state for the projects view.
@@ -17,7 +17,7 @@ export class ProjectsState {
 	/**
 	 * The list of projects to display.
 	 */
-	public projects: Array<ProjectModel> = [];
+	public projects: Array<FirestoreProjectModel> = [];
 
 	/**
 	 * Returns the value of the search field.

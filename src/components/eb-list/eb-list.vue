@@ -4,7 +4,7 @@
       :label="label"
       size="small"
       color="gray"
-      weight="medium"
+      weight="semibold"
     />
     <div class="space-y-6">
       <slot />

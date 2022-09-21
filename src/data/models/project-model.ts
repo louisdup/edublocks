@@ -1,16 +1,15 @@
-import { QueryDocumentSnapshot } from "@firebase/firestore";
+import { PlatformModelBase } from "@/platforms/base-classes/platform-model-base";
+import { Ref } from "vue";
+import { FirestoreProjectModel } from "./firestore-project-model";
 
 /**
  * Data model for a project.
  */
 export interface ProjectModel {
-	id: string;
 	name: string;
-	platform: string;
-	path: string;
-	size: number;
-	created: string;
-	updated: string;
+	platform: PlatformModelBase;
 	type: "blocks" | "text";
-	snapshot: QueryDocumentSnapshot;
+	blocks?: string;
+	code: Ref<string | undefined>;
+	firestore_project?: FirestoreProjectModel;
 }

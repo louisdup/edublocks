@@ -1,6 +1,6 @@
 import { EbDropdownOption } from "@/components/eb-dropdown/eb-dropdown-types";
 import { EbTableHeader } from "@/components/eb-table/eb-table-types";
-import { ProjectModel } from "@/data/models/project-model";
+import { FirestoreProjectModel } from "@/data/models/firestore-project-model";
 import { LocalizationUtilities } from "./localization-utilities";
 import { ModalUtilities } from "./modal-utilities";
 
@@ -49,7 +49,7 @@ export class ProjectsUtilities {
 	/**
 	 * Returns a list of options for project dropdowns.
 	 */
-	public static getProjectDropdownOptions(project: ProjectModel): Array<Array<EbDropdownOption>> {
+	public static getProjectDropdownOptions(project: FirestoreProjectModel): Array<Array<EbDropdownOption>> {
 		return [
 			[
 				{

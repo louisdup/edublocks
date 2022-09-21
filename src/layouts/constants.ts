@@ -3,5 +3,7 @@
  */
 export enum LayoutName {
 	DesktopLayout = "DesktopLayout",
-	MobileLayout = "MobileLayout"
+	MobileLayout = "MobileLayout",
+	EditorDesktopLayout = "EditorDesktopLayout",
+	EditorMobileLayout = "EditorMobileLayout"
 }

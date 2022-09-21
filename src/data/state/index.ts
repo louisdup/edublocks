@@ -17,11 +17,6 @@ class State {
 	public modal: ModalModel | undefined;
 
 	/**
-	 * Returns current active platform.
-	 */
-	public platform: PlatformModelBase | undefined;
-
-	/**
 	 * Returns layout for data tables based on users choice. Assumes list by default.
 	 */
 	public dataLayout: "list" | "grid" = "list";

@@ -21,25 +21,25 @@ export class MobileNavModel extends ComponentModelBase {
 			{
 				key: "home",
 				title: this.getText("home"),
-				icon: ["fad", "home"],
+				icon: ["far", "home"],
 				href: "/"
 			},
 			{
 				key: "projects",
 				title: this.getText("projects"),
-				icon: ["fad", "folder-open"],
+				icon: ["far", "folder-open"],
 				href: "/projects"
 			},
 			{
 				key: "showcase",
 				title: this.getText("showcase"),
-				icon: ["fad", "film"],
+				icon: ["far", "film"],
 				href: "/showcase"
 			},
 			{
 				key: "classroom",
 				title: this.getText("classroom"),
-				icon: ["fad", "users"],
+				icon: ["far", "users"],
 				href: "/classroom"
 			},
 		];

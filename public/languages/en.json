@@ -91,5 +91,15 @@
         "please-enter-new-name": "Please enter a new name for",
         "cancel": "Cancel",
         "name": "Name"
+    },
+    "editor": {
+        "share": "Share",
+        "save": "Save",
+        "run": "Run",
+        "stop": "Stop",
+        "code": "Code",
+        "repl": "REPL",
+        "output": "Output",
+        "simulator": "Simulator"
     }
 }

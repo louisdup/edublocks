@@ -4,7 +4,7 @@
       :label="label"
       size="small"
       color="gray"
-      weight="medium"
+      weight="semibold"
     />
 
     <splide

@@ -1,9 +1,9 @@
 <template>
-  <div class="w-full pb-safe bg-navy-500 flex">
+  <div class="w-full pb-safe bg-gray-100 border-t border-gray-300 flex">
     <button
       v-for="item in items"
       :key="item.key"
-      class="h-[3.75rem] text-gray-100 flex-1 flex items-center justify-center"
+      class="h-[3.75rem] flex-1 flex items-center justify-center"
       :class="component.getItemActiveClassList(item)"
       @click="component.onItemClick(item)"
     >
@@ -19,12 +19,12 @@
         <eb-icon
           v-if="item.icon"
           :icon="item.icon"
+          :color="component.getIconActiveColor(item)"
           class="text-lg"
-          color="white"
         />
         <h1
           v-if="item.title"
-          class="-mb-1 pt-0.5 text-xs font-medium"
+          class="-mb-1 pt-0.5 text-xs"
         >
           {{ item.title }}
         </h1>

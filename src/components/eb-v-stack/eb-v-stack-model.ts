@@ -23,6 +23,12 @@ class EbVStackModel extends ComponentModelBase {
 				4: "space-y-4",
 				6: "space-y-6",
 				8: "space-y-8",
+			},
+			isFullHeight: {
+				true: ["h-full", "flex", "flex-col"]
+			},
+			isFullWidth: {
+				true: "w-full"
 			}
 		},
 		defaultVariants: {

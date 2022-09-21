@@ -1,4 +1,4 @@
-import { ProjectModel } from "@/data/models/project-model";
+import { FirestoreProjectModel } from "@/data/models/firestore-project-model";
 import { ModalModelBase } from "../base-classes/modal-model-base";
 import * as ProjectsProvider from "@/data/providers/projects-provider";
 import { ContentUtilities } from "@/utilities/content-utilities";
@@ -30,13 +30,13 @@ class RenameProjectModal extends ModalModelBase {
 	 * Initialise the modal model.
 	 */
 	public init(props: Data): void {
-		this.setNameInputValueToProjectName(props.project as ProjectModel);
+		this.setNameInputValueToProjectName(props.project as FirestoreProjectModel);
 	}
 
 	/**
 	 * Sets the value of the name input to that of the current project name.
 	 */
-	public setNameInputValueToProjectName(project: ProjectModel): void {
+	public setNameInputValueToProjectName(project: FirestoreProjectModel): void {
 		this.state.data["name"] = project.name;
 	}
 
@@ -62,7 +62,7 @@ class RenameProjectModal extends ModalModelBase {
 	/**
 	 * Called when the rename button is clicked and renames the project in firestore.
 	 */
-	public async onRenameClicked(project: ProjectModel): Promise<void> {
+	public async onRenameClicked(project: FirestoreProjectModel): Promise<void> {
 		if (this.state.isValid) {
 			const body: RenameProjectBody = {
 				name: this.state.data["name"],

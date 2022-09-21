@@ -1,6 +1,6 @@
 import { ModalModelBase } from "../base-classes/modal-model-base";
 import * as ProjectsProvider from "@/data/providers/projects-provider";
-import { ProjectModel } from "@/data/models/project-model";
+import { FirestoreProjectModel } from "@/data/models/firestore-project-model";
 import { ContentUtilities } from "@/utilities/content-utilities";
 
 /**
@@ -17,7 +17,7 @@ class DeleteProjectModal extends ModalModelBase {
 	/**
 	 * Called when the delete button is clicked and deletes the project.
 	 */
-	public async onDeleteClicked(project: ProjectModel): Promise<void> {
+	public async onDeleteClicked(project: FirestoreProjectModel): Promise<void> {
 		await ProjectsProvider.deleteProjectAsync(project.id);
 		ContentUtilities.triggerContentRefresh();
 	}
