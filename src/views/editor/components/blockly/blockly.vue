@@ -46,7 +46,11 @@ onMounted(() => {
 }
 
 .blocklyTreeRow {
-  @apply !p-2 !pl-1 rounded-md w-full h-full flex items-center justify-center hover:!bg-gray-200 cursor-pointer transition-all mb-2;
+  @apply !p-2 !pl-1 rounded-md w-full h-full flex items-center justify-center cursor-pointer transition-all mb-2;
+}
+
+.blocklyTreeRow:not(.blocklyTreeSelected) {
+  @apply hover:!bg-gray-200;
 }
 
 .customIcon {
@@ -59,5 +63,17 @@ onMounted(() => {
 
 .blocklyFlyoutScrollbar {
   @apply !hidden;
+}
+
+.blocklyFlyoutButton {
+  @apply fill-pink-500 hover:!fill-pink-400 transition-colors;
+}
+
+.blocklyFlyoutButtonBackground {
+  @apply stroke-pink-500;
+}
+
+.blocklyFlyoutButton .blocklyText {
+  @apply !text-sm !font-sans !font-medium cursor-pointer;
 }
 </style>

@@ -45,6 +45,7 @@
           "no-implicit-coercion": "error",
           "no-loop-func": "error",
           "no-multi-spaces": "error",
+          "vue/v-on-event-hyphenation": 0,
           "vue/no-mutating-props": 0,
           "vue/multi-word-component-names": 0,
           "vue/no-use-v-if-with-v-for": 0,

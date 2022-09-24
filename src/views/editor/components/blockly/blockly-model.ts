@@ -1,6 +1,5 @@
 import { ComponentModelBase } from "@/components/base-classes/component-model-base";
 import { EditorUtilities } from "@/utilities/editor-utilities";
-import Blockly, { BlocklyOptions } from "blockly";
 import { cva } from "class-variance-authority";
 
 // Blockly modifiers
@@ -22,7 +21,6 @@ export class BlocklyModel extends ComponentModelBase {
 	 */
 	public init(): void {
 		this.setBlocklyInstance();
-		this.setBlocklyWindowVariable();
 	} 
 
 	/**
@@ -30,13 +28,6 @@ export class BlocklyModel extends ComponentModelBase {
 	 */
 	public setBlocklyInstance(): void {
 		EditorUtilities.blocklyInstance = Blockly.inject("#blocklyDiv", this.getBlocklyOptions());
-	}
-
-	/**
-	 * Makes blockly available to the window.
-	 */
-	public setBlocklyWindowVariable(): void {
-		window["Blockly"] = Blockly;
 	}
 
 	/**
@@ -68,9 +59,9 @@ export class BlocklyModel extends ComponentModelBase {
 	/**
 	 * Return options to configure the blockly workspace.
 	 */
-	private getBlocklyOptions(): BlocklyOptions {
+	private getBlocklyOptions(): Blockly.BlocklyOptions {
 		return {
-			renderer: "zelos",
+			renderer: "pxt",
 			grid: {
 				spacing: 30,
 				length: 3,

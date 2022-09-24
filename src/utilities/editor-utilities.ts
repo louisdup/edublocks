@@ -1,5 +1,4 @@
 import { ProjectModel } from "@/data/models/project-model";
-import Blockly from "blockly";
 import { ref, Ref } from "vue";
 
 /**

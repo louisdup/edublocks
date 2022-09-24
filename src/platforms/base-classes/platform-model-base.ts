@@ -1,6 +1,7 @@
 import { EditorButtonModel } from "@/data/models/editor-button-model";
 import { EditorOutputTabModel } from "@/data/models/editor-output-tab-model";
 import { PlatformConfigModel } from "@/data/models/platform-config-model";
+import { TextToBlocksDefinitionModel } from "@/data/models/text-to-blocks-definition-model";
 import { EditorUtilities } from "@/utilities/editor-utilities";
 import { LocalizationUtilities } from "@/utilities/localization-utilities";
 import { Ref } from "vue";
@@ -26,11 +27,23 @@ export abstract class PlatformModelBase {
 	 * Stores config/information about a platform.
 	 */
 	public abstract config: PlatformConfigModel;
+
+	/**
+	 * Initalize the platform.
+	 */
+	public abstract init(): void;
 		 
 	/**
 	 * Returns a blockly toolbox for the current platform.
 	 */
 	public abstract getToolbox(): Array<String>;
+		 
+	/**
+	 * Returns a list of block definitions that can be used for translating text to blocks.
+	 */
+	public getTextToBlocksDefinitions(): Array<TextToBlocksDefinitionModel> {
+		return [];
+	}
 
 	/**
 	 * Returns a list of buttons to display in the header of the editor.

@@ -2,19 +2,37 @@ import { EditorButtonModel } from "@/data/models/editor-button-model";
 import { EditorOutputTabModel } from "@/data/models/editor-output-tab-model";
 import { PlatformConfigModel } from "@/data/models/platform-config-model";
 import { ref, Ref } from "vue";
-import BlocklyPython from "blockly/python";
 import { PlatformModelBase } from "../base-classes/platform-model-base";
 import { EditorUtilities } from "@/utilities/editor-utilities";
-import { view as editor } from "@/views/editor/editor-model";
+import { TextToBlocksUtilities } from "@/utilities/text-to-blocks-utilities";
+import { TextToBlocksDefinitionModel } from "@/data/models/text-to-blocks-definition-model";
 
 // Output Panel Components
 import PythonCode from "./components/python-code/python-code.vue";
 import PythonOutput from "./components/python-output/python-output.vue";
 
 // Import Blocks
+import "./blocks/common/definitions";
+import "./blocks/common/generators";
+
+import "./blocks/imports/definitions";
+import "./blocks/imports/generators";
+import imports from "./blocks/imports/toolbox.xml?raw";
+import importsDefinitions from "./blocks/imports/text-to-blocks";
+
+import "./blocks/variables/definitions";
+import "./blocks/variables/generators";
+import variables from "./blocks/variables/toolbox.xml?raw";
+
 import "./blocks/statements/definitions";
 import "./blocks/statements/generators";
-import Statements from "./blocks/statements/toolbox.xml?raw";
+import statements from "./blocks/statements/toolbox.xml?raw";
+import statementsDefinitions from "./blocks/statements/text-to-blocks";
+
+import "./blocks/loops/definitions";
+import "./blocks/loops/generators";
+import loops from "./blocks/loops/toolbox.xml?raw";
+import loopsDefinitions from "./blocks/loops/text-to-blocks";
 
 /** 
  * Platform model for the python platform.
@@ -39,11 +57,32 @@ export class PythonModel extends PlatformModelBase {
 	};
 
 	/**
+	 * Initalize the Python platform.
+	 */
+	public init(): void {
+		TextToBlocksUtilities.configureSkulpt();
+	}
+
+	/**
 	 * Returns a blockly toolbox for the Python platform.
 	 */
 	public getToolbox(): Array<String> {
 		return [
-			Statements
+			imports,
+			variables,
+			statements,
+			loops
+		];
+	}
+
+	/**
+	 * Returns a list of block definitions that can be used for translating text to blocks.
+	 */
+	public getTextToBlocksDefinitions(): Array<TextToBlocksDefinitionModel> {
+		return [
+			...importsDefinitions,
+			...statementsDefinitions,
+			...loopsDefinitions
 		];
 	}
 
@@ -111,6 +150,18 @@ export class PythonModel extends PlatformModelBase {
 	]);
 
 	/**
+	 * Returns python code from the blockly workspace.
+	 */
+	public getCodeFromBlocks(): string | undefined {
+		if (EditorUtilities.currentProject) {
+			return Blockly.Python.workspaceToCode(EditorUtilities.blocklyInstance);
+		}
+		else {
+			return undefined;
+		}
+	}
+
+	/**
 	 * Called when the user clicks the run button and runs the python code.
 	 */
 	private runPythonCode(): void {
@@ -148,18 +199,6 @@ export class PythonModel extends PlatformModelBase {
 
 		// Set the output tab to be active so the user can see the output of their code.
 		this.setOutputPanelTabActive("code");
-	}
-	
-	/**
-	 * Returns python code from the blockly workspace.
-	 */
-	public getCodeFromBlocks(): string | undefined {
-		if (EditorUtilities.currentProject) {
-			return BlocklyPython.pythonGenerator.workspaceToCode(EditorUtilities.blocklyInstance);
-		}
-		else {
-			return undefined;
-		}
 	}
 }
 

@@ -1,0 +1,33 @@
+<category name="Loops" colour="#644A9E" css-icon="customIcon fas fa-rotate-right">
+  <block type="webwhileout">
+    <value name="cond">
+      <shadow type="textinline">
+        <field name="text">True</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="webfor">
+    <value name="letter">
+      <shadow type="textinline">
+        <field name="text">i</field>
+      </shadow>
+    </value>
+    <value name="no">
+      <shadow type="textinline">
+        <field name="text">number</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="webadvancedforloops">
+    <value name="x">
+      <shadow type="textinline">
+        <field name="text">x</field>
+      </shadow>
+    </value>
+    <value name="y">
+      <shadow type="textinline">
+        <field name="text">y</field>
+      </shadow>
+    </value>
+  </block>
+</category>

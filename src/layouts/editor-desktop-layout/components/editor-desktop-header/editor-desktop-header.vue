@@ -12,7 +12,7 @@
         color="semiTransparent"
       />
     </div>
-    <div class="flex items-center space-x-4">
+    <div class="flex items-center overflow-hidden space-x-4">
       <template
         v-for="button in buttons"
         :key="button.key"

@@ -1,8 +1,11 @@
-import { BlockSvg } from "blockly";
-import BlocklyPython from "blockly/python";
+Blockly.Python["webprintnew"] = function(block: Blockly.BlockSvg): string {
+	const value: string = Blockly.Python.valueToCode(block, "text", 0);
+	const code: string = `print("${value}")\n`;
+	return code;
+};
 
-BlocklyPython.pythonGenerator["print"] = function(block: BlockSvg): string {
-	const value: string = block.getFieldValue("value");
+Blockly.Python["webvarprint"] = function(block: Blockly.BlockSvg): string {
+	const value: string = Blockly.Python.valueToCode(block, "var", 0);
 	const code: string = `print(${value})\n`;
 	return code;
 };

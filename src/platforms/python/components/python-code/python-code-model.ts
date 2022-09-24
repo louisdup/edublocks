@@ -1,6 +1,10 @@
 import { ComponentModelBase } from "@/components/base-classes/component-model-base";
 import { EditorUtilities } from "@/utilities/editor-utilities";
-import { Ref } from "vue";
+import { TextToBlocksUtilities } from "@/utilities/text-to-blocks-utilities";
+import { CSSProperties, Ref } from "vue";
+import { Extension } from "@codemirror/state";
+import { python } from "@codemirror/lang-python";
+import { oneDark } from "@codemirror/theme-one-dark";
 
 /**
  * Component model for the python code component.
@@ -14,16 +18,29 @@ export class PythonCodeModel extends ComponentModelBase {
 	}
 
 	/**
-	 * Returns a list of options to configure the monaco text editor.
+	 * Returns a list of extensions to configure the text editor.
 	 */
-	public getMonacoEditorOptions(): unknown {
+	public getExtensions(): Array<Extension> {
+		return [
+			python(),
+			oneDark,
+		];
+	}
+
+	/**
+	 * Returns a list of styles for the text editor.
+	 */
+	public getStyles(): CSSProperties {
 		return {
-			minimap: {
-				enabled: false
-			},
-			lineHeight: 27,
-			fontSize: 14
+			height: "100%"
 		};
+	}
+
+	/**
+	 * Returns a tab size for the text editor.
+	 */
+	public getTabSize(): number {
+		return 4;
 	}
 
 	/**
@@ -36,9 +53,24 @@ export class PythonCodeModel extends ComponentModelBase {
 	/**
 	 * Called when the user starts typing in the code editor.
 	 */
-	public onCodeInput(event: Event): void {
-		const value: string = (event.target as HTMLInputElement).value;
-		EditorUtilities.currentProject.code.value = value;
+	public onInput(): void {
+		TextToBlocksUtilities.convertTextToBlocks();
+	}
+
+	/**
+	 * Called when the user is focused on the text editor.
+	 * Used for stopping blockly from overwriting the text editor value.
+	 */
+	public onFocus(): void {
+		TextToBlocksUtilities.isTextEditorFocused.value = true;
+	}
+
+	/**
+	 * Called when the user is focused on the text editor.
+	 * Allows blockly to overwrite the text editor value.
+	 */
+	public onBlur(): void {
+		TextToBlocksUtilities.isTextEditorFocused.value = false;
 	}
 }
 

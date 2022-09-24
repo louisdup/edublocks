@@ -1,14 +1,12 @@
-import Blockly, { ICollapsibleToolboxItem, IToolbox } from "blockly";
-import { CategoryInfo } from "blockly/core/utils/toolbox";
 
 class EduBlocksCategory extends Blockly.ToolboxCategory {
-	constructor(categoryDef: CategoryInfo, toolbox: IToolbox, opt_parent: ICollapsibleToolboxItem) {
+	constructor(categoryDef: Blockly.utils.toolbox.CategoryInfo, toolbox: Blockly.IToolbox, opt_parent: Blockly.ICollapsibleToolboxItem) {
 		super(categoryDef, toolbox, opt_parent);
 	}
 
 	/** @override */
 	addColourBorder_(colour: string): void {
-		const category: HTMLDivElement | null = this.rowDiv_; 
+		const category: Element | null = this.rowDiv_; 
 		if (category) {
 			const icon: HTMLSpanElement | null = category.getElementsByClassName("customIcon")[0] as HTMLSpanElement;
 			if (icon) {

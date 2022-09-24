@@ -1,10 +1,10 @@
 import { EditorButtonModel } from "@/data/models/editor-button-model";
 import { EditorOutputTabModel } from "@/data/models/editor-output-tab-model";
 import { EditorUtilities } from "@/utilities/editor-utilities";
+import { TextToBlocksUtilities } from "@/utilities/text-to-blocks-utilities";
 import { Component, markRaw, reactive, Ref } from "vue";
 import { ViewModelBase } from "../base-classes/view-model-base";
 import { EditorState } from "./editor-state";
-import Blockly from "blockly";
 
 /**
  * View model for the editor view.
@@ -27,6 +27,7 @@ class EditorModel extends ViewModelBase {
 	 */
 	public init(): void {
 		this.checkForBlocklyChanges();
+		EditorUtilities.currentProject.platform.init();
 	}
 
 	/**
@@ -37,7 +38,7 @@ class EditorModel extends ViewModelBase {
 			EditorUtilities.blocklyInstance.addChangeListener(() => {
 				if (EditorUtilities.blocklyInstance && EditorUtilities.currentProject) {
 					EditorUtilities.currentProject.blocks = Blockly.Xml.domToPrettyText(Blockly.Xml.workspaceToDom(EditorUtilities.blocklyInstance));
-					if (!EditorUtilities.blocklyInstance.isDragging() && EditorUtilities.currentProject.code) {
+					if (!TextToBlocksUtilities.isTextEditorFocused.value && !EditorUtilities.blocklyInstance.isDragging() && EditorUtilities.currentProject.code) {
 						EditorUtilities.currentProject.code.value = EditorUtilities.currentProject.platform.getCodeFromBlocks() as string;
 					}
 				}
