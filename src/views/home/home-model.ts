@@ -12,7 +12,7 @@ import { ProjectsUtilities } from "@/utilities/projects-utilities";
 import { EbTableHeader } from "@/components/eb-table/eb-table-types";
 import { EditorUtilities } from "@/utilities/editor-utilities";
 import router from "@/router";
-import { PlatformModelBase } from "@/platforms/base-classes/platform-model-base";
+import { ModeModelBase } from "@/modes/base-classes/mode-model-base";
 import { FilenameUtilities } from "@/utilities/filename-utilities";
 
 /**
@@ -112,13 +112,13 @@ class HomeModel extends ViewModelBase {
 
 	/**
 	 * Called when a list item is clicked on the create new project slider.
-	 * Sets the current project to be a new project with the selected platform.
+	 * Sets the current project to be a new project with the selected mode.
 	 * The user is then redirected to the editor.
 	 */
-	public onCreateNewProjectListItemClicked(platform: PlatformModelBase): void {
+	public onCreateNewProjectListItemClicked(mode: ModeModelBase): void {
 		EditorUtilities.setCurrentProject({
 			name: FilenameUtilities.generateRandomFilename(),
-			platform,
+			mode,
 			type: "blocks",
 			code: ref(""),
 			blocks: ""

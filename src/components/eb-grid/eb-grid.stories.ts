@@ -21,7 +21,7 @@ const template: Story = (args: ArgTypes) => {
 					:key="card"
 					title="Title"
 					subtitle="Subtitle"
-					image="/images/platforms/python/thumbnail.svg"
+					image="/images/modes/python/thumbnail.svg"
 				/>
 			</eb-grid>
 		`

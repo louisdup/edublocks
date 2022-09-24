@@ -21,11 +21,11 @@ export class EditorDesktopHeaderModel extends ComponentModelBase {
 	}
 
 	/**
-	 * Returns an image file path for the logo of the current platform.
+	 * Returns an image file path for the logo of the current mode.
 	 */
-	public getCurrentPlatformLogo(): string | undefined {
+	public getCurrentModeLogo(): string | undefined {
 		if (EditorUtilities.currentProject) {
-			return EditorUtilities.currentProject.platform.config.logo;
+			return EditorUtilities.currentProject.mode.config.logo;
 		}
 		else {
 			return undefined;

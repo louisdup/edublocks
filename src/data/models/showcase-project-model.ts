@@ -11,6 +11,6 @@ export interface ShowcaseProjectModel {
 	uid: string;
 	projectURL: string;
 	cloneURL: string;
-	platform: string;
+	mode: string;
 	created: firebase.firestore.Timestamp;
 }

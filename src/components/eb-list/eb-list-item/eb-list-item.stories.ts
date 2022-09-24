@@ -34,7 +34,7 @@ export const primary: Story = template.bind({});
 primary.args = {
 	leftTitle: "Title",
 	leftSubtitle: "Subtitle",
-	thumbnail: "/images/platforms/html/logo.svg"
+	thumbnail: "/images/modes/html/logo.svg"
 };
 
 export const button: Story = template.bind({});
@@ -42,7 +42,7 @@ export const button: Story = template.bind({});
 button.args = {
 	leftTitle: "Title",
 	leftSubtitle: "Subtitle",
-	thumbnail: "/images/platforms/html/logo.svg",
+	thumbnail: "/images/modes/html/logo.svg",
 	isButton: true
 };
 
@@ -53,7 +53,7 @@ withRightContent.args = {
 	leftSubtitle: "Subtitle",
 	rightTitle: "Title",
 	rightSubtitle: "Subtitle",
-	thumbnail: "/images/platforms/html/logo.svg"
+	thumbnail: "/images/modes/html/logo.svg"
 };
 
 export const fullWidth: Story = template.bind({});
@@ -63,6 +63,6 @@ fullWidth.args = {
 	leftSubtitle: "Subtitle",
 	rightTitle: "Title",
 	rightSubtitle: "Subtitle",
-	thumbnail: "/images/platforms/html/logo.svg",
+	thumbnail: "/images/modes/html/logo.svg",
 	isFullWidth: true
 };

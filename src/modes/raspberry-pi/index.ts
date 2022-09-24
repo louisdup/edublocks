@@ -1,13 +1,13 @@
 import { EditorButtonModel } from "@/data/models/editor-button-model";
 import { EditorOutputTabModel } from "@/data/models/editor-output-tab-model";
-import { PlatformConfigModel } from "@/data/models/platform-config-model";
+import { ModeConfigModel } from "@/data/models/mode-config-model";
 import { ref, Ref } from "vue";
-import { PlatformModelBase } from "../base-classes/platform-model-base";
+import { ModeModelBase } from "../base-classes/mode-model-base";
 
 /**
- * Platform model for the Raspberry Pi platform.
+ * Mode model for the Raspberry Pi mode.
  */
-export class RaspberryPiModel extends PlatformModelBase {
+export class RaspberryPiModel extends ModeModelBase {
 	/**
 	 * Specifies the localization namespace to use for getting localized text values.
 	 */
@@ -16,18 +16,18 @@ export class RaspberryPiModel extends PlatformModelBase {
 	}
 		
 	/**
-	 * Returns config/information about the Raspberry Pi platform.
+	 * Returns config/information about the Raspberry Pi mode.
 	 */
-	public config: PlatformConfigModel = {
+	public config: ModeConfigModel = {
 		name: "Raspberry Pi",
 		key: "RPi",
 		color: "pink",
-		logo: "/images/platforms/raspberry-pi/logo.svg",
-		image: "/images/platforms/raspberry-pi/thumbnail.svg"
+		logo: "/images/modes/raspberry-pi/logo.svg",
+		image: "/images/modes/raspberry-pi/thumbnail.svg"
 	};
 
 	/**
-	 * Returns a blockly toolbox for the raspberry pi platform.
+	 * Returns a blockly toolbox for the raspberry pi mode.
 	 */
 	public getToolbox(): Array<String> {
 		return [];
@@ -51,5 +51,5 @@ export class RaspberryPiModel extends PlatformModelBase {
 	}
 }
 
-// Export the platform model.
+// Export the mode model.
 export const raspberryPi: RaspberryPiModel = new RaspberryPiModel();

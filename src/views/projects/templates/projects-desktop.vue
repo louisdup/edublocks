@@ -53,8 +53,8 @@
         <eb-table-cell>
           <eb-list-item
             :left-title="project.name"
-            :left-subtitle="view.getPlatformFromKey(project.platform).config.name"
-            :thumbnail="view.getPlatformFromKey(project.platform).config.logo"
+            :left-subtitle="view.getModeFromKey(project.mode).config.name"
+            :thumbnail="view.getModeFromKey(project.mode).config.logo"
             is-full-width
           />
         </eb-table-cell>
@@ -97,8 +97,8 @@
         v-for="project in view.state.projects"
         :key="project.id"
         :title="project.name"
-        :subtitle="view.getPlatformFromKey(project.platform).config.name"
-        :image="view.getPlatformFromKey(project.platform).config.image"
+        :subtitle="view.getModeFromKey(project.mode).config.name"
+        :image="view.getModeFromKey(project.mode).config.image"
         :dropdown-options="view.getProjectDropdownOptions(project)"
       />
     </eb-grid>

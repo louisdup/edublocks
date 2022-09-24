@@ -23,7 +23,7 @@ const template: Story = (args: ArgTypes) => {
 					left-subtitle="Subtitle"
 					right-title="Title"
 					right-subtitle="Subtitle"
-					thumbnail="/images/platforms/html/logo.svg"
+					thumbnail="/images/modes/html/logo.svg"
 				/>
 			</eb-list>
 		`

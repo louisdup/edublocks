@@ -24,7 +24,7 @@ export const primary: Story = template.bind({});
 primary.args = {
 	title: "Title",
 	subtitle: "Subtitle",
-	image: "/images/platforms/python/thumbnail.svg"
+	image: "/images/modes/python/thumbnail.svg"
 };
 
 export const loading: Story = template.bind({});
@@ -66,6 +66,6 @@ export const withDropdown: Story = template.bind({});
 withDropdown.args = {
 	title: "Title",
 	subtitle: "Subtitle",
-	image: "/images/platforms/python/thumbnail.svg",
+	image: "/images/modes/python/thumbnail.svg",
 	dropdownOptions
 };

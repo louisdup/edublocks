@@ -1,13 +1,13 @@
 import { EditorButtonModel } from "@/data/models/editor-button-model";
 import { EditorOutputTabModel } from "@/data/models/editor-output-tab-model";
-import { PlatformConfigModel } from "@/data/models/platform-config-model";
+import { ModeConfigModel } from "@/data/models/mode-config-model";
 import { ref, Ref } from "vue";
-import { PlatformModelBase } from "../base-classes/platform-model-base";
+import { ModeModelBase } from "../base-classes/mode-model-base";
 
 /**
- * Platform model for the micro:bit platform.
+ * Mode model for the micro:bit mode.
  */
-export class MicrobitModel extends PlatformModelBase {
+export class MicrobitModel extends ModeModelBase {
 	/**
 	 * Specifies the localization namespace to use for getting localized text values.
 	 */
@@ -16,18 +16,18 @@ export class MicrobitModel extends PlatformModelBase {
 	}
 		
 	/**
-	 * Returns config/information about the micro:bit platform.
+	 * Returns config/information about the micro:bit mode.
 	 */
-	public config: PlatformConfigModel = {
+	public config: ModeConfigModel = {
 		name: "micro:bit",
 		key: "microbit",
 		color: "green",
-		logo: "/images/platforms/microbit/logo.svg",
-		image: "/images/platforms/microbit/thumbnail.svg"
+		logo: "/images/modes/microbit/logo.svg",
+		image: "/images/modes/microbit/thumbnail.svg"
 	};
 
 	/**
-	 * Returns a blockly toolbox for the micro:bit platform.
+	 * Returns a blockly toolbox for the micro:bit mode.
 	 */
 	public getToolbox(): Array<String> {
 		return [];
@@ -51,5 +51,5 @@ export class MicrobitModel extends PlatformModelBase {
 	}
 }
 
-// Export the platform model.
+// Export the mode model.
 export const microbit: MicrobitModel = new MicrobitModel();

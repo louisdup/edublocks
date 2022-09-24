@@ -1,13 +1,13 @@
 import { EditorButtonModel } from "@/data/models/editor-button-model";
 import { EditorOutputTabModel } from "@/data/models/editor-output-tab-model";
-import { PlatformConfigModel } from "@/data/models/platform-config-model";
+import { ModeConfigModel } from "@/data/models/mode-config-model";
 import { ref, Ref } from "vue";
-import { PlatformModelBase } from "../base-classes/platform-model-base";
+import { ModeModelBase } from "../base-classes/mode-model-base";
 
 /**
- * Platform model for the CircuitPython platform.
+ * Mode model for the CircuitPython mode.
  */
-export class CircuitPythonModel extends PlatformModelBase {
+export class CircuitPythonModel extends ModeModelBase {
 	/**
 	 * Specifies the localization namespace to use for getting localized text values.
 	 */
@@ -16,18 +16,18 @@ export class CircuitPythonModel extends PlatformModelBase {
 	}
 		
 	/**
-	 * Returns config/information about the CircuitPython platform.
+	 * Returns config/information about the CircuitPython mode.
 	 */
-	public config: PlatformConfigModel = {
+	public config: ModeConfigModel = {
 		name: "CircuitPython",
 		key: "CircuitPython",
 		color: "purple",
-		logo: "/images/platforms/circuitpython/logo.svg",
-		image: "/images/platforms/circuitpython/thumbnail.svg"
+		logo: "/images/modes/circuitpython/logo.svg",
+		image: "/images/modes/circuitpython/thumbnail.svg"
 	};
 
 	/**
-	 * Returns a blockly toolbox for the CircuitPython platform.
+	 * Returns a blockly toolbox for the CircuitPython mode.
 	 */
 	public getToolbox(): Array<String> {
 		return [];
@@ -51,5 +51,5 @@ export class CircuitPythonModel extends PlatformModelBase {
 	}
 }
 
-// Export the platform model.
+// Export the mode model.
 export const circuitpython: CircuitPythonModel = new CircuitPythonModel();

@@ -22,7 +22,7 @@ const template: Story = (args: ArgTypes) => {
 						<eb-list-item 
 							left-title="Title"
 							left-subtitle="Subtitle"
-							thumbnail="/images/platforms/html/logo.svg"
+							thumbnail="/images/modes/html/logo.svg"
 						/>
 					</eb-table-cell>
 					<eb-table-cell>

@@ -1,13 +1,13 @@
 import { EditorButtonModel } from "@/data/models/editor-button-model";
 import { EditorOutputTabModel } from "@/data/models/editor-output-tab-model";
-import { PlatformConfigModel } from "@/data/models/platform-config-model";
+import { ModeConfigModel } from "@/data/models/mode-config-model";
 import { ref, Ref } from "vue";
-import { PlatformModelBase } from "../base-classes/platform-model-base";
+import { ModeModelBase } from "../base-classes/mode-model-base";
 
 /**
- * Platform model for the HTML platform.
+ * Mode model for the HTML mode.
  */
-export class HTMLModel extends PlatformModelBase {
+export class HTMLModel extends ModeModelBase {
 	/**
 	 * Specifies the localization namespace to use for getting localized text values.
 	 */
@@ -16,18 +16,18 @@ export class HTMLModel extends PlatformModelBase {
 	}
 		
 	/**
-	 * Returns config/information about the HTML platform.
+	 * Returns config/information about the HTML mode.
 	 */
-	public config: PlatformConfigModel = {
+	public config: ModeConfigModel = {
 		name: "HTML",
 		key: "HTML",
 		color: "orange",
-		logo: "/images/platforms/html/logo.svg",
-		image: "/images/platforms/html/thumbnail.svg"
+		logo: "/images/modes/html/logo.svg",
+		image: "/images/modes/html/thumbnail.svg"
 	};
 
 	/**
-	 * Returns a blockly toolbox for the html platform.
+	 * Returns a blockly toolbox for the html mode.
 	 */
 	 public getToolbox(): Array<String> {
 		return [];
@@ -51,5 +51,5 @@ export class HTMLModel extends PlatformModelBase {
 	}
 }
 
-// Export the platform model.
+// Export the mode model.
 export const html: HTMLModel = new HTMLModel();

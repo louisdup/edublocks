@@ -30,7 +30,7 @@ export class EditorUtilities {
 	/**
 	 * True if current project is defined.
 	 */
-	public static isCurrentPlatformSet(): boolean {
+	public static isCurrentModeSet(): boolean {
 		 return this.currentProject ? true : false;
 	}
 }

@@ -23,7 +23,7 @@ const template: Story = (args: ArgTypes) => {
 					<eb-card 
 						title="Title"
 						subtitle="Subtitle"
-						image="/images/platforms/python/thumbnail.svg"
+						image="/images/modes/python/thumbnail.svg"
 					/>
 				</eb-slider-slide>
 			</eb-slider>

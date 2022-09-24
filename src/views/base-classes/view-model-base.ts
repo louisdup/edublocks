@@ -1,8 +1,8 @@
 import { LocalizationUtilities } from "@/utilities/localization-utilities";
 import { ScreenUtilities } from "@/utilities/screen-utilities";
 import { FormatUtilities } from "@/utilities/format-utilities";
-import { PlatformModelBase } from "@/platforms/base-classes/platform-model-base";
-import { PlatformUtilities } from "@/utilities/platform-utilities";
+import { ModeModelBase } from "@/modes/base-classes/mode-model-base";
+import { ModeUtilities } from "@/utilities/mode-utilities";
 import { ContentUtilities } from "@/utilities/content-utilities";
 import { AuthenticationUtilities } from "@/utilities/authentication-utilities";
 import { state } from "@/data/state";
@@ -96,17 +96,17 @@ export abstract class ViewModelBase {
 	}
 
 	/**
-	 * Returns a platform from its key.
+	 * Returns a mode from its key.
 	 */
-	public getPlatformFromKey(key: string): PlatformModelBase {
-		return PlatformUtilities.getPlatformFromKey(key);
+	public getModeFromKey(key: string): ModeModelBase {
+		return ModeUtilities.getModeFromKey(key);
 	}
 
 	/**
-	 * Returns a list of available platforms.
+	 * Returns a list of available modes.
 	 */
-	public getPlatforms(): Array<PlatformModelBase> {
-		return PlatformUtilities.getPlatforms();
+	public getModes(): Array<ModeModelBase> {
+		return ModeUtilities.getModes();
 	}
 
 	/**

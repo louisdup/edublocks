@@ -25,10 +25,10 @@ export class TextToBlocksUtilities {
 	}
 
 	/**
-	 * Returns a list of block definitions for the current platform that can be used for translating text to blocks.
+	 * Returns a list of block definitions for the current mode that can be used for translating text to blocks.
 	 */
 	public static getTextToBlocksDefinitions(): Array<TextToBlocksDefinitionModel> {
-		return EditorUtilities.currentProject.platform.getTextToBlocksDefinitions();
+		return EditorUtilities.currentProject.mode.getTextToBlocksDefinitions();
 	}
 
 	/**

@@ -27,7 +27,7 @@ class EditorModel extends ViewModelBase {
 	 */
 	public init(): void {
 		this.checkForBlocklyChanges();
-		EditorUtilities.currentProject.platform.init();
+		EditorUtilities.currentProject.mode.init();
 	}
 
 	/**
@@ -39,7 +39,7 @@ class EditorModel extends ViewModelBase {
 				if (EditorUtilities.blocklyInstance && EditorUtilities.currentProject) {
 					EditorUtilities.currentProject.blocks = Blockly.Xml.domToPrettyText(Blockly.Xml.workspaceToDom(EditorUtilities.blocklyInstance));
 					if (!TextToBlocksUtilities.isTextEditorFocused.value && !EditorUtilities.blocklyInstance.isDragging() && EditorUtilities.currentProject.code) {
-						EditorUtilities.currentProject.code.value = EditorUtilities.currentProject.platform.getCodeFromBlocks() as string;
+						EditorUtilities.currentProject.code.value = EditorUtilities.currentProject.mode.getCodeFromBlocks() as string;
 					}
 				}
 			});
@@ -49,12 +49,12 @@ class EditorModel extends ViewModelBase {
 	/**
 	 * Returns a list of buttons to put in the header of the editor.
 	 */
-	public getHeaderButtonsForCurrentPlatform(): Array<EditorButtonModel> | undefined {
+	public getHeaderButtonsForCurrentMode(): Array<EditorButtonModel> | undefined {
 		if (EditorUtilities.currentProject) {
-			EditorUtilities.currentProject.platform.headerButtons.value.forEach((tab: EditorButtonModel) => {
+			EditorUtilities.currentProject.mode.headerButtons.value.forEach((tab: EditorButtonModel) => {
 				tab.label = this.getText(tab.key);
 			});
-			return EditorUtilities.currentProject.platform.headerButtons.value;
+			return EditorUtilities.currentProject.mode.headerButtons.value;
 		}
 		else {
 			return undefined;
@@ -64,12 +64,12 @@ class EditorModel extends ViewModelBase {
 	/**
 	 * Returns a list of tabs that could be displayed in the output panel.
 	 */
-	public getOutputTabsForCurrentPlatform(): Array<EditorOutputTabModel> | undefined {
+	public getOutputTabsForCurrentMode(): Array<EditorOutputTabModel> | undefined {
 		if (EditorUtilities.currentProject) {
-			EditorUtilities.currentProject.platform.outputPanelTabs.value.forEach((tab: EditorOutputTabModel) => {
+			EditorUtilities.currentProject.mode.outputPanelTabs.value.forEach((tab: EditorOutputTabModel) => {
 				tab.label = this.getText(tab.key);
 			});
-			return EditorUtilities.currentProject.platform.outputPanelTabs.value;
+			return EditorUtilities.currentProject.mode.outputPanelTabs.value;
 		}
 		else {
 			return undefined;
@@ -81,7 +81,7 @@ class EditorModel extends ViewModelBase {
 	 */
 	public getActiveOutputPanelTab(): EditorOutputTabModel | undefined {
 		if (EditorUtilities.currentProject) {
-			return EditorUtilities.currentProject.platform.outputPanelTabs.value.filter((tab: EditorOutputTabModel) => {
+			return EditorUtilities.currentProject.mode.outputPanelTabs.value.filter((tab: EditorOutputTabModel) => {
 				return tab.active;
 			})[0];
 		}
@@ -95,7 +95,7 @@ class EditorModel extends ViewModelBase {
 	 * Sets the tab to active and calls it's action function.
 	 */
 	public onOutputPanelTabClicked(clickedTab: EditorOutputTabModel): void {
-		EditorUtilities.currentProject.platform.outputPanelTabs.value.forEach((tab: EditorOutputTabModel) => {
+		EditorUtilities.currentProject.mode.outputPanelTabs.value.forEach((tab: EditorOutputTabModel) => {
 			if (clickedTab.key === tab.key) {
 				tab.active = true;
 			}

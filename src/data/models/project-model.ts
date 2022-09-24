@@ -1,4 +1,4 @@
-import { PlatformModelBase } from "@/platforms/base-classes/platform-model-base";
+import { ModeModelBase } from "@/modes/base-classes/mode-model-base";
 import { Ref } from "vue";
 import { FirestoreProjectModel } from "./firestore-project-model";
 
@@ -7,7 +7,7 @@ import { FirestoreProjectModel } from "./firestore-project-model";
  */
 export interface ProjectModel {
 	name: string;
-	platform: PlatformModelBase;
+	mode: ModeModelBase;
 	type: "blocks" | "text";
 	blocks?: string;
 	code: Ref<string | undefined>;

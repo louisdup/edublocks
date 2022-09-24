@@ -16,7 +16,7 @@
       >
         <eb-card 
           :title="project.title"
-          :subtitle="project.platform"
+          :subtitle="project.mode"
           :image="project.image"
           :dropdown-options="view.getShowcaseProjectDropdownOptions(project)"
         />
@@ -29,9 +29,9 @@
         v-for="project in view.state.recentProjects"
         :key="project.id"
         :left-title="project.name"
-        :left-subtitle="view.getPlatformFromKey(project.platform).config.name"
+        :left-subtitle="view.getModeFromKey(project.mode).config.name"
         :right-subtitle="project.type"
-        :thumbnail="view.getPlatformFromKey(project.platform).config.logo"
+        :thumbnail="view.getModeFromKey(project.mode).config.logo"
         is-full-width
       />
     </eb-list>

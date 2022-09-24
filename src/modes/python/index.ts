@@ -1,8 +1,8 @@
 import { EditorButtonModel } from "@/data/models/editor-button-model";
 import { EditorOutputTabModel } from "@/data/models/editor-output-tab-model";
-import { PlatformConfigModel } from "@/data/models/platform-config-model";
+import { ModeConfigModel } from "@/data/models/mode-config-model";
 import { ref, Ref } from "vue";
-import { PlatformModelBase } from "../base-classes/platform-model-base";
+import { ModeModelBase } from "../base-classes/mode-model-base";
 import { EditorUtilities } from "@/utilities/editor-utilities";
 import { TextToBlocksUtilities } from "@/utilities/text-to-blocks-utilities";
 import { TextToBlocksDefinitionModel } from "@/data/models/text-to-blocks-definition-model";
@@ -35,9 +35,9 @@ import loops from "./blocks/loops/toolbox.xml?raw";
 import loopsDefinitions from "./blocks/loops/text-to-blocks";
 
 /** 
- * Platform model for the python platform.
+ * Mode model for the python mode.
  */
-export class PythonModel extends PlatformModelBase {
+export class PythonModel extends ModeModelBase {
 	/**
 	 * Specifies the localization namespace to use for getting localized text values.
 	 */
@@ -46,25 +46,25 @@ export class PythonModel extends PlatformModelBase {
 	}
 		
 	/**
-	 * Returns config/information about the Python platform.
+	 * Returns config/information about the Python mode.
 	 */
-	public config: PlatformConfigModel = {
+	public config: ModeConfigModel = {
 		name: "Python 3",
 		key: "Python",
 		color: "blue",
-		logo: "/images/platforms/python/logo.svg",
-		image: "/images/platforms/python/thumbnail.svg"
+		logo: "/images/modes/python/logo.svg",
+		image: "/images/modes/python/thumbnail.svg"
 	};
 
 	/**
-	 * Initalize the Python platform.
+	 * Initalize the Python mode.
 	 */
 	public init(): void {
 		TextToBlocksUtilities.configureSkulpt();
 	}
 
 	/**
-	 * Returns a blockly toolbox for the Python platform.
+	 * Returns a blockly toolbox for the Python mode.
 	 */
 	public getToolbox(): Array<String> {
 		return [
@@ -202,5 +202,5 @@ export class PythonModel extends PlatformModelBase {
 	}
 }
 
-// Export the platform model.
+// Export the mode model.
 export const python: PythonModel = new PythonModel();

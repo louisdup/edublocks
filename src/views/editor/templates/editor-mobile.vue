@@ -1,5 +1,5 @@
 <template>
-  <editor-mobile-layout :header-buttons="view.getHeaderButtonsForCurrentPlatform()">
+  <editor-mobile-layout :header-buttons="view.getHeaderButtonsForCurrentMode()">
     <!-- Blocks Editor -->
     <blockly :is-resizing="view.state.isSplitViewBeingResized" />
 
@@ -14,7 +14,7 @@
       >
         <!-- Output Panel Tabs -->
         <eb-tabs
-          :options="view.getOutputTabsForCurrentPlatform()"
+          :options="view.getOutputTabsForCurrentMode()"
           :active="view.getOutputPanelActiveTabKey()"
           @on-tab-clicked="view.onOutputPanelTabClicked($event)"
         />

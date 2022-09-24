@@ -6,7 +6,7 @@ import { QueryDocumentSnapshot } from "@firebase/firestore";
 export interface FirestoreProjectModel {
 	id: string;
 	name: string;
-	platform: string;
+	mode: string;
 	path: string;
 	size: number;
 	created: string;

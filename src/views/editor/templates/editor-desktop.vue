@@ -1,5 +1,5 @@
 <template>
-  <editor-desktop-layout :header-buttons="view.getHeaderButtonsForCurrentPlatform()">
+  <editor-desktop-layout :header-buttons="view.getHeaderButtonsForCurrentMode()">
     <eb-split-view
       @ready="view.onSplitViewReady()"
       @resize="view.onSplitViewResize()" 
@@ -21,7 +21,7 @@
           >
             <!-- Output Panel Tabs -->
             <eb-tabs
-              :options="view.getOutputTabsForCurrentPlatform()"
+              :options="view.getOutputTabsForCurrentMode()"
               :active="view.getOutputPanelActiveTabKey()"
               @on-tab-clicked="view.onOutputPanelTabClicked($event)"
             />

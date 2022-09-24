@@ -7,7 +7,7 @@
       >
       <eb-button
         :label="component.getCurrentProjectName()"
-        :image="component.getCurrentPlatformLogo()"
+        :image="component.getCurrentModeLogo()"
         size="sm"
         color="semiTransparent"
       />

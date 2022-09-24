@@ -10,18 +10,18 @@
       />
     </eb-heading>
 
-    <!-- Grid of platforms to create a new project. -->
+    <!-- Grid of modes to create a new project. -->
     <eb-slider :label="view.getText('create-new-project')">
       <eb-slider-slide
-        v-for="platform in view.getPlatforms()"
-        :key="platform.config.key"
+        v-for="mode in view.getModes()"
+        :key="mode.config.key"
       >
         <eb-list-item 
-          :left-title="platform.config.name"
+          :left-title="mode.config.name"
           :left-subtitle="view.getText('blank-project')"
-          :thumbnail="platform.config.logo"
+          :thumbnail="mode.config.logo"
           is-button
-          @click="view.onCreateNewProjectListItemClicked(platform)"
+          @click="view.onCreateNewProjectListItemClicked(mode)"
         />
       </eb-slider-slide> 
     </eb-slider>
@@ -42,7 +42,7 @@
       >
         <eb-card 
           :title="project.title"
-          :subtitle="project.platform"
+          :subtitle="project.mode"
           :image="project.image"
           :dropdown-options="view.getShowcaseProjectDropdownOptions(project)"
         />
@@ -63,8 +63,8 @@
         <eb-table-cell>
           <eb-list-item
             :left-title="project.name"
-            :left-subtitle="view.getPlatformFromKey(project.platform).config.name"
-            :thumbnail="view.getPlatformFromKey(project.platform).config.logo"
+            :left-subtitle="view.getModeFromKey(project.mode).config.name"
+            :thumbnail="view.getModeFromKey(project.mode).config.logo"
             is-full-width
           />
         </eb-table-cell>

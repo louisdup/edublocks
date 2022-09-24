@@ -1,15 +1,15 @@
 import { EditorButtonModel } from "@/data/models/editor-button-model";
 import { EditorOutputTabModel } from "@/data/models/editor-output-tab-model";
-import { PlatformConfigModel } from "@/data/models/platform-config-model";
+import { ModeConfigModel } from "@/data/models/mode-config-model";
 import { TextToBlocksDefinitionModel } from "@/data/models/text-to-blocks-definition-model";
 import { EditorUtilities } from "@/utilities/editor-utilities";
 import { LocalizationUtilities } from "@/utilities/localization-utilities";
 import { Ref } from "vue";
 
 /**
- * Base class exposing common functionality to all platform models.
+ * Base class exposing common functionality to all mode models.
  */
-export abstract class PlatformModelBase {
+export abstract class ModeModelBase {
 	/**
 	 * Return the string that is used for the localization namespace when getting localized text for the component.
 	 * This is an abstract property that needs to be defined in the component model that extends this base class.
@@ -24,17 +24,17 @@ export abstract class PlatformModelBase {
 	}
 		 
 	/**
-	 * Stores config/information about a platform.
+	 * Stores config/information about a mode.
 	 */
-	public abstract config: PlatformConfigModel;
+	public abstract config: ModeConfigModel;
 
 	/**
-	 * Initalize the platform.
+	 * Initalize the mode.
 	 */
 	public abstract init(): void;
 		 
 	/**
-	 * Returns a blockly toolbox for the current platform.
+	 * Returns a blockly toolbox for the current mode.
 	 */
 	public abstract getToolbox(): Array<String>;
 		 

@@ -42,13 +42,13 @@ export class BlocklyModel extends ComponentModelBase {
 	});
 
 	/**
-	 * Returns an XML toolbox for the current platform.
+	 * Returns an XML toolbox for the current mode.
 	 */
 	private getToolboxXML(): string {
 		let toolboxXML: string = "<xml>";
 
 		if (EditorUtilities.currentProject) {
-			toolboxXML += EditorUtilities.currentProject.platform.getToolbox().join("\n");
+			toolboxXML += EditorUtilities.currentProject.mode.getToolbox().join("\n");
 		}
 
 		toolboxXML += "</xml>";
