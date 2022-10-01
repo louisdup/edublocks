@@ -78,6 +78,17 @@ export class TextToBlocksUtilities {
 				});
 			}
 
+			if (variables) {
+				variables.forEach((variable: string, variableIndex: number) => {
+					if (EditorUtilities.blocklyInstance) {
+						const newVariable: Blockly.VariableModel = EditorUtilities.blocklyInstance.createVariable(variable);
+						const oldVariable: string = block.getVars()[variableIndex];
+						block.renameVarById(oldVariable, newVariable.getId());
+						EditorUtilities.blocklyInstance.deleteVariableById(oldVariable);
+					}
+				});
+			}
+
 			block.initSvg();
 			block.render();
 
@@ -414,7 +425,7 @@ export class TextToBlocksUtilities {
 				break;
 		}
 		if (block) {
-			this.addBlock(block.name, line, block.inputs, [], parentStatement);
+			this.addBlock(block.name, line, block.inputs, block.variables, parentStatement);
 		}
 		else if (!banPlaceholders.includes(type)) {
 			this.createPlaceholderBlock(lines[lineNo - 1].trim(), line, parentStatement);
