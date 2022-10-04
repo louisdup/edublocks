@@ -2,7 +2,7 @@
   <div class="bg-navy-500 h-full flex-none inline-flex flex-col overflow-hidden">
     <div
       v-if="hasLogo"
-      class="px-6 pt-6 pb-2 flex flex-col lg:items-start items-center"
+      class="px-6 pt-8 pb-4 flex flex-col lg:items-start items-center"
     >
       <img
         :src="component.getSidebarLogoImage()"

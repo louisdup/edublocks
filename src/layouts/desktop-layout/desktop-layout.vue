@@ -7,7 +7,7 @@
         @scroll="$emit('scroll', $event)"
       >
         <div class="h-full w-full max-w-7xl mx-auto">
-          <div class="py-10 space-y-6">
+          <div class="py-8 space-y-8">
             <slot />
           </div>
         </div>
