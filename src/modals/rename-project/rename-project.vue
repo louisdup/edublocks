@@ -9,7 +9,7 @@
     />
 
     <eb-modal-content>
-      <eb-v-stack :spacing="8">
+      <eb-v-stack :spacing="6">
         <p class="w-full max-w-lg text-center mx-auto text-gray-500">
           {{ modal.getText('please-enter-new-name') }} <span class="font-bold">{{ project.name }}</span>
         </p>

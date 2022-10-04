@@ -5,12 +5,13 @@
       @resize="view.onSplitViewResize()" 
       @resized="view.onSplitViewResized()"
     >   
-      <eb-split-view-pane>
-        <!-- Blocks Editor -->
+      <!-- Blocks Editor -->
+      <eb-split-view-pane v-if="view.isBlocksEditorVisible()">
         <blockly :is-resizing="view.state.isSplitViewBeingResized" />
       </eb-split-view-pane>
+      
+      <!-- Output Panel -->
       <eb-split-view-pane :size="view.getOutputPanelInitialSize()">
-        <!-- Output Panel -->
         <eb-container
           :padding="2"
           is-full-width

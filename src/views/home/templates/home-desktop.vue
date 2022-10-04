@@ -7,6 +7,7 @@
         :label="view.getText('new-project')"
         :icon="['fas', 'plus']"
         color="pink"
+        @click="view.onNewProjectClicked()"
       />
     </eb-heading>
 

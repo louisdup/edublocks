@@ -189,6 +189,13 @@ class EditorModel extends ViewModelBase {
 		this.state.isSplitViewBeingResized = false;
 		this.resizeBlockly();
 	}
+
+	/**
+	 * True if project type is "blocks".
+	 */
+	public isBlocksEditorVisible(): boolean {
+		return EditorUtilities.currentProject.type === "blocks";
+	}
 }
 
 // Export the view model.

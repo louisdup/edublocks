@@ -27,7 +27,7 @@ export class EbButtonModel extends ComponentModelBase {
 		variants: {
 			size: {
 				"sm": ["text-xs", "py-2", "px-4"],
-				"normal": ["text-sm", "py-3", "px-5"]
+				"normal": ["text-sm", "py-2.5", "px-4"]
 			},
 			color: {
 				pink: ["bg-pink-500", "text-gray-100", "focus:ring-pink-400", "hover:bg-pink-400", "border-transparent"],

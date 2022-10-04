@@ -23,6 +23,18 @@
         "delete": "Delete",
         "delete-confirmation": "Are you sure you want to delete the following project:"
     },
+    "create-project": {
+        "create-project": "Create Project",
+        "cancel": "Cancel",
+        "create": "Create",
+        "project-name": "Project Name",
+        "mode": "Mode",
+        "type": "Type",
+        "blocks": "Blocks",
+        "great-for-beginners": "Great for beginners",
+        "text-only": "Text only",
+        "ideal-for-advanced-users": "Ideal for advanced users"
+    },
     "delete-showcase-project": {
         "delete-project": "Delete Showcase Project",
         "cancel": "Cancel",

@@ -8,6 +8,7 @@ import { ProjectsUtilities } from "@/utilities/projects-utilities";
 import { EbTableHeader } from "@/components/eb-table/eb-table-types";
 import { EbDropdownOption } from "@/components/eb-dropdown/eb-dropdown-types";
 import { QueryDocumentSnapshot } from "@firebase/firestore";
+import { ModalUtilities } from "@/utilities/modal-utilities";
 /**
  * View model for the projects view.
  */
@@ -126,6 +127,16 @@ class ProjectsModel extends ViewModelBase {
 			if (!this.state.isLoadingInitialProjects && !this.state.isLoadingMoreProjects) {
 				this.loadMoreProjects();
 			}
+		});
+	}
+
+	/**
+	 * Called when the new project button is clicked.
+	 * Opens the "Create Project" modal.
+	 */
+	public onNewProjectClicked(): void {
+		ModalUtilities.showModal({
+			modal: "CreateProject"
 		});
 	}
 }

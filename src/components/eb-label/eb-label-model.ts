@@ -17,9 +17,17 @@ class EbLabelModel extends ComponentModelBase {
 	 */
 	public variants: Function = cva(["text-sm"], {
 		variants: {
+			align: {
+				left: "text-left",
+				center: "text-center",
+				right: "text-right"
+			},
 			color: {
 				gray: "text-gray-500",
 				black: "text-gray-900"
+			},
+			isFullWidth: {
+				true: "w-full"
 			}
 		},
 		defaultVariants: {

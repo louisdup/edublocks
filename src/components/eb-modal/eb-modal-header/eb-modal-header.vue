@@ -1,6 +1,6 @@
 <template>
   <div class="px-8 pt-8 relative">
-    <div class="text-center space-y-6">
+    <div class="text-center space-y-4">
       <eb-icon
         v-if="icon"
         :icon="icon"

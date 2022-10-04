@@ -14,6 +14,7 @@ import { EditorUtilities } from "@/utilities/editor-utilities";
 import router from "@/router";
 import { ModeModelBase } from "@/modes/base-classes/mode-model-base";
 import { FilenameUtilities } from "@/utilities/filename-utilities";
+import { ModalUtilities } from "@/utilities/modal-utilities";
 
 /**
  * View model for the home view.
@@ -125,6 +126,16 @@ class HomeModel extends ViewModelBase {
 		});
 
 		router.push("/editor");
+	}
+
+	/**
+	 * Called when the new project button is clicked.
+	 * Opens the "Create Project" modal.
+	 */
+	public onNewProjectClicked(): void {
+		ModalUtilities.showModal({
+			modal: "CreateProject"
+		});
 	}
 }
 

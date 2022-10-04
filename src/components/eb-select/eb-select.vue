@@ -10,14 +10,20 @@
       </span>
     </label>
     <div class="mt-2">
-      <input
-        :type="type"
-        class="block w-full rounded-md border-gray-300 shadow-sm focus:border-pink-500 focus:ring-pink-500 focus:outline-none px-4 py-2.5 text-sm"
+      <select
+        class="mt-1 block w-full rounded-md py-2.5 pl-4 pr-10 text-base focus:border-pink-500 focus:outline-none focus:ring-pink-500 sm:text-sm"
         :class="error ? 'border-red-500' : 'border-gray-300'"
-        :placeholder="placeholder"
-        :value="modelValue"
-        @input="$emit('update:modelValue', component.getInputValue($event))"
+        @input="$emit('update:modelValue', component.getSelectValue($event))"
       >
+        <option
+          v-for="option in options"
+          :key="option.label"
+          :value="option.value"
+          :selected="modelValue === option.value"
+        >
+          {{ option.label }}
+        </option>
+      </select>
     </div>
     <a
       v-if="error"
@@ -29,12 +35,12 @@
 </template>
 
 <script setup lang="ts">
-import { component } from "./eb-input-model";
+import { component } from "./eb-select-model";
+import { EbSelectOption } from "./eb-select-types";
 
 defineProps<{
 	label: string;
-	type: string;
-	placeholder?: string;
+	options: Array<EbSelectOption>;
 	modelValue?: string;
 	required?: boolean;
 	error?: string;

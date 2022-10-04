@@ -32,5 +32,7 @@ export enum ComponentName {
 	EbContainer = "EbContainer",
 	EbSplitView = "EbSplitView",
 	EbSplitViewPane = "EbSplitViewPane",
-	EbSheet = "EbSheet"
+	EbSheet = "EbSheet",
+	EbRadioGroup = "EbRadioGroup",
+	EbSelect = "EbSelect"
 }

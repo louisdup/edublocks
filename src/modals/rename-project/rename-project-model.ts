@@ -24,7 +24,7 @@ class RenameProjectModal extends ModalModelBase {
 	/**
 	 * Reactive instance of the modal state.
 	 */
-	 public state: RenameProjectState = reactive(new RenameProjectState());
+	public state: RenameProjectState = reactive(new RenameProjectState());
 
 	/**
 	 * Initialise the modal model.

@@ -9,7 +9,7 @@
     />
 
     <eb-modal-content>
-      <p class="w-full max-w-lg text-center mx-auto text-gray-500">
+      <p class="w-full text-center text-gray-500">
         {{ modal.getText('delete-confirmation') }} <span class="font-bold">{{ project.name }}</span>?
       </p>
     </eb-modal-content>

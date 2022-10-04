@@ -32,6 +32,8 @@ import EbContainer from "./eb-container/eb-container.vue";
 import EbSplitView from "./eb-split-view/eb-split-view.vue";
 import EbSplitViewPane from "./eb-split-view/eb-split-view-pane/eb-split-view-pane.vue";
 import EbSheet from "./eb-sheet/eb-sheet.vue";
+import EbRadioGroup from "./eb-radio-group/eb-radio-group.vue";
+import EbSelect from "./eb-select/eb-select.vue";
 
 /**
  * Export & install application components for use globally
@@ -69,5 +71,7 @@ export default {
 		app.component(ComponentName.EbSplitView, EbSplitView);
 		app.component(ComponentName.EbSplitViewPane, EbSplitViewPane);
 		app.component(ComponentName.EbSheet, EbSheet);
+		app.component(ComponentName.EbRadioGroup, EbRadioGroup);
+		app.component(ComponentName.EbSelect, EbSelect);
 	}
 };

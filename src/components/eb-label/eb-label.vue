@@ -1,5 +1,5 @@
 <template>
-  <p :class="component.variants({ color })">
+  <p :class="component.variants({ align, color, isFullWidth })">
     {{ label }}
   </p>
 </template>
@@ -9,6 +9,8 @@ import { component } from "./eb-label-model";
 
 defineProps<{
 	label: string;
+	align?: string;
 	color?: string;
+	isFullWidth?: boolean;
 }>();
 </script>

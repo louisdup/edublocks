@@ -1,6 +1,7 @@
 import { App } from "vue";
 import { ModalName } from "./constants";
 
+import CreateProject from "./create-project/create-project.vue";
 import DeleteProject from "./delete-project/delete-project.vue";
 import RenameProject from "./rename-project/rename-project.vue";
 import DeleteShowcaseProject from "./delete-showcase-project/delete-showcase-project.vue";
@@ -12,6 +13,7 @@ import Login from "./login/login.vue";
  */
 export default {
 	install(app: App): void {
+		app.component(ModalName.CreateProject, CreateProject);
 		app.component(ModalName.DeleteProject, DeleteProject);
 		app.component(ModalName.RenameProject, RenameProject);
 		app.component(ModalName.DeleteShowcaseProject, DeleteShowcaseProject);

@@ -1,5 +1,7 @@
 <template>
-  <div class="px-8 pt-6 pb-8 w-full">
-    <slot />
+  <div class="p-8 w-full">
+    <div class="w-full max-w-lg mx-auto">
+      <slot />
+    </div>
   </div>
 </template>

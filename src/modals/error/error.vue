@@ -9,7 +9,7 @@
     />
 
     <eb-modal-content>
-      <p class="w-full max-w-lg text-center mx-auto text-gray-500">
+      <p class="w-full text-center text-gray-500">
         {{ modal.getText('problem-processing-request') }}
       </p>
     </eb-modal-content>

@@ -1,6 +1,6 @@
 import { IconDefinition, library } from "@fortawesome/fontawesome-svg-core";
 import { faBookOpen, faCode, faCommentAlt, faFilm, faFolderOpen, faHome, faUsers } from "@fortawesome/pro-duotone-svg-icons";
-import { faPlay, faPlus, faSquare } from "@fortawesome/pro-solid-svg-icons";
+import { faCheckCircle, faPlay, faPlus, faSquare } from "@fortawesome/pro-solid-svg-icons";
 import { faArrowRightFromBracket, faArrowRightToArc, faBars, faCog, faEllipsis, faFile, faGrid2, faPencil, faSave, faSearch, faShare, faTimes, faTrash, faHome as farHome, faFolderOpen as farFolderOpen, faFilm as farFilm, faUsers as farUsers } from "@fortawesome/pro-regular-svg-icons";
 import { faApple, faGoogle, faMicrosoft } from "@fortawesome/free-brands-svg-icons";
 
@@ -38,5 +38,6 @@ library.add(
 	farHome,
 	farFolderOpen,
 	farFilm,
-	farUsers
+	farUsers,
+	faCheckCircle
 );

@@ -4,12 +4,14 @@
     :class="component.variants({ isButton, isFullWidth })"
   >
     <div class="flex items-center space-x-4">
-      <img
-        v-if="thumbnail"
-        :src="thumbnail"
-        class="h-auto w-9"
-        :class="roundedThumbnail ? 'rounded-full' : ''"
-      >
+      <div class="flex items-center justify-center w-8 h-9">
+        <img
+          v-if="thumbnail"
+          :src="thumbnail"
+          class=""
+          :class="roundedThumbnail ? 'rounded-full' : ''"
+        >
+      </div>
       <div
         v-if="leftTitle || leftSubtitle"
         class="text-sm"
@@ -49,5 +51,6 @@ defineProps<{
 	rightSubtitle?: string;
 	isButton?: boolean;
 	isFullWidth?: boolean;
+	hasBackground?: boolean;
 }>();
 </script>
