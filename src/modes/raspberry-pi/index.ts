@@ -27,6 +27,13 @@ export class RaspberryPiModel extends ModeModelBase {
 	};
 
 	/**
+	 * Initalize the Raspberry Pi mode.
+	 */
+	public init(): void {
+		//
+	}
+
+	/**
 	 * Returns a blockly toolbox for the raspberry pi mode.
 	 */
 	public getToolbox(): Array<String> {

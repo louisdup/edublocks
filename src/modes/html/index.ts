@@ -27,6 +27,13 @@ export class HTMLModel extends ModeModelBase {
 	};
 
 	/**
+	 * Initalize the HTML mode.
+	 */
+	public init(): void {
+		//
+	}
+
+	/**
 	 * Returns a blockly toolbox for the html mode.
 	 */
 	 public getToolbox(): Array<String> {

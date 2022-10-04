@@ -27,6 +27,13 @@ export class MicrobitModel extends ModeModelBase {
 	};
 
 	/**
+	 * Initalize the microbit mode.
+	 */
+	public init(): void {
+		//
+	}
+
+	/**
 	 * Returns a blockly toolbox for the micro:bit mode.
 	 */
 	public getToolbox(): Array<String> {

@@ -27,6 +27,13 @@ export class CircuitPythonModel extends ModeModelBase {
 	};
 
 	/**
+	 * Initalize the CircuitPython mode.
+	 */
+	public init(): void {
+		//
+	}
+
+	/**
 	 * Returns a blockly toolbox for the CircuitPython mode.
 	 */
 	public getToolbox(): Array<String> {
