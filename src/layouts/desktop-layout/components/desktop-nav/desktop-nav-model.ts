@@ -1,6 +1,7 @@
 import { ComponentModelBase } from "@/components/base-classes/component-model-base";
 import { EbSidebarItem } from "@/components/eb-sidebar/eb-sidebar-types";
 import router from "@/router";
+import { ModalUtilities } from "@/utilities/modal-utilities";
 import { ScreenUtilities } from "@/utilities/screen-utilities";
 
 /**
@@ -29,6 +30,11 @@ export class DesktopNavModel extends ComponentModelBase {
 				key: "editor",
 				title: this.getText("editor"),
 				icon: ["fad", "code"],
+				action: (): void => {
+					ModalUtilities.showModal({
+						modal: "CreateProject"
+					});
+				}
 			},
 			{
 				key: "projects",
