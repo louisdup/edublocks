@@ -1,13 +1,13 @@
 <template>
   <div>
-    <label class="block text-sm font-medium text-gray-900 mb-4">
+    <label class="block text-sm font-medium text-gray-500 mb-4">
       {{ label }}
     </label>
     <div class="flex items-center space-x-6 w-full">
       <button
         v-for="option in options"
         :key="option.key"
-        class="bg-white p-4 border shadow-sm rounded-md flex-1 relative cursor-pointer text-left"
+        class="p-4 rounded-md flex-1 relative cursor-pointer text-left"
         :class="component.getRadioButtonActiveClass(modelValue, option.key)"
         @click="$emit('update:modelValue', option.key)"
       >
