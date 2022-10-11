@@ -27,7 +27,9 @@ class EditorModel extends ViewModelBase {
 	 */
 	public init(): void {
 		this.checkForBlocklyChanges();
-		EditorUtilities.currentProject.mode.init();
+		if (EditorUtilities.currentProject.value) {
+			EditorUtilities.currentProject.value.mode.init();
+		}
 	}
 
 	/**
@@ -36,10 +38,10 @@ class EditorModel extends ViewModelBase {
 	private checkForBlocklyChanges(): void {
 		if (EditorUtilities.blocklyInstance ) {
 			EditorUtilities.blocklyInstance.addChangeListener(() => {
-				if (EditorUtilities.blocklyInstance && EditorUtilities.currentProject) {
-					EditorUtilities.currentProject.blocks = Blockly.Xml.domToPrettyText(Blockly.Xml.workspaceToDom(EditorUtilities.blocklyInstance));
-					if (!TextToBlocksUtilities.isTextEditorFocused.value && !EditorUtilities.blocklyInstance.isDragging() && EditorUtilities.currentProject.code) {
-						EditorUtilities.currentProject.code.value = EditorUtilities.currentProject.mode.getCodeFromBlocks() as string;
+				if (EditorUtilities.blocklyInstance && EditorUtilities.currentProject.value) {
+					EditorUtilities.currentProject.value.blocks = Blockly.Xml.domToPrettyText(Blockly.Xml.workspaceToDom(EditorUtilities.blocklyInstance));
+					if (!TextToBlocksUtilities.isTextEditorFocused.value && !EditorUtilities.blocklyInstance.isDragging()) {
+						EditorUtilities.currentProject.value.code = EditorUtilities.currentProject.value.mode.getCodeFromBlocks() as string;
 					}
 				}
 			});
@@ -50,11 +52,11 @@ class EditorModel extends ViewModelBase {
 	 * Returns a list of buttons to put in the header of the editor.
 	 */
 	public getHeaderButtonsForCurrentMode(): Array<EditorButtonModel> | undefined {
-		if (EditorUtilities.currentProject) {
-			EditorUtilities.currentProject.mode.headerButtons.value.forEach((tab: EditorButtonModel) => {
+		if (EditorUtilities.currentProject.value) {
+			EditorUtilities.currentProject.value.mode.headerButtons.forEach((tab: EditorButtonModel) => {
 				tab.label = this.getText(tab.key);
 			});
-			return EditorUtilities.currentProject.mode.headerButtons.value;
+			return EditorUtilities.currentProject.value.mode.headerButtons;
 		}
 		else {
 			return undefined;
@@ -64,12 +66,17 @@ class EditorModel extends ViewModelBase {
 	/**
 	 * True if the sidebar is expanded.
 	 */
-	public isSidebarExpanded(): boolean {
-		const activeTabs: Array<EditorSidebarTabModel> = EditorUtilities.currentProject.mode.sidebarTabs.value.filter((tab: EditorSidebarTabModel) => {
-			return tab.active;
-		});
+	public isSidebarExpanded(): boolean | undefined {
+		if (EditorUtilities.currentProject.value) {
+			const activeTabs: Array<EditorSidebarTabModel> = EditorUtilities.currentProject.value.mode.sidebarTabs.filter((tab: EditorSidebarTabModel) => {
+				return tab.active;
+			});
 
-		return activeTabs.length === 1;
+			return activeTabs.length === 1;
+		}
+		else {
+			return undefined;
+		}
 	}
 
 	/**
@@ -151,8 +158,13 @@ class EditorModel extends ViewModelBase {
 	/**
 	 * True if project type is "blocks".
 	 */
-	public isBlocksEditorVisible(): boolean {
-		return EditorUtilities.currentProject.type === "blocks";
+	public isBlocksEditorVisible(): boolean | undefined {
+		if (EditorUtilities.currentProject.value) {
+			return EditorUtilities.currentProject.value.type === "blocks";
+		}
+		else {
+			return undefined;
+		}
 	}
 }
 

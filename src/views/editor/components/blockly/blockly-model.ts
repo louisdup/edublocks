@@ -35,8 +35,8 @@ export class BlocklyModel extends ComponentModelBase {
 	private getToolboxXML(): string {
 		let toolboxXML: string = "<xml>";
 
-		if (EditorUtilities.currentProject) {
-			toolboxXML += EditorUtilities.currentProject.mode.getToolbox().join("\n");
+		if (EditorUtilities.currentProject.value) {
+			toolboxXML += EditorUtilities.currentProject.value.mode.getToolbox().join("\n");
 		}
 
 		toolboxXML += "</xml>";

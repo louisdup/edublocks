@@ -24,8 +24,8 @@ export class EditorDesktopHeaderModel extends ComponentModelBase {
 	 * Returns an image file path for the logo of the current mode.
 	 */
 	public getCurrentModeLogo(): string | undefined {
-		if (EditorUtilities.currentProject) {
-			return EditorUtilities.currentProject.mode.config.logo;
+		if (EditorUtilities.currentProject.value) {
+			return EditorUtilities.currentProject.value.mode.config.logo;
 		}
 		else {
 			return undefined;
@@ -36,8 +36,8 @@ export class EditorDesktopHeaderModel extends ComponentModelBase {
 	 * Returns the name of the current project.
 	 */
 	public getCurrentProjectName(): string | undefined {
-		if (EditorUtilities.currentProject) {
-			return EditorUtilities.currentProject.name;
+		if (EditorUtilities.currentProject.value) {
+			return EditorUtilities.currentProject.value.name;
 		}
 		else {
 			return undefined;

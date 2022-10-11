@@ -116,7 +116,7 @@ class CreateProjectModel extends ModalModelBase {
 				name,
 				mode,
 				type: this.state.data["type"],
-				code: ref(""),
+				code: "",
 				blocks: ""
 			});
 

@@ -5,6 +5,7 @@ import { CSSProperties, Ref } from "vue";
 import { Extension } from "@codemirror/state";
 import { python } from "@codemirror/lang-python";
 import { oneDark } from "@codemirror/theme-one-dark";
+import { ProjectModel } from "@/data/models/project-model";
 
 /**
  * Component model for the python code component.
@@ -44,10 +45,10 @@ export class PythonCodeModel extends ComponentModelBase {
 	}
 
 	/**
-	 * Returns the code for the current project.
+	 * Returns the current project.
 	 */
-	public getCurrentProjectCode(): Ref<string | undefined> {
-		return EditorUtilities.currentProject.code;
+	public getCurrentProject(): Ref<ProjectModel> {
+		return EditorUtilities.currentProject as Ref<ProjectModel>;
 	}
 
 	/**

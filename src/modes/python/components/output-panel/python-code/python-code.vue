@@ -5,7 +5,7 @@
       class="h-full w-full bg-[#282c34] rounded-md"
     />
     <codemirror
-      v-model="component.getCurrentProjectCode().value"
+      v-model="component.getCurrentProject().value.code"
       :extensions="component.getExtensions()"
       :style="component.getStyles()"
       :tab-size="component.getTabSize()"

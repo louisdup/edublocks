@@ -49,23 +49,23 @@ export abstract class ModeModelBase {
 	/**
 	 * Returns a list of buttons to display in the header of the editor.
 	 */
-	public abstract headerButtons: Ref<Array<EditorButtonModel>>;
+	public abstract headerButtons: Array<EditorButtonModel>;
 
 	/**
 	 * Returns a list of tabs that could be displayed in the sidebar.
 	 */
-	public abstract sidebarTabs: Ref<Array<EditorSidebarTabModel>>;
+	public abstract sidebarTabs: Array<EditorSidebarTabModel>;
 
 	/**
 	 * Returns a list of tabs that could be displayed in the output panel.
 	 */
-	public abstract outputPanelTabs: Ref<Array<EditorOutputTabModel>>;
+	public abstract outputPanelTabs: Array<EditorOutputTabModel>;
 
 	/**
 	 * Sets the specified header button to visible.
 	 */
 	public setHeaderButtonVisible(buttonToBeVisible: string): void {
-		this.headerButtons.value.forEach((button: EditorButtonModel) => {
+		this.headerButtons.forEach((button: EditorButtonModel) => {
 			if (buttonToBeVisible === button.key) {
 				button.visible = true;
 			}
@@ -76,7 +76,7 @@ export abstract class ModeModelBase {
 	 * Sets the specified header button to hidden.
 	 */
 	public setHeaderButtonHidden(buttonToBeVisible: string): void {
-		this.headerButtons.value.forEach((button: EditorButtonModel) => {
+		this.headerButtons.forEach((button: EditorButtonModel) => {
 			if (buttonToBeVisible === button.key) {
 				button.visible = false;
 			}
@@ -87,7 +87,7 @@ export abstract class ModeModelBase {
 	 * Sets the specified output panel tab to visible.
 	 */
 	public setOutputPanelTabVisible(tabToBeVisible: string): void {
-		this.outputPanelTabs.value.forEach((tab: EditorOutputTabModel) => {
+		this.outputPanelTabs.forEach((tab: EditorOutputTabModel) => {
 			if (tabToBeVisible === tab.key) {
 				tab.visible = true;
 			}
@@ -98,7 +98,7 @@ export abstract class ModeModelBase {
 	 * Sets the specified output panel tab to hidden.
 	 */
 	public setOutputPanelTabHidden(tabToBeVisible: string): void {
-		this.outputPanelTabs.value.forEach((tab: EditorOutputTabModel) => {
+		this.outputPanelTabs.forEach((tab: EditorOutputTabModel) => {
 			if (tabToBeVisible === tab.key) {
 				tab.visible = false;
 			}
@@ -109,7 +109,7 @@ export abstract class ModeModelBase {
 	 * Sets the specified output panel tab to be active.
 	 */
 	public setOutputPanelTabActive(tabToBeActive: string): void {
-		this.outputPanelTabs.value.forEach((tab: EditorOutputTabModel) => {
+		this.outputPanelTabs.forEach((tab: EditorOutputTabModel) => {
 			if (tabToBeActive === tab.key) {
 				tab.active = true;
 			}

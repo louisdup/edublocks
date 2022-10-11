@@ -1,7 +1,6 @@
 import { EditorButtonModel } from "@/data/models/editor-button-model";
 import { EditorOutputTabModel } from "@/data/models/editor-output-tab-model";
 import { ModeConfigModel } from "@/data/models/mode-config-model";
-import { ref, Ref } from "vue";
 import { ModeModelBase } from "../base-classes/mode-model-base";
 import { EditorUtilities } from "@/utilities/editor-utilities";
 import { TextToBlocksUtilities } from "@/utilities/text-to-blocks-utilities";
@@ -93,7 +92,7 @@ export class PythonModel extends ModeModelBase {
 	/**
 	 * Returns buttons to display in the header of the editor.
 	 */
-	public headerButtons: Ref<Array<EditorButtonModel>> = ref([
+	public headerButtons: Array<EditorButtonModel> = [
 		{
 			key: "share",
 			icon: ["far", "share"],
@@ -127,12 +126,12 @@ export class PythonModel extends ModeModelBase {
 				this.stopPythonCode();
 			}
 		},
-	]);
+	];
 
 	/**
 	 * Returns a list of tabs that to display in the output panel for python.
 	 */
-	public outputPanelTabs: Ref<Array<EditorOutputTabModel>> = ref([
+	public outputPanelTabs: Array<EditorOutputTabModel> = [
 		{
 			key: "code",
 			component: PythonCode,
@@ -143,18 +142,18 @@ export class PythonModel extends ModeModelBase {
 			component: PythonOutput,
 			visible: false
 		}
-	]);
+	];
 
 	/**
 	 * Returns a list of tabs to display in the sidebar for python.
 	 */
-	public sidebarTabs: Ref<Array<EditorSidebarTabModel>> = ref([
+	public sidebarTabs: Array<EditorSidebarTabModel> = [
 		{
 			key: "project-settings",
 			icon: ["far", "file"],
 			component: ProjectSettings
 		}
-	]);
+	];
 
 	/**
 	 * Returns python code from the blockly workspace.

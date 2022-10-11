@@ -8,7 +8,7 @@ export class EditorUtilities {
 	/**
 	 * Returns the current project loaded in the editor.
 	 */
-	public static currentProject: ProjectModel;
+	public static currentProject: Ref<ProjectModel | undefined> = ref(undefined);
 
 	/**
 	 * Returns the editor blockly instance.
@@ -24,13 +24,13 @@ export class EditorUtilities {
 	 * Sets the value of the current project.
 	 */
 	public static setCurrentProject(project: ProjectModel): void {
-		this.currentProject = project;
+		this.currentProject.value = project;
 	}
 
 	/**
 	 * True if current project is defined.
 	 */
 	public static isCurrentModeSet(): boolean {
-		 return this.currentProject ? true : false;
+		 return this.currentProject.value ? true : false;
 	}
 }

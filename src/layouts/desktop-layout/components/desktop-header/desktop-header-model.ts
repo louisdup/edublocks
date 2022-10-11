@@ -25,8 +25,8 @@ export class DesktopHeaderModel extends ComponentModelBase {
 	 * Returns an image file path for the logo of the current mode.
 	 */
 	public getCurrentModeLogo(): string | undefined {
-		if (EditorUtilities.currentProject) {
-			return EditorUtilities.currentProject.mode.config.logo;
+		if (EditorUtilities.currentProject.value) {
+			return EditorUtilities.currentProject.value.mode.config.logo;
 		}
 		else {
 			return undefined;

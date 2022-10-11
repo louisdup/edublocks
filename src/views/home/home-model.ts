@@ -120,7 +120,7 @@ class HomeModel extends ViewModelBase {
 			name: FilenameUtilities.generateRandomFilename(),
 			mode,
 			type: "blocks",
-			code: ref(""),
+			code: "",
 			blocks: ""
 		});
 

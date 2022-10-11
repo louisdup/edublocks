@@ -28,7 +28,12 @@ export class TextToBlocksUtilities {
 	 * Returns a list of block definitions for the current mode that can be used for translating text to blocks.
 	 */
 	public static getTextToBlocksDefinitions(): Array<TextToBlocksDefinitionModel> {
-		return EditorUtilities.currentProject.mode.getTextToBlocksDefinitions();
+		if (EditorUtilities.currentProject.value) {
+			return EditorUtilities.currentProject.value.mode.getTextToBlocksDefinitions();
+		}
+		else {
+			return [];
+		}
 	}
 
 	/**
@@ -436,22 +441,24 @@ export class TextToBlocksUtilities {
 	 * Convert text-based code to blocks-based code.
 	 */
 	public static convertTextToBlocks(): void {
-		if (EditorUtilities.currentProject.code.value && EditorUtilities.blocklyInstance) {
-			const code: string = EditorUtilities.currentProject.code.value;
-			const lines: Array<string> = code.split("\n");
-			
-			const parse: any = Sk.parse("", code);
-			const ast: any = Sk.astFromParse(parse.cst, "", parse.flags);
-			const parsedLines: Array<any> = ast.body;
-			
-			EditorUtilities.blocklyInstance.clear();
+		if (EditorUtilities.currentProject.value && EditorUtilities.blocklyInstance) {
+			const code: string | undefined = EditorUtilities.currentProject.value.code;
 
-			parsedLines.forEach((line: any) => {
-				if (EditorUtilities.blocklyInstance) {
-					this.generateBlocks(line, line.lineno, lines);
-				}
-			});
+			if (code) {
+				const lines: Array<string> = code.split("\n");
+			
+				const parse: any = Sk.parse("", code);
+				const ast: any = Sk.astFromParse(parse.cst, "", parse.flags);
+				const parsedLines: Array<any> = ast.body;
+			
+				EditorUtilities.blocklyInstance.clear();
 
+				parsedLines.forEach((line: any) => {
+					if (EditorUtilities.blocklyInstance) {
+						this.generateBlocks(line, line.lineno, lines);
+					}
+				});
+			}
 		}
 	}
 }
