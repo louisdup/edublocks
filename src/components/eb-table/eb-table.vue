@@ -1,44 +1,86 @@
 <template>
-  <div class="space-y-4">
+  <div class="w-full space-y-4">
     <eb-heading
       v-if="label"
       :label="label"
-      size="small"
+      size="normal"
       color="gray"
-      weight="semibold"
+      weight="medium"
     />
 
-    <div class="w-full">
-      <table class="w-[calc(100%+0.75rem)] -ml-3">
-        <thead>
-          <tr>
-            <th
-              v-for="header in headers"
-              :key="header.label"
-              class="pb-3.5 pl-4 pr-3 text-left text-sm font-medium text-gray-500 sm:pl-6 md:pl-0"
+    <div class="w-full bg-white rounded-lg shadow-sm p-2 space-y-2">
+      <button
+        v-for="item in items"
+        :key="item.title"
+        class="w-full p-3 flex items-center text-left space-x-4 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none transition-colors rounded-md group"
+      >
+        <div
+          v-if="item.thumbnail"
+          class="h-9 w-9 rounded-lg bg-gray-100 flex items-center justify-center flex-none"
+        >
+          <img
+            :src="item.thumbnail"
+            class="w-4"
+          >
+        </div>
+        <div class="text-sm leading-6 items-center overflow-hidden">
+          <h1 class="font-medium text-gray-900">
+            {{ item.title }}
+          </h1>
+          <div class="flex text-xs space-x-2 text-gray-500">
+            <div
+              v-for="(metadata, index) in item.meta"
+              :key="metadata.key"
+              class="flex items-center space-x-2 overflow-hidden"
             >
-              <span
-                v-if="!header.hidden"
-                class="px-3"
-              >
-                {{ header.label }}
-              </span>
-            </th>
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-gray-200">
-          <slot />
-        </tbody>
-      </table>
+              <p class="truncate">
+                {{ metadata.label }}
+              </p>
+              <div
+                v-if="index !== item.meta.length - 1"
+                class="h-1 w-1 rounded-full bg-gray-400"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          v-if="item.dropdownOptions"
+          class="!ml-auto hidden group-hover:block group-focus:block pl-4"
+        >
+          <eb-dropdown
+            :options="item.dropdownOptions"
+            placement="bottom-end"
+          >
+            <button class="bg-white h-7 w-7 rounded-md transition-all flex items-center justify-center text-gray-900 shadow-sm">
+              <eb-icon :icon="['far', 'ellipsis']" />
+            </button>
+          </eb-dropdown>
+        </div>
+      </button>
+
+      <div v-if="isLoading">
+        <div
+          v-for="item in 5"
+          :key="item"
+          class="w-full p-3 flex items-center space-x-4 rounded-md animate-pulse"
+        >
+          <div class="h-9 w-9 rounded-lg bg-gray-200" />
+          <div class="space-y-0.5">
+            <div class="h-4 w-24 bg-gray-200" />
+            <div class="h-4 w-72 bg-gray-100" />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { EbTableHeader } from "./eb-table-types";
+import { EbTableItem } from "./eb-table-types";
 
 defineProps<{
 	label?: string;
-	headers: Array<EbTableHeader>;
+	items: Array<EbTableItem>;
+	isLoading?: boolean;
 }>();
 </script>

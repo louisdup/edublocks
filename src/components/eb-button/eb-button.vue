@@ -1,10 +1,10 @@
 <template>
-  <button :class="component.variants({ size, color, isFullWidth, isDisabled })">
+  <button :class="component.variants({ align, size, color, isFullWidth, isDisabled })">
     <template v-if="!isLoading">
       <eb-icon
         v-if="icon"
         :icon="icon"
-        :color="iconColor ? iconColor : 'white'"
+        :color="component.getIconColor(color)"
         class="text-lg"
         :class="label ? '-ml-1 mr-3' : ''"
       />
@@ -18,7 +18,7 @@
     </template>
     <template v-else>
       <svg
-        class="animate-spin h-5 w-5 text-gray-100"
+        class="animate-spin h-5 w-5 text-white"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
@@ -42,20 +42,17 @@
 </template>
 
 <script setup lang="ts">
-import { Data } from "../types";
-import { EbButtonModel } from "./eb-button-model";
+import { component } from "./eb-button-model";
 
-const props: Data = defineProps<{
+defineProps<{
 	label?: string;
 	icon?: Array<string>;
 	image?: string;
-	iconColor?: string;
+	align?: string;
 	size?: string;
 	color?: string;
 	isLoading?: boolean;
 	isFullWidth?: boolean;
 	isDisabled?: boolean;
 }>();
-
-const component: EbButtonModel = new EbButtonModel(props);
 </script>

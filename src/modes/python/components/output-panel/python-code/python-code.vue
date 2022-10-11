@@ -2,7 +2,7 @@
   <div class="h-full w-full overflow-hidden rounded-md">
     <div
       v-if="isResizing"
-      class="h-full w-full bg-gray-900 rounded-md"
+      class="h-full w-full bg-[#282c34] rounded-md"
     />
     <codemirror
       v-model="component.getCurrentProjectCode().value"

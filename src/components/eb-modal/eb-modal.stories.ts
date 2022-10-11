@@ -41,7 +41,7 @@ const template: Story = (args: ArgTypes) => {
 				</eb-modal-content>
 				<eb-modal-footer align="right">
 					<eb-button label="Button" color="white" />
-					<eb-button label="Button" color="pink" />
+					<eb-button label="Button" color="blue" />
 				</eb-modal-footer>
 			</eb-modal />
 		`
@@ -60,5 +60,5 @@ withIcon.args = {
 	title: "Modal Title",
 	align: "center",
 	icon: ["fas", "plus"],
-	iconColor: "pink"
+	iconColor: "blue"
 };

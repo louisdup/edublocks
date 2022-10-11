@@ -21,7 +21,7 @@
           v-if="modelValue === option.key"
           :icon="['fas', 'check-circle']"
           class="absolute top-4 right-4"
-          color="pink"
+          color="blue"
         />
       </button>
     </div>

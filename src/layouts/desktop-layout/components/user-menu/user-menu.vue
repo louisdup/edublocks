@@ -26,22 +26,15 @@
     />
   </eb-dropdown>
 
-  <button
+  <eb-button
     v-else
-    class="flex items-center space-x-4 rounded-md p-4 text-left text-gray-200 outline-none focus:ring-2 focus:ring-navy-400 focus:ring-offset-2 focus:ring-offset-navy-500 cursor-pointer hover:bg-white/10 focus:bg-white/10 transition-all"
+    :label="component.getText('login')"
+    :icon="['far', 'arrow-right-to-arc']"
+    align="left"
+    color="transparent"
+    is-full-width
     @click="component.onLoginClicked()"
-  >
-    <div class="flex h-5 w-5 items-center justify-center">
-      <eb-icon
-        :icon="['far', 'arrow-right-to-arc']"
-        class="fa-fw text-xl"
-        color="white"
-      />
-    </div>
-    <span class="w-44 text-sm font-medium"> 
-      {{ component.getText("login") }}
-    </span>
-  </button>
+  />
 </template>
 
 <script setup lang="ts">

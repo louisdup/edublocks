@@ -7,7 +7,6 @@ export default {
 	argTypes: {
 		color: {
 			options: [
-				"pink",
 				"white",
 				"green",
 				"navy",

@@ -9,8 +9,8 @@ import modals from "./modals";
 
 // Import third-party plugins
 import firebase from "firebase/compat/app";
-import { autoAnimatePlugin } from "@formkit/auto-animate/vue";
 import "@splidejs/vue-splide/css";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 // Import providers
 import "@/data/providers/icon-provider";
@@ -30,7 +30,7 @@ function startApplication(): void {
 		.use(components)
 		.use(modals)
 		.use(layouts)
-		.use(autoAnimatePlugin)
+		.component("font-awesome-icon", FontAwesomeIcon)
 		.mount("#app");
 }
 

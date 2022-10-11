@@ -1,4 +1,4 @@
-<category name="Statements" colour="#F89621" css-icon="customIcon fas fa-exclamation">
+<category name="Statements" colour="#F89621" css-icon="customIcon fad fa-exclamation">
   <block type="webvarprint">
     <value name="var">
       <shadow type="stringinline">

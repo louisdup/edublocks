@@ -9,8 +9,14 @@ class EduBlocksCategory extends Blockly.ToolboxCategory {
 		const category: Element | null = this.rowDiv_; 
 		if (category) {
 			const icon: HTMLSpanElement | null = category.getElementsByClassName("customIcon")[0] as HTMLSpanElement;
+			const iconParentNode: ParentNode = icon.parentNode as ParentNode;
+			const wrapper: HTMLDivElement = document.createElement("div");
+
 			if (icon) {
-				icon.style.backgroundColor = colour;
+				wrapper.classList.add("customIconWrapper");
+				wrapper.style.backgroundColor = colour;
+				iconParentNode.replaceChild(wrapper, icon);
+				wrapper.appendChild(icon);
 			}
 		}
 	}

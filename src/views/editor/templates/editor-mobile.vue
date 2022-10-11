@@ -8,23 +8,7 @@
       :is-expanded="view.isOutputPanelExpanded().value"       
       @on-expanded-click="view.onOutputPanelExpanded()"
     >
-      <eb-v-stack
-        :spacing="4"
-        is-full-height
-      >
-        <!-- Output Panel Tabs -->
-        <eb-tabs
-          :options="view.getOutputTabsForCurrentMode()"
-          :active="view.getOutputPanelActiveTabKey()"
-          @on-tab-clicked="view.onOutputPanelTabClicked($event)"
-        />
-            
-        <!-- Output Panel Component -->
-        <component
-          :is="view.getOutputPanelActiveComponent()"
-          :is-resizing="view.state.isSplitViewBeingResized"
-        />
-      </eb-v-stack>
+      <output-panel :is-resizing="view.state.isSplitViewBeingResized" />
     </eb-sheet>
   </editor-mobile-layout>
 </template>
@@ -32,4 +16,5 @@
 <script setup lang="ts">
 import { view } from "../editor-model";
 import Blockly from "../components/blockly/blockly.vue";
+import OutputPanel from "../components/output-panel/output-panel.vue";
 </script>

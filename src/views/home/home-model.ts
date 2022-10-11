@@ -9,12 +9,11 @@ import { FirestoreProjectModel } from "@/data/models/firestore-project-model";
 import * as ShowcaseProvider from "@/data/providers/showcase-provider";
 import * as ProjectsProvider from "@/data/providers/projects-provider";
 import { ProjectsUtilities } from "@/utilities/projects-utilities";
-import { EbTableHeader } from "@/components/eb-table/eb-table-types";
 import { EditorUtilities } from "@/utilities/editor-utilities";
 import router from "@/router";
 import { ModeModelBase } from "@/modes/base-classes/mode-model-base";
 import { FilenameUtilities } from "@/utilities/filename-utilities";
-import { ModalUtilities } from "@/utilities/modal-utilities";
+import { EbTableItem } from "@/components/eb-table/eb-table-types";
 
 /**
  * View model for the home view.
@@ -63,7 +62,7 @@ class HomeModel extends ViewModelBase {
 	/**
 	 * Loads 10 projects from the showcase to display on the homepage.
 	 */
-	public loadShowcaseProjects(): void {
+	private loadShowcaseProjects(): void {
 		this.state.isLoadingShowcaseProjects = true;
 
 		ShowcaseProvider.getShowcaseProjectsAsync(10).then((response: FetchResponse<Array<ShowcaseProjectModel>>) => {
@@ -82,13 +81,13 @@ class HomeModel extends ViewModelBase {
 	}
 
 	/**
-	 * Loads 10 recent projects belonging to the current user to display on the homepage.
+	 * Loads 5 recent projects belonging to the current user to display on the homepage.
 	 */
-	public loadRecentProjects(): void {
+	private loadRecentProjects(): void {
 		this.state.isLoadingRecentProjects = true;
 		
 		if (this.isCurrentUserLoggedIn()) {
-			ProjectsProvider.getProjectsAsync(10).then((response: FetchResponse<Array<FirestoreProjectModel>>) => {
+			ProjectsProvider.getProjectsAsync(5).then((response: FetchResponse<Array<FirestoreProjectModel>>) => {
 				if (response.wasSuccessful && response.data) {
 					this.state.recentProjects = response.data;
 				}
@@ -98,17 +97,17 @@ class HomeModel extends ViewModelBase {
 	}
 
 	/**
-	 * Returns a list of headers for the recent projects table.
+	 * Returns a recent projects for the recent projects table.
 	 */
-	public getRecentProjectsTableHeaders(): Array<EbTableHeader> {
-		return ProjectsUtilities.getProjectsTableHeaders();
+	public getRecentProjects(): Array<EbTableItem> {
+		return ProjectsUtilities.remapProjectsForTable(this.state.recentProjects);
 	}
 
 	/**
-	 * Returns a list of options for a project dropdown.
+	 * True if projects are loading.
 	 */
-	public getProjectDropdownOptions(project: FirestoreProjectModel): Array<Array<EbDropdownOption>> {
-		return ProjectsUtilities.getProjectDropdownOptions(project);
+	public isProjectsTableLoading(): boolean {
+		return this.state.isLoadingRecentProjects;
 	}
 
 	/**
@@ -126,16 +125,6 @@ class HomeModel extends ViewModelBase {
 		});
 
 		router.push("/editor");
-	}
-
-	/**
-	 * Called when the new project button is clicked.
-	 * Opens the "Create Project" modal.
-	 */
-	public onNewProjectClicked(): void {
-		ModalUtilities.showModal({
-			modal: "CreateProject"
-		});
 	}
 }
 

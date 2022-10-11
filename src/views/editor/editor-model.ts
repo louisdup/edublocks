@@ -1,8 +1,8 @@
 import { EditorButtonModel } from "@/data/models/editor-button-model";
-import { EditorOutputTabModel } from "@/data/models/editor-output-tab-model";
+import { EditorSidebarTabModel } from "@/data/models/editor-sidebar-tab-model";
 import { EditorUtilities } from "@/utilities/editor-utilities";
 import { TextToBlocksUtilities } from "@/utilities/text-to-blocks-utilities";
-import { Component, markRaw, reactive, Ref } from "vue";
+import { reactive, Ref } from "vue";
 import { ViewModelBase } from "../base-classes/view-model-base";
 import { EditorState } from "./editor-state";
 
@@ -33,7 +33,7 @@ class EditorModel extends ViewModelBase {
 	/**
 	 * Checks for any changes in the blockly workspace and updates the current project code.
 	 */
-	public checkForBlocklyChanges(): void {
+	private checkForBlocklyChanges(): void {
 		if (EditorUtilities.blocklyInstance ) {
 			EditorUtilities.blocklyInstance.addChangeListener(() => {
 				if (EditorUtilities.blocklyInstance && EditorUtilities.currentProject) {
@@ -62,77 +62,35 @@ class EditorModel extends ViewModelBase {
 	}
 
 	/**
-	 * Returns a list of tabs that could be displayed in the output panel.
+	 * True if the sidebar is expanded.
 	 */
-	public getOutputTabsForCurrentMode(): Array<EditorOutputTabModel> | undefined {
-		if (EditorUtilities.currentProject) {
-			EditorUtilities.currentProject.mode.outputPanelTabs.value.forEach((tab: EditorOutputTabModel) => {
-				tab.label = this.getText(tab.key);
-			});
-			return EditorUtilities.currentProject.mode.outputPanelTabs.value;
-		}
-		else {
-			return undefined;
-		}
-	}
-
-	/**
-	 * Returns the currently active output panel tab.
-	 */
-	public getActiveOutputPanelTab(): EditorOutputTabModel | undefined {
-		if (EditorUtilities.currentProject) {
-			return EditorUtilities.currentProject.mode.outputPanelTabs.value.filter((tab: EditorOutputTabModel) => {
-				return tab.active;
-			})[0];
-		}
-		else {
-			return undefined;
-		}
-	}
-
-	/**
-	 * Called when the user clicks on an output panel tab.
-	 * Sets the tab to active and calls it's action function.
-	 */
-	public onOutputPanelTabClicked(clickedTab: EditorOutputTabModel): void {
-		EditorUtilities.currentProject.mode.outputPanelTabs.value.forEach((tab: EditorOutputTabModel) => {
-			if (clickedTab.key === tab.key) {
-				tab.active = true;
-			}
-			else {
-				tab.active = false;
-			}
+	public isSidebarExpanded(): boolean {
+		const activeTabs: Array<EditorSidebarTabModel> = EditorUtilities.currentProject.mode.sidebarTabs.value.filter((tab: EditorSidebarTabModel) => {
+			return tab.active;
 		});
 
-		clickedTab.action();
+		return activeTabs.length === 1;
 	}
 
 	/**
-	 * Returns a component to display in the output panel based on the active tab.
+	 * Returns the size of the sidebar.
 	 */
-	public getOutputPanelActiveComponent(): Component | undefined {
-		const activeTab: EditorOutputTabModel | undefined = this.getActiveOutputPanelTab();
-
-		if (activeTab) {
-			return markRaw(activeTab.component);
-		}
-		else {
-			return undefined;
-		}
+	public getSidebarSize(): string {
+		return this.isSidebarExpanded() ? "28rem" : "4.20rem";
 	}
 
 	/**
-	 * Returns a key for the active output panel tab.
+	 * Returns the minimum size of the sidebar.
 	 */
-	public getOutputPanelActiveTabKey(): string | undefined {
-		const activeTab: EditorOutputTabModel | undefined = this.getActiveOutputPanelTab();
+	public getSidebarMinimumSize(): string {
+		return "4.20rem";
+	}
 
-		if (activeTab) {
-			return activeTab.key;
-		}
-		else {
-			return undefined;
-		}
+	/**
+	 * Returns the maximum size of the sidebar.
+	 */
+	public getSidebarMaximumSize(): string {
+		return this.isSidebarExpanded() ? "100%" : "4.20rem";
 	}
 
 	/**
@@ -160,7 +118,7 @@ class EditorModel extends ViewModelBase {
 	/**
 	 * Fire a resize event to blockly.
 	 */
-	public resizeBlockly(): void {
+	private resizeBlockly(): void {
 		setTimeout(() => {
 			if (EditorUtilities.blocklyInstance) {
 				Blockly.svgResize(EditorUtilities.blocklyInstance);

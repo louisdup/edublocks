@@ -23,13 +23,13 @@ export class DesktopNavModel extends ComponentModelBase {
 			{
 				key: "home",
 				title: this.getText("home"),
-				icon: ["fad", "home"],
+				icon: ["far", "home"],
 				href: "/"
 			},
 			{
 				key: "editor",
 				title: this.getText("editor"),
-				icon: ["fad", "code"],
+				icon: ["far", "code"],
 				action: (): void => {
 					ModalUtilities.showModal({
 						modal: "CreateProject"
@@ -39,25 +39,25 @@ export class DesktopNavModel extends ComponentModelBase {
 			{
 				key: "projects",
 				title: this.getText("projects"),
-				icon: ["fad", "folder-open"],
+				icon: ["far", "folder-open"],
 				href: "/projects"
 			},
 			{
 				key: "showcase",
 				title: this.getText("showcase"),
-				icon: ["fad", "film"],
+				icon: ["far", "film"],
 				href: "/showcase"
 			},
 			{
 				key: "learn",
 				title: this.getText("learn"),
-				icon: ["fad", "book-open"],
+				icon: ["far", "book-open"],
 				href: "/learn"
 			},
 			{
 				key: "classroom",
 				title: this.getText("classroom"),
-				icon: ["fad", "users"],
+				icon: ["far", "users"],
 				href: "/classroom"
 			},
 		];

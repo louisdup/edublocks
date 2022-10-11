@@ -1,5 +1,5 @@
 <template>
-  <p class="text-sm text-pink-500 font-medium cursor-pointer hover:opacity-80 transition-opacity">
+  <p class="text-sm text-blue-500 font-medium cursor-pointer hover:opacity-80 transition-opacity">
     {{ label }}
   </p>
 </template>

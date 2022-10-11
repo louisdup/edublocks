@@ -1,15 +1,15 @@
 <template>
-  <div class="h-screen w-screen bg-gray-100 flex flex-col">
-    <div class="h-full w-full flex">
+  <div class="h-screen w-screen bg-gray-100 flex flex-col overflow-hidden">
+    <desktop-header />
+    
+    <div class="h-full w-full flex overflow-hidden">
       <desktop-nav />
       <div
-        class="h-full w-full overflow-y-auto px-10"
+        class="h-full w-full flex flex-col overflow-y-auto"
         @scroll="$emit('scroll', $event)"
       >
-        <div class="h-full w-full max-w-7xl mx-auto">
-          <div class="py-8 space-y-8">
-            <slot />
-          </div>
+        <div class="w-full p-10 max-w-5xl mx-auto space-y-8">
+          <slot />
         </div>
       </div>
     </div>
@@ -34,6 +34,7 @@
 <script setup lang="ts">
 import DesktopNav from "./components/desktop-nav/desktop-nav.vue";
 import { state } from "@/data/state";
+import DesktopHeader from "./components/desktop-header/desktop-header.vue";
 
 defineEmits(["scroll"]);
 </script>

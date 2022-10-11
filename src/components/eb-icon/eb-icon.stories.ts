@@ -14,7 +14,6 @@ export default {
 				"blue",
 				"green",
 				"orange",
-				"pink"
 			],
 			control: {
 				 type: "select" 
@@ -26,7 +25,6 @@ export default {
 				"blue",
 				"green",
 				"orange",
-				"pink",
 				"transparent"
 			],
 			control: {

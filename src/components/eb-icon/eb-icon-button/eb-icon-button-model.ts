@@ -15,14 +15,20 @@ class EbIconButtonModel extends ComponentModelBase {
 	/**
 	 * Returns list of classes for a specific icon button variant.
 	 */
-	public variants: Function = cva(["h-12", "w-12", "rounded-md", "flex", "flex-none", "items-center", "justify-center", "cursor-pointer", "transition-all"], {
+	public variants: Function = cva(["h-12", "w-12", "rounded-lg", "flex", "flex-none", "items-center", "justify-center", "hover:bg-gray-100", "cursor-pointer", "transition-all"], {
 		variants: {
 			isActive: {
-				true: "bg-gray-200",
-				false: "hover:bg-gray-200 hover:opacity-100 opacity-70"
+				true: "bg-gray-100"
 			}
 		}
 	});
+
+	/**
+	 * Returns a color for the icon based on whether the button is active or not.
+	 */
+	public getIconColor(active?: boolean, color?: string): string | undefined {
+		return active ? "blue" : color;
+	}
 }
 
 // Export the component model

@@ -1,5 +1,6 @@
 import { EditorButtonModel } from "@/data/models/editor-button-model";
 import { EditorOutputTabModel } from "@/data/models/editor-output-tab-model";
+import { EditorSidebarTabModel } from "@/data/models/editor-sidebar-tab-model";
 import { ModeConfigModel } from "@/data/models/mode-config-model";
 import { TextToBlocksDefinitionModel } from "@/data/models/text-to-blocks-definition-model";
 import { EditorUtilities } from "@/utilities/editor-utilities";
@@ -49,6 +50,11 @@ export abstract class ModeModelBase {
 	 * Returns a list of buttons to display in the header of the editor.
 	 */
 	public abstract headerButtons: Ref<Array<EditorButtonModel>>;
+
+	/**
+	 * Returns a list of tabs that could be displayed in the sidebar.
+	 */
+	public abstract sidebarTabs: Ref<Array<EditorSidebarTabModel>>;
 
 	/**
 	 * Returns a list of tabs that could be displayed in the output panel.

@@ -1,6 +1,6 @@
 import { Meta, Story, ArgTypes } from "@storybook/vue3";
 import EbTable from "./eb-table.vue";
-import { EbTableHeader } from "./eb-table-types";
+import { EbTableItem } from "./eb-table-types";
 
 export default {
 	title: "Table",
@@ -15,44 +15,73 @@ const template: Story = (args: ArgTypes) => {
 		setup(): ArgTypes {
 			return { args };
 		},
-		template: `
-			<eb-table v-bind="args">
-				<eb-table-row>
-					<eb-table-cell>
-						<eb-list-item 
-							left-title="Title"
-							left-subtitle="Subtitle"
-							thumbnail="/images/modes/html/logo.svg"
-						/>
-					</eb-table-cell>
-					<eb-table-cell>
-						<eb-label label="Label 2"/>
-					</eb-table-cell>
-					<eb-table-cell>
-						<eb-label label="Label 3"/>
-					</eb-table-cell>
-					<eb-table-cell>
-						<eb-label label="Hidden Column"/>
-					</eb-table-cell>
-				</eb-table-row>
-			</eb-table>
-		`
+		template: `<eb-table v-bind="args"/>`
 	};
 };
 
-const tableHeaders: Array<EbTableHeader> = [
+const tableItems: Array<EbTableItem> = [
 	{
-		label: "Header 1"
+		title: "Item 1",
+		thumbnail: "/images/modes/html/logo.svg",
+		meta: [
+			{
+				key: "meta-1",
+				label: "Meta Item 1"
+			},
+			{
+				key: "meta-2",
+				label: "Meta Item 2"
+			},
+			{
+				key: "meta-3",
+				label: "Meta Item 3"
+			},
+		],
+		action: (): void => {
+			//
+		}
 	},
 	{
-		label: "Header 2"
+		title: "Item 2",
+		thumbnail: "/images/modes/html/logo.svg",
+		meta: [
+			{
+				key: "meta-1",
+				label: "Meta Item 1"
+			},
+			{
+				key: "meta-2",
+				label: "Meta Item 2"
+			},
+			{
+				key: "meta-3",
+				label: "Meta Item 3"
+			},
+		],
+		action: (): void => {
+			//
+		}
 	},
 	{
-		label: "Header 3"
-	},
-	{
-		label: "Header 4",
-		hidden: true
+		title: "Item 3",
+		thumbnail: "/images/modes/html/logo.svg",
+		meta: [
+			{
+				key: "meta-1",
+				label: "Meta Item 1"
+			},
+			{
+				key: "meta-2",
+				label: "Meta Item 2"
+			},
+			{
+				key: "meta-3",
+				label: "Meta Item 3"
+			},
+		],
+		action: (): void => {
+			//
+		}
 	}
 ];
 
@@ -60,5 +89,5 @@ export const primary: Story = template.bind({});
 
 primary.args = {
 	label: "Heading",
-	headers: tableHeaders
+	items: tableItems
 };

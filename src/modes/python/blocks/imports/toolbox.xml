@@ -1,4 +1,4 @@
-<category name="Imports" colour="#E71D64" css-icon="customIcon fas fa-upload">
+<category name="Imports" colour="#E71D64" css-icon="customIcon fad fa-upload">
   <block type="import_time"></block>
   <block type="import_math"></block>
   <block type="random"></block>

@@ -3,7 +3,7 @@
     <eb-modal-header
       :title="modal.getText('rename-project')"
       :icon="['far', 'pencil']"
-      icon-color="pink"
+      icon-color="blue"
       align="center"
       @close="modal.onCloseClicked()"
     />
@@ -31,7 +31,7 @@
       />
       <eb-button
         :label="modal.getText('rename-project')"
-        color="pink"
+        color="blue"
         :is-loading="modal.isRenameProjectButtonLoading()"
         :is-disabled="modal.isRenameProjectButtonDisabled()"
         @click="modal.onRenameClicked(project)"

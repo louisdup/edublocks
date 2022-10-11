@@ -1,8 +1,8 @@
 <template>
   <div class="h-screen w-screen flex flex-col overflow-hidden">
     <editor-desktop-header :buttons="headerButtons" />
-    <div class="h-full w-full flex flex-col p-4 bg-gray-200">
-      <div class="h-full w-full flex space-x-4">
+    <div class="h-full w-full flex flex-col bg-white">
+      <div class="h-full w-full flex">
         <slot />
       </div>
     </div>

@@ -17,23 +17,19 @@ import EbModalFooter from "./eb-modal/eb-modal-footer/eb-modal-footer.vue";
 import EbDropdown from "./eb-dropdown/eb-dropdown.vue";
 import EbInput from "./eb-input/eb-input.vue";
 import EbLink from "./eb-link/eb-link.vue";
-import EbList from "./eb-list/eb-list.vue";
-import EbListItem from "./eb-list/eb-list-item/eb-list-item.vue";
 import EbTable from "./eb-table/eb-table.vue";
-import EbTableRow from "./eb-table/eb-table-row/eb-table-row.vue";
-import EbTableCell from "./eb-table/eb-table-cell/eb-table-cell.vue";
 import EbLabel from "./eb-label/eb-label.vue";
 import EbVStack from "./eb-v-stack/eb-v-stack.vue";
 import EbHStack from "./eb-h-stack/eb-h-stack.vue";
 import EbSearch from "./eb-search/eb-search.vue";
 import EbIconButton from "./eb-icon/eb-icon-button/eb-icon-button.vue";
 import EbTabs from "./eb-tabs/eb-tabs.vue";
-import EbContainer from "./eb-container/eb-container.vue";
 import EbSplitView from "./eb-split-view/eb-split-view.vue";
 import EbSplitViewPane from "./eb-split-view/eb-split-view-pane/eb-split-view-pane.vue";
 import EbSheet from "./eb-sheet/eb-sheet.vue";
 import EbRadioGroup from "./eb-radio-group/eb-radio-group.vue";
 import EbSelect from "./eb-select/eb-select.vue";
+import EbChip from "./eb-chip/eb-chip.vue";
 
 /**
  * Export & install application components for use globally
@@ -56,22 +52,18 @@ export default {
 		app.component(ComponentName.EbDropdown, EbDropdown);
 		app.component(ComponentName.EbInput, EbInput);
 		app.component(ComponentName.EbLink, EbLink);
-		app.component(ComponentName.EbList, EbList);
-		app.component(ComponentName.EbListItem, EbListItem);
 		app.component(ComponentName.EbTable, EbTable);
-		app.component(ComponentName.EbTableRow, EbTableRow);
-		app.component(ComponentName.EbTableCell, EbTableCell);
 		app.component(ComponentName.EbLabel, EbLabel);
 		app.component(ComponentName.EbVStack, EbVStack);
 		app.component(ComponentName.EbHStack, EbHStack);
 		app.component(ComponentName.EbSearch, EbSearch);
 		app.component(ComponentName.EbIconButton, EbIconButton);
 		app.component(ComponentName.EbTabs, EbTabs);
-		app.component(ComponentName.EbContainer, EbContainer);
 		app.component(ComponentName.EbSplitView, EbSplitView);
 		app.component(ComponentName.EbSplitViewPane, EbSplitViewPane);
 		app.component(ComponentName.EbSheet, EbSheet);
 		app.component(ComponentName.EbRadioGroup, EbRadioGroup);
 		app.component(ComponentName.EbSelect, EbSelect);
+		app.component(ComponentName.EbChip, EbChip);
 	}
 };

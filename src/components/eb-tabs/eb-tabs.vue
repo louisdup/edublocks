@@ -4,13 +4,14 @@
       v-for="option in options"
       :key="option"
     >
-      <eb-button
+      <button
         v-if="option.visible !== false"
-        :label="option.label"
-        :color="component.getButtonColor(active, option.key)"
-        size="sm"
+        class="px-3 py-2 font-medium text-sm rounded-md transition-colors"
+        :class="component.getOptionActiveClassList(active, option.key)"
         @click="$emit('onTabClicked', option)"
-      />
+      >
+        {{ option.label }}
+      </button>
     </template>
   </div>
 </template>

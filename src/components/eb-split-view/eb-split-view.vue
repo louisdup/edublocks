@@ -1,5 +1,5 @@
 <template>
-  <splitpanes class="default-theme">
+  <splitpanes>
     <slot />
   </splitpanes>
 </template>
@@ -9,18 +9,20 @@ import { Splitpanes } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
 </script>
 
-<style>
-.splitpanes__splitter{    
-    width: 1rem !important;
-    background-color: #e5e7eb !important;
-    border-left: transparent !important;
+<style lang="postcss">
+.splitpanes__splitter {
+  @apply relative;
 }
 
-.splitpanes__pane {
-    background-color: transparent !important;
+.splitpanes__splitter:before {
+  content: '';
+  @apply absolute left-0 top-0 z-10;
+}
+.splitpanes--vertical > .splitpanes__splitter:before {
+  @apply -left-2 -right-2 h-full;
 }
 
 .splitpanes--vertical .splitpanes__pane {
-  transition: none !important;
+  @apply !transition-none;
 }
 </style>

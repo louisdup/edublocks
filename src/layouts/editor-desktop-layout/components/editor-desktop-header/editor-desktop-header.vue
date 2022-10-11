@@ -1,15 +1,16 @@
 <template>
-  <div class="h-16 w-full bg-navy-500 flex items-center justify-between flex-none px-4">
-    <div class="flex items-center space-x-4">
-      <img
-        :src="component.getLogoPath()"
-        class="h-9"
-      >
+  <div class="h-16 w-full bg-white flex items-center justify-between flex-none pl-2 pr-4 border-b border-gray-200">
+    <div class="flex items-center space-x-2">
+      <eb-button
+        :icon="['far', 'bars']"
+        size="sm"
+        color="transparent"
+      />
       <eb-button
         :label="component.getCurrentProjectName()"
         :image="component.getCurrentModeLogo()"
         size="sm"
-        color="semiTransparent"
+        color="gray"
       />
     </div>
     <div class="flex items-center overflow-hidden space-x-4">

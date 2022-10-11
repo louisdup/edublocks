@@ -11,7 +11,7 @@
     </label>
     <div class="mt-2">
       <select
-        class="mt-1 block w-full rounded-md py-2.5 pl-4 pr-10 text-base focus:border-pink-500 focus:outline-none focus:ring-pink-500 sm:text-sm"
+        class="bg-gray-100 border-none mt-1 block w-full rounded-md py-2.5 pl-4 pr-10 focus:ring-gray-300 focus:outline-none text-sm"
         :class="error ? 'border-red-500' : 'border-gray-300'"
         @input="$emit('update:modelValue', component.getSelectValue($event))"
       >

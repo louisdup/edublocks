@@ -3,7 +3,6 @@
     :items="component.getItems()"
     :active="component.getActiveItem()"
     :minimize="component.shouldSidebarBeMinimized()"
-    has-logo
   >
     <user-menu :minimize="component.shouldSidebarBeMinimized()" />
   </eb-sidebar>

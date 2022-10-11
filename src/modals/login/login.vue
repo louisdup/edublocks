@@ -3,7 +3,7 @@
     <eb-modal-header
       :title="modal.getText('sign-into-account')"
       :icon="['far', 'arrow-right-to-arc']"
-      icon-color="pink"
+      icon-color="blue"
       align="center"
       @close="modal.onCloseClicked()"
     />
@@ -49,7 +49,7 @@
       />
       <eb-button
         :label="modal.getText('login')"
-        color="pink"
+        color="blue"
         :is-disabled="modal.isLoginButtonDisabled()"
         :is-loading="modal.isLoginButtonLoading()"
         @click="modal.onLoginClicked()"

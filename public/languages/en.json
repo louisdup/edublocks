@@ -7,6 +7,9 @@
         "learn": "Learn",
         "classroom": "Classroom"
     },
+    "desktop-header": {
+        "new": "New"
+    },
     "home": {
         "home": "Home",
         "new-project": "New Project",
@@ -14,8 +17,7 @@
         "showcase": "Showcase",
         "recent-projects": "Recent Projects",
         "text": "Text",
-        "blocks": "Blocks",
-        "blank-project": "Blank Project"
+        "blocks": "Blocks"
     },
     "delete-project": {
         "delete-project": "Delete Project",
@@ -85,6 +87,7 @@
         "new-project": "New Project",
         "text": "Text",
         "blocks": "Blocks",
+        "edited": "Edited {1}",
         "search-projects": "Search Projects..."
     },
     "format": {
@@ -108,10 +111,11 @@
         "share": "Share",
         "save": "Save",
         "run": "Run",
-        "stop": "Stop",
+        "stop": "Stop"
+    },
+    "output-panel": {
         "code": "Code",
         "repl": "REPL",
-        "output": "Output",
-        "simulator": "Simulator"
+        "output": "Output"
     }
 }

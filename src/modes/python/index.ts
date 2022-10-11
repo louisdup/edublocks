@@ -7,9 +7,12 @@ import { EditorUtilities } from "@/utilities/editor-utilities";
 import { TextToBlocksUtilities } from "@/utilities/text-to-blocks-utilities";
 import { TextToBlocksDefinitionModel } from "@/data/models/text-to-blocks-definition-model";
 
+// Sidebar Components
+import ProjectSettings from "@/modes/common/components/sidebar/project-settings/project-settings.vue";
+
 // Output Panel Components
-import PythonCode from "./components/python-code/python-code.vue";
-import PythonOutput from "./components/python-output/python-output.vue";
+import PythonCode from "./components/output-panel/python-code/python-code.vue";
+import PythonOutput from "./components/output-panel/python-output/python-output.vue";
 
 // Import Blocks
 import "./blocks/common/definitions";
@@ -33,6 +36,7 @@ import "./blocks/loops/definitions";
 import "./blocks/loops/generators";
 import loops from "./blocks/loops/toolbox.xml?raw";
 import loopsDefinitions from "./blocks/loops/text-to-blocks";
+import { EditorSidebarTabModel } from "@/data/models/editor-sidebar-tab-model";
 
 /** 
  * Mode model for the python mode.
@@ -93,7 +97,7 @@ export class PythonModel extends ModeModelBase {
 		{
 			key: "share",
 			icon: ["far", "share"],
-			color: "semiTransparent",
+			color: "gray",
 			action: (): void => {
 				//
 			}
@@ -101,7 +105,7 @@ export class PythonModel extends ModeModelBase {
 		{
 			key: "save",
 			icon: ["far", "save"],
-			color: "semiTransparent",
+			color: "gray",
 			action: (): void => {
 				//
 			}
@@ -109,7 +113,7 @@ export class PythonModel extends ModeModelBase {
 		{
 			key: "run",
 			icon: ["fas", "play"],
-			color: "green",
+			color: "blue",
 			action: (): void => {
 				this.runPythonCode();
 			}
@@ -132,20 +136,23 @@ export class PythonModel extends ModeModelBase {
 		{
 			key: "code",
 			component: PythonCode,
-			active: true,
-			visible: true,
-			action: (): void => {
-				//
-			}
+			active: true
 		},
 		{
 			key: "output",
 			component: PythonOutput,
-			active: false,
-			visible: false,
-			action: (): void => {
-				//
-			}
+			visible: false
+		}
+	]);
+
+	/**
+	 * Returns a list of tabs to display in the sidebar for python.
+	 */
+	public sidebarTabs: Ref<Array<EditorSidebarTabModel>> = ref([
+		{
+			key: "project-settings",
+			icon: ["far", "file"],
+			component: ProjectSettings
 		}
 	]);
 

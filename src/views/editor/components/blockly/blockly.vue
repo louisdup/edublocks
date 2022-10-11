@@ -1,12 +1,12 @@
 <template>
   <div
     v-show="isResizing"
-    class="h-full w-full bg-gray-50 rounded-md border border-gray-300"
+    class="h-full w-full bg-gray-200"
   />
   <div
     v-show="!isResizing"
     id="blocklyDiv"
-    :class="component.variants({ isRounded })" 
+    class="h-full w-full border-l border-gray-200"
   />
 </template>
 
@@ -16,7 +16,6 @@ import { component } from "./blockly-model";
 
 defineProps<{
 	isResizing?: boolean;
-	isRounded?: boolean;
 }>();
 
 onMounted(() => {
@@ -26,7 +25,7 @@ onMounted(() => {
 
 <style lang="postcss">
 .blocklySvg {
-  @apply border-none rounded-none sm:rounded-md bg-gray-50;
+  @apply border-none rounded-none bg-gray-200;
 }
 
 .blocklyMainBackground {
@@ -34,11 +33,11 @@ onMounted(() => {
 }
 
 .blocklyToolboxDiv {
-  @apply bg-gray-100 text-gray-900 rounded-none sm:rounded-l-md border-r border-gray-300;
+  @apply bg-white;
 }
 
 .blocklyTreeLabel {
-  @apply text-gray-900 font-sans font-medium text-sm md:block hidden;
+  @apply text-gray-500 font-sans font-medium text-sm md:block hidden;
 }
 
 .blocklyToolboxContents {
@@ -46,15 +45,19 @@ onMounted(() => {
 }
 
 .blocklyTreeRow {
-  @apply !p-2 !pl-1 rounded-md w-full h-full flex items-center justify-center cursor-pointer transition-all mb-2;
+  @apply !p-2 rounded-lg w-full h-full flex items-center cursor-pointer transition-all !mb-1;
+}
+
+.blocklyTreeRowContentContainer { 
+  @apply !flex-row space-x-3;
 }
 
 .blocklyTreeRow:not(.blocklyTreeSelected) {
-  @apply hover:!bg-gray-200;
+  @apply hover:!bg-gray-100;
 }
 
-.customIcon {
-  @apply text-gray-100 mb-1 pt-1.5 h-7 w-7 rounded-full text-center;
+.customIconWrapper {
+  @apply text-gray-100 flex items-center justify-center h-8 w-8 rounded-lg shadow-lg text-center text-lg;
 }
 
 .blocklyTreeRowContentContainer {
@@ -66,11 +69,11 @@ onMounted(() => {
 }
 
 .blocklyFlyoutButton {
-  @apply fill-pink-500 hover:!fill-pink-400 transition-colors;
+  @apply fill-blue-500 hover:!fill-blue-400 transition-colors;
 }
 
 .blocklyFlyoutButtonBackground {
-  @apply stroke-pink-500;
+  @apply stroke-blue-500;
 }
 
 .blocklyFlyoutButton .blocklyText {

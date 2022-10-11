@@ -5,10 +5,9 @@ import { ProjectsState } from "./projects-state";
 import { FirestoreProjectModel } from "@/data/models/firestore-project-model";
 import * as ProjectsProvider from "@/data/providers/projects-provider";
 import { ProjectsUtilities } from "@/utilities/projects-utilities";
-import { EbTableHeader } from "@/components/eb-table/eb-table-types";
 import { EbDropdownOption } from "@/components/eb-dropdown/eb-dropdown-types";
 import { QueryDocumentSnapshot } from "@firebase/firestore";
-import { ModalUtilities } from "@/utilities/modal-utilities";
+import { EbTableItem } from "@/components/eb-table/eb-table-types";
 /**
  * View model for the projects view.
  */
@@ -55,7 +54,7 @@ class ProjectsModel extends ViewModelBase {
 	/**
 	 * Loads initial 20 projects belonging to the current user.
 	 */
-	public loadProjects(): void {
+	private loadProjects(): void {
 		this.state.isLoadingInitialProjects = true;
 		
 		if (this.isCurrentUserLoggedIn()) {
@@ -71,7 +70,7 @@ class ProjectsModel extends ViewModelBase {
 	/**
 	 * Loads 20 more projects and pushes them to the project list in state.
 	 */
-	public loadMoreProjects(): void {
+	private loadMoreProjects(): void {
 		this.state.isLoadingMoreProjects = true;
 
 		if (this.isCurrentUserLoggedIn()) {
@@ -89,17 +88,24 @@ class ProjectsModel extends ViewModelBase {
 	}
 
 	/**
-	 * Returns a list of headers for the projects table.
+	 * Returns a recent projects for the recent projects table.
 	 */
-	public getRecentProjectsTableHeaders(): Array<EbTableHeader> {
-		return ProjectsUtilities.getProjectsTableHeaders();
+	public getRecentProjects(): Array<EbTableItem> {
+		return ProjectsUtilities.remapProjectsForTable(this.state.projects);
 	}
 
 	/**
 	 * True if user is logged in and data layout is list.
 	 */
 	public isProjectsTableVisible(): boolean {
-		return this.isCurrentUserLoggedIn() && this.isDataLayoutList();
+		return this.isCurrentUserLoggedIn();
+	}
+
+	/**
+	 * True if projects are loading.
+	 */
+	public isProjectsTableLoading(): boolean {
+		return this.state.isLoadingInitialProjects;
 	}
 
 	/**
@@ -127,16 +133,6 @@ class ProjectsModel extends ViewModelBase {
 			if (!this.state.isLoadingInitialProjects && !this.state.isLoadingMoreProjects) {
 				this.loadMoreProjects();
 			}
-		});
-	}
-
-	/**
-	 * Called when the new project button is clicked.
-	 * Opens the "Create Project" modal.
-	 */
-	public onNewProjectClicked(): void {
-		ModalUtilities.showModal({
-			modal: "CreateProject"
 		});
 	}
 }

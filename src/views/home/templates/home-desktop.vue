@@ -1,25 +1,19 @@
 <template>
   <desktop-layout>
-    <!-- Title bar section with New Project button. -->
-    <eb-heading :label="view.getPageTitle()">
-      <!-- New Project Button -->
-      <eb-button
-        :label="view.getText('new-project')"
-        :icon="['fas', 'plus']"
-        color="pink"
-        @click="view.onNewProjectClicked()"
-      />
-    </eb-heading>
+    <!-- Page Title -->
+    <eb-heading :label="view.getPageTitle()" />
 
-    <!-- Grid of modes to create a new project. -->
-    <eb-slider :label="view.getText('create-new-project')">
+    <!-- List of modes to create a new project. --> 
+    <eb-slider
+      :label="view.getText('create-new-project')"
+      :spacing="4"
+    >
       <eb-slider-slide
         v-for="mode in view.getModes()"
         :key="mode.config.key"
       >
-        <eb-list-item 
-          :left-title="mode.config.name"
-          :left-subtitle="view.getText('blank-project')"
+        <eb-chip 
+          :title="mode.config.name"
           :thumbnail="mode.config.logo"
           is-button
           @click="view.onCreateNewProjectListItemClicked(mode)"
@@ -27,8 +21,13 @@
       </eb-slider-slide> 
     </eb-slider>
 
-    <!-- Grid of recent showcase projects. -->
-    <eb-slider :label="view.getText('showcase')">
+    <!-- List of projects from the showcase. -->
+    <eb-slider
+      :label="view.getText('showcase')"
+      margin="-3"
+      :spacing="2"
+    >
+      <!-- Loading State -->
       <eb-card
         v-for="card in 10"
         v-if="view.state.isLoadingShowcaseProjects"
@@ -36,6 +35,7 @@
         :is-loading="true"
       />
 
+      <!-- Showcase Projects -->
       <eb-slider-slide
         v-for="project in view.state.showcaseProjects"
         v-else
@@ -50,57 +50,12 @@
       </eb-slider-slide> 
     </eb-slider>
 
-    <!-- List of recent user projects, if a user is logged in. -->
+    <!-- Table of recent projects by the current user -->
     <eb-table
-      v-if="view.isCurrentUserLoggedIn()"
       :label="view.getText('recent-projects')"
-      :headers="view.getRecentProjectsTableHeaders()"
-    >
-      <eb-table-row
-        v-for="project in view.state.recentProjects"
-        :key="project.id"
-      >
-        <!-- Project Column -->
-        <eb-table-cell>
-          <eb-list-item
-            :left-title="project.name"
-            :left-subtitle="view.getModeFromKey(project.mode).config.name"
-            :thumbnail="view.getModeFromKey(project.mode).config.logo"
-            is-full-width
-          />
-        </eb-table-cell>
-        <!-- Type Column -->
-        <eb-table-cell>
-          <eb-label
-            :label="view.getText(project.type)"
-            color="gray"
-          />
-        </eb-table-cell>
-        <!-- Updated Column -->
-        <eb-table-cell>
-          <eb-label
-            :label="view.formatDate(project.updated)"
-            color="gray"
-          />
-        </eb-table-cell>
-        <!-- Size Column -->
-        <eb-table-cell>
-          <eb-label
-            :label="view.formatSize(project.size)"
-            color="gray"
-          />
-        </eb-table-cell>
-        <!-- Actions Column -->
-        <eb-table-cell class="text-right">
-          <eb-dropdown
-            :options="view.getProjectDropdownOptions(project)"
-            placement="bottom-end"
-          >
-            <eb-icon :icon="['far', 'ellipsis-h']" />
-          </eb-dropdown>
-        </eb-table-cell>
-      </eb-table-row>
-    </eb-table>
+      :items="view.getRecentProjects()"
+      :is-loading="view.isProjectsTableLoading()"
+    />
   </desktop-layout>
 </template>
 

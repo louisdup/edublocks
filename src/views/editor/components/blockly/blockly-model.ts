@@ -1,6 +1,5 @@
 import { ComponentModelBase } from "@/components/base-classes/component-model-base";
 import { EditorUtilities } from "@/utilities/editor-utilities";
-import { cva } from "class-variance-authority";
 
 // Blockly modifiers
 import "./modifiers/edublocks-category";
@@ -31,17 +30,6 @@ export class BlocklyModel extends ComponentModelBase {
 	}
 
 	/**
-	 * Returns list of classes for the container component.
-	 */
-	public variants: Function = cva(["h-full", "w-full", "border", "border-gray-300"], {
-		variants: {
-			isRounded: {
-				true: "rounded-md"
-			}
-		}
-	});
-
-	/**
 	 * Returns an XML toolbox for the current mode.
 	 */
 	private getToolboxXML(): string {
@@ -62,14 +50,9 @@ export class BlocklyModel extends ComponentModelBase {
 	private getBlocklyOptions(): Blockly.BlocklyOptions {
 		return {
 			renderer: "pxt",
-			grid: {
-				spacing: 30,
-				length: 3,
-				colour: "#e5e7eb",
-				snap: true
-			},
+			media: "blockly/media/",
 			zoom: {
-				controls: false,
+				controls: true,
 				wheel: true,
 				pinch: true,
 				startScale: 1.0,
@@ -77,6 +60,7 @@ export class BlocklyModel extends ComponentModelBase {
 				minScale: 0.3,
 				scaleSpeed: 1.2,
 		  	},
+			trashcan: false,
 			toolbox: this.getToolboxXML()
 		};
 	}

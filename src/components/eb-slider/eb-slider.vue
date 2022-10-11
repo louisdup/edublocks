@@ -1,15 +1,15 @@
 <template>
-  <div class="space-y-2">
+  <div class="space-y-4">
     <eb-heading
       :label="label"
-      size="small"
+      size="normal"
       color="gray"
-      weight="semibold"
+      weight="medium"
     />
 
     <splide
-      class="-ml-3"
-      :options="component.options"
+      :class="component.variants({ margin })"
+      :options="component.getSliderOptions(spacing)"
     >
       <slot />
     </splide>
@@ -22,6 +22,8 @@ import { component } from "./eb-slider-model";
 
 defineProps<{
 	label: string;
+	margin?: string;
+	spacing?: number;
 }>();
 </script>
 

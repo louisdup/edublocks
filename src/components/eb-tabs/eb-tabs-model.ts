@@ -12,10 +12,10 @@ class EbTabsModel extends ComponentModelBase {
 	}
 
 	/**
-	 * Returns button color based on active prop.
+	 * Returns dynamic class list based on whether the option is active.
 	 */
-	public getButtonColor(active: string, key: string): string | undefined {
-		return active === key ? "pink" : "white";
+	public getOptionActiveClassList(active: string, key: string): string {
+		return active === key ? "bg-gray-100 text-gray-700 cursor-default" : "hover:bg-gray-100 text-gray-500 cursor-pointer";
 	}
 }
 

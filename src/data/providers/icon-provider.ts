@@ -1,11 +1,11 @@
 import { IconDefinition, library } from "@fortawesome/fontawesome-svg-core";
-import { faBookOpen, faCode, faCommentAlt, faFilm, faFolderOpen, faHome, faUsers } from "@fortawesome/pro-duotone-svg-icons";
+import { faBookOpen, faChevronRight, faCode, faCommentAlt, faFileImport, faFilm, faFolderOpen, faHome, faUsers } from "@fortawesome/pro-regular-svg-icons";
 import { faCheckCircle, faPlay, faPlus, faSquare } from "@fortawesome/pro-solid-svg-icons";
-import { faArrowRightFromBracket, faArrowRightToArc, faBars, faCog, faEllipsis, faFile, faGrid2, faPencil, faSave, faSearch, faShare, faTimes, faTrash, faHome as farHome, faFolderOpen as farFolderOpen, faFilm as farFilm, faUsers as farUsers } from "@fortawesome/pro-regular-svg-icons";
+import { faArrowRightFromBracket, faArrowRightToArc, faBars, faCog, faEllipsis, faFile, faGrid2, faPencil, faSave, faSearch, faShare, faTimes, faTrash, faHome as farHome, faFolderOpen as farFolderOpen, faFilm as farFilm, faUsers as farUsers, faBooks, faBookOpen as farBookOpen, faPuzzlePiece } from "@fortawesome/pro-regular-svg-icons";
 import { faApple, faGoogle, faMicrosoft } from "@fortawesome/free-brands-svg-icons";
 
 // Import CSS Icons 
-import "@fortawesome/fontawesome-free/css/all.min.css";
+import "@fortawesome/fontawesome-pro/css/all.min.css";
 
 // Import SVG Icons
 library.add(
@@ -39,5 +39,10 @@ library.add(
 	farFolderOpen,
 	farFilm,
 	farUsers,
-	faCheckCircle
+	faCheckCircle,
+	faBooks,
+	farBookOpen,
+	faPuzzlePiece,
+	faChevronRight,
+	faFileImport
 );

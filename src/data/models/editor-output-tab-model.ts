@@ -7,7 +7,7 @@ export interface EditorOutputTabModel {
 	label?: string;
 	key: string;
 	component: Component;
-	visible: boolean;
-	active: boolean;
-	action: VoidFunction;
+	visible?: boolean;
+	active?: boolean;
+	action?: VoidFunction;
 }

@@ -3,8 +3,7 @@
     <div class="h-16 w-full flex items-center justify-between px-4 mt-safe">
       <eb-icon
         :icon="['far', 'bars']"
-        color="white"
-        size="md"
+        color="transparent"
       />
       <div class="flex items-center space-x-4">
         <template

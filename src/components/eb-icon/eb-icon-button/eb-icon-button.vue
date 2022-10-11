@@ -5,7 +5,8 @@
   >
     <eb-icon
       :icon="icon"
-      :color="color"
+      :color="component.getIconColor(isActive, color)"
+      :size="size"
     />
   </button>
 </template>
@@ -15,6 +16,7 @@ import { component } from "./eb-icon-button-model";
 
 defineProps<{
 	icon: Array<string>;
+	size?: string;
 	color?: string;
 	isActive?: boolean;
 }>();

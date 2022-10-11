@@ -18,21 +18,17 @@ export enum ComponentName {
 	EbDropdown = "EbDropdown",
 	EbInput = "EbInput",
 	EbLink = "EbLink",
-	EbList = "EbList",
-	EbListItem = "EbListItem",
 	EbTable = "EbTable",
-	EbTableRow = "EbTableRow",
-	EbTableCell = "EbTableCell",
 	EbLabel = "EbLabel",
 	EbVStack = "EbVStack",
 	EbHStack = "EbHStack",
 	EbSearch = "EbSearch",
 	EbIconButton = "EbIconButton",
 	EbTabs = "EbTabs",
-	EbContainer = "EbContainer",
 	EbSplitView = "EbSplitView",
 	EbSplitViewPane = "EbSplitViewPane",
 	EbSheet = "EbSheet",
 	EbRadioGroup = "EbRadioGroup",
-	EbSelect = "EbSelect"
+	EbSelect = "EbSelect",
+	EbChip = "EbChip"
 }

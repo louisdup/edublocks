@@ -17,21 +17,10 @@
         :src="image"
         class="object-cover h-full w-full rounded-md"
       >
-      <div class="absolute right-2 top-2 hidden group-hover:block">
-        <eb-dropdown
-          v-if="dropdownOptions"
-          :options="dropdownOptions"
-          placement="bottom-end"
-        >
-          <button class="bg-white h-7 w-7 rounded-md transition-all flex items-center justify-center text-gray-900 shadow">
-            <eb-icon :icon="['far', 'ellipsis']" />
-          </button>
-        </eb-dropdown>
-      </div>
     </div>
     <div
       v-if="title || subtitle"
-      class="w-60"
+      class="w-60 relative"
     >
       <h1 class="text-sm font-medium text-gray-900 truncate">
         {{ title }}
@@ -39,6 +28,17 @@
       <p class="text-sm text-gray-500 truncate">
         {{ subtitle }}
       </p>
+      <div class="absolute right-0 top-1.5">
+        <eb-dropdown
+          v-if="dropdownOptions"
+          :options="dropdownOptions"
+          placement="right-end"
+        >
+          <button class="bg-white h-7 w-7 rounded-md transition-all flex items-center justify-center text-gray-900 shadow-sm">
+            <eb-icon :icon="['far', 'ellipsis']" />
+          </button>
+        </eb-dropdown>
+      </div>
     </div>
   </div>
 </template>

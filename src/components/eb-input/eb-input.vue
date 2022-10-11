@@ -1,6 +1,6 @@
 <template>
   <div class="w-full">
-    <label class="block text-sm font-medium text-gray-900">
+    <label class="block text-sm font-medium text-gray-500">
       {{ label }}
       <span
         v-if="required"
@@ -9,10 +9,10 @@
         *
       </span>
     </label>
-    <div class="mt-2">
+    <div class="mt-2 w-full">
       <input
         :type="type"
-        class="block w-full rounded-md border-gray-300 shadow-sm focus:border-pink-500 focus:ring-pink-500 focus:outline-none px-4 py-2.5 text-sm"
+        class="block w-full rounded-md border-none bg-gray-100 focus:ring-gray-300 focus:outline-none px-3 py-2.5 text-sm"
         :class="error ? 'border-red-500' : 'border-gray-300'"
         :placeholder="placeholder"
         :value="modelValue"

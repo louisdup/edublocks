@@ -1,8 +1,11 @@
 import { EbDropdownOption } from "@/components/eb-dropdown/eb-dropdown-types";
-import { EbTableHeader } from "@/components/eb-table/eb-table-types";
+import { EbTableItem } from "@/components/eb-table/eb-table-types";
 import { FirestoreProjectModel } from "@/data/models/firestore-project-model";
+import { ModeModelBase } from "@/modes/base-classes/mode-model-base";
+import { FormatUtilities } from "./format-utilities";
 import { LocalizationUtilities } from "./localization-utilities";
 import { ModalUtilities } from "./modal-utilities";
+import { ModeUtilities } from "./mode-utilities";
 
 /**
  * Utility functions for projects.
@@ -16,33 +19,9 @@ export class ProjectsUtilities {
 	}
 
 	/**
-	 * Returns a list of headers for a table containing projects.
-	 */
-	public static getProjectsTableHeaders(): Array<EbTableHeader> {
-		return [
-			{
-				label: this.getText("project")
-			},
-			{
-				label: this.getText("type")
-			},
-			{
-				label: this.getText("updated")
-			},
-			{
-				label: this.getText("size")
-			},
-			{
-				label: this.getText("actions"),
-				hidden: true
-			}
-		];
-	}
-
-	/**
 	 * Redirect to a project page.
 	 */
-	public static openProject(id: string): void {
+	public static openProject(project: FirestoreProjectModel): void {
 		// TODO: fetch project and open in editor
 	}
 
@@ -56,7 +35,7 @@ export class ProjectsUtilities {
 					title: this.getText("open-project"),
 					icon: ["far", "file"],
 					action: (): void => {
-						this.openProject(project.id);
+						this.openProject(project);
 					}
 				}
 			],
@@ -96,5 +75,41 @@ export class ProjectsUtilities {
 				}
 			]
 		];
+	}
+
+	/**
+	 * Remaps a list of projects for displaying in a table.
+	 */
+	public static remapProjectsForTable(projects: Array<FirestoreProjectModel>): Array<EbTableItem> {
+		const tableItems: Array<EbTableItem> = [];
+	
+		projects.forEach((project: FirestoreProjectModel) => {
+			const projectMode: ModeModelBase = ModeUtilities.getModeFromKey(project.mode);
+
+			tableItems.push({
+				title: project.name,
+				thumbnail: projectMode.config.logo,
+				dropdownOptions: this.getProjectDropdownOptions(project),
+				meta: [
+					{
+						key: "mode",
+						label: projectMode.config.name
+					},
+					{
+						key: "type",
+						label: this.getText(project.type)
+					},
+					{
+						key: "edited",
+						label: this.getText("edited", [FormatUtilities.formatDate(project.updated)])
+					}
+				],
+				action: (): void => {
+					this.openProject(project);
+				}
+			});
+		});
+	
+		return tableItems;
 	}
 }

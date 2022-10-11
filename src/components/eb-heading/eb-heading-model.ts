@@ -49,7 +49,7 @@ class EbHeadingModel extends ComponentModelBase {
 			color: {
 				gray: "text-gray-700",
 				black: "text-gray-900",
-				white: "text-gray-200"
+				white: "text-white"
 			},
 			isFullWidth: {
 				true: "w-full"
@@ -57,7 +57,7 @@ class EbHeadingModel extends ComponentModelBase {
 		},
 		defaultVariants: {
 			align: "left",
-			size: "2xl",
+			size: "xl",
 			weight: "semibold",
 			color: "black",
 			isFullWidth: false

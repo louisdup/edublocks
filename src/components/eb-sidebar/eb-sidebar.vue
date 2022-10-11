@@ -1,39 +1,28 @@
 <template>
-  <div class="bg-navy-500 h-full flex-none inline-flex flex-col overflow-hidden">
-    <div
-      v-if="hasLogo"
-      class="px-6 pt-8 pb-4 flex flex-col lg:items-start items-center"
-    >
-      <img
-        :src="component.getSidebarLogoImage()"
-        class="h-10"
-      >
-    </div>
-    <div class="h-full overflow-y-auto p-4 space-y-1 flex flex-col items-center">
+  <div class="bg-white flex flex-col border-r border-gray-200 p-2">
+    <div class="h-full space-y-1 overflow-y-auto">
       <button
         v-for="item in items"
         :key="item.key"
+        class="h-12 px-3 flex items-center justify-center space-x-4 rounded-lg text-left transition-colors"
         :class="component.getItemActiveClassList(item)"
-        class="flex items-center space-x-4 rounded-md p-4 text-left text-gray-200 outline-none"
         @click="component.onItemClick(item)"
       >
-        <div class="flex h-5 w-5 items-center justify-center">
-          <eb-icon
-            v-if="item.icon"
-            :icon="item.icon"
-            class="fa-fw text-xl"
-            color="white"
-          />
-        </div>
+        <eb-icon
+          :icon="item.icon"
+          :color="component.getItemIconColor(item)"
+          size="lg"
+          class="fa-fw"
+        />
         <span
           v-if="item.title && !minimize"
-          class="w-44 text-sm font-medium"
-        > 
+          class="font-medium text-sm w-40"
+        >
           {{ item.title }} 
         </span>
       </button>
     </div>
-    <div class="p-4">
+    <div>
       <slot />
     </div>
   </div>
@@ -48,7 +37,6 @@ const props: Data = defineProps<{
 	items: Array<EbSidebarItem>;
 	minimize: boolean;
 	active: string;
-	hasLogo: boolean;
 }>();
 
 const component: EbSidebarModel = new EbSidebarModel(props);

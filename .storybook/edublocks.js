@@ -6,7 +6,7 @@ export default create({
   brandUrl: 'https://edublocks.org',
   brandImage: '/images/logo/logo.svg',
   brandTarget: '_self',
-  colorPrimary: '#E71D64',
-  colorSecondary: '#E71D64',
+  colorPrimary: '#0ea5e9',
+  colorSecondary: '#0ea5e9',
   appBg: 'white'
 });

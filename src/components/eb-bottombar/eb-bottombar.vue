@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full pb-safe bg-gray-100 border-t border-gray-300 flex">
+  <div class="w-full pb-safe bg-white border-t border-gray-200 flex">
     <button
       v-for="item in items"
       :key="item.key"
