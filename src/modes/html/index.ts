@@ -2,7 +2,6 @@ import { EditorButtonModel } from "@/data/models/editor-button-model";
 import { EditorOutputTabModel } from "@/data/models/editor-output-tab-model";
 import { EditorSidebarTabModel } from "@/data/models/editor-sidebar-tab-model";
 import { ModeConfigModel } from "@/data/models/mode-config-model";
-import { ref, Ref } from "vue";
 import { ModeModelBase } from "../base-classes/mode-model-base";
 
 /**
@@ -44,17 +43,17 @@ export class HTMLModel extends ModeModelBase {
 	/**
 	 * Returns buttons to display in the header of the editor.
 	 */
-	public headerButtons: Ref<Array<EditorButtonModel>> = ref([]);
+	public headerButtons: Array<EditorButtonModel> = [];
 
 	/**
 	 * Returns a list of tabs to display in the sidebar for HTML.
 	 */
-	public sidebarTabs: Ref<Array<EditorSidebarTabModel>> = ref([]);
+	public sidebarTabs: Array<EditorSidebarTabModel> = [];
 
 	/**
 	 * Returns a list of tabs that to display in the output panel for html.
 	 */
-	public outputPanelTabs: Ref<Array<EditorOutputTabModel>> = ref([]);
+	public outputPanelTabs: Array<EditorOutputTabModel> = [];
 
 	/**
 	 * Returns HTML code from the blockly workspace.

@@ -2,7 +2,6 @@ import { EditorButtonModel } from "@/data/models/editor-button-model";
 import { EditorOutputTabModel } from "@/data/models/editor-output-tab-model";
 import { EditorSidebarTabModel } from "@/data/models/editor-sidebar-tab-model";
 import { ModeConfigModel } from "@/data/models/mode-config-model";
-import { ref, Ref } from "vue";
 import { ModeModelBase } from "../base-classes/mode-model-base";
 
 /**
@@ -44,17 +43,17 @@ export class CircuitPythonModel extends ModeModelBase {
 	/**
 	 * Returns buttons to display in the header of the editor.
 	 */
-	public headerButtons: Ref<Array<EditorButtonModel>> = ref([]);
+	public headerButtons: Array<EditorButtonModel> = [];
 
 	/**
 	 * Returns a list of tabs to display in the sidebar for CircuitPython.
 	 */
-	public sidebarTabs: Ref<Array<EditorSidebarTabModel>> = ref([]);
+	public sidebarTabs: Array<EditorSidebarTabModel> = [];
 
 	/**
 	 * Returns a list of tabs that to display in the output panel for CircuitPython.
 	 */
-	public outputPanelTabs: Ref<Array<EditorOutputTabModel>> = ref([]);
+	public outputPanelTabs: Array<EditorOutputTabModel> = [];
 
 	/**
 	 * Returns python code from the blockly workspace.
