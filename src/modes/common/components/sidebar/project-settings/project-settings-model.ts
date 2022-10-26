@@ -106,7 +106,6 @@ class ProjectSettingsModel extends ComponentModelBase {
 	public exportBlocksScreenshot(): void {
 		if (EditorUtilities.blocklyInstance) {
 			const svgBlockCanvas: SVGGraphicsElement = EditorUtilities.blocklyInstance.svgBlockCanvas_.cloneNode(true) as SVGGraphicsElement;
-			const svgBlockCanvasContent: string = new XMLSerializer().serializeToString(svgBlockCanvas);
 			svgBlockCanvas.removeAttribute("transform");
 			
 			const blocklyCssContent: string = `${Blockly.Css.CONTENT.join("")} .blocklyConnectionIndicator{display:none;} .blocklyEditableText text.blocklyText{fill: #575E75;}`;
@@ -114,8 +113,9 @@ class ProjectSettingsModel extends ComponentModelBase {
 
 			const blocklyBlockCanvas: SVGGraphicsElement = document.getElementsByClassName("blocklyBlockCanvas")[0] as SVGGraphicsElement;
 			const bbox: DOMRect = blocklyBlockCanvas.getBBox();
+			const canvasContent: string = new XMLSerializer().serializeToString(svgBlockCanvas);
 
-			let svg: string = `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${bbox.width}" height="${bbox.height}" viewBox="${bbox.x-5} ${bbox.y-5} ${bbox.width+5} ${bbox.height+6}">${svgCss}>${svgBlockCanvasContent}</svg>`;
+			let svg: string = `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${bbox.width}" height="${bbox.height}" viewBox="${bbox.x-5} ${bbox.y-5} ${bbox.width+5} ${bbox.height+6}">${svgCss}>${canvasContent}</svg>`;
 
 			const image: HTMLImageElement = new Image();
 
