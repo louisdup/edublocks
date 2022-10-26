@@ -18,6 +18,9 @@ import PythonOutput from "./components/output-panel/python-output/python-output.
 import "./blocks/common/definitions";
 import "./blocks/common/generators";
 
+import "./blocks/deprecated/definitions";
+import "./blocks/deprecated/generators";
+
 import "./blocks/imports/definitions";
 import "./blocks/imports/generators";
 import imports from "./blocks/imports/toolbox.xml?raw";
