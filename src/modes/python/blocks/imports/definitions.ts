@@ -1,10 +1,12 @@
+const importsColor: string = "#E71D64";
+
 Blockly.Blocks["import_time"] = {
 	init: function(): void {
 		this.appendDummyInput()
 			.appendField("import time");
 		this.setPreviousStatement(true, null);
 		this.setNextStatement(true, null);
-		this.setColour("#E71D64");
+		this.setColour(importsColor);
 	},
 };
 
@@ -14,7 +16,7 @@ Blockly.Blocks["import_math"] = {
 			.appendField("import math");
 		this.setPreviousStatement(true, null);
 		this.setNextStatement(true, null);
-		this.setColour("#E71D64");
+		this.setColour(importsColor);
 	},
 };
 
@@ -24,7 +26,7 @@ Blockly.Blocks["random"] = {
 			.appendField("import random");
 		this.setPreviousStatement(true, null);
 		this.setNextStatement(true, null);
-		this.setColour("#E71D64");
+		this.setColour(importsColor);
 	},
 };
 
@@ -34,7 +36,7 @@ Blockly.Blocks["import_pygal"] = {
 			.appendField("import pygal");
 		this.setPreviousStatement(true, null);
 		this.setNextStatement(true, null);
-		this.setColour("#E71D64");
+		this.setColour(importsColor);
 	},
 };
 
@@ -44,7 +46,7 @@ Blockly.Blocks["import_turtle"] = {
 			.appendField("from turtle import *");
 		this.setPreviousStatement(true, null);
 		this.setNextStatement(true, null);
-		this.setColour("#E71D64");
+		this.setColour(importsColor);
 	},
 };
 
@@ -54,6 +56,6 @@ Blockly.Blocks["import_processing"] = {
 			.appendField("from processing import *");
 		this.setPreviousStatement(true, null);
 		this.setNextStatement(true, null);
-		this.setColour("#E71D64");
+		this.setColour(importsColor);
 	},
 };

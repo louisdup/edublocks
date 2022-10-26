@@ -23,7 +23,8 @@ export class CircuitPythonModel extends ModeModelBase {
 		key: "CircuitPython",
 		color: "purple",
 		logo: "/images/modes/circuitpython/logo.svg",
-		image: "/images/modes/circuitpython/thumbnail.svg"
+		image: "/images/modes/circuitpython/thumbnail.svg",
+		fileExtension: "py"
 	};
 
 	/**

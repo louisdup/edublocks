@@ -23,7 +23,8 @@ export class RaspberryPiModel extends ModeModelBase {
 		key: "RPi",
 		color: "pink",
 		logo: "/images/modes/raspberry-pi/logo.svg",
-		image: "/images/modes/raspberry-pi/thumbnail.svg"
+		image: "/images/modes/raspberry-pi/thumbnail.svg",
+		fileExtension: "py"
 	};
 
 	/**

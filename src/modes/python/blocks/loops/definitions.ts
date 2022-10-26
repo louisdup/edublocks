@@ -1,55 +1,66 @@
-Blockly.Blocks["webwhileout"] = {
+const loopsColor: string = "#644A9E";
+
+Blockly.Blocks["while"] = {
 	init: function(): void {
-		this.appendDummyInput()
-			.appendField("while");
-		this.appendValueInput("cond")
-			.setCheck("Boolean");
-		this.appendDummyInput()
-			.appendField(":");
-		this.appendStatementInput("DO")
-			.appendField("");
-		this.setPreviousStatement(true, null);
-		this.setNextStatement(true, null);
-		this.setColour("#644A9E");
-	},
+	  this.appendDummyInput()
+		  .appendField("while ");
+	  this.appendValueInput("condition")
+		  .setCheck(null);
+	  this.appendDummyInput()
+		  .appendField(":");
+	  this.appendStatementInput("value")
+		  .setCheck(null);
+	  this.setInputsInline(true);
+	  this.setPreviousStatement(true, null);
+	  this.setNextStatement(true, null);
+	  this.setColour(loopsColor);
+	}
 };
 
-Blockly.Blocks["webfor"] = {
+Blockly.Blocks["for_range"] = {
 	init: function(): void {
-		this.appendDummyInput()
-			.appendField("for");
-		this.appendValueInput("letter")
-			.setCheck(null);
-		this.appendDummyInput()
-			.appendField("in range(");
-		this.appendValueInput("no")
-			.setCheck(null);
-		this.appendDummyInput()
-			.appendField("):");
-		this.appendStatementInput("DO")
-			.setCheck(null);
-		this.setPreviousStatement(true, null);
-		this.setNextStatement(true, null);
-		this.setColour("#644A9E");
-	},
+	  this.appendDummyInput()
+		  .appendField("for ")
+		  .appendField(new Blockly.FieldVariable("i"), "variable")
+		  .appendField(" in range(");
+	  this.appendValueInput("parameters")
+		  .setCheck(null);
+	  this.appendDummyInput()
+		  .appendField("):");
+	  this.appendStatementInput("value")
+		  .setCheck(null);
+	  this.setInputsInline(true);
+	  this.setPreviousStatement(true, null);
+	  this.setNextStatement(true, null);
+	  this.setColour(loopsColor);
+	}
 };
 
-Blockly.Blocks["webadvancedforloops"] = {
+Blockly.Blocks["for"] = {
 	init: function(): void {
-		this.appendDummyInput()
-			.appendField("for");
-		this.appendValueInput("x")
-			.setCheck(null);
-		this.appendDummyInput()
-			.appendField("in");
-		this.appendValueInput("y")
-			.setCheck(null);
-		this.appendDummyInput()
-			.appendField(":");
-		this.appendStatementInput("DO")
-			.setCheck(null);
-		this.setPreviousStatement(true, null);
-		this.setNextStatement(true, null);
-		this.setColour("#644A9E");
-	},
+	  this.appendDummyInput()
+		  .appendField("for ")
+		  .appendField(new Blockly.FieldVariable("i"), "variable")
+		  .appendField(" in ");
+	  this.appendValueInput("condition")
+		  .setCheck(null);
+	  this.appendDummyInput()
+		  .appendField(":");
+	  this.appendStatementInput("value")
+		  .setCheck(null);
+	  this.setInputsInline(true);
+	  this.setPreviousStatement(true, null);
+	  this.setNextStatement(true, null);
+	  this.setColour(loopsColor);
+	}
+};
+  
+Blockly.Blocks["break"] = {
+	init: function(): void {
+	  this.appendDummyInput()
+		  .appendField("break");
+	  this.setInputsInline(true);
+	  this.setPreviousStatement(true, null);
+	  this.setColour(loopsColor);
+	}
 };

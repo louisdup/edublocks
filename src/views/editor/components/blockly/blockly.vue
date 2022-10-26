@@ -79,4 +79,8 @@ onMounted(() => {
 .blocklyFlyoutButton .blocklyText {
   @apply !text-sm !font-sans !font-medium cursor-pointer;
 }
+
+.blocklyTooltipDiv {
+  @apply !p-6 !rounded-lg !bg-white !shadow prose;
+}
 </style>

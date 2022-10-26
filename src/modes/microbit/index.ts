@@ -23,7 +23,8 @@ export class MicrobitModel extends ModeModelBase {
 		key: "microbit",
 		color: "green",
 		logo: "/images/modes/microbit/logo.svg",
-		image: "/images/modes/microbit/thumbnail.svg"
+		image: "/images/modes/microbit/thumbnail.svg",
+		fileExtension: "py"
 	};
 
 	/**

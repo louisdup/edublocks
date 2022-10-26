@@ -1,0 +1,78 @@
+<category name="Graphs" colour="#008FD1" css-icon="customIcon fas fa-chart-pie">
+  <label text="Graphs"></label>
+
+  <block type="graph_create">
+    <value name="text">
+      <shadow type="inline_text">
+        <field name="value"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="graph_title">
+    <value name="value">
+      <shadow type="inline_string">
+        <field name="value">My awesome chart</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="graph_add">
+    <value name="value">
+      <shadow type="inline_string">
+        <field name="value">Label</field>
+      </shadow>
+    </value>
+
+    <value name="data">
+     <shadow type="list">
+        <value name="data">
+          <shadow type="parameters">
+              <mutation color="#15BAD4" items="3" limit="100" minimum="1" inputType="text" />
+              <value name="input_1">
+                  <shadow type="inline_text">
+                      <field name="value">1</field>
+                  </shadow>
+              </value>
+              <value name="input_2">
+                  <shadow type="inline_text">
+                      <field name="value">3</field>
+                  </shadow>
+              </value>
+              <value name="input_3">
+                  <shadow type="inline_text">
+                      <field name="value">8</field>
+                  </shadow>
+              </value>
+          </shadow>
+        </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="graph_xlabels">
+    <value name="value">
+      <shadow type="parameters">
+          <mutation color="#008FD1" items="3" limit="100" minimum="1" inputType="string" />
+          <value name="input_1">
+              <shadow type="inline_string">
+                  <field name="value">red</field>
+              </shadow>
+          </value>
+          <value name="input_2">
+              <shadow type="inline_string">
+                  <field name="value">green</field>
+              </shadow>
+          </value>
+          <value name="input_3">
+              <shadow type="inline_string">
+                  <field name="value">blue</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="graph_render"></block>
+
+</category>

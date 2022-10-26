@@ -1,0 +1,27 @@
+<category name="Math" colour="#1B173D" css-icon="customIcon fad fa-square-root-variable">
+  <label text="Math"></label>
+  <block type="arithmetic">
+    <value name="value_1">
+      <shadow type="inline_number">
+        <field name="value">1</field>
+      </shadow>
+    </value>
+    <value name="value_2">
+      <shadow type="inline_number">
+        <field name="value">2</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="round">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#1B173D" items="1" limit="1" minimum="1" inputType="number" />
+          <value name="input_1">
+              <shadow type="inline_number">
+                  <field name="value">1.5</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+</category>

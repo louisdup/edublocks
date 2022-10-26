@@ -23,6 +23,7 @@ class EbButtonModel extends ComponentModelBase {
 				right: "justify-end",
 			},
 			size: {
+				"xs": ["text-xs", "py-1.5", "px-2.5"],
 				"sm": ["text-xs", "py-2", "px-4"],
 				"normal": ["text-sm", "py-2.5", "px-4"]
 			},

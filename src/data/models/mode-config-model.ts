@@ -7,4 +7,5 @@ export interface ModeConfigModel {
 	color: string;
 	logo: string;
 	image: string;
+	fileExtension: string;
 }

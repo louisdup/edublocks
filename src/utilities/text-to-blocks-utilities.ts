@@ -39,9 +39,9 @@ export class TextToBlocksUtilities {
 	/**
 	 * Returns a list of blocks currently in the workspace.
 	 */
-	public static getAllBlocksInWorkspace(): Array<Blockly.Block> | undefined {
+	public static getAllBlocksInWorkspace(): Array<Blockly.BlockSvg> | undefined {
 		if (EditorUtilities.blocklyInstance) {
-			return EditorUtilities.blocklyInstance.getAllBlocks(true).filter((block: Blockly.Block) => {
+			return EditorUtilities.blocklyInstance.getAllBlocks(true).filter((block: Blockly.BlockSvg) => {
 				return !block.getSurroundParent() && !block.isShadow();
 			});
 		}
@@ -64,10 +64,10 @@ export class TextToBlocksUtilities {
 						
 						switch (input.type) {
 							case "string":
-								shadowBlockName = "stringinline";
+								shadowBlockName = "inline_string";
 								break;
 							case "text":
-								shadowBlockName = "textinline";
+								shadowBlockName = "inline_text";
 								break;
 						}
 
@@ -101,9 +101,9 @@ export class TextToBlocksUtilities {
 				parentStatement.getFirstStatementConnection().connect(block.previousConnection);
 			}
 			else if (line.lineno > 1) {
-				const allBlocks: Array<Blockly.Block> | undefined = this.getAllBlocksInWorkspace();
+				const allBlocks: Array<Blockly.BlockSvg> | undefined = this.getAllBlocksInWorkspace();
 				if (allBlocks) {
-					const lastBlock: Blockly.Block = allBlocks[allBlocks.length - 2];
+					const lastBlock: Blockly.BlockSvg = allBlocks[allBlocks.length - 2];
 					lastBlock.nextConnection.connect(block.previousConnection);
 				}
 			}

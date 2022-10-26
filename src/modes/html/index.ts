@@ -23,7 +23,8 @@ export class HTMLModel extends ModeModelBase {
 		key: "HTML",
 		color: "orange",
 		logo: "/images/modes/html/logo.svg",
-		image: "/images/modes/html/thumbnail.svg"
+		image: "/images/modes/html/thumbnail.svg",
+		fileExtension: "html"
 	};
 
 	/**

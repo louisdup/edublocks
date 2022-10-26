@@ -1,5 +1,8 @@
 <template>
-  <editor-desktop-layout :header-buttons="view.getHeaderButtonsForCurrentMode()">
+  <editor-desktop-layout
+    :header-buttons="view.getHeaderButtonsForCurrentMode()"
+    @onProjectButtonClicked="view.onProjectButtonClicked()"
+  >
     <eb-split-view
       @ready="view.onSplitViewReady()"
       @resize="view.onSplitViewResize()" 

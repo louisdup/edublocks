@@ -671,7 +671,6 @@ declare module Blockly {
 
 declare module Blockly {
 
-    class Block extends Block__Class { }
     /** Fake class which should be extended to avoid inheriting static properties */
     class Block__Class implements Blockly.IASTNodeLocation, Blockly.IDeletable  { 
     
@@ -1932,7 +1931,9 @@ declare module Blockly {
 
 declare module Blockly {
 
-    class BlockSvg extends BlockSvg__Class { }
+    class BlockSvg extends BlockSvg__Class {
+		static START_HAT: boolean;
+}
     /** Fake class which should be extended to avoid inheriting static properties */
     class BlockSvg__Class extends Blockly.Block__Class implements Blockly.IASTNodeLocationSvg, Blockly.IBoundedElement, Blockly.ICopyable, Blockly.IDraggable  { 
     
@@ -2565,6 +2566,10 @@ declare module Blockly {
              * @package
              */
             highlightShapeForInput(conn: Blockly.Connection, add: boolean): void;
+
+            saveExtraState: any;
+            minus: any;
+            plus: any;
     } 
     
 }
@@ -6266,7 +6271,9 @@ declare module Blockly.FieldIconMenu {
 
 declare module Blockly {
 
-    class FieldImage extends FieldImage__Class { }
+    class FieldImage extends FieldImage__Class {
+        args_: any;
+}
     /** Fake class which should be extended to avoid inheriting static properties */
     class FieldImage__Class extends Blockly.Field__Class  { 
     
@@ -8576,6 +8583,7 @@ declare module Blockly {
     class Generator extends Generator__Class {
 		variableDB_: any;
 		ORDER_ATOMIC: string;
+		PASS: string;
 }
     /** Fake class which should be extended to avoid inheriting static properties */
     class Generator__Class  { 
@@ -12311,6 +12319,8 @@ declare module Blockly.Tooltip {
      * @package
      */
     function unblock(): void;
+
+    function setCustomTooltip(tooltip: any): void;
 }
 
 

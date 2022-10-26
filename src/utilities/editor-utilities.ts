@@ -1,5 +1,6 @@
 import { ProjectModel } from "@/data/models/project-model";
 import { ref, Ref } from "vue";
+import * as ProjectsProvider from "@/data/providers/projects-provider";
 
 /**
  * Utility functions for the editor.
@@ -32,5 +33,22 @@ export class EditorUtilities {
 	 */
 	public static isCurrentModeSet(): boolean {
 		 return this.currentProject.value ? true : false;
+	}
+
+	/**
+	 * Updates the name of the current project locally and on firestore if a firestore project exists.
+	 */
+	public static async renameCurrentProject(newName: string): Promise<void> {
+		if (this.currentProject.value) {
+			this.currentProject.value.name = newName;
+
+			if (this.currentProject.value.firestore_project) {
+				const body: object = {
+					name: newName,
+					updated: new Date().toISOString()
+				};
+				await ProjectsProvider.updateProjectAsync(this.currentProject.value.firestore_project.id, body);
+			}
+		}
 	}
 }

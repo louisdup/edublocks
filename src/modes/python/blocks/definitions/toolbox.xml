@@ -1,0 +1,35 @@
+<category name="Definitions" colour="#CDDA36" css-icon="customIcon fas fa-book">
+  <label text="Definitions"></label>
+
+  <block type="define_function">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#CDDA36" items="1" limit="100" minimum="1" inputType="text" />
+          <value name="input_1">
+              <shadow type="inline_text">
+                  <field name="value"></field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="define_class"></block>
+
+  <block type="return_function"></block>
+
+  <block type="call_function">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#CDDA36" items="1" limit="100" minimum="1" inputType="text" />
+          <value name="input_1">
+              <shadow type="inline_text">
+                  <field name="value"></field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="class_self"></block>
+</category>

@@ -1,8 +1,15 @@
 <category name="Imports" colour="#E71D64" css-icon="customIcon fad fa-upload">
+  <label text="Imports"></label>
+
   <block type="import_time"></block>
+
   <block type="import_math"></block>
+
   <block type="random"></block>
+
   <block type="import_pygal"></block>
+
   <block type="import_turtle"></block>
+
   <block type="import_processing"></block>
 </category>

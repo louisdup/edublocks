@@ -5,6 +5,7 @@ import { ModeModelBase } from "../base-classes/mode-model-base";
 import { EditorUtilities } from "@/utilities/editor-utilities";
 import { TextToBlocksUtilities } from "@/utilities/text-to-blocks-utilities";
 import { TextToBlocksDefinitionModel } from "@/data/models/text-to-blocks-definition-model";
+import { EditorSidebarTabModel } from "@/data/models/editor-sidebar-tab-model";
 
 // Sidebar Components
 import ProjectSettings from "@/modes/common/components/sidebar/project-settings/project-settings.vue";
@@ -20,7 +21,6 @@ import "./blocks/common/generators";
 import "./blocks/imports/definitions";
 import "./blocks/imports/generators";
 import imports from "./blocks/imports/toolbox.xml?raw";
-import importsDefinitions from "./blocks/imports/text-to-blocks";
 
 import "./blocks/variables/definitions";
 import "./blocks/variables/generators";
@@ -29,13 +29,38 @@ import variables from "./blocks/variables/toolbox.xml?raw";
 import "./blocks/statements/definitions";
 import "./blocks/statements/generators";
 import statements from "./blocks/statements/toolbox.xml?raw";
-import statementsDefinitions from "./blocks/statements/text-to-blocks";
+
+import "./blocks/text/definitions";
+import "./blocks/text/generators";
+import text from "./blocks/text/toolbox.xml?raw";
+
+import "./blocks/math/definitions";
+import "./blocks/math/generators";
+import math from "./blocks/math/toolbox.xml?raw";
+
+import "./blocks/logic/definitions";
+import "./blocks/logic/generators";
+import logic from "./blocks/logic/toolbox.xml?raw";
+
+import "./blocks/lists/definitions";
+import "./blocks/lists/generators";
+import lists from "./blocks/lists/toolbox.xml?raw";
 
 import "./blocks/loops/definitions";
 import "./blocks/loops/generators";
 import loops from "./blocks/loops/toolbox.xml?raw";
-import loopsDefinitions from "./blocks/loops/text-to-blocks";
-import { EditorSidebarTabModel } from "@/data/models/editor-sidebar-tab-model";
+
+import "./blocks/definitions/definitions";
+import "./blocks/definitions/generators";
+import definitions from "./blocks/definitions/toolbox.xml?raw";
+
+import "./blocks/turtle/definitions";
+import "./blocks/turtle/generators";
+import turtle from "./blocks/turtle/toolbox.xml?raw";
+
+import "./blocks/graphs/definitions";
+import "./blocks/graphs/generators";
+import graphs from "./blocks/graphs/toolbox.xml?raw";
 
 /** 
  * Mode model for the python mode.
@@ -56,7 +81,8 @@ export class PythonModel extends ModeModelBase {
 		key: "Python",
 		color: "blue",
 		logo: "/images/modes/python/logo.svg",
-		image: "/images/modes/python/thumbnail.svg"
+		image: "/images/modes/python/thumbnail.svg",
+		fileExtension: "py"
 	};
 
 	/**
@@ -67,6 +93,11 @@ export class PythonModel extends ModeModelBase {
 	}
 
 	/**
+	 * Returns the start block that appears at the top of all python code.
+	 */
+	public startBlock: string = "start_code_here";
+
+	/**
 	 * Returns a blockly toolbox for the Python mode.
 	 */
 	public getToolbox(): Array<String> {
@@ -74,7 +105,14 @@ export class PythonModel extends ModeModelBase {
 			imports,
 			variables,
 			statements,
-			loops
+			text,
+			math,
+			logic,
+			lists,
+			loops,
+			definitions,
+			turtle,
+			graphs
 		];
 	}
 
@@ -82,11 +120,7 @@ export class PythonModel extends ModeModelBase {
 	 * Returns a list of block definitions that can be used for translating text to blocks.
 	 */
 	public getTextToBlocksDefinitions(): Array<TextToBlocksDefinitionModel> {
-		return [
-			...importsDefinitions,
-			...statementsDefinitions,
-			...loopsDefinitions
-		];
+		return [];
 	}
 
 	/**
@@ -114,6 +148,7 @@ export class PythonModel extends ModeModelBase {
 			icon: ["fas", "play"],
 			color: "blue",
 			action: (): void => {
+				console.log("Hello world!");
 				this.runPythonCode();
 			}
 		},

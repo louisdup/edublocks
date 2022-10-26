@@ -54,7 +54,7 @@
       <eb-button
         :label="modal.getText('create')"
         color="blue"
-        :disabled="modal.isCreateButtonDisabled()"
+        :is-disabled="modal.isCreateButtonDisabled()"
         @click="modal.onCreateClicked()"
       />
     </eb-modal-footer>

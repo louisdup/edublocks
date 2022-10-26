@@ -1,13 +1,13 @@
-Blockly.Python["variables_get"] = function(block: Blockly.BlockSvg): Array<string|number> {
-	const variable: string = Blockly.Python.variableDB_.getName(block.getFieldValue("VAR"), Blockly.VARIABLE_CATEGORY_NAME);
-	const code: string = variable;
+Blockly.Python["variable_get"] = function(block: Blockly.BlockSvg): Array<string|number> {
+	const variableName: string = Blockly.Python.nameDB_.getName(block.getFieldValue("variable_name"), Blockly.VARIABLE_CATEGORY_NAME);
+	const code: string = variableName;
 	return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python["variables_set"] = function(block: Blockly.BlockSvg): string {
-	const name: string = Blockly.Python.variableDB_.getName(block.getFieldValue("VAR"), Blockly.VARIABLE_CATEGORY_NAME);
-	const operator: string = block.getFieldValue("NAME");
-	const value: string = Blockly.Python.valueToCode(block, "varset", 0);
-	const code: string = `${name} ${operator} ${value}\n`;
+Blockly.Python["variable_set"] = function(block: Blockly.BlockSvg): string {
+	const variableName: string = Blockly.Python.nameDB_.getName(block.getFieldValue("variable_name"), Blockly.VARIABLE_CATEGORY_NAME);
+	const operator: string = block.getFieldValue("operator");
+	const value: string = Blockly.Python.valueToCode(block, "value", 0);
+	const code: string = `${variableName} ${operator} ${value}\n`;
 	return code;
 };

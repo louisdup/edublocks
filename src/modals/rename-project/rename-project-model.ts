@@ -4,7 +4,7 @@ import * as ProjectsProvider from "@/data/providers/projects-provider";
 import { ContentUtilities } from "@/utilities/content-utilities";
 import { ModalUtilities } from "@/utilities/modal-utilities";
 import { RenameProjectState } from "./rename-project-state";
-import { reactive } from "vue";
+import { reactive, watchEffect } from "vue";
 import { FormUtilities, ValidationSchema } from "@/utilities/form-utilities";
 import * as yup from "yup";
 import { Data } from "@/components/types";
@@ -30,20 +30,30 @@ class RenameProjectModal extends ModalModelBase {
 	 * Initialise the modal model.
 	 */
 	public init(props: Data): void {
+		this.watchForFormChanges();
 		this.setNameInputValueToProjectName(props.project as FirestoreProjectModel);
+	}
+
+	/**
+	 * Watches for changes on the form and checks if it's valid.
+	 */
+	private watchForFormChanges(): void {
+		watchEffect(async () => {
+			this.state.isValid = await FormUtilities.isFormValid(this.getValidationSchema(), this.state.data);
+		});
 	}
 
 	/**
 	 * Sets the value of the name input to that of the current project name.
 	 */
-	public setNameInputValueToProjectName(project: FirestoreProjectModel): void {
+	private setNameInputValueToProjectName(project: FirestoreProjectModel): void {
 		this.state.data["name"] = project.name;
 	}
 
 	 /**
 	  * Returns validation schema for the rename project form.
 	  */
-	 public getValidationSchema(): ValidationSchema {
+	private getValidationSchema(): ValidationSchema {
 		 return {
 			 name: yup
 				 .string()
@@ -54,7 +64,7 @@ class RenameProjectModal extends ModalModelBase {
 	 /**
 	  * Validates a specified field and then updates the value of isValid to true if all fields are valid.
 	  */
-	 public async validateField(field: string): Promise<void> {
+	public async validateField(field: string): Promise<void> {
 		 FormUtilities.validateField(field, this.getValidationSchema(), this.state.data, this.state.errors);
 		 this.state.isValid = await FormUtilities.isFormValid(this.getValidationSchema(), this.state.data);
 	 }

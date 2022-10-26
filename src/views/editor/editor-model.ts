@@ -1,7 +1,8 @@
 import { EditorButtonModel } from "@/data/models/editor-button-model";
 import { EditorSidebarTabModel } from "@/data/models/editor-sidebar-tab-model";
+import router from "@/router";
 import { EditorUtilities } from "@/utilities/editor-utilities";
-import { TextToBlocksUtilities } from "@/utilities/text-to-blocks-utilities";
+import { ModalUtilities } from "@/utilities/modal-utilities";
 import { reactive, Ref } from "vue";
 import { ViewModelBase } from "../base-classes/view-model-base";
 import { EditorState } from "./editor-state";
@@ -26,25 +27,30 @@ class EditorModel extends ViewModelBase {
 	 * Initialise the view model.
 	 */
 	public init(): void {
-		this.checkForBlocklyChanges();
+		this.checkIfCurrentProjectSet();
 		if (EditorUtilities.currentProject.value) {
 			EditorUtilities.currentProject.value.mode.init();
 		}
 	}
 
 	/**
-	 * Checks for any changes in the blockly workspace and updates the current project code.
+	 * Check if a current project is set, if not redirect home and show the create project modal.
 	 */
-	private checkForBlocklyChanges(): void {
-		if (EditorUtilities.blocklyInstance ) {
-			EditorUtilities.blocklyInstance.addChangeListener(() => {
-				if (EditorUtilities.blocklyInstance && EditorUtilities.currentProject.value) {
-					EditorUtilities.currentProject.value.blocks = Blockly.Xml.domToPrettyText(Blockly.Xml.workspaceToDom(EditorUtilities.blocklyInstance));
-					if (!TextToBlocksUtilities.isTextEditorFocused.value && !EditorUtilities.blocklyInstance.isDragging()) {
-						EditorUtilities.currentProject.value.code = EditorUtilities.currentProject.value.mode.getCodeFromBlocks() as string;
-					}
-				}
+	private checkIfCurrentProjectSet(): void {
+		if (!EditorUtilities.currentProject.value){
+			router.push("/");
+			ModalUtilities.showModal({
+				modal: "CreateProject"
 			});
+		}
+	}
+
+	/**
+	 * Called when the header project button is clicked, opens the project settings sidebar tab.
+	 */
+	public onProjectButtonClicked(): void {
+		if (EditorUtilities.currentProject.value) {
+			EditorUtilities.currentProject.value.mode.setSidebarTabActive("project-settings");
 		}
 	}
 

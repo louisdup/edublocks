@@ -1,0 +1,107 @@
+<category name="Lists" colour="#15BAD4" css-icon="customIcon fas fa-list">
+  <label text="Lists"></label>
+
+  <block type="variable_set">
+    <value name="value">
+      <block type="list">
+        <value name="data">
+          <shadow type="parameters">
+              <mutation color="#15BAD4" items="2" limit="100" minimum="1" inputType="string" />
+              <value name="input_1">
+                  <shadow type="inline_string">
+                      <field name="value">Hello</field>
+                  </shadow>
+              </value>
+              <value name="input_2">
+                  <shadow type="inline_string">
+                      <field name="value">World</field>
+                  </shadow>
+              </value>
+          </shadow>
+        </value>
+      </block>
+    </value>
+  </block>
+
+  <block type="list">
+    <value name="data">
+      <shadow type="parameters">
+          <mutation color="#15BAD4" items="2" limit="100" minimum="1" inputType="string" />
+          <value name="input_1">
+              <shadow type="inline_string">
+                  <field name="value">Hello</field>
+              </shadow>
+          </value>
+          <value name="input_2">
+              <shadow type="inline_string">
+                  <field name="value">World</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="list">
+    <value name="data">
+      <shadow type="parameters">
+          <mutation color="#15BAD4" items="3" limit="100" minimum="1" inputType="text" />
+          <value name="input_1">
+              <shadow type="inline_text">
+                  <field name="value">1</field>
+              </shadow>
+          </value>
+          <value name="input_2">
+              <shadow type="inline_text">
+                  <field name="value">2</field>
+              </shadow>
+          </value>
+          <value name="input_3">
+              <shadow type="inline_text">
+                  <field name="value">3</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="list_get_item_at_index">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#15BAD4" items="1" limit="1" minimum="1" inputType="number" />
+          <value name="input_1">
+              <shadow type="inline_number">
+                  <field name="value">0</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="list_reverse"></block>
+
+  <block type="list_find_index">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#15BAD4" items="1" limit="1" minimum="1" inputType="string" />
+          <value name="input_1">
+              <shadow type="inline_string">
+                  <field name="value">Hello</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="list_append">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#15BAD4" items="1" limit="1" minimum="1" inputType="string" />
+          <value name="input_1">
+              <shadow type="inline_string">
+                  <field name="value">Hello</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+</category>

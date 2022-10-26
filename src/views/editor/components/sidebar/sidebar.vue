@@ -25,10 +25,11 @@
       :spacing="4"
       :padding-t="4"
       :padding-b="4"
-      :padding-l="2"
+      :padding-l="4"
       :padding-r="4"
       is-full-height
       is-full-width
+      class="border-l border-gray-200"
     >
       <component
         :is="component.getSidebarActiveComponent()"

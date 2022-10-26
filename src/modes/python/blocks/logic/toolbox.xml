@@ -1,0 +1,55 @@
+<category name="Logic" colour="#49B04D" css-icon="customIcon fad fa-arrow-right-arrow-left">
+  <label text="Logic"></label>
+
+  <block type="if">
+    <value name="condition">
+      <shadow type="inline_text">
+        <field name="value">True</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="elif">
+    <value name="condition">
+      <shadow type="inline_text">
+        <field name="value">True</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="else"></block>
+
+  <block type="compare">
+    <value name="value_1">
+      <shadow type="inline_text">
+        <field name="value">0</field>
+      </shadow>
+    </value>
+    <value name="value_2">
+      <shadow type="inline_text">
+        <field name="value">0</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="and_or">
+    <value name="value_1">
+      <shadow type="inline_text">
+        <field name="value">True</field>
+      </shadow>
+    </value>
+    <value name="value_2">
+      <shadow type="inline_text">
+        <field name="value">True</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="not">
+    <value name="value">
+      <shadow type="inline_text">
+        <field name="value">True</field>
+      </shadow>
+    </value>
+  </block>
+</category>

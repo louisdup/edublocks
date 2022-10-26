@@ -1,25 +1,30 @@
-Blockly.Python["webwhileout"] = function(block: Blockly.BlockSvg): string {
-	const value: string = Blockly.Python.valueToCode(block, "cond", 0);
-	let branch: string = Blockly.Python.statementToCode(block, "DO");
-	branch = Blockly.Python.addLoopTrap(branch, block) || "  pass\n";
-	const code: string = `while ${value}:\n ${branch}`;
+Blockly.Python["while"] = function(block: Blockly.BlockSvg): string {
+	const condition: string = Blockly.Python.valueToCode(block, "condition", 0);
+	let value: string = Blockly.Python.statementToCode(block, "value");
+	value = Blockly.Python.addLoopTrap(value, block) || Blockly.Python.PASS;
+	const code: string = `while ${condition}:\n${value}`;
 	return code;
 };
 
-Blockly.Python["webfor"] = function(block: Blockly.BlockSvg): string {
-	const value1: string = Blockly.Python.valueToCode(block, "letter", 0);
-	const value2: string = Blockly.Python.valueToCode(block, "no", 0);
-	let branch: string = Blockly.Python.statementToCode(block, "DO");
-	branch = Blockly.Python.addLoopTrap(branch, block) || "  pass\n";
-	const code: string = `for ${value1} in range(${value2}):\n ${branch}`;
+Blockly.Python["for_range"] = function(block: Blockly.BlockSvg): string {
+	const variable: string = Blockly.Python.nameDB_.getName(block.getFieldValue("variable"), Blockly.VARIABLE_CATEGORY_NAME);
+	const parameters: string = Blockly.Python.valueToCode(block, "parameters", 0);
+	let value: string = Blockly.Python.statementToCode(block, "value");
+	value = Blockly.Python.addLoopTrap(value, block) || Blockly.Python.PASS;
+	const code: string = `for ${variable} in range(${parameters}):\n${value}`;
 	return code;
 };
 
-Blockly.Python["webadvancedforloops"] = function(block: Blockly.BlockSvg): string {
-	const value1: string = Blockly.Python.valueToCode(block, "x", 0);
-	const value2: string = Blockly.Python.valueToCode(block, "y", 0);
-	let branch: string = Blockly.Python.statementToCode(block, "DO");
-	branch = Blockly.Python.addLoopTrap(branch, block) || "  pass\n";
-	const code: string = `for ${value1} in ${value2}:\n ${branch}`;
+Blockly.Python["for"] = function(block: Blockly.BlockSvg): string {
+	const variable: string = Blockly.Python.nameDB_.getName(block.getFieldValue("variable"), Blockly.VARIABLE_CATEGORY_NAME);
+	const condition: string = Blockly.Python.valueToCode(block, "condition", 0);
+	let value: string = Blockly.Python.statementToCode(block, "value");
+	value = Blockly.Python.addLoopTrap(value, block) || Blockly.Python.PASS;
+	const code: string = `for ${variable} in ${condition}:\n${value}`;
+	return code;
+};
+  
+Blockly.Python["break"] = function(): string {
+	const code: string = "break\n";
 	return code;
 };

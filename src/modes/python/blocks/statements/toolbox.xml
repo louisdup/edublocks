@@ -1,10 +1,112 @@
 <category name="Statements" colour="#F89621" css-icon="customIcon fad fa-exclamation">
-  <block type="webvarprint">
-    <value name="var">
-      <shadow type="stringinline">
-        <field name="text">Hello World</field>
+  <label text="Output"></label>
+  <block type="print">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#F89621" items="1" limit="1" minimum="1" inputType="string" />
+          <value name="input_1">
+              <shadow type="inline_string">
+                  <field name="value">Hello World</field>
+              </shadow>
+          </value>
       </shadow>
     </value>
   </block>
-  <block type="stringinline"></block>
+  <block type="print">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#F89621" items="1" limit="1" minimum="1" inputType="text" />
+          <value name="input_1">
+              <shadow type="inline_text">
+                  <field name="value">1</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <label text="Input"></label>
+  <block type="input">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#F89621" items="1" limit="1" minimum="1" inputType="string" />
+          <value name="input_1">
+              <shadow type="inline_string">
+                  <field name="value">What is your name?</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <label text="Time"></label>
+  <block type="time_sleep">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#F89621" items="1" limit="1" minimum="1" inputType="number" />
+          <value name="input_1">
+              <shadow type="inline_number">
+                  <field name="value">1</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <label text="Convert"></label>
+  <block type="convert_to_string">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#F89621" items="1" limit="1" minimum="1" inputType="number" />
+          <value name="input_1">
+              <shadow type="inline_number">
+                  <field name="value">1</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+  <block type="convert_to_integer">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#F89621" items="1" limit="2" minimum="1" inputType="number" />
+          <value name="input_1">
+              <shadow type="inline_string">
+                  <field name="value">1</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+  <block type="convert_to_integer">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#F89621" items="2" limit="2" minimum="1" inputType="number" />
+          <value name="input_1">
+              <shadow type="inline_string">
+                  <field name="value">1</field>
+              </shadow>
+          </value>
+          <value name="input_2">
+              <shadow type="inline_number">
+                  <field name="value">1</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+  <block type="convert_to_float">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#F89621" items="1" limit="1" minimum="1" inputType="number" />
+          <value name="input_1">
+              <shadow type="inline_number">
+                  <field name="value">1</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+  <label text="Scope"></label>
+  <block type="global"></block>
 </category>

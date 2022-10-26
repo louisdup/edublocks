@@ -117,5 +117,13 @@
         "code": "Code",
         "repl": "REPL",
         "output": "Output"
+    },
+    "project-settings": {
+        "project": "Project",
+        "update": "Update",
+        "project-name": "Project Name",
+        "export": "Export",
+        "export-code": "Export Code",
+        "export-blocks-screenshot": "Export Blocks Screenshot"
     }
 }

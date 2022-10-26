@@ -5,7 +5,6 @@ import { ModeConfigModel } from "@/data/models/mode-config-model";
 import { TextToBlocksDefinitionModel } from "@/data/models/text-to-blocks-definition-model";
 import { EditorUtilities } from "@/utilities/editor-utilities";
 import { LocalizationUtilities } from "@/utilities/localization-utilities";
-import { Ref } from "vue";
 
 /**
  * Base class exposing common functionality to all mode models.
@@ -38,6 +37,11 @@ export abstract class ModeModelBase {
 	 * Returns a blockly toolbox for the current mode.
 	 */
 	public abstract getToolbox(): Array<String>;
+
+	/**
+	 * Returns a start block that appears when the block editor is initalised.
+	 */
+	public startBlock: string | undefined;
 		 
 	/**
 	 * Returns a list of block definitions that can be used for translating text to blocks.
@@ -65,58 +69,110 @@ export abstract class ModeModelBase {
 	 * Sets the specified header button to visible.
 	 */
 	public setHeaderButtonVisible(buttonToBeVisible: string): void {
-		this.headerButtons.forEach((button: EditorButtonModel) => {
-			if (buttonToBeVisible === button.key) {
-				button.visible = true;
-			}
-		});
+		if (EditorUtilities.currentProject.value) {
+			EditorUtilities.currentProject.value.mode.headerButtons.forEach((button: EditorButtonModel) => {
+				if (buttonToBeVisible === button.key) {
+					button.visible = true;
+				}
+			});
+		}
 	}
 
 	/**
 	 * Sets the specified header button to hidden.
 	 */
 	public setHeaderButtonHidden(buttonToBeVisible: string): void {
-		this.headerButtons.forEach((button: EditorButtonModel) => {
-			if (buttonToBeVisible === button.key) {
-				button.visible = false;
-			}
-		});
+		if (EditorUtilities.currentProject.value) {
+			EditorUtilities.currentProject.value.mode.headerButtons.forEach((button: EditorButtonModel) => {
+				if (buttonToBeVisible === button.key) {
+					button.visible = false;
+				}
+			});
+		}
 	}
 
 	/**
 	 * Sets the specified output panel tab to visible.
 	 */
 	public setOutputPanelTabVisible(tabToBeVisible: string): void {
-		this.outputPanelTabs.forEach((tab: EditorOutputTabModel) => {
-			if (tabToBeVisible === tab.key) {
-				tab.visible = true;
-			}
-		});
+		if (EditorUtilities.currentProject.value) {
+			EditorUtilities.currentProject.value.mode.outputPanelTabs.forEach((tab: EditorOutputTabModel) => {
+				if (tabToBeVisible === tab.key) {
+					tab.visible = true;
+				}
+			});
+		}
 	}
 
 	/**
 	 * Sets the specified output panel tab to hidden.
 	 */
 	public setOutputPanelTabHidden(tabToBeVisible: string): void {
-		this.outputPanelTabs.forEach((tab: EditorOutputTabModel) => {
-			if (tabToBeVisible === tab.key) {
-				tab.visible = false;
-			}
-		});
+		if (EditorUtilities.currentProject.value) {
+			EditorUtilities.currentProject.value.mode.outputPanelTabs.forEach((tab: EditorOutputTabModel) => {
+				if (tabToBeVisible === tab.key) {
+					tab.visible = false;
+				}
+			});
+		}
 	}
 
 	/**
 	 * Sets the specified output panel tab to be active.
 	 */
 	public setOutputPanelTabActive(tabToBeActive: string): void {
-		this.outputPanelTabs.forEach((tab: EditorOutputTabModel) => {
-			if (tabToBeActive === tab.key) {
-				tab.active = true;
-			}
-			else {
-				tab.active = false;
-			}
-		});
+		if (EditorUtilities.currentProject.value) {
+			EditorUtilities.currentProject.value.mode.outputPanelTabs.forEach((tab: EditorOutputTabModel) => {
+				if (tabToBeActive === tab.key) {
+					tab.active = true;
+				}
+				else {
+					tab.active = false;
+				}
+			});
+		}
+	}
+
+	/**
+	 * Sets the specified sidebar tab to visible.
+	 */
+	public setSidebarTabVisible(tabToBeVisible: string): void {
+		if (EditorUtilities.currentProject.value) {
+			EditorUtilities.currentProject.value.mode.sidebarTabs.forEach((tab: EditorSidebarTabModel) => {
+				if (tabToBeVisible === tab.key) {
+					tab.visible = true;
+				}
+			});
+		}
+	}
+	
+	/**
+	 * Sets the specified sidebar tab to hidden.
+	 */
+	public setSidebarTabHidden(tabToBeVisible: string): void {
+		if (EditorUtilities.currentProject.value) {
+			EditorUtilities.currentProject.value.mode.sidebarTabs.forEach((tab: EditorSidebarTabModel) => {
+				if (tabToBeVisible === tab.key) {
+					tab.visible = false;
+				}
+			});
+		}
+	}
+	
+	/**
+	 * Sets the specified sidebar tab to be active.
+	 */
+	public setSidebarTabActive(tabToBeActive: string): void {
+		if (EditorUtilities.currentProject.value) {
+			EditorUtilities.currentProject.value.mode.sidebarTabs.forEach((tab: EditorSidebarTabModel) => {
+				if (tabToBeActive === tab.key) {
+					tab.active = true;
+				}
+				else {
+					tab.active = false;
+				}
+			});
+		}
 	}
 
 	/**
@@ -137,5 +193,5 @@ export abstract class ModeModelBase {
 	/**
 	 * Get text code from the blockly workspace.
 	 */
-	 public abstract getCodeFromBlocks(): string | undefined;
+	public abstract getCodeFromBlocks(): string | undefined;
 }

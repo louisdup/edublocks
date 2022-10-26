@@ -8,7 +8,7 @@ import { ModalUtilities } from "./modal-utilities";
 import { ModeUtilities } from "./mode-utilities";
 
 /**
- * Utility functions for projects.
+ * Utility functions for working with projects.
  */
 export class ProjectsUtilities {
 	/**

@@ -1,0 +1,203 @@
+<category name="Turtle" colour="#5b59a2" css-icon="customIcon fad fa-pencil">
+    <label text="Turtle"></label>
+
+    <block type="turtle_init"></block>
+
+    <block type="turtle_screen_init"></block>
+
+    <block type="turtle_screen_setup">
+        <value name="parameters">
+            <shadow type="parameters">
+                <mutation color="#5b59a2" items="2" limit="2" inputType="number" />
+                <value name="input_1">
+                    <shadow type="inline_number">
+                        <field name="value">1920</field>
+                    </shadow>
+                </value>
+                <value name="input_2">
+                    <shadow type="inline_number">
+                        <field name="value">1080</field>
+                    </shadow>
+                </value>
+            </shadow>
+        </value>
+    </block>
+
+    <block type="turtle_background_color">
+        <value name="parameters">
+            <shadow type="parameters">
+                <mutation color="#5b59a2" items="3" limit="3" inputType="number" />
+                <value name="input_1">
+                    <shadow type="inline_number">
+                        <field name="value">255</field>
+                    </shadow>
+                </value>
+                <value name="input_2">
+                    <shadow type="inline_number">
+                        <field name="value">0</field>
+                    </shadow>
+                </value>
+                <value name="input_3">
+                    <shadow type="inline_number">
+                        <field name="value">0</field>
+                    </shadow>
+                </value>
+            </shadow>
+        </value>
+    </block>
+
+    <block type="turtle_color_mode">
+        <value name="parameters">
+            <shadow type="parameters">
+                <mutation color="#5b59a2" items="3" limit="3" inputType="number" />
+                <value name="input_1">
+                    <shadow type="inline_number">
+                        <field name="value">255</field>
+                    </shadow>
+                </value>
+                <value name="input_2">
+                    <shadow type="inline_number">
+                        <field name="value">0</field>
+                    </shadow>
+                </value>
+                <value name="input_3">
+                    <shadow type="inline_number">
+                        <field name="value">0</field>
+                    </shadow>
+                </value>
+            </shadow>
+        </value>
+    </block>
+
+    <block type="turtle_direction">
+        <value name="parameters">
+            <shadow type="parameters">
+                <mutation color="#5b59a2" items="1" minimum="1" limit="1" inputType="number" />
+                <value name="input_1">
+                    <shadow type="inline_number">
+                        <field name="value">90</field>
+                    </shadow>
+                </value>
+            </shadow>
+        </value>
+    </block>
+
+    <block type="turtle_circle">
+        <value name="parameters">
+            <shadow type="parameters">
+                <mutation color="#5b59a2" items="1" minimum="1" limit="1" inputType="number" />
+                <value name="input_1">
+                    <shadow type="inline_number">
+                        <field name="value">50</field>
+                    </shadow>
+                </value>
+            </shadow>
+        </value>
+    </block>
+
+    <block type="turtle_goto">
+        <value name="parameters">
+            <shadow type="parameters">
+                <mutation color="#5b59a2" items="2" limit="2" inputType="number" />
+                <value name="input_1">
+                    <shadow type="inline_number">
+                        <field name="value">5</field>
+                    </shadow>
+                </value>
+                <value name="input_2">
+                    <shadow type="inline_number">
+                        <field name="value">5</field>
+                    </shadow>
+                </value>
+            </shadow>
+        </value>
+    </block>
+
+    <block type="turtle_shape"></block>
+
+    <block type="turtle_width">
+        <value name="parameters">
+            <shadow type="parameters">
+                <mutation color="#5b59a2" items="1" minimum="1" limit="1" inputType="number" />
+                <value name="input_1">
+                    <shadow type="inline_number">
+                        <field name="value">20</field>
+                    </shadow>
+                </value>
+            </shadow>
+        </value>
+    </block>
+
+    <block type="turtle_color">
+        <value name="parameters">
+            <shadow type="parameters">
+                <mutation color="#5b59a2" items="3" limit="3" inputType="number" />
+                <value name="input_1">
+                    <shadow type="inline_number">
+                        <field name="value">255</field>
+                    </shadow>
+                </value>
+                <value name="input_2">
+                    <shadow type="inline_number">
+                        <field name="value">0</field>
+                    </shadow>
+                </value>
+                <value name="input_3">
+                    <shadow type="inline_number">
+                        <field name="value">0</field>
+                    </shadow>
+                </value>
+            </shadow>
+        </value>
+    </block>
+
+    <block type="turtle_pen_color">
+        <value name="parameters">
+            <shadow type="parameters">
+                <mutation color="#5b59a2" items="3" limit="3" inputType="number" />
+                <value name="input_1">
+                    <shadow type="inline_number">
+                        <field name="value">255</field>
+                    </shadow>
+                </value>
+                <value name="input_2">
+                    <shadow type="inline_number">
+                        <field name="value">0</field>
+                    </shadow>
+                </value>
+                <value name="input_3">
+                    <shadow type="inline_number">
+                        <field name="value">0</field>
+                    </shadow>
+                </value>
+            </shadow>
+        </value>
+    </block>
+
+    <block type="turtle_fill_color">
+        <value name="parameters">
+            <shadow type="parameters">
+                <mutation color="#5b59a2" items="3" limit="3" inputType="number" />
+                <value name="input_1">
+                    <shadow type="inline_number">
+                        <field name="value">255</field>
+                    </shadow>
+                </value>
+                <value name="input_2">
+                    <shadow type="inline_number">
+                        <field name="value">0</field>
+                    </shadow>
+                </value>
+                <value name="input_3">
+                    <shadow type="inline_number">
+                        <field name="value">0</field>
+                    </shadow>
+                </value>
+            </shadow>
+        </value>
+    </block>
+
+    <block type="turtle_fill"></block>
+
+    <block type="turtle_pen_up_down"></block>
+</category>  

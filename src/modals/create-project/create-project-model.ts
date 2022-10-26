@@ -6,7 +6,7 @@ import { EditorUtilities } from "@/utilities/editor-utilities";
 import { FilenameUtilities } from "@/utilities/filename-utilities";
 import { FormUtilities, ValidationSchema } from "@/utilities/form-utilities";
 import { ModeUtilities } from "@/utilities/mode-utilities";
-import { reactive, ref } from "vue";
+import { reactive, watchEffect } from "vue";
 import { ModalModelBase } from "../base-classes/modal-model-base";
 import { CreateProjectState } from "./create-project-state";
 import * as yup from "yup";
@@ -31,7 +31,17 @@ class CreateProjectModel extends ModalModelBase {
 	 * Initialise the modal model.
 	 */
 	public init(): void {
+		this.watchForFormChanges();
 		this.setInitialValues();
+	}
+
+	/**
+	 * Watches for changes on the form and checks if it's valid.
+	 */
+	private watchForFormChanges(): void {
+		watchEffect(async () => {
+			this.state.isValid = await FormUtilities.isFormValid(this.getValidationSchema(), this.state.data);
+		});
 	}
 
 	/**
