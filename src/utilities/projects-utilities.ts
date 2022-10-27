@@ -3,6 +3,7 @@ import { EbTableItem } from "@/components/eb-table/eb-table-types";
 import { FirestoreProjectModel } from "@/data/models/firestore-project-model";
 import { ModeModelBase } from "@/modes/base-classes/mode-model-base";
 import router from "@/router";
+import { AuthenticationUtilities } from "./authentication-utilities";
 import { EditorUtilities } from "./editor-utilities";
 import { FormatUtilities } from "./format-utilities";
 import { LocalizationUtilities } from "./localization-utilities";
@@ -24,14 +25,31 @@ export class ProjectsUtilities {
 	 * Gets the XML for a specified firestore project and opens it in the editor.
 	 */
 	public static openProject(project: FirestoreProjectModel): void {
-		EditorUtilities.setCurrentProject({
-			name: project.name,
-			mode: ModeUtilities.getModeFromKey(project.mode),
-			type: project.type,
-			firestore_project: project
-		});
+		if (AuthenticationUtilities.currentUser.value) {
+			EditorUtilities.setCurrentProject({
+				name: project.name,
+				mode: ModeUtilities.getModeFromKey(project.mode),
+				type: project.type,
+				firestore_project: project
+			});
 		
-		router.push(`/project/${project.id}`);
+			router.push(`/project/${AuthenticationUtilities.currentUser.value.uid}/${project.id}`);
+		}
+	}
+
+	/**
+	 * True if project access status is public read.
+	 */
+	public static shouldProjectBeReadOnly(userId: string, project: FirestoreProjectModel): boolean {
+		if (userId === AuthenticationUtilities.currentUser.value?.uid) {
+			return false;
+		}
+		else if (project.access === "public-read") {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	/**
@@ -53,7 +71,12 @@ export class ProjectsUtilities {
 					title: this.getText("share-project"),
 					icon: ["far", "share"],
 					action: (): void => {
-						//
+						ModalUtilities.showModal({
+							modal: "ShareProject",
+							options: {
+								project
+							}
+						});
 					}
 				}
 			],

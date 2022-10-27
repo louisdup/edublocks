@@ -14,6 +14,7 @@ import { FirestoreFetchResponse } from "@/data/firestore-fetch/firestore-fetch-t
 import { ModeUtilities } from "@/utilities/mode-utilities";
 import { ModeModelBase } from "@/modes/base-classes/mode-model-base";
 import { FilenameUtilities } from "@/utilities/filename-utilities";
+import { ProjectsUtilities } from "@/utilities/projects-utilities";
 
 /**
  * View model for the editor view.
@@ -106,17 +107,35 @@ class EditorModel extends ViewModelBase {
 	 * Loads a project from firestore in the editor.
 	 */
 	private async loadFirestoreProject(): Promise<void> {
-		const projectId: string = router.currentRoute.value.params.id as string;
-		await ProjectsProvider.getProjectAsync(projectId).then(async (response: FirestoreFetchResponse<FirestoreProjectModel>) => {
+		const userId: string = router.currentRoute.value.params.userId as string;
+		const projectId: string = router.currentRoute.value.params.projectId as string;
+		await ProjectsProvider.getProjectAsync(userId, projectId).then(async (response: FirestoreFetchResponse<FirestoreProjectModel>) => {
 			if (response.wasSuccessful && response.data) {
 				EditorUtilities.clearCurrentProject();
+				
 				EditorUtilities.setCurrentProject({
 					name: response.data.name,
 					mode: ModeUtilities.getModeFromKey(response.data.mode),
 					type: response.data.type,
+					readOnly: ProjectsUtilities.shouldProjectBeReadOnly(userId, response.data),
 					firestore_project: response.data
 				});
+
+				if (EditorUtilities.currentProject.value) {
+					// If the current project is read only, hide the save button.
+					if (EditorUtilities.currentProject.value.readOnly) {
+						EditorUtilities.currentProject.value.mode.setHeaderButtonHidden("save");
+					}
+
+					// Enable the share button, as the project is stored in firestore and therefore shareable.
+					EditorUtilities.currentProject.value.mode.setHeaderButtonVisible("share");
+				}
+				
 				await this.fetchAndSetCurrentProjectCode();
+			}
+			else {
+				// Set no access to true to trigger the empty state telling the user.
+				this.state.noAccess = true;
 			}
 		});
 	}
@@ -200,16 +219,9 @@ class EditorModel extends ViewModelBase {
 	}
 
 	/**
-	 * True if the editor is loading a project.
-	 */
-	public isLoadingProject(): boolean {
-		return this.state.isProjectLoading;
-	}
-
-	/**
 	 * Watches for changes on the current project filename and updates the page title dynamically.
 	 */
-	public updatePageTitleBasedOnCurrentProject(): void {
+	private updatePageTitleBasedOnCurrentProject(): void {
 		watchEffect(() => {
 			if (EditorUtilities.currentProject.value) {
 				document.title = `${EditorUtilities.currentProject.value.name} - EduBlocks`;
@@ -343,6 +355,20 @@ class EditorModel extends ViewModelBase {
 		else {
 			return undefined;
 		}
+	}
+
+	/**
+	 * True if the editor is loading a project.
+	 */
+	public isLoadingProject(): boolean {
+		return this.state.isProjectLoading;
+	}
+
+	/**
+	 * True if no access is true.
+	 */
+	public isNoAccessEmptyStateVisible(): boolean {
+		return this.state.noAccess;
 	}
 }
 

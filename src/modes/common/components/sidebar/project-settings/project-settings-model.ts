@@ -67,10 +67,44 @@ class ProjectSettingsModel extends ComponentModelBase {
 	}
 
 	/**
+	 * True if the current project is not read only. 
+	 */
+	public isUpdateButtonVisible(): boolean | undefined {
+		if (EditorUtilities.currentProject.value) {
+			if (EditorUtilities.currentProject.value.readOnly) {
+				return false;
+			}
+			else {
+				return true;
+			}
+		}
+		else {
+			return undefined;
+		}
+	}
+
+	/**
 	 * True if the form is not valid. 
 	 */
 	public isUpdateButtonDisabled(): boolean {
 		return !this.state.isValid;
+	}
+
+	/**
+	 * True if the current project is not read only. 
+	 */
+	public isProjectNameInputVisible(): boolean | undefined {
+		if (EditorUtilities.currentProject.value) {
+			if (EditorUtilities.currentProject.value.readOnly) {
+				return false;
+			}
+			else {
+				return true;
+			}
+		}
+		else {
+			return undefined;
+		}
 	}
 
 	/**
@@ -115,7 +149,7 @@ class ProjectSettingsModel extends ComponentModelBase {
 			const bbox: DOMRect = blocklyBlockCanvas.getBBox();
 			const canvasContent: string = new XMLSerializer().serializeToString(svgBlockCanvas);
 
-			let svg: string = `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${bbox.width}" height="${bbox.height}" viewBox="${bbox.x-5} ${bbox.y-5} ${bbox.width+5} ${bbox.height+6}">${svgCss}>${canvasContent}</svg>`;
+			const svg: string = `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${bbox.width}" height="${bbox.height}" viewBox="${bbox.x-5} ${bbox.y-5} ${bbox.width+5} ${bbox.height+6}">${svgCss}>${canvasContent}</svg>`;
 
 			const image: HTMLImageElement = new Image();
 
@@ -123,7 +157,7 @@ class ProjectSettingsModel extends ComponentModelBase {
 				type: "image/svg+xml;base64"
 			}));
 
-			image.onload = function() {
+			image.onload = function(): void {
 				const canvas: HTMLCanvasElement = document.createElement("canvas");
 				canvas.style.padding = "20px";
 				canvas.width = bbox.width * 5 + 20;
@@ -131,11 +165,13 @@ class ProjectSettingsModel extends ComponentModelBase {
 				canvas.getContext("2d")?.scale(5,5);
 				canvas.getContext("2d")?.drawImage(image, 0, 0);
 	
-				if (EditorUtilities.currentProject.value){
-					const fileName: string = `${EditorUtilities.currentProject.value.name}.png`;
-					saveAs(canvas.toDataURL("image/png"), fileName);
+				if (EditorUtilities.currentProject.value) {
+					const fileName: string = `${EditorUtilities.currentProject.value.name}.svg`;
+					saveAs(URL.createObjectURL(new Blob([svg], {
+						type: "image/svg+xml;base64"
+					})), fileName);
 				}
-			}
+			};
 		}
 	}
 }

@@ -1,9 +1,12 @@
 <template>
   <div>
-    <label class="block text-sm font-medium text-gray-500 mb-4">
+    <label
+      v-if="label"
+      class="block text-sm font-medium text-gray-500"
+    >
       {{ label }}
     </label>
-    <div class="flex items-center space-x-6 w-full">
+    <div class="flex items-center space-x-6 w-full mt-4">
       <button
         v-for="option in options"
         :key="option.key"
@@ -38,5 +41,5 @@ defineProps<{
 	modelValue: string;
 }>();
 
-defineEmits(["update:modelValue"]);
+defineEmits(["update:modelValue", "input"]);
 </script>

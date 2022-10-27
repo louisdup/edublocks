@@ -112,16 +112,19 @@ export class EditorUtilities {
 						}
 					});
 				}
+
 				// If project doesn't already exist in firestore, create a new firestore project.
 				else {
 					const path: string = `blocks/${AuthenticationUtilities.currentUser.value.uid}/${fileName}`;
 
 					await ProjectsProvider.updateProjectCodeAsync(path, fileContent).then(async (response: StorageFetchResponse) => {
-						if (response.wasSuccessful && response.data && this.currentProject.value) {
+						if (response.wasSuccessful && response.data && this.currentProject.value && AuthenticationUtilities.currentUser.value) {
 							const body: object = {
 								name: this.currentProject.value.name,
 								mode: this.currentProject.value.mode.config.key,
 								type: this.currentProject.value.type,
+								access: "private",
+								uid: AuthenticationUtilities.currentUser.value.uid,
 								path,
 								size: response.data.metadata.size,
 								extensions: null,
@@ -129,12 +132,20 @@ export class EditorUtilities {
 								updated: new Date().toISOString()
 							};
 
+							// Create the project in firestore.
 							await ProjectsProvider.createProjectAsync(body).then(async (response: FirestoreFetchResponse<string>) => {
-								if (response.wasSuccessful && response.data) {
-									await ProjectsProvider.getProjectAsync(response.data).then((response: FirestoreFetchResponse<FirestoreProjectModel>) => {
-										if (response.wasSuccessful && response.data && this.currentProject.value) {
+								if (response.wasSuccessful && response.data && AuthenticationUtilities.currentUser.value) {
+									// Get the project from firestore.
+									await ProjectsProvider.getProjectAsync(AuthenticationUtilities.currentUser.value.uid, response.data).then((response: FirestoreFetchResponse<FirestoreProjectModel>) => {
+										if (response.wasSuccessful && response.data && AuthenticationUtilities.currentUser.value && this.currentProject.value) {
+											// Set the current project's linked firestore project
 											this.currentProject.value.firestore_project = response.data;
-											router.push(`/project/${response.data.id}`);
+											
+											// Change the URL to be the direct link of the project.
+											router.push(`/project/${AuthenticationUtilities.currentUser.value.uid}/${response.data.id}`);
+
+											// Enable the share button, as the project is stored in firestore and therefore shareable.
+											this.currentProject.value.mode.setHeaderButtonVisible("share");
 										}
 									});
 								}

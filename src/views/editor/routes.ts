@@ -13,7 +13,7 @@ export const editorRoutes: Array<RouteRecordRaw> = [
 		}
 	},
 	{
-		path: "/project/:id",
+		path: "/project/:userId/:projectId",
 		name: View.Project,
 		component: Editor,
 		meta: {

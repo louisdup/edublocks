@@ -10,5 +10,6 @@ export interface ProjectModel {
 	type: "blocks" | "text";
 	blocks?: string;
 	code?: string;
+	readOnly?: boolean;
 	firestore_project?: FirestoreProjectModel;
 }

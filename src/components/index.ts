@@ -31,6 +31,7 @@ import EbRadioGroup from "./eb-radio-group/eb-radio-group.vue";
 import EbSelect from "./eb-select/eb-select.vue";
 import EbChip from "./eb-chip/eb-chip.vue";
 import EbLoading from "./eb-loading/eb-loading.vue";
+import EbEmptyState from "./eb-empty-state/eb-empty-state.vue";
 
 /**
  * Export & install application components for use globally
@@ -67,5 +68,6 @@ export default {
 		app.component(ComponentName.EbSelect, EbSelect);
 		app.component(ComponentName.EbChip, EbChip);
 		app.component(ComponentName.EbLoading, EbLoading);
+		app.component(ComponentName.EbEmptyState, EbEmptyState);
 	}
 };

@@ -32,6 +32,16 @@
 
   <!-- Project Loading Status Screen -->
   <eb-loading v-if="view.isLoadingProject()" />
+
+  <!-- No Access Empty State -->
+  <eb-empty-state
+    v-if="view.isNoAccessEmptyStateVisible()"
+    :title="view.getText('no-access')"
+    :subtitle="view.getText('project-is-private')"
+    :icon="['far', 'ban']"
+    is-full-height
+    is-full-width
+  />
 </template>
 
 <script setup lang="ts">

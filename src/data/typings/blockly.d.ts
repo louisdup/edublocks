@@ -18,6 +18,7 @@ declare module Blockly {
     toolbox?: Blockly.utils.toolbox.ToolboxDefinition;
     readOnly?: boolean;
     trashcan?: boolean;
+    scrollbars?: boolean;
     maxInstances?: {[type: string]: number;};
     maxTrashcanContents?: number;
     collapse?: boolean;

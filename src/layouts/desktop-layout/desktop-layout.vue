@@ -33,8 +33,9 @@
 
 <script setup lang="ts">
 import DesktopNav from "./components/desktop-nav/desktop-nav.vue";
-import { state } from "@/data/state";
 import DesktopHeader from "./components/desktop-header/desktop-header.vue";
+
+import { state } from "@/data/state";
 
 defineEmits(["scroll"]);
 </script>

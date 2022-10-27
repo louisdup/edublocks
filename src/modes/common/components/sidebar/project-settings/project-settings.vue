@@ -6,6 +6,7 @@
     />
 
     <eb-button
+      v-if="component.isUpdateButtonVisible()"
       :label="component.getText('update')"
       :is-disabled="component.isUpdateButtonDisabled()"
       color="blue"
@@ -15,6 +16,7 @@
   </eb-h-stack>
 
   <eb-input
+    v-if="component.isProjectNameInputVisible()"
     v-model="component.state.data['name']"
     :label="component.getText('project-name')"
     :error="component.state.errors['name']"

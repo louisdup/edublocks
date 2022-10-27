@@ -37,6 +37,17 @@
         "text-only": "Text only",
         "ideal-for-advanced-users": "Ideal for advanced users"
     },
+    "share-project": {
+        "share-project": "Share Project",
+        "copy": "Copy",
+        "copied": "Copied",
+        "close": "Close",
+        "access": "Access",
+        "private": "Private",
+        "only-you-can-view-edit": "Only you can view & edit",
+        "public": "Public",
+        "anyone-with-link": "Anyone with the link can view"
+    },
     "delete-showcase-project": {
         "delete-project": "Delete Showcase Project",
         "cancel": "Cancel",
@@ -111,7 +122,9 @@
         "share": "Share",
         "save": "Save",
         "run": "Run",
-        "stop": "Stop"
+        "stop": "Stop",
+        "no-access": "No Access",
+        "project-is-private": "The author has this project set to private"
     },
     "output-panel": {
         "code": "Code",

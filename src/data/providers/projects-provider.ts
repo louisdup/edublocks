@@ -23,8 +23,8 @@ export async function getProjectsAsync(limit: number, searchTerm?: string, offse
 /**
  * Get a single project.
  */
-export async function getProjectAsync(id: string): Promise<FirestoreFetchResponse<FirestoreProjectModel>> {
-	return FirestoreFetch.fetchDocumentAsync(new FirestoreFetchRequest(`users/${AuthenticationUtilities.currentUser.value?.uid}/projects/${id}`));
+export async function getProjectAsync(userId: string, projectId: string): Promise<FirestoreFetchResponse<FirestoreProjectModel>> {
+	return FirestoreFetch.fetchDocumentAsync(new FirestoreFetchRequest(`users/${userId}/projects/${projectId}`));
 }
 
 /**

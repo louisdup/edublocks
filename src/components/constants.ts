@@ -31,5 +31,6 @@ export enum ComponentName {
 	EbRadioGroup = "EbRadioGroup",
 	EbSelect = "EbSelect",
 	EbChip = "EbChip",
-	EbLoading = "EbLoading"
+	EbLoading = "EbLoading",
+	EbEmptyState = "EbEmptyState"
 }

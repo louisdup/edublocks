@@ -78,7 +78,9 @@ export class BlocklyModel extends ComponentModelBase {
 				minScale: 0.3,
 				scaleSpeed: 1.2,
 		  	},
+			scrollbars: true,
 			trashcan: false,
+			readOnly: EditorUtilities.currentProject.value?.readOnly,
 			toolbox: this.getToolboxXML()
 		};
 	}

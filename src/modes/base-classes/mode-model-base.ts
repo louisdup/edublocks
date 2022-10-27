@@ -8,6 +8,7 @@ import { LocalizationUtilities } from "@/utilities/localization-utilities";
 
 // Sidebar tab components.
 import ProjectSettings from "@/modes/common/components/sidebar/project-settings/project-settings.vue";
+import { ModalUtilities } from "@/utilities/modal-utilities";
 
 /**
  * Base class exposing common functionality to all mode models.
@@ -61,13 +62,16 @@ export abstract class ModeModelBase {
 	/**
 	 * Get common header buttons that are used by most modes.
 	 */
-	 public commonHeaderButtons: Array<EditorButtonModel> = [
+	public commonHeaderButtons: Array<EditorButtonModel> = [
 		{
 			key: "share",
 			icon: ["far", "share"],
 			color: "gray",
+			visible: false,
 			action: (): void => {
-				//
+				ModalUtilities.showModal({
+					modal: "ShareProject"
+				});
 			}
 		},
 		{
@@ -88,7 +92,7 @@ export abstract class ModeModelBase {
 	/**
 	 * Get common sidebar tabs that are used by most modes.
 	 */
-	 public commonsidebarTabs: Array<EditorSidebarTabModel> = [
+	public commonsidebarTabs: Array<EditorSidebarTabModel> = [
 		{
 			key: "project-settings",
 			icon: ["far", "file"],
@@ -117,10 +121,10 @@ export abstract class ModeModelBase {
 	/**
 	 * Sets the specified header button to hidden.
 	 */
-	public setHeaderButtonHidden(buttonToBeVisible: string): void {
+	public setHeaderButtonHidden(buttonToBeHidden: string): void {
 		if (EditorUtilities.currentProject.value) {
 			EditorUtilities.currentProject.value.mode.headerButtons.forEach((button: EditorButtonModel) => {
-				if (buttonToBeVisible === button.key) {
+				if (buttonToBeHidden === button.key) {
 					button.visible = false;
 				}
 			});

@@ -1,5 +1,9 @@
 <category name="Text" colour="#a855f7" css-icon="customIcon fad fa-text-size">
   <label text="Text"></label>
+  
+  <block type="inline_string"></block>
+
+  <block type="inline_text"></block>
 
   <block type="parameters">
       <mutation color="#a855f7" items="2" limit="100" inputType="string" />
