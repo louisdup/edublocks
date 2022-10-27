@@ -1,4 +1,4 @@
-Blockly.Python["start_code_here"] = function(): string {
+Blockly.Python["events_start_here"] = function(): string {
 	const code: string = `#Start code here\n`;
 	return code;
 };

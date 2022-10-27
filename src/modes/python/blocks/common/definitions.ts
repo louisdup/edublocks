@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
 import { EditorUtilities } from "@/utilities/editor-utilities";
 import { getExtraBlockState } from "@/views/editor/components/blockly/modifiers/serialization-helper";
 
-Blockly.Blocks["start_code_here"] = { 
+Blockly.Blocks["events_start_here"] = { 
 	init: function(): void {
 		this.appendDummyInput()
 			.appendField("# Start code here"); 

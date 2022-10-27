@@ -65,3 +65,9 @@ home/
 
 - templates/home-desktop: Same as above but the desktop version of the view.
 
+## Credits
+
+List of notable scientists and hackers for the random filename generator: [Moby](https://github.com/moby/moby).
+
+Loading animation component: [Scratch GUI](https://github.com/LLK/scratch-gui).
+

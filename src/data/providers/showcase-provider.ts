@@ -1,6 +1,6 @@
-import * as Fetch from "../fetch/fetch";
-import { FetchRequest } from "../fetch/fetch-request";
-import { FetchResponse } from "../fetch/types";
+import * as FirestoreFetch from "../firestore-fetch/firestore-fetch";
+import { FirestoreFetchRequest } from "../firestore-fetch/firestore-fetch-request";
+import { FirestoreFetchResponse } from "../firestore-fetch/firestore-fetch-types";
 import { ShowcaseProjectModel } from "../models/showcase-project-model";
 
 // ----------------------------------------------------
@@ -10,20 +10,20 @@ import { ShowcaseProjectModel } from "../models/showcase-project-model";
 /**
  * Get a paged list of showcase projects.
  */
-export async function getShowcaseProjectsAsync(limit: number): Promise<FetchResponse<Array<ShowcaseProjectModel>>> {
-	return Fetch.fetchCollectionAsync(new FetchRequest("showcase", undefined, undefined, limit));
+export async function getShowcaseProjectsAsync(limit: number): Promise<FirestoreFetchResponse<Array<ShowcaseProjectModel>>> {
+	return FirestoreFetch.fetchCollectionAsync(new FirestoreFetchRequest("showcase", undefined, undefined, limit));
 }
 
 /**
  * Get a single project from the showcase.
  */
-export async function getShowcaseProjectAsync(id: string): Promise<FetchResponse<ShowcaseProjectModel>> {
-	return Fetch.fetchDocumentAsync(new FetchRequest(`showcase/${id}`));
+export async function getShowcaseProjectAsync(id: string): Promise<FirestoreFetchResponse<ShowcaseProjectModel>> {
+	return FirestoreFetch.fetchDocumentAsync(new FirestoreFetchRequest(`showcase/${id}`));
 }
 
 /**
  * Delete a single project from the showcase.
  */
-export async function deleteShowcaseProjectAsync(id: string): Promise<FetchResponse<void>> {
-	return Fetch.deleteDocumentAsync(new FetchRequest(`showcase/${id}`));
+export async function deleteShowcaseProjectAsync(id: string): Promise<FirestoreFetchResponse<void>> {
+	return FirestoreFetch.deleteDocumentAsync(new FirestoreFetchRequest(`showcase/${id}`));
 }

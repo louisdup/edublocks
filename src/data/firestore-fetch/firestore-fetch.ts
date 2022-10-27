@@ -1,13 +1,13 @@
 import { FirestoreUtilities } from "@/utilities/firestore-utilities";
-import { FetchResponse } from "./types";
-import { FetchRequest } from "./fetch-request";
+import { FirestoreFetchResponse } from "./firestore-fetch-types";
+import { FirestoreFetchRequest } from "./firestore-fetch-request";
 import firebase from "firebase/compat/app";
 import { ModalUtilities } from "@/utilities/modal-utilities";
 
 /**
  * Setup and create a firestore fetch response.
  */
-function createFetchResponse<T>(): FetchResponse<T> {
+function createFirestoreFetchResponse<T>(): FirestoreFetchResponse<T> {
 	return {
 		data: undefined,
 		hasError: false,
@@ -19,8 +19,8 @@ function createFetchResponse<T>(): FetchResponse<T> {
 /**
  * Helper function for getting data from a firestore collection.
  */
-export async function fetchCollectionAsync<T>(request: FetchRequest): Promise<FetchResponse<T>> {
-	const result: FetchResponse<T> = createFetchResponse();
+export async function fetchCollectionAsync<T>(request: FirestoreFetchRequest): Promise<FirestoreFetchResponse<T>> {
+	const result: FirestoreFetchResponse<T> = createFirestoreFetchResponse();
 	const data: Array<unknown> = [];
 
 	try {
@@ -92,8 +92,8 @@ export async function fetchCollectionAsync<T>(request: FetchRequest): Promise<Fe
 /**
  * Helper function for getting a document from a firestore collection.
  */
-export async function fetchDocumentAsync<T>(request: FetchRequest): Promise<FetchResponse<T>> {
-	const result: FetchResponse<T> = createFetchResponse();
+export async function fetchDocumentAsync<T>(request: FirestoreFetchRequest): Promise<FirestoreFetchResponse<T>> {
+	const result: FirestoreFetchResponse<T> = createFirestoreFetchResponse();
 
 	try {
 		const response: firebase.firestore.DocumentSnapshot = await FirestoreUtilities
@@ -122,10 +122,39 @@ export async function fetchDocumentAsync<T>(request: FetchRequest): Promise<Fetc
 }
 
 /**
+ * Helper function for creating document in a firestore collection.
+ */
+export async function createDocumentAsync(request: FirestoreFetchRequest): Promise<FirestoreFetchResponse<string>> {
+	const result: FirestoreFetchResponse<string> = createFirestoreFetchResponse();
+
+	if (request.body) {
+		try {
+			const response: firebase.firestore.DocumentReference = await FirestoreUtilities
+				.firestore()
+				.collection(request.url)
+				.add(request.body);
+			
+			result.data = response.id;
+			result.wasSuccessful = true;
+		}
+		catch (e) {
+			const error: firebase.firestore.FirestoreError = e as firebase.firestore.FirestoreError;
+			result.error = error;
+			result.hasError = true;
+			ModalUtilities.showModal({
+				modal: "Error"
+			});
+		}
+	}
+
+	return result;
+}
+
+/**
  * Helper function for updating document in a firestore collection.
  */
-export async function updateDocumentAsync<T>(request: FetchRequest): Promise<FetchResponse<T>> {
-	const result: FetchResponse<T> = createFetchResponse();
+export async function updateDocumentAsync<T>(request: FirestoreFetchRequest): Promise<FirestoreFetchResponse<T>> {
+	const result: FirestoreFetchResponse<T> = createFirestoreFetchResponse();
 
 	if (request.body) {
 		try {
@@ -152,8 +181,8 @@ export async function updateDocumentAsync<T>(request: FetchRequest): Promise<Fet
 /**
  * Helper function for deleting a document from a firestore collection.
  */
-export async function deleteDocumentAsync<T>(request: FetchRequest): Promise<FetchResponse<T>> {
-	const result: FetchResponse<T> = createFetchResponse();
+export async function deleteDocumentAsync<T>(request: FirestoreFetchRequest): Promise<FirestoreFetchResponse<T>> {
+	const result: FirestoreFetchResponse<T> = createFirestoreFetchResponse();
 
 	try {
 		await FirestoreUtilities

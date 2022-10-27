@@ -20,7 +20,7 @@ export class RaspberryPiModel extends ModeModelBase {
 	 */
 	public config: ModeConfigModel = {
 		name: "Raspberry Pi",
-		key: "RPi",
+		key: "raspberry-pi",
 		color: "pink",
 		logo: "/images/modes/raspberry-pi/logo.svg",
 		image: "/images/modes/raspberry-pi/thumbnail.svg",

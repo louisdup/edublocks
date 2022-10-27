@@ -4,7 +4,7 @@ import firebase from "firebase/compat/app";
 /**
  * Define a firestore fetch request for the helper function.
  */
-export class FetchRequest {
+export class FirestoreFetchRequest {
 	private _url: string;
 	private _body: firebase.firestore.UpdateData | undefined;
 	private _orderBy: string | undefined;

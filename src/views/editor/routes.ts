@@ -5,12 +5,20 @@ import Editor from "@/views/editor/editor.vue";
 
 export const editorRoutes: Array<RouteRecordRaw> = [
 	{
-		path: "/editor",
-		name: View.Editor,
+		path: "/project/new",
+		name: View.NewProject,
 		component: Editor,
 		meta: {
 			key: "editor"
 		}
-	}
+	},
+	{
+		path: "/project/:id",
+		name: View.Project,
+		component: Editor,
+		meta: {
+			key: "editor"
+		}
+	},
 ];
 

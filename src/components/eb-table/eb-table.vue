@@ -12,40 +12,45 @@
       <button
         v-for="item in items"
         :key="item.title"
-        class="w-full p-3 flex items-center text-left space-x-4 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none transition-colors rounded-md group"
+        class="w-full p-3 flex items-center text-left hover:bg-gray-100 focus:bg-gray-100 focus:outline-none transition-colors rounded-md group"
       >
         <div
-          v-if="item.thumbnail"
-          class="h-9 w-9 rounded-lg bg-gray-100 flex items-center justify-center flex-none"
+          class="flex items-center space-x-4 w-full"
+          @click="item.action()"
         >
-          <img
-            :src="item.thumbnail"
-            class="w-4"
+          <div
+            v-if="item.thumbnail"
+            class="h-9 w-9 rounded-lg bg-gray-100 flex items-center justify-center flex-none"
           >
-        </div>
-        <div class="text-sm leading-6 items-center overflow-hidden">
-          <h1 class="font-medium text-gray-900">
-            {{ item.title }}
-          </h1>
-          <div class="flex text-xs space-x-2 text-gray-500">
-            <div
-              v-for="(metadata, index) in item.meta"
-              :key="metadata.key"
-              class="flex items-center space-x-2 overflow-hidden"
+            <img
+              :src="item.thumbnail"
+              class="w-4"
             >
-              <p class="truncate">
-                {{ metadata.label }}
-              </p>
+          </div>
+          <div class="text-sm leading-6 items-center overflow-hidden">
+            <h1 class="font-medium text-gray-900">
+              {{ item.title }}
+            </h1>
+            <div class="flex text-xs space-x-2 text-gray-500">
               <div
-                v-if="index !== item.meta.length - 1"
-                class="h-1 w-1 rounded-full bg-gray-400"
-              />
+                v-for="(metadata, index) in item.meta"
+                :key="metadata.key"
+                class="flex items-center space-x-2 overflow-hidden"
+              >
+                <p class="truncate">
+                  {{ metadata.label }}
+                </p>
+                <div
+                  v-if="index !== item.meta.length - 1"
+                  class="h-1 w-1 rounded-full bg-gray-400"
+                />
+              </div>
             </div>
           </div>
         </div>
         <div
           v-if="item.dropdownOptions"
-          class="!ml-auto hidden group-hover:block group-focus:block pl-4"
+          class="hidden group-hover:block group-focus:block"
         >
           <eb-dropdown
             :options="item.dropdownOptions"

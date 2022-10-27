@@ -1,5 +1,8 @@
 <template>
-  <editor-mobile-layout :header-buttons="view.getHeaderButtonsForCurrentMode()">
+  <editor-mobile-layout
+    v-if="view.isEditorVisible()"
+    :header-buttons="view.getHeaderButtonsForCurrentMode()"
+  >
     <!-- Blocks Editor -->
     <blockly :is-resizing="view.state.isSplitViewBeingResized" />
 
@@ -11,6 +14,9 @@
       <output-panel :is-resizing="view.state.isSplitViewBeingResized" />
     </eb-sheet>
   </editor-mobile-layout>
+
+  <!-- Project Loading Status Screen -->
+  <eb-loading v-if="view.isLoadingProject()" />
 </template>
 
 <script setup lang="ts">

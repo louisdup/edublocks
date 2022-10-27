@@ -1,4 +1,4 @@
-import { FetchResponse } from "@/data/fetch/types";
+import { FirestoreFetchResponse } from "@/data/firestore-fetch/firestore-fetch-types";
 import { reactive } from "vue";
 import { ViewModelBase } from "../base-classes/view-model-base";
 import { ProjectsState } from "./projects-state";
@@ -58,7 +58,7 @@ class ProjectsModel extends ViewModelBase {
 		this.state.isLoadingInitialProjects = true;
 		
 		if (this.isCurrentUserLoggedIn()) {
-			ProjectsProvider.getProjectsAsync(20, this.state.search).then((response: FetchResponse<Array<FirestoreProjectModel>>) => {
+			ProjectsProvider.getProjectsAsync(20, this.state.search).then((response: FirestoreFetchResponse<Array<FirestoreProjectModel>>) => {
 				if (response.wasSuccessful && response.data) {
 					this.state.projects = response.data;
 				}
@@ -76,7 +76,7 @@ class ProjectsModel extends ViewModelBase {
 		if (this.isCurrentUserLoggedIn()) {
 			const lastProjectSnapshot: QueryDocumentSnapshot = this.state.projects[this.state.projects.length-1].snapshot;
 
-			ProjectsProvider.getProjectsAsync(20, this.state.search, lastProjectSnapshot).then((response: FetchResponse<Array<FirestoreProjectModel>>) => {
+			ProjectsProvider.getProjectsAsync(20, this.state.search, lastProjectSnapshot).then((response: FirestoreFetchResponse<Array<FirestoreProjectModel>>) => {
 				if (response.wasSuccessful && response.data) {
 					response.data.forEach((project: FirestoreProjectModel) => {
 						this.state.projects.push(project);

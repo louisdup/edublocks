@@ -20,7 +20,7 @@ export class HTMLModel extends ModeModelBase {
 	 */
 	public config: ModeConfigModel = {
 		name: "HTML",
-		key: "HTML",
+		key: "html",
 		color: "orange",
 		logo: "/images/modes/html/logo.svg",
 		image: "/images/modes/html/thumbnail.svg",

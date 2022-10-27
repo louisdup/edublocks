@@ -20,7 +20,7 @@ export class CircuitPythonModel extends ModeModelBase {
 	 */
 	public config: ModeConfigModel = {
 		name: "CircuitPython",
-		key: "CircuitPython",
+		key: "circuitpython",
 		color: "purple",
 		logo: "/images/modes/circuitpython/logo.svg",
 		image: "/images/modes/circuitpython/thumbnail.svg",

@@ -81,7 +81,7 @@ export class PythonModel extends ModeModelBase {
 	 */
 	public config: ModeConfigModel = {
 		name: "Python 3",
-		key: "Python",
+		key: "python",
 		color: "blue",
 		logo: "/images/modes/python/logo.svg",
 		image: "/images/modes/python/thumbnail.svg",
@@ -98,7 +98,7 @@ export class PythonModel extends ModeModelBase {
 	/**
 	 * Returns the start block that appears at the top of all python code.
 	 */
-	public startBlock: string = "start_code_here";
+	public startBlock: string = "events_start_here";
 
 	/**
 	 * Returns a blockly toolbox for the Python mode.
@@ -143,7 +143,7 @@ export class PythonModel extends ModeModelBase {
 			icon: ["far", "save"],
 			color: "gray",
 			action: (): void => {
-				//
+				EditorUtilities.saveCurrentProject();
 			}
 		},
 		{

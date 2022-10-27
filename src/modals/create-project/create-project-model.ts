@@ -130,7 +130,7 @@ class CreateProjectModel extends ModalModelBase {
 				blocks: ""
 			});
 
-			router.push("/editor");
+			router.push("/project/new");
 		}
 	}
 

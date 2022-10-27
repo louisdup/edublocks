@@ -24,31 +24,6 @@ export class BlocklyModel extends ComponentModelBase {
 	} 
 
 	/**
-	 * Initialise blockly workspace XML.
-	 */
-	private initXml(): void {
-		if (EditorUtilities.blocklyInstance && EditorUtilities.currentProject.value && EditorUtilities.currentProject.value.mode.startBlock && EditorUtilities.currentProject.value.blocks !== undefined) {
-			EditorUtilities.currentProject.value.blocks = Blockly.Xml.domToPrettyText(Blockly.Xml.workspaceToDom(EditorUtilities.blocklyInstance));
-
-			EditorUtilities.blocklyInstance.clear();
-			EditorUtilities.blocklyInstance.addChangeListener(Blockly.Events.disableOrphans);
-			
-			const startBlock: number = EditorUtilities.currentProject.value.blocks.search("start_block");
-			const startBlockXml: string = `<block type="${EditorUtilities.currentProject.value.mode.startBlock}" id="start_block" x="25" y="25" deletable="false" movable="false"></block>`;
-			let xml: string = `<xml xmlns="https://developers.google.com/blockly/xml">${startBlockXml}</xml>`;
-
-			if (startBlock < 0) {
-				const firstBlockPosition: number = xml.search("<block");
-				if (firstBlockPosition < 0) {
-					const positionFromEndOfString: number = -1 * "</xml>".length;
-					xml = `${EditorUtilities.currentProject.value.blocks.slice(0, firstBlockPosition)}${startBlockXml}<next>${EditorUtilities.currentProject.value.blocks.slice(firstBlockPosition, positionFromEndOfString)}</next>${EditorUtilities.currentProject.value.blocks.slice(positionFromEndOfString)}`;
-				}
-				Blockly.Xml.domToWorkspace(Blockly.Xml.textToDom(xml), EditorUtilities.blocklyInstance);
-			}
-		}		
-	}
-
-	/**
 	 * Checks for any changes in the blockly workspace and updates the current project code.
 	 */
 	private checkForBlocklyChanges(): void {
@@ -70,7 +45,6 @@ export class BlocklyModel extends ComponentModelBase {
 	private setBlocklyInstance(): void {
 		EditorUtilities.blocklyInstance = Blockly.inject("#blocklyDiv", this.getBlocklyOptions());
 		this.checkForBlocklyChanges();
-		this.initXml();
 	}
 
 	/**
@@ -94,7 +68,7 @@ export class BlocklyModel extends ComponentModelBase {
 	private getBlocklyOptions(): Blockly.BlocklyOptions {
 		return {
 			renderer: "pxt",
-			media: "blockly/media/",
+			media: "/blockly/media/",
 			zoom: {
 				controls: true,
 				wheel: true,

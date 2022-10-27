@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { onMounted, onUnmounted } from "vue";
 import { view } from "./editor-model";
 
 // Import templates.
@@ -18,5 +18,10 @@ import EditorMobile from "./templates/editor-mobile.vue";
 // Initalise the view.
 onMounted(() => {
 	view.init();
+});
+
+// Clear the view.
+onUnmounted(() => {
+	view.onUnmount();
 });
 </script>

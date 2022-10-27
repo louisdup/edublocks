@@ -2,6 +2,8 @@ import { EbDropdownOption } from "@/components/eb-dropdown/eb-dropdown-types";
 import { EbTableItem } from "@/components/eb-table/eb-table-types";
 import { FirestoreProjectModel } from "@/data/models/firestore-project-model";
 import { ModeModelBase } from "@/modes/base-classes/mode-model-base";
+import router from "@/router";
+import { EditorUtilities } from "./editor-utilities";
 import { FormatUtilities } from "./format-utilities";
 import { LocalizationUtilities } from "./localization-utilities";
 import { ModalUtilities } from "./modal-utilities";
@@ -19,10 +21,17 @@ export class ProjectsUtilities {
 	}
 
 	/**
-	 * Redirect to a project page.
+	 * Gets the XML for a specified firestore project and opens it in the editor.
 	 */
 	public static openProject(project: FirestoreProjectModel): void {
-		// TODO: fetch project and open in editor
+		EditorUtilities.setCurrentProject({
+			name: project.name,
+			mode: ModeUtilities.getModeFromKey(project.mode),
+			type: project.type,
+			firestore_project: project
+		});
+		
+		router.push(`/project/${project.id}`);
 	}
 
 	/**

@@ -1,5 +1,6 @@
 <template>
   <editor-desktop-layout
+    v-if="view.isEditorVisible()"
     :header-buttons="view.getHeaderButtonsForCurrentMode()"
     @onProjectButtonClicked="view.onProjectButtonClicked()"
   >
@@ -28,6 +29,9 @@
       </eb-split-view-pane>
     </eb-split-view>
   </editor-desktop-layout>
+
+  <!-- Project Loading Status Screen -->
+  <eb-loading v-if="view.isLoadingProject()" />
 </template>
 
 <script setup lang="ts">

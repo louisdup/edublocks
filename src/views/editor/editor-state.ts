@@ -6,4 +6,9 @@ export class EditorState {
 	 * True if a panel in the split view is being resized.
 	 */
 	public isSplitViewBeingResized: boolean = false;
+
+	/**
+	 * True if the editor is loading a project.
+	 */
+	public isProjectLoading: boolean = false;
 }

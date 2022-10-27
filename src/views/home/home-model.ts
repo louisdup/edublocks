@@ -1,5 +1,5 @@
-import { FetchResponse } from "@/data/fetch/types";
-import { reactive, ref } from "vue";
+import { FirestoreFetchResponse } from "@/data/firestore-fetch/firestore-fetch-types";
+import { reactive } from "vue";
 import { ViewModelBase } from "../base-classes/view-model-base";
 import { HomeState } from "./home-state";
 import { ShowcaseProjectModel } from "@/data/models/showcase-project-model";
@@ -10,9 +10,7 @@ import * as ShowcaseProvider from "@/data/providers/showcase-provider";
 import * as ProjectsProvider from "@/data/providers/projects-provider";
 import { ProjectsUtilities } from "@/utilities/projects-utilities";
 import { EditorUtilities } from "@/utilities/editor-utilities";
-import router from "@/router";
 import { ModeModelBase } from "@/modes/base-classes/mode-model-base";
-import { FilenameUtilities } from "@/utilities/filename-utilities";
 import { EbTableItem } from "@/components/eb-table/eb-table-types";
 
 /**
@@ -65,7 +63,7 @@ class HomeModel extends ViewModelBase {
 	private loadShowcaseProjects(): void {
 		this.state.isLoadingShowcaseProjects = true;
 
-		ShowcaseProvider.getShowcaseProjectsAsync(10).then((response: FetchResponse<Array<ShowcaseProjectModel>>) => {
+		ShowcaseProvider.getShowcaseProjectsAsync(10).then((response: FirestoreFetchResponse<Array<ShowcaseProjectModel>>) => {
 			if (response.wasSuccessful && response.data) {
 				this.state.showcaseProjects = response.data;
 			}
@@ -87,7 +85,7 @@ class HomeModel extends ViewModelBase {
 		this.state.isLoadingRecentProjects = true;
 		
 		if (this.isCurrentUserLoggedIn()) {
-			ProjectsProvider.getProjectsAsync(5).then((response: FetchResponse<Array<FirestoreProjectModel>>) => {
+			ProjectsProvider.getProjectsAsync(5).then((response: FirestoreFetchResponse<Array<FirestoreProjectModel>>) => {
 				if (response.wasSuccessful && response.data) {
 					this.state.recentProjects = response.data;
 				}
@@ -112,19 +110,10 @@ class HomeModel extends ViewModelBase {
 
 	/**
 	 * Called when a list item is clicked on the create new project slider.
-	 * Sets the current project to be a new project with the selected mode.
-	 * The user is then redirected to the editor.
+	 * Redirects the user to the new project editor page.
 	 */
 	public onCreateNewProjectListItemClicked(mode: ModeModelBase): void {
-		EditorUtilities.setCurrentProject({
-			name: FilenameUtilities.generateRandomFilename(),
-			mode,
-			type: "blocks",
-			code: "",
-			blocks: ""
-		});
-
-		router.push("/editor");
+		EditorUtilities.openEditor(mode);
 	}
 }
 
