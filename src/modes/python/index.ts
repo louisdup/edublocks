@@ -7,9 +7,6 @@ import { TextToBlocksUtilities } from "@/utilities/text-to-blocks-utilities";
 import { TextToBlocksDefinitionModel } from "@/data/models/text-to-blocks-definition-model";
 import { EditorSidebarTabModel } from "@/data/models/editor-sidebar-tab-model";
 
-// Sidebar Components
-import ProjectSettings from "@/modes/common/components/sidebar/project-settings/project-settings.vue";
-
 // Output Panel Components
 import PythonCode from "./components/output-panel/python-code/python-code.vue";
 import PythonOutput from "./components/output-panel/python-output/python-output.vue";
@@ -130,22 +127,7 @@ export class PythonModel extends ModeModelBase {
 	 * Returns buttons to display in the header of the editor.
 	 */
 	public headerButtons: Array<EditorButtonModel> = [
-		{
-			key: "share",
-			icon: ["far", "share"],
-			color: "gray",
-			action: (): void => {
-				//
-			}
-		},
-		{
-			key: "save",
-			icon: ["far", "save"],
-			color: "gray",
-			action: (): void => {
-				EditorUtilities.saveCurrentProject();
-			}
-		},
+		...this.commonHeaderButtons,
 		{
 			key: "run",
 			icon: ["fas", "play"],
@@ -186,11 +168,7 @@ export class PythonModel extends ModeModelBase {
 	 * Returns a list of tabs to display in the sidebar for python.
 	 */
 	public sidebarTabs: Array<EditorSidebarTabModel> = [
-		{
-			key: "project-settings",
-			icon: ["far", "file"],
-			component: ProjectSettings
-		}
+		...this.commonsidebarTabs
 	];
 
 	/**

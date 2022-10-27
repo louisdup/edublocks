@@ -6,6 +6,9 @@ import { TextToBlocksDefinitionModel } from "@/data/models/text-to-blocks-defini
 import { EditorUtilities } from "@/utilities/editor-utilities";
 import { LocalizationUtilities } from "@/utilities/localization-utilities";
 
+// Sidebar tab components.
+import ProjectSettings from "@/modes/common/components/sidebar/project-settings/project-settings.vue";
+
 /**
  * Base class exposing common functionality to all mode models.
  */
@@ -56,9 +59,42 @@ export abstract class ModeModelBase {
 	public abstract headerButtons: Array<EditorButtonModel>;
 
 	/**
+	 * Get common header buttons that are used by most modes.
+	 */
+	 public commonHeaderButtons: Array<EditorButtonModel> = [
+		{
+			key: "share",
+			icon: ["far", "share"],
+			color: "gray",
+			action: (): void => {
+				//
+			}
+		},
+		{
+			key: "save",
+			icon: ["far", "save"],
+			color: "gray",
+			action: (): void => {
+				EditorUtilities.saveCurrentProject();
+			}
+		}
+	];
+
+	/**
 	 * Returns a list of tabs that could be displayed in the sidebar.
 	 */
 	public abstract sidebarTabs: Array<EditorSidebarTabModel>;
+
+	/**
+	 * Get common sidebar tabs that are used by most modes.
+	 */
+	 public commonsidebarTabs: Array<EditorSidebarTabModel> = [
+		{
+			key: "project-settings",
+			icon: ["far", "file"],
+			component: ProjectSettings
+		}
+	];
 
 	/**
 	 * Returns a list of tabs that could be displayed in the output panel.
