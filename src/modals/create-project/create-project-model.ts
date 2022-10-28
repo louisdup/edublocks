@@ -123,17 +123,9 @@ class CreateProjectModel extends ModalModelBase {
 				name = this.state.data["name"];
 			}
 
-			EditorUtilities.setCurrentProject({
-				name,
-				mode,
-				type: this.state.data["type"],
-				code: "",
-				blocks: ""
-			});
-
 			ModalUtilities.closeModal();
 
-			router.push("/project/new");
+			EditorUtilities.openEditor(mode, this.state.data["type"], name);
 		}
 	}
 

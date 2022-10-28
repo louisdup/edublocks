@@ -53,12 +53,13 @@ export class EditorUtilities {
 	/**
 	 * Opens the editor with a blank project.
 	 */
-	public static openEditor(mode: ModeModelBase, type?: "blocks" | "text"): void {
+	public static openEditor(mode: ModeModelBase, type?: "blocks" | "text", name?: string): void {
 		router.push({
 			name: View.NewProject,
 			query: {
 				mode: mode.config.key,
-				type: type
+				type,
+				name
 			}
 		});
 	}

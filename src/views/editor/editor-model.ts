@@ -145,9 +145,14 @@ class EditorModel extends ViewModelBase {
 	 */
 	private async loadBlankProject(): Promise<void> {
 		if (!EditorUtilities.currentProject.value) {
+			const modeQueryParam: string | undefined = router.currentRoute.value.query.mode as string;
 			const mode: ModeModelBase = ModeUtilities.getModeFromKey(router.currentRoute.value.query.mode as string);
+			
 			const typeQueryParam: string | undefined = router.currentRoute.value.query.type as string;
 			let type: "blocks" | "text" = "blocks";
+			
+			const nameQueryParam: string | undefined = router.currentRoute.value.query.name as string;
+			let name: string = "";
 		
 			// If mode is valid, create a new project.
 			if (mode) {
@@ -158,11 +163,26 @@ class EditorModel extends ViewModelBase {
 					case "text":
 						type = "text";
 						break;
-					
+				}
+
+				if (nameQueryParam) {
+					name = nameQueryParam;
+
+					// Clear name from query parameter list so that on refresh the same project isn't created again.
+					router.replace({
+						name: View.NewProject,
+						query: {
+							mode: modeQueryParam,
+							type
+						}
+					});
+				}
+				else {
+					name = FilenameUtilities.generateRandomFilename();
 				}
 
 				await EditorUtilities.setCurrentProject({
-					name: FilenameUtilities.generateRandomFilename(),
+					name,
 					mode,
 					type
 				});
