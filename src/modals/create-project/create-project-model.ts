@@ -10,6 +10,7 @@ import { reactive, watchEffect } from "vue";
 import { ModalModelBase } from "../base-classes/modal-model-base";
 import { CreateProjectState } from "./create-project-state";
 import * as yup from "yup";
+import { ModalUtilities } from "@/utilities/modal-utilities";
 
 /**
  * Modal model for the create project modal.
@@ -129,6 +130,8 @@ class CreateProjectModel extends ModalModelBase {
 				code: "",
 				blocks: ""
 			});
+
+			ModalUtilities.closeModal();
 
 			router.push("/project/new");
 		}
