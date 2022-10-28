@@ -8,7 +8,7 @@ import { TextToBlocksDefinitionModel } from "@/data/models/text-to-blocks-defini
 import { EditorSidebarTabModel } from "@/data/models/editor-sidebar-tab-model";
 
 // Output Panel Components
-import PythonCode from "./components/output-panel/python-code/python-code.vue";
+import PythonCode from "../common/components/output-panel/python-code/python-code.vue";
 import PythonOutput from "./components/output-panel/python-output/python-output.vue";
 
 // Import Blocks

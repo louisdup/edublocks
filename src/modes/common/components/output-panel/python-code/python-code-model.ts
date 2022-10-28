@@ -55,7 +55,7 @@ export class PythonCodeModel extends ComponentModelBase {
 	 * Called when the user starts typing in the code editor.
 	 */
 	public onInput(): void {
-		TextToBlocksUtilities.convertTextToBlocks();
+		// TextToBlocksUtilities.convertTextToBlocks();
 	}
 
 	/**
