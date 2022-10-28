@@ -113,7 +113,7 @@ class EditorModel extends ViewModelBase {
 			if (response.wasSuccessful && response.data) {
 				EditorUtilities.clearCurrentProject();
 				
-				EditorUtilities.setCurrentProject({
+				await EditorUtilities.setCurrentProject({
 					name: response.data.name,
 					mode: ModeUtilities.getModeFromKey(response.data.mode),
 					type: response.data.type,
