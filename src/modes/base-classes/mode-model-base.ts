@@ -38,6 +38,11 @@ export abstract class ModeModelBase {
 	public abstract init(): void;
 		 
 	/**
+	 * Loads block definitions and generators for the current mode.
+	 */
+	public abstract loadBlocks(): Promise<void>;
+		 
+	/**
 	 * Returns a blockly toolbox for the current mode.
 	 */
 	public abstract getToolbox(): Array<String>;

@@ -35,6 +35,15 @@ export class MicrobitModel extends ModeModelBase {
 	}
 
 	/**
+	 * Loads block definitions and generators for the micro:bit mode.
+	 */
+	public loadBlocks(): Promise<void> {
+		return new Promise(async (resolve: VoidFunction) => {
+			//
+		});
+	}
+
+	/**
 	 * Returns a blockly toolbox for the micro:bit mode.
 	 */
 	public getToolbox(): Array<String> {

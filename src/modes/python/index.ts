@@ -11,55 +11,17 @@ import { EditorSidebarTabModel } from "@/data/models/editor-sidebar-tab-model";
 import PythonCode from "../common/components/output-panel/python-code/python-code.vue";
 import PythonOutput from "./components/output-panel/python-output/python-output.vue";
 
-// Import Blocks
-import "./blocks/common/definitions";
-import "./blocks/common/generators";
-
-import "./blocks/deprecated/definitions";
-import "./blocks/deprecated/generators";
-
-import "./blocks/imports/definitions";
-import "./blocks/imports/generators";
+// Import Toolbox Categories
 import imports from "./blocks/imports/toolbox.xml?raw";
-
-import "./blocks/variables/definitions";
-import "./blocks/variables/generators";
 import variables from "./blocks/variables/toolbox.xml?raw";
-
-import "./blocks/statements/definitions";
-import "./blocks/statements/generators";
 import statements from "./blocks/statements/toolbox.xml?raw";
-
-import "./blocks/text/definitions";
-import "./blocks/text/generators";
 import text from "./blocks/text/toolbox.xml?raw";
-
-import "./blocks/math/definitions";
-import "./blocks/math/generators";
 import math from "./blocks/math/toolbox.xml?raw";
-
-import "./blocks/logic/definitions";
-import "./blocks/logic/generators";
 import logic from "./blocks/logic/toolbox.xml?raw";
-
-import "./blocks/lists/definitions";
-import "./blocks/lists/generators";
 import lists from "./blocks/lists/toolbox.xml?raw";
-
-import "./blocks/loops/definitions";
-import "./blocks/loops/generators";
 import loops from "./blocks/loops/toolbox.xml?raw";
-
-import "./blocks/definitions/definitions";
-import "./blocks/definitions/generators";
 import definitions from "./blocks/definitions/toolbox.xml?raw";
-
-import "./blocks/turtle/definitions";
-import "./blocks/turtle/generators";
 import turtle from "./blocks/turtle/toolbox.xml?raw";
-
-import "./blocks/graphs/definitions";
-import "./blocks/graphs/generators";
 import graphs from "./blocks/graphs/toolbox.xml?raw";
 
 /** 
@@ -96,6 +58,54 @@ export class PythonModel extends ModeModelBase {
 	 * Returns the start block that appears at the top of all python code.
 	 */
 	public startBlock: string = "events_start_here";
+
+	/**
+	 * Loads block definitions and generators for the Python mode.
+	 */
+	public loadBlocks(): Promise<void> {
+		return new Promise(async (resolve: VoidFunction) => {
+			(await import("./blocks/common/definitions")).default();
+			(await import("./blocks/common/generators")).default();
+	
+			(await import("./blocks/deprecated/definitions")).default();
+			(await import("./blocks/deprecated/generators")).default();
+	
+			(await import("./blocks/imports/definitions")).default();
+			(await import("./blocks/imports/generators")).default();
+	
+			(await import("./blocks/variables/definitions")).default();
+			(await import("./blocks/variables/generators")).default();
+	
+			(await import("./blocks/statements/definitions")).default();
+			(await import("./blocks/statements/generators")).default();
+	
+			(await import("./blocks/text/definitions")).default();
+			(await import("./blocks/text/generators")).default();
+	
+			(await import("./blocks/math/definitions")).default();
+			(await import("./blocks/math/generators")).default();
+	
+			(await import("./blocks/logic/definitions")).default();
+			(await import("./blocks/logic/generators")).default();
+	
+			(await import("./blocks/lists/definitions")).default();
+			(await import("./blocks/lists/generators")).default();
+	
+			(await import("./blocks/loops/definitions")).default();
+			(await import("./blocks/loops/generators")).default();
+	
+			(await import("./blocks/definitions/definitions")).default();
+			(await import("./blocks/definitions/generators")).default();
+	
+			(await import("./blocks/turtle/definitions")).default();
+			(await import("./blocks/turtle/generators")).default();
+	
+			(await import("./blocks/graphs/definitions")).default();
+			(await import("./blocks/graphs/generators")).default();
+
+			resolve();
+		});
+	}
 
 	/**
 	 * Returns a blockly toolbox for the Python mode.

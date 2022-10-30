@@ -35,6 +35,15 @@ export class CircuitPythonModel extends ModeModelBase {
 	}
 
 	/**
+	 * Loads block definitions and generators for the CircuitPython mode.
+	 */
+	public loadBlocks(): Promise<void> {
+		return new Promise(async (resolve: VoidFunction) => {
+			//
+		});
+	}
+
+	/**
 	 * Returns a blockly toolbox for the CircuitPython mode.
 	 */
 	public getToolbox(): Array<String> {

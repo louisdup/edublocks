@@ -35,6 +35,15 @@ export class RaspberryPiModel extends ModeModelBase {
 	}
 
 	/**
+	 * Loads block definitions and generators for the Raspberry Pi mode.
+	 */
+	public loadBlocks(): Promise<void> {
+		return new Promise(async (resolve: VoidFunction) => {
+			//
+		});
+	}
+
+	/**
 	 * Returns a blockly toolbox for the Raspberry Pi mode.
 	 */
 	public getToolbox(): Array<String> {

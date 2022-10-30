@@ -35,6 +35,15 @@ export class HTMLModel extends ModeModelBase {
 	}
 
 	/**
+	 * Loads block definitions and generators for the HTML mode.
+	 */
+	public loadBlocks(): Promise<void> {
+		return new Promise(async (resolve: VoidFunction) => {
+			//
+		});
+	}
+
+	/**
 	 * Returns a blockly toolbox for the html mode.
 	 */
 	 public getToolbox(): Array<String> {

@@ -58,7 +58,17 @@ class EditorModel extends ViewModelBase {
 	}
 
 	/**
-	 * Checks if the user is trying to load a project from firestore and loads it into the editor .
+	 * Loads block definitions and generators for the current mode and sends the current project XML to blockly.
+	 */
+	private async loadBlocks(): Promise<void> {
+		if (EditorUtilities.currentProject.value) {
+			await EditorUtilities.currentProject.value.mode.loadBlocks();
+			this.loadCurrentProjectBlocks();
+		}
+	}
+
+	/**
+	 * Checks if the user is trying to load a project from firestore and loads it into the editor.
 	 */
 	private async loadProject(): Promise<void> {
 		this.state.isProjectLoading = true;
@@ -78,6 +88,9 @@ class EditorModel extends ViewModelBase {
 			await this.loadBlankProject();
 		}
 
+		// Load blocks for the current mode and set blockly XML to that of the current project.
+		await this.loadBlocks();
+
 		this.state.isProjectLoading = false;
 	}
 
@@ -96,8 +109,6 @@ class EditorModel extends ViewModelBase {
 							EditorUtilities.currentProject.value.code = response.data.content;
 							break;
 					}
-					this.state.isProjectLoading = false;
-					this.loadCurrentProjectBlocks();
 				}
 			});
 		}
@@ -195,7 +206,6 @@ class EditorModel extends ViewModelBase {
 				});
 			}
 		}
-		this.loadCurrentProjectBlocks();
 	}
 
 	/**
@@ -329,7 +339,7 @@ class EditorModel extends ViewModelBase {
 	 * Returns the initial size of the output panel.
 	 */
 	public getOutputPanelInitialSize(): string {
-		return "32rem";
+		return "30rem";
 	}
 
 	/**
