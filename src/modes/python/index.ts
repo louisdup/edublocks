@@ -13,7 +13,7 @@ import PythonOutput from "./components/output-panel/python-output/python-output.
 
 // Import Toolbox Categories
 import imports from "./blocks/imports/toolbox.xml?raw";
-import variables from "./blocks/variables/toolbox.xml?raw";
+import variables from "../common/blocks/python/variables/toolbox.xml?raw";
 import statements from "./blocks/statements/toolbox.xml?raw";
 import text from "./blocks/text/toolbox.xml?raw";
 import math from "./blocks/math/toolbox.xml?raw";
@@ -64,8 +64,8 @@ export class PythonModel extends ModeModelBase {
 	 */
 	public loadBlocks(): Promise<void> {
 		return new Promise(async (resolve: VoidFunction) => {
-			(await import("./blocks/common/definitions")).default();
-			(await import("./blocks/common/generators")).default();
+			(await import("../common/blocks/python/common/definitions")).default();
+			(await import("../common/blocks/python/common/generators")).default();
 	
 			(await import("./blocks/deprecated/definitions")).default();
 			(await import("./blocks/deprecated/generators")).default();
@@ -73,8 +73,8 @@ export class PythonModel extends ModeModelBase {
 			(await import("./blocks/imports/definitions")).default();
 			(await import("./blocks/imports/generators")).default();
 	
-			(await import("./blocks/variables/definitions")).default();
-			(await import("./blocks/variables/generators")).default();
+			(await import("../common/blocks/python/variables/definitions")).default();
+			(await import("../common/blocks/python/variables/generators")).default();
 	
 			(await import("./blocks/statements/definitions")).default();
 			(await import("./blocks/statements/generators")).default();
@@ -143,7 +143,6 @@ export class PythonModel extends ModeModelBase {
 			icon: ["fas", "play"],
 			color: "blue",
 			action: (): void => {
-				console.log("Hello world!");
 				this.runPythonCode();
 			}
 		},
@@ -178,7 +177,7 @@ export class PythonModel extends ModeModelBase {
 	 * Returns a list of tabs to display in the sidebar for python.
 	 */
 	public sidebarTabs: Array<EditorSidebarTabModel> = [
-		...this.commonsidebarTabs
+		...this.commonSidebarTabs
 	];
 
 	/**

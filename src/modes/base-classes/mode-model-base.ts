@@ -97,7 +97,7 @@ export abstract class ModeModelBase {
 	/**
 	 * Get common sidebar tabs that are used by most modes.
 	 */
-	public commonsidebarTabs: Array<EditorSidebarTabModel> = [
+	public commonSidebarTabs: Array<EditorSidebarTabModel> = [
 		{
 			key: "project-settings",
 			icon: ["far", "file"],
