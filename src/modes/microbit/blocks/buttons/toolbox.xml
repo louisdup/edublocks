@@ -1,0 +1,8 @@
+<category name="Buttons" colour="#167EE5" css-icon="customIcon fad fa-circle-dot">
+  <label text="Buttons"></label>
+  <block type="button_is_pressed"></block>
+
+  <block type="button_was_pressed"></block>
+
+  <block type="button_get_presses"></block>
+</category>
