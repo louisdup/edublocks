@@ -21,7 +21,7 @@ export default function getDefinitions(): void {
 		},
 	};
 
-	Blockly.Blocks["random"] = {
+	Blockly.Blocks["import_random"] = {
 		init: function(): void {
 			this.appendDummyInput()
 				.appendField("import random");

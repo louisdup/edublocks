@@ -9,7 +9,7 @@ export default function getGenerators(): void {
 		return code;
 	};
 
-	Blockly.Python["random"] = function(): string {
+	Blockly.Python["import_random"] = function(): string {
 		const code: string = `import random\n`;
 		return code;
 	};

@@ -5,7 +5,7 @@
 
   <block type="import_math"></block>
 
-  <block type="random"></block>
+  <block type="import_random"></block>
 
   <block type="import_pygal"></block>
 
