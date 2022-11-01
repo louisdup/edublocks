@@ -1,0 +1,99 @@
+<category name="Display" colour="#CDDA36" css-icon="customIcon fad fa-grid">
+  <label text="Display"></label>
+
+  <block type="display_scroll">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#CDDA36" items="1" limit="1" minimum="1" inputType="string" />
+          <value name="input_1">
+              <shadow type="inline_string">
+                  <field name="value">Hello World</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="display_show">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#CDDA36" items="1" limit="1" minimum="1" inputType="string" />
+          <value name="input_1">
+              <shadow type="inline_string">
+                  <field name="value">Hello</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="display_show">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#CDDA36" items="1" limit="1" minimum="1" inputType="number" />
+          <value name="input_1">
+              <shadow type="inline_number">
+                  <field name="value">10</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="images_expressions"></block>
+
+  <block type="images_clocks"></block>
+
+  <block type="images_shapes"></block>
+
+  <block type="images_animals"></block>
+
+  <block type="custom_image"></block>
+
+  <block type="display_clear"></block>
+
+  <block type="display_on_off"></block>
+
+  <block type="display_get_pixel">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#CDDA36" items="2" limit="2" minimum="2" inputType="number" />
+          <value name="input_1">
+              <shadow type="inline_number">
+                  <field name="value">0</field>
+              </shadow>
+          </value>
+          <value name="input_2">
+              <shadow type="inline_number">
+                  <field name="value">0</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="display_set_pixel">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#CDDA36" items="3" limit="3" minimum="3" inputType="number" />
+          <value name="input_1">
+              <shadow type="inline_number">
+                  <field name="value">0</field>
+              </shadow>
+          </value>
+          <value name="input_2">
+              <shadow type="inline_number">
+                  <field name="value">0</field>
+              </shadow>
+          </value>
+          <value name="input_3">
+              <shadow type="inline_number">
+                  <field name="value">9</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="display_read_light_level"></block>
+</category>
