@@ -5,25 +5,20 @@
     placement="right-end"
     class="w-full"
   >
-    <eb-list-item
-      v-if="minimize"
-      :thumbnail="component.getCurrentUserProfilePicture()"
-      rounded-thumbnail
-      is-button
-      is-full-width
-      class="hover:bg-opacity-10"
-    />
-    <eb-list-item
-      v-else
-      :left-title="component.getCurrentUserDisplayName()"
-      :left-subtitle="component.getText('my-account')"
-      :thumbnail="component.getCurrentUserProfilePicture()"
-      color="white"
-      rounded-thumbnail
-      is-button
-      is-full-width
-      class="hover:bg-opacity-10"
-    />
+    <button class="w-full flex items-center text-left p-3 space-x-3 rounded-lg hover:bg-gray-100 focus:bg-gray-100 transition-all">
+      <img
+        :src="component.getCurrentUserProfilePicture()"
+        class="h-8 rounded-full"
+      >
+      <div v-if="!minimize">
+        <h1 class="text-gray-900 text-sm font-medium">
+          {{ component.getCurrentUserDisplayName() }}
+        </h1>
+        <p class="text-gray-500 text-xs">
+          {{ component.getText('my-account') }}
+        </p>
+      </div>
+    </button>
   </eb-dropdown>
 
   <eb-button
