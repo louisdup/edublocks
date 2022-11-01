@@ -2,9 +2,6 @@ import { ComponentModelBase } from "@/components/base-classes/component-model-ba
 import { EditorUtilities } from "@/utilities/editor-utilities";
 import { TextToBlocksUtilities } from "@/utilities/text-to-blocks-utilities";
 
-// Blockly modifiers
-import "./modifiers/edublocks-category";
-
 /**
  * Component model for the python code component.
  */
