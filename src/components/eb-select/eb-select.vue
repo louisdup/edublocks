@@ -1,6 +1,9 @@
 <template>
   <div class="w-full">
-    <label class="block text-sm font-medium text-gray-500">
+    <label
+      v-if="label"
+      class="block text-sm font-medium text-gray-500 mb-2"
+    >
       {{ label }}
       <span
         v-if="required"
@@ -9,9 +12,9 @@
         *
       </span>
     </label>
-    <div class="mt-2">
+    <div class="w-full">
       <select
-        class="bg-gray-100 border-none mt-1 block w-full rounded-md py-2.5 pl-4 pr-10 focus:ring-gray-300 focus:outline-none text-sm"
+        class="bg-gray-100 border-none block w-full rounded-md py-2.5 pl-4 pr-10 focus:ring-gray-300 focus:outline-none text-sm"
         :class="error ? 'border-red-500' : 'border-gray-300'"
         @input="$emit('update:modelValue', component.getSelectValue($event))"
       >

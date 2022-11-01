@@ -1,6 +1,6 @@
 import { IconDefinition, library } from "@fortawesome/fontawesome-svg-core";
-import { faBan, faBookOpen, faCheck, faChevronRight, faCode, faCommentAlt, faFileImport, faFilm, faFolderOpen, faHome, faLink, faUsers } from "@fortawesome/pro-regular-svg-icons";
-import { faCheckCircle, faPlay, faPlus, faSquare } from "@fortawesome/pro-solid-svg-icons";
+import { faArrowDownToLine, faBan, faBookOpen, faCheck, faChevronRight, faCode, faCommentAlt, faFileImport, faFilm, faFolderOpen, faHome, faLink, faUsers } from "@fortawesome/pro-regular-svg-icons";
+import { faCheckCircle, faPlay, faPlus, faRepeat, faSquare, faVolume, faVolumeXmark } from "@fortawesome/pro-solid-svg-icons";
 import { faArrowRightFromBracket, faArrowRightToArc, faBars, faCog, faEllipsis, faFile, faGrid2, faPencil, faSave, faSearch, faShare, faTimes, faTrash, faHome as farHome, faFolderOpen as farFolderOpen, faFilm as farFilm, faUsers as farUsers, faBooks, faBookOpen as farBookOpen, faPuzzlePiece } from "@fortawesome/pro-regular-svg-icons";
 import { faApple, faGoogle, faMicrosoft } from "@fortawesome/free-brands-svg-icons";
 
@@ -47,5 +47,9 @@ library.add(
 	faFileImport,
 	faLink,
 	faBan,
-	faCheck
+	faCheck,
+	faArrowDownToLine,
+	faRepeat,
+	faVolume,
+	faVolumeXmark
 );

@@ -28,6 +28,19 @@ class EbHStackModel extends ComponentModelBase {
 				6: "space-x-6",
 				8: "space-x-8",
 			},
+			alignX: {
+				left: "justify-start",
+				center: "justify-center",
+				right: "justify-end",
+			},
+			alignY: {
+				top: "items-start",
+				center: "items-center",
+				bottom: "items-end",
+			},
+			justifyContent: {
+				between: "justify-between",
+			},
 			paddingT: {
 				0: "pt-0",
 				2: "pt-2",

@@ -1,12 +1,7 @@
 <template>
-  <div class="flex items-center w-full">
-    <h1 :class="component.variants({ align, size, weight, color, isFullWidth })">
-      {{ label }}
-    </h1>
-    <div class="ml-auto">
-      <slot />
-    </div>
-  </div>
+  <h1 :class="component.variants({ align, size, weight, color, isFullWidth })">
+    {{ label }}
+  </h1>
 </template>
 
 <script setup lang="ts">

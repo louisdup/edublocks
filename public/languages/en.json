@@ -129,7 +129,8 @@
     "output-panel": {
         "code": "Code",
         "repl": "REPL",
-        "output": "Output"
+        "output": "Output",
+        "simulator": "Simulator"
     },
     "project-settings": {
         "project": "Project",
@@ -138,5 +139,42 @@
         "export": "Export",
         "export-code": "Export Code",
         "export-blocks-screenshot": "Export Blocks Screenshot"
+    },
+    "simulator": {
+        "sensors": "Sensors",
+        "advanced": "Advanced",
+        "accelerometer": "Accelerometer",
+        "send": "Send",
+        "up": "up",
+        "down": "down",
+        "left": "left",
+        "right": "right",
+        "face-up": "face up",
+        "face-down": "face down",
+        "freefall": "freefall",
+        "3g": "3g",
+        "6g": "6g",
+        "8g": "8g",
+        "shake": "shake",
+        "x": "x",
+        "y": "y",
+        "z": "z",
+        "light-level": "Light Level",
+        "temperature": "Temperature",
+        "degrees-celcius": "°C",
+        "compass-heading": "Compass Heading",
+        "degrees": "deg",
+        "nano-teslas": "nT",
+        "sound-level": "Sound Level",
+        "buttons": "Buttons",
+        "press": "Press",
+        "hold": "Hold",
+        "a": "A",
+        "b": "B",
+        "pins": "Pins",
+        "0": "0",
+        "1": "1",
+        "2": "2",
+        "logo": "Logo"
     }
 }

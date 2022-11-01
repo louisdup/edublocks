@@ -54,21 +54,26 @@ class EbButtonModel extends ComponentModelBase {
 	/**
 	 * Returns an icon color based on the button color.
 	 */
-	public getIconColor(color?: string): string {
+	public getIconColor(color?: string, isDisabled?: boolean): string {
 		let iconColor: string = "";
-		switch (color) {
-			case "white":
-				iconColor = "darkGray";
-				break;
-			case "transparent":
-				iconColor = "darkGray";
-				break;
-			case "gray":
-				iconColor = "darkGray";
-				break;
-			default:
-				iconColor = "white";
-				break;
+		if (isDisabled) {
+			iconColor = "white";
+		}
+		else {
+			switch (color) {
+				case "white":
+					iconColor = "darkGray";
+					break;
+				case "transparent":
+					iconColor = "darkGray";
+					break;
+				case "gray":
+					iconColor = "darkGray";
+					break;
+				default:
+					iconColor = "white";
+					break;
+			}
 		}
 		return iconColor;
 	}

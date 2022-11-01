@@ -1,5 +1,9 @@
 <template>
-  <eb-h-stack is-full-width>
+  <eb-h-stack
+    is-full-width
+    align="center"
+    justify-content="between"
+  >
     <eb-heading
       :label="component.getTitle()"
       size="lg"

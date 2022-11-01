@@ -32,5 +32,7 @@ export enum ComponentName {
 	EbSelect = "EbSelect",
 	EbChip = "EbChip",
 	EbLoading = "EbLoading",
-	EbEmptyState = "EbEmptyState"
+	EbEmptyState = "EbEmptyState",
+	EbRange = "EbRange",
+	EbToggle = "EbToggle"
 }

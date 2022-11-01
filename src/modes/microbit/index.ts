@@ -7,6 +7,7 @@ import { EditorUtilities } from "@/utilities/editor-utilities";
 
 // Output Panel Components
 import PythonCode from "../common/components/output-panel/python-code/python-code.vue";
+import Simulator from "./components/output-panel/simulator/simulator.vue";
 
 // Import Toolbox Categories
 import basic from "./blocks/basic/toolbox.xml?raw";
@@ -109,6 +110,11 @@ export class MicrobitModel extends ModeModelBase {
 		{
 			key: "code",
 			component: PythonCode,
+			active: true
+		},
+		{
+			key: "simulator",
+			component: Simulator,
 			active: true
 		}
 	];

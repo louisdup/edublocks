@@ -4,7 +4,7 @@
       <eb-icon
         v-if="icon"
         :icon="icon"
-        :color="component.getIconColor(color)"
+        :color="component.getIconColor(color, isDisabled)"
         class="text-lg"
         :class="label ? '-ml-1 mr-3' : ''"
       />

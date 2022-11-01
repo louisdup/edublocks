@@ -32,6 +32,8 @@ import EbSelect from "./eb-select/eb-select.vue";
 import EbChip from "./eb-chip/eb-chip.vue";
 import EbLoading from "./eb-loading/eb-loading.vue";
 import EbEmptyState from "./eb-empty-state/eb-empty-state.vue";
+import EbRange from "./eb-range/eb-range.vue";
+import EbToggle from "./eb-toggle/eb-toggle.vue";
 
 /**
  * Export & install application components for use globally
@@ -69,5 +71,7 @@ export default {
 		app.component(ComponentName.EbChip, EbChip);
 		app.component(ComponentName.EbLoading, EbLoading);
 		app.component(ComponentName.EbEmptyState, EbEmptyState);
+		app.component(ComponentName.EbRange, EbRange);
+		app.component(ComponentName.EbToggle, EbToggle);
 	}
 };

@@ -47,6 +47,7 @@ class EbHeadingModel extends ComponentModelBase {
 				black: "font-black"
 			},
 			color: {
+				lightGray: "text-gray-500",
 				gray: "text-gray-700",
 				black: "text-gray-900",
 				white: "text-white"
