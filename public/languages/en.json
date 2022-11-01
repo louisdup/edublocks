@@ -123,6 +123,7 @@
         "save": "Save",
         "run": "Run",
         "stop": "Stop",
+        "download": "Download",
         "no-access": "No Access",
         "project-is-private": "The author has this project set to private"
     },
