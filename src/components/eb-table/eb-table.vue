@@ -8,7 +8,10 @@
       weight="medium"
     />
 
-    <div class="w-full bg-white rounded-lg shadow-sm p-2 space-y-2">
+    <div
+      v-if="component.isTableVisible(items, isLoading)"
+      class="w-full bg-white rounded-lg shadow-sm p-2 space-y-2"
+    >
       <button
         v-for="item in items"
         :key="item.title"
@@ -77,15 +80,25 @@
         </div>
       </div>
     </div>
+    
+    <eb-empty-state
+      v-if="component.isEmptyStateVisible(items, isLoading)"
+      :title="emptyStateTitle"
+      :subtitle="emptyStateSubtitle"
+      background-color="gray"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 import { EbTableItem } from "./eb-table-types";
+import { component } from "./eb-table-model";
 
 defineProps<{
 	label?: string;
 	items: Array<EbTableItem>;
 	isLoading?: boolean;
+	emptyStateTitle?: string;
+	emptyStateSubtitle?: string;
 }>();
 </script>

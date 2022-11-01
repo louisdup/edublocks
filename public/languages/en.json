@@ -17,7 +17,11 @@
         "showcase": "Showcase",
         "recent-projects": "Recent Projects",
         "text": "Text",
-        "blocks": "Blocks"
+        "blocks": "Blocks",
+        "no-projects-found": "No Projects Found",
+        "get-started-by-creating": "Get started by creating or importing a project.",
+        "login-to-view-projects": "Login to view recent projects",
+        "you-need-to-be-logged-in": "You need to be logged in to view your recent projects."
     },
     "delete-project": {
         "delete-project": "Delete Project",
@@ -99,7 +103,12 @@
         "text": "Text",
         "blocks": "Blocks",
         "edited": "Edited {1}",
-        "search-projects": "Search Projects..."
+        "search-projects": "Search Projects...",
+        "no-projects-found": "No Projects Found",
+        "get-started-by-creating": "Get started by creating or importing a project.",
+        "search-for-something-else": "Try searching for something else.",
+        "login-to-view-projects": "Login to view recent projects",
+        "you-need-to-be-logged-in": "You need to be logged in to view your recent projects."
     },
     "format": {
         "just-now": "Just now",

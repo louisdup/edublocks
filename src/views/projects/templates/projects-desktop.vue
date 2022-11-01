@@ -23,6 +23,8 @@
     <eb-table
       :items="view.getRecentProjects()"
       :is-loading="view.isProjectsTableLoading()"
+      :empty-state-title="view.getProjectsTableEmptyStateTitle()"
+      :empty-state-subtitle="view.getProjectsTableEmptyStateSubtitle()"
     />
   </desktop-layout>
 </template>

@@ -12,6 +12,7 @@ import { ProjectsUtilities } from "@/utilities/projects-utilities";
 import { EditorUtilities } from "@/utilities/editor-utilities";
 import { ModeModelBase } from "@/modes/base-classes/mode-model-base";
 import { EbTableItem } from "@/components/eb-table/eb-table-types";
+import { AuthenticationUtilities } from "@/utilities/authentication-utilities";
 
 /**
  * View model for the home view.
@@ -82,15 +83,18 @@ class HomeModel extends ViewModelBase {
 	 * Loads 5 recent projects belonging to the current user to display on the homepage.
 	 */
 	private loadRecentProjects(): void {
-		this.state.isLoadingRecentProjects = true;
-		
 		if (this.isCurrentUserLoggedIn()) {
+			this.state.isLoadingRecentProjects = true;
+
 			ProjectsProvider.getProjectsAsync(5).then((response: FirestoreFetchResponse<Array<FirestoreProjectModel>>) => {
 				if (response.wasSuccessful && response.data) {
 					this.state.recentProjects = response.data;
 				}
 				this.state.isLoadingRecentProjects = false;
 			});
+		}
+		else {
+			this.state.recentProjects = [];
 		}
 	}
 
@@ -106,6 +110,20 @@ class HomeModel extends ViewModelBase {
 	 */
 	public isProjectsTableLoading(): boolean {
 		return this.state.isLoadingRecentProjects;
+	}
+
+	/**
+	 * Returns a title for the projects table empty state.
+	 */
+	public getProjectsTableEmptyStateTitle(): string {
+		return AuthenticationUtilities.currentUser.value ? this.getText("no-projects-found") : this.getText("login-to-view-projects");
+	}
+	
+	/**
+	 * Returns a title for the projects table empty state.
+	 */
+	public getProjectsTableEmptyStateSubtitle(): string {
+		return AuthenticationUtilities.currentUser.value ? this.getText("get-started-by-creating") : this.getText("you-need-to-be-logged-in");
 	}
 
 	/**

@@ -4,11 +4,11 @@
       <eb-icon
         v-if="icon"
         :icon="icon"
-        size="5xl"
+        size="4xl"
         color="gray"
         class="mb-4"
       />
-      <h1 class="text-lg font-semibold text-gray-700">
+      <h1 class="font-semibold text-sm text-gray-700">
         {{ title }}
       </h1>
       <p class="mt-1 text-sm text-gray-500">

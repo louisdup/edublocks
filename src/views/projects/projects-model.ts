@@ -8,6 +8,7 @@ import { ProjectsUtilities } from "@/utilities/projects-utilities";
 import { EbDropdownOption } from "@/components/eb-dropdown/eb-dropdown-types";
 import { QueryDocumentSnapshot } from "@firebase/firestore";
 import { EbTableItem } from "@/components/eb-table/eb-table-types";
+import { AuthenticationUtilities } from "@/utilities/authentication-utilities";
 /**
  * View model for the projects view.
  */
@@ -40,6 +41,7 @@ class ProjectsModel extends ViewModelBase {
 
 		// Reload the initial set of data if a content refresh is triggered.
 		this.observeContentRefresh(() => {
+			console.log("HELLO WORLD");
 			this.loadInitialData();
 		});
 	}
@@ -55,9 +57,9 @@ class ProjectsModel extends ViewModelBase {
 	 * Loads initial 20 projects belonging to the current user.
 	 */
 	private loadProjects(): void {
-		this.state.isLoadingInitialProjects = true;
-		
 		if (this.isCurrentUserLoggedIn()) {
+			this.state.isLoadingInitialProjects = true;
+
 			ProjectsProvider.getProjectsAsync(20, this.state.search).then((response: FirestoreFetchResponse<Array<FirestoreProjectModel>>) => {
 				if (response.wasSuccessful && response.data) {
 					this.state.projects = response.data;
@@ -65,15 +67,18 @@ class ProjectsModel extends ViewModelBase {
 				this.state.isLoadingInitialProjects = false;
 			});
 		}
+		else {
+			this.state.projects = [];
+		}
 	}
 
 	/**
 	 * Loads 20 more projects and pushes them to the project list in state.
 	 */
-	private loadMoreProjects(): void {
-		this.state.isLoadingMoreProjects = true;
-
+	private loadMoreProjects(): void {	
 		if (this.isCurrentUserLoggedIn()) {
+			this.state.isLoadingMoreProjects = true;
+
 			const lastProjectSnapshot: QueryDocumentSnapshot = this.state.projects[this.state.projects.length-1].snapshot;
 
 			ProjectsProvider.getProjectsAsync(20, this.state.search, lastProjectSnapshot).then((response: FirestoreFetchResponse<Array<FirestoreProjectModel>>) => {
@@ -106,6 +111,30 @@ class ProjectsModel extends ViewModelBase {
 	 */
 	public isProjectsTableLoading(): boolean {
 		return this.state.isLoadingInitialProjects;
+	}
+
+	/**
+	 * Returns a title for the projects table empty state.
+	 */
+	public getProjectsTableEmptyStateTitle(): string {
+		return AuthenticationUtilities.currentUser.value ? this.getText("no-projects-found") : this.getText("login-to-view-projects");
+	}
+
+	/**
+	 * Returns a title for the projects table empty state.
+	 */
+	public getProjectsTableEmptyStateSubtitle(): string {
+		if (AuthenticationUtilities.currentUser.value) {
+			if (this.state.search.length) {
+				return this.getText("search-for-something-else");
+			}
+			else {
+				return this.getText("get-started-by-creating");
+			}
+		}
+		else {
+			return this.getText("you-need-to-be-logged-in");
+		}
 	}
 
 	/**

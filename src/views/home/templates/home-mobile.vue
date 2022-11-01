@@ -49,6 +49,8 @@
       :label="view.getText('recent-projects')"
       :items="view.getRecentProjects()"
       :is-loading="view.isProjectsTableLoading()"
+      :empty-state-title="view.getProjectsTableEmptyStateTitle()"
+      :empty-state-subtitle="view.getProjectsTableEmptyStateSubtitle()"
     />
   </mobile-layout>
 </template>
