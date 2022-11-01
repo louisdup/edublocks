@@ -1,0 +1,607 @@
+<category name="Basic" colour="#E71D64" css-icon="customIcon fad fa-play-circle"> 
+  <category name="Imports" colour="#E71D64" css-icon="customIcon fad fa-upload">
+    <label text="Imports"></label>
+
+    <block type="import_microbit"></block>
+
+    <block type="import_music"></block>
+
+    <block type="import_speech"></block>
+
+    <block type="import_random"></block>
+  </category>
+  
+  <category name="Statements" colour="#E71D64" css-icon="customIcon fad fa-exclamation"> 
+    <label text="Output"></label>
+    <block type="print">
+      <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#E71D64" items="1" limit="1" minimum="1" inputType="string" />
+            <value name="input_1">
+                <shadow type="inline_string">
+                    <field name="value">Hello World</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="print">
+      <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#E71D64" items="1" limit="1" minimum="1" inputType="text" />
+            <value name="input_1">
+                <shadow type="inline_text">
+                    <field name="value">1</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+    </block>
+
+    <label text="Input"></label>
+    <block type="input">
+      <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#E71D64" items="1" limit="1" minimum="1" inputType="string" />
+            <value name="input_1">
+                <shadow type="inline_string">
+                    <field name="value">What is your name?</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+    </block>
+
+    <label text="Wait"></label>
+    <block type="sleep">
+      <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#E71D64" items="1" limit="1" minimum="1" inputType="number" />
+            <value name="input_1">
+                <shadow type="inline_number">
+                    <field name="value">1</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+    </block>
+
+    <label text="Convert"></label>
+    <block type="convert_to_string">
+      <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#E71D64" items="1" limit="1" minimum="1" inputType="number" />
+            <value name="input_1">
+                <shadow type="inline_number">
+                    <field name="value">1</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="convert_to_integer">
+      <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#E71D64" items="1" limit="2" minimum="1" inputType="number" />
+            <value name="input_1">
+                <shadow type="inline_string">
+                    <field name="value">1</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="convert_to_integer">
+      <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#E71D64" items="2" limit="2" minimum="1" inputType="number" />
+            <value name="input_1">
+                <shadow type="inline_string">
+                    <field name="value">1</field>
+                </shadow>
+            </value>
+            <value name="input_2">
+                <shadow type="inline_number">
+                    <field name="value">1</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="convert_to_float">
+      <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#E71D64" items="1" limit="1" minimum="1" inputType="number" />
+            <value name="input_1">
+                <shadow type="inline_number">
+                    <field name="value">1</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+    </block>
+
+    <label text="Scope"></label>
+    <block type="global"></block>
+  </category>
+
+  <category name="Text" colour="#E71D64" css-icon="customIcon fad fa-text-size">
+    <label text="Text"></label>
+    
+    <block type="inline_string"></block>
+
+    <block type="inline_text"></block>
+
+    <block type="parameters">
+        <mutation color="#E71D64" items="2" limit="100" inputType="string" />
+        <value name="input_1">
+            <shadow type="inline_string">
+                <field name="value"></field>
+            </shadow>
+        </value>
+        <value name="input_2">
+            <shadow type="inline_string">
+                <field name="value"></field>
+            </shadow>
+        </value>
+    </block>
+
+    <block type="parameters">
+        <mutation color="#E71D64" items="2" limit="100" inputType="text" />
+        <value name="input_1">
+            <shadow type="inline_text">
+                <field name="value"></field>
+            </shadow>
+        </value>
+        <value name="input_2">
+            <shadow type="inline_text">
+                <field name="value"></field>
+            </shadow>
+        </value>
+    </block>
+
+    <block type="length">
+      <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#E71D64" items="1" limit="1" minimum="1" inputType="string" />
+            <value name="input_1">
+                <shadow type="inline_string">
+                    <field name="value">Hello</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="case">
+      <value name="value">
+        <shadow type="inline_string">
+          <field name="value">Hello</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="reverse">
+      <value name="value">
+        <shadow type="inline_string">
+          <field name="value">Hello</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="replace">
+      <value name="value">
+        <shadow type="inline_string">
+          <field name="value">Hello</field>
+        </shadow>
+      </value>
+      <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#E71D64" items="2" limit="2" minimum="2" inputType="string" />
+            <value name="input_1">
+                <shadow type="inline_string">
+                    <field name="value"></field>
+                </shadow>
+            </value>
+            <value name="input_2">
+                <shadow type="inline_string">
+                    <field name="value"></field>
+                </shadow>
+            </value>
+        </shadow>
+    </value>
+    </block>
+
+    <block type="strip">
+      <value name="value">
+        <shadow type="inline_string">
+          <field name="value"> Hello </field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="text_at_index">
+      <value name="value">
+        <shadow type="inline_string">
+          <field name="value">Hello</field>
+        </shadow>
+      </value>
+      <value name="index">
+        <shadow type="inline_text">
+          <field name="value">0</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="count">
+      <value name="value">
+        <shadow type="inline_string">
+          <field name="value">Hello World</field>
+        </shadow>
+      </value>
+      <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#E71D64" items="1" limit="3" minimum="1" inputType="number" />
+            <value name="input_1">
+                <shadow type="inline_string">
+                    <field name="value">o</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="count">
+      <value name="value">
+        <shadow type="inline_string">
+          <field name="value">Hello World</field>
+        </shadow>
+      </value>
+      <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#E71D64" items="3" limit="3" minimum="1" inputType="number" />
+            <value name="input_1">
+                <shadow type="inline_string">
+                    <field name="value">o</field>
+                </shadow>
+            </value>
+            <value name="input_2">
+                <shadow type="inline_number">
+                    <field name="value">1</field>
+                </shadow>
+            </value>
+            <value name="input_3">
+                <shadow type="inline_number">
+                    <field name="value">5</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="find">
+      <value name="value">
+        <shadow type="inline_string">
+          <field name="value">Hello World</field>
+        </shadow>
+      </value>
+      <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#E71D64" items="1" limit="3" minimum="1" inputType="number" />
+            <value name="input_1">
+                <shadow type="inline_string">
+                    <field name="value">o</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="find">
+      <value name="value">
+        <shadow type="inline_string">
+          <field name="value">Hello World</field>
+        </shadow>
+      </value>
+      <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#E71D64" items="3" limit="3" minimum="1" inputType="number" />
+            <value name="input_1">
+                <shadow type="inline_string">
+                    <field name="value">o</field>
+                </shadow>
+            </value>
+            <value name="input_2">
+                <shadow type="inline_number">
+                    <field name="value">1</field>
+                </shadow>
+            </value>
+            <value name="input_3">
+                <shadow type="inline_number">
+                    <field name="value">5</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+    </block>
+  </category>
+
+  <category name="Math" colour="#E71D64" css-icon="customIcon fad fa-square-root-variable">
+    <label text="Math"></label>
+    <block type="arithmetic">
+      <value name="value_1">
+        <shadow type="inline_number">
+          <field name="value">1</field>
+        </shadow>
+      </value>
+      <value name="value_2">
+        <shadow type="inline_number">
+          <field name="value">2</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="round">
+      <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#E71D64" items="1" limit="1" minimum="1" inputType="number" />
+            <value name="input_1">
+                <shadow type="inline_number">
+                    <field name="value">1.5</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+    </block>
+  </category>
+
+  <category name="Logic" colour="#E71D64" css-icon="customIcon fad fa-arrow-right-arrow-left">
+    <label text="Logic"></label>
+
+    <block type="if">
+      <value name="condition">
+        <shadow type="inline_text">
+          <field name="value">True</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="elif">
+      <value name="condition">
+        <shadow type="inline_text">
+          <field name="value">True</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="else"></block>
+
+    <block type="compare">
+      <value name="value_1">
+        <shadow type="inline_text">
+          <field name="value">0</field>
+        </shadow>
+      </value>
+      <value name="value_2">
+        <shadow type="inline_text">
+          <field name="value">0</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="and_or">
+      <value name="value_1">
+        <shadow type="inline_text">
+          <field name="value">True</field>
+        </shadow>
+      </value>
+      <value name="value_2">
+        <shadow type="inline_text">
+          <field name="value">True</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="not">
+      <value name="value">
+        <shadow type="inline_text">
+          <field name="value">True</field>
+        </shadow>
+      </value>
+    </block>
+  </category>
+
+  <category name="Lists" colour="#E71D64" css-icon="customIcon fad fa-list">
+    <label text="Lists"></label>
+
+    <block type="variable_set">
+      <value name="value">
+        <block type="list">
+          <value name="data">
+            <shadow type="parameters">
+                <mutation color="#E71D64" items="2" limit="100" minimum="1" inputType="string" />
+                <value name="input_1">
+                    <shadow type="inline_string">
+                        <field name="value">Hello</field>
+                    </shadow>
+                </value>
+                <value name="input_2">
+                    <shadow type="inline_string">
+                        <field name="value">World</field>
+                    </shadow>
+                </value>
+            </shadow>
+          </value>
+        </block>
+      </value>
+    </block>
+
+    <block type="list">
+      <value name="data">
+        <shadow type="parameters">
+            <mutation color="#E71D64" items="2" limit="100" minimum="1" inputType="string" />
+            <value name="input_1">
+                <shadow type="inline_string">
+                    <field name="value">Hello</field>
+                </shadow>
+            </value>
+            <value name="input_2">
+                <shadow type="inline_string">
+                    <field name="value">World</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="list">
+      <value name="data">
+        <shadow type="parameters">
+            <mutation color="#E71D64" items="3" limit="100" minimum="1" inputType="text" />
+            <value name="input_1">
+                <shadow type="inline_text">
+                    <field name="value">1</field>
+                </shadow>
+            </value>
+            <value name="input_2">
+                <shadow type="inline_text">
+                    <field name="value">2</field>
+                </shadow>
+            </value>
+            <value name="input_3">
+                <shadow type="inline_text">
+                    <field name="value">3</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="list_get_item_at_index">
+      <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#E71D64" items="1" limit="1" minimum="1" inputType="number" />
+            <value name="input_1">
+                <shadow type="inline_number">
+                    <field name="value">0</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="list_reverse"></block>
+
+    <block type="list_find_index">
+      <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#E71D64" items="1" limit="1" minimum="1" inputType="string" />
+            <value name="input_1">
+                <shadow type="inline_string">
+                    <field name="value">Hello</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="list_append">
+      <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#E71D64" items="1" limit="1" minimum="1" inputType="string" />
+            <value name="input_1">
+                <shadow type="inline_string">
+                    <field name="value">Hello</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+    </block>
+  </category>
+
+  <category name="Loops" colour="#E71D64" css-icon="customIcon fad fa-rotate-right">
+    <label text="Loops"></label>
+
+    <block type="while">
+      <value name="condition">
+        <shadow type="inline_text">
+          <field name="value">True</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="for_range">
+      <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#E71D64" items="1" limit="3" minimum="1" inputType="number" />
+            <value name="input_1">
+                <shadow type="inline_number">
+                    <field name="value">10</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="for_range">
+      <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#E71D64" items="2" limit="3" minimum="1" inputType="number" />
+            <value name="input_1">
+                <shadow type="inline_number">
+                    <field name="value">5</field>
+                </shadow>
+            </value>
+            <value name="input_2">
+                <shadow type="inline_number">
+                    <field name="value">10</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="for"></block>
+    
+    <block type="break"></block>
+  </category>
+
+  <category name="Definitions" colour="#E71D64" css-icon="customIcon fad fa-book">
+    <label text="Definitions"></label>
+
+    <block type="define_function">
+      <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#E71D64" items="1" limit="100" minimum="1" inputType="text" />
+            <value name="input_1">
+                <shadow type="inline_text">
+                    <field name="value"></field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="define_class"></block>
+
+    <block type="return_function"></block>
+
+    <block type="call_function">
+      <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#E71D64" items="1" limit="100" minimum="1" inputType="text" />
+            <value name="input_1">
+                <shadow type="inline_text">
+                    <field name="value"></field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="class_self"></block>
+  </category>
+</category>
