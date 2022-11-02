@@ -1,7 +1,7 @@
 <template>
   <eb-h-stack
     is-full-width
-    align="center"
+    align-y="center"
     justify-content="between"
   >
     <eb-heading

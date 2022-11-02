@@ -34,6 +34,7 @@ import EbLoading from "./eb-loading/eb-loading.vue";
 import EbEmptyState from "./eb-empty-state/eb-empty-state.vue";
 import EbRange from "./eb-range/eb-range.vue";
 import EbToggle from "./eb-toggle/eb-toggle.vue";
+import EbProgress from "./eb-progress/eb-progress.vue";
 
 /**
  * Export & install application components for use globally
@@ -73,5 +74,6 @@ export default {
 		app.component(ComponentName.EbEmptyState, EbEmptyState);
 		app.component(ComponentName.EbRange, EbRange);
 		app.component(ComponentName.EbToggle, EbToggle);
+		app.component(ComponentName.EbProgress, EbProgress);
 	}
 };

@@ -8,15 +8,19 @@
       :padding-l="2"
       :padding-r="2"
     >
-      <eb-icon-button
+      <template
         v-for="tab in component.getSidebarTabsForCurrentMode()"
         :key="tab.key"
-        :icon="tab.icon"
-        :is-active="component.isSidebarTabActive(tab)"
-        size="xl"
-        color="gray"
-        @click="component.onSidebarTabClicked(tab)"
-      />
+      >
+        <eb-icon-button
+          v-if="tab.visible !== false"
+          :icon="tab.icon"
+          :is-active="component.isSidebarTabActive(tab)"
+          size="xl"
+          color="gray"
+          @click="component.onSidebarTabClicked(tab)"
+        />
+      </template>
     </eb-v-stack>
 
     <!-- Sidebar Component -->

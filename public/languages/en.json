@@ -133,6 +133,8 @@
         "run": "Run",
         "stop": "Stop",
         "download": "Download",
+        "connect": "Connect",
+        "flash": "Flash",
         "no-access": "No Access",
         "project-is-private": "The author has this project set to private"
     },
@@ -186,5 +188,19 @@
         "1": "1",
         "2": "2",
         "logo": "Logo"
+    },
+    "connect-microbit": {
+        "back": "Back",
+        "next": "Next",
+        "connect-cable": "Connect cable",
+        "select-microbit": "Select micro:bit",
+        "select-microbit-from-list": "In the next popup, select your micro:bit from the list and click 'Connect'."
+    },
+    "webusb-settings": {
+        "webusb": "webUSB",
+        "disconnect-forget": "Disconnect & Forget"
+    },
+    "microbit": {
+        "flashing-code": "Flashing code"
     }
 }

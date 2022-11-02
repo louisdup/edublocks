@@ -85,13 +85,7 @@ class SidebarModel extends ComponentModelBase {
 			clickedTab.action();
 		}
 
-		setTimeout(() => {
-			if (EditorUtilities.currentProject.value) {
-				if (EditorUtilities.blocklyInstance && EditorUtilities.currentProject.value.type === "blocks") {
-					Blockly.svgResize(EditorUtilities.blocklyInstance);
-				}
-			}
-		}, 1);
+		EditorUtilities.resizeBlockly();
 	}
 
 	/**

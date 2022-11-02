@@ -3447,6 +3447,13 @@
     "@types/node" "*"
     form-data "^3.0.0"
 
+"@types/node-hid@^1.2.0":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@types/node-hid/-/node-hid-1.3.1.tgz#e84507a35a6f3ece3f6324c21ba9252405758b65"
+  integrity sha512-VPxuGDCoDxOUKrTZPSok7IEmiK4cVLfj8Csu09FtG5uF+eqf1HETERHXQkO02Rk6j6YiiHxp0/DA9R4llvhEzQ==
+  dependencies:
+    "@types/node" "*"
+
 "@types/node@*":
   version "18.6.5"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.6.5.tgz#06caea822caf9e59d5034b695186ee74154d2802"
@@ -3525,6 +3532,18 @@
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/@types/unist/-/unist-2.0.6.tgz#250a7b16c3b91f672a24552ec64678eeb1d3a08d"
   integrity sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==
+
+"@types/usb@^1.5.1":
+  version "1.5.4"
+  resolved "https://registry.yarnpkg.com/@types/usb/-/usb-1.5.4.tgz#366b353373ee92d34e0abcc5138c9b1fcdd75dc4"
+  integrity sha512-NOUza/8yuswu6RoECQyPHEjA34qpDaeONQ72fm+bCnnN2DJjDePAY+NsmV17H88oIlq4JlJ2mD5Kh5d6R2MwTQ==
+  dependencies:
+    "@types/node" "*"
+
+"@types/w3c-web-usb@^1.0.4", "@types/w3c-web-usb@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@types/w3c-web-usb/-/w3c-web-usb-1.0.6.tgz#5d8560d0d9f585ffc80865bc773db7bc975b680c"
+  integrity sha512-cSjhgrr8g4KbPnnijAr/KJDNKa/bBa+ixYkywFRvrhvi9n1WEl7yYbtRyzE6jqNQiSxxJxoAW3STaOQwJHndaw==
 
 "@types/webpack-env@^1.16.0":
   version "1.18.0"
@@ -5800,6 +5819,15 @@ cyclist@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha512-NJGVKPS81XejHcLhaLJS7plab0fK3slPh11mESeeDq2W4ZI5kUKK/LRRdVDvjJseojbPB7ZwjnyOybg3Igea/A==
+
+dapjs@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/dapjs/-/dapjs-2.3.0.tgz#91b7b4d1821a364766cf61075a0b90452363c9fa"
+  integrity sha512-quanzq7+2xnqgGqqYgARz9o3iBcZ3Ir5r5mTA7WPsjrp9ilEqqCToSFGTL+8HuGP35dUIL7O+yMBloYHhHgZDA==
+  dependencies:
+    "@types/node-hid" "^1.2.0"
+    "@types/usb" "^1.5.1"
+    "@types/w3c-web-usb" "^1.0.4"
 
 de-indent@^1.0.2:
   version "1.0.2"

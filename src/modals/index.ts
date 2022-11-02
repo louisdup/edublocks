@@ -8,6 +8,8 @@ import ShareProject from "./share-project/share-project.vue";
 import DeleteShowcaseProject from "./delete-showcase-project/delete-showcase-project.vue";
 import Error from "./error/error.vue";
 import Login from "./login/login.vue";
+import ConnectMicrobit from "./connect-microbit/connect-microbit.vue";
+import Progress from "./progress/progress.vue";
 
 /**
  * Export & install modals for use globally
@@ -21,5 +23,7 @@ export default {
 		app.component(ModalName.DeleteShowcaseProject, DeleteShowcaseProject);
 		app.component(ModalName.Error, Error);
 		app.component(ModalName.Login, Login);
+		app.component(ModalName.ConnectMicrobit, ConnectMicrobit);
+		app.component(ModalName.Progress, Progress);
 	}
 };

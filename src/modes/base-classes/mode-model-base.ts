@@ -5,10 +5,10 @@ import { ModeConfigModel } from "@/data/models/mode-config-model";
 import { TextToBlocksDefinitionModel } from "@/data/models/text-to-blocks-definition-model";
 import { EditorUtilities } from "@/utilities/editor-utilities";
 import { LocalizationUtilities } from "@/utilities/localization-utilities";
+import { ModalUtilities } from "@/utilities/modal-utilities";
 
 // Sidebar tab components.
 import ProjectSettings from "@/modes/common/components/sidebar/project-settings/project-settings.vue";
-import { ModalUtilities } from "@/utilities/modal-utilities";
 
 /**
  * Base class exposing common functionality to all mode models.
@@ -179,6 +179,20 @@ export abstract class ModeModelBase {
 	}
 
 	/**
+	 * Sets the specified output panel tab to be inactive.
+	 */
+	public setOutputPanelTabInactive(tabToBeInactive: string): void {
+		if (EditorUtilities.currentProject.value) {
+			EditorUtilities.currentProject.value.mode.outputPanelTabs.forEach((tab: EditorOutputTabModel) => {
+				if (tabToBeInactive === tab.key) {
+					tab.active = false;
+				}
+				EditorUtilities.resizeBlockly();
+			});
+		}
+	}
+
+	/**
 	 * Sets the specified sidebar tab to visible.
 	 */
 	public setSidebarTabVisible(tabToBeVisible: string): void {
@@ -216,6 +230,20 @@ export abstract class ModeModelBase {
 				else {
 					tab.active = false;
 				}
+			});
+		}
+	}
+	
+	/**
+	 * Sets the specified sidebar tab to be inactive.
+	 */
+	public setSidebarTabInactive(tabToBeInactive: string): void {
+		if (EditorUtilities.currentProject.value) {
+			EditorUtilities.currentProject.value.mode.sidebarTabs.forEach((tab: EditorSidebarTabModel) => {
+				if (tabToBeInactive === tab.key) {
+					tab.active = false;
+				}
+				EditorUtilities.resizeBlockly();
 			});
 		}
 	}

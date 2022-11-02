@@ -1,4 +1,5 @@
 import * as microbitFs from "@microbit/microbit-fs";
+import * as DAPjs from "dapjs";
 import { saveAs } from "file-saver";
 import { EditorButtonModel } from "@/data/models/editor-button-model";
 import { EditorOutputTabModel } from "@/data/models/editor-output-tab-model";
@@ -6,10 +7,16 @@ import { EditorSidebarTabModel } from "@/data/models/editor-sidebar-tab-model";
 import { ModeConfigModel } from "@/data/models/mode-config-model";
 import { ModeModelBase } from "../base-classes/mode-model-base";
 import { EditorUtilities } from "@/utilities/editor-utilities";
+import { WebUSBUtilities } from "@/utilities/webusb-utilities";
+import { ModalUtilities } from "@/utilities/modal-utilities";
+import { ref, Ref, watchEffect } from "vue";
 
 // Micropython HEX Files
 import microbitMicropythonV1 from "./micropython/microbit-micropython-v1.hex?raw";
 import microbitMicropythonV2 from "./micropython/microbit-micropython-v2.hex?raw";
+
+// Sidebar tab Components
+import WebUSBSettings from "./components/sidebar/webusb-settings/webusb-settings.vue";
 
 // Output Panel Components
 import PythonCode from "../common/components/output-panel/python-code/python-code.vue";
@@ -53,7 +60,8 @@ export class MicrobitModel extends ModeModelBase {
 	 * Initalize the microbit mode.
 	 */
 	public init(): void {
-		//
+		this.watchForWebUSBDeviceConnection();
+		WebUSBUtilities.setConnectedDevice();
 	}
 
 	/**
@@ -101,6 +109,25 @@ export class MicrobitModel extends ModeModelBase {
 	public headerButtons: Array<EditorButtonModel> = [
 		...this.commonHeaderButtons,
 		{
+			key: "connect",
+			icon: ["fab", "usb"],
+			color: "gray",
+			visible: this.isConnectButtonVisible(),
+			action: (): void => {
+				ModalUtilities.showModal({
+					modal: "ConnectMicrobit"
+				});
+			}
+		},
+		{
+			key: "flash",
+			icon: ["far", "bolt-lightning"],
+			color: "blue",
+			action: (): void => {
+				this.flashMicrobit();
+			}
+		},
+		{
 			key: "download",
 			icon: ["far", "arrow-down-to-line"],
 			color: "blue",
@@ -114,7 +141,13 @@ export class MicrobitModel extends ModeModelBase {
 	 * Returns a list of tabs to display in the sidebar for micro:bit.
 	 */
 	public sidebarTabs: Array<EditorSidebarTabModel> = [
-		...this.commonSidebarTabs
+		...this.commonSidebarTabs,
+		{
+			key: "webusb-settings",
+			icon: ["fab", "usb"],
+			component: WebUSBSettings,
+			visible: false
+		}
 	];
 
 	/**
@@ -148,7 +181,7 @@ export class MicrobitModel extends ModeModelBase {
 	/**
 	 * Returns a micropython filesystem for the micro:bit.
 	 */
-	 private micropythonFs: microbitFs.MicropythonFsHex = new microbitFs.MicropythonFsHex([
+	private micropythonFs: microbitFs.MicropythonFsHex = new microbitFs.MicropythonFsHex([
 		{
 			hex: microbitMicropythonV1,
 			boardId: microbitFs.microbitBoardId.V1
@@ -181,6 +214,71 @@ export class MicrobitModel extends ModeModelBase {
 		if (EditorUtilities.currentProject.value && universalHex) {
 			const fileName: string = `${EditorUtilities.currentProject.value.name}.hex`;
 			saveAs(new Blob([universalHex]), fileName);
+		}
+	}
+
+	/**
+	 * True if webUSB is supported.
+	 */
+	private isConnectButtonVisible(): boolean {
+		return WebUSBUtilities.isWebUSBSupported();
+	}
+
+	/**
+	 * Watches for changes and configures the editor if a webUSB Device is connected.
+	 */
+	private watchForWebUSBDeviceConnection(): void {
+		watchEffect(() => {
+			if (WebUSBUtilities.device.value) {
+				this.setHeaderButtonHidden("download");
+				this.setHeaderButtonHidden("connect");
+				this.setHeaderButtonVisible("flash");
+				this.setSidebarTabVisible("webusb-settings");
+			}
+			else {
+				this.setSidebarTabInactive("webusb-settings");
+				this.setSidebarTabHidden("webusb-settings");
+				this.setHeaderButtonHidden("flash");
+				this.setHeaderButtonVisible("download");
+				if (this.isConnectButtonVisible()) {
+					this.setHeaderButtonVisible("connect");
+				}
+			}
+		});
+	}
+
+	/**
+	 * Flashes a HEX file onto a micro:bit via webUSB.
+	 */
+	private async flashMicrobit(): Promise<void> {
+		const universalHex: string | undefined = this.getUniversalHexFile();
+
+		if (WebUSBUtilities.device.value && universalHex) {
+			const transport: DAPjs.Transport = new DAPjs.WebUSB(WebUSBUtilities.device.value);
+			const daplink: DAPjs.DAPLink = new DAPjs.DAPLink(transport);
+			const image: ArrayBufferLike = new TextEncoder().encode(universalHex).buffer;
+			const flashProgress: Ref<number> = ref(0);
+
+			daplink.on(DAPjs.DAPLink.EVENT_PROGRESS, (progress: number) => {
+				flashProgress.value = Math.round(progress * 100);
+			});
+			
+			try {
+				await daplink.connect();
+				ModalUtilities.showModal({
+					modal: "Progress",
+					options: {
+						title: this.getText("flashing-code"),
+						progress: flashProgress
+					}
+				});
+				await daplink.flash(image);
+			}
+			catch (error) {
+				ModalUtilities.showModal({
+					modal: "Error"
+				});
+			}
 		}
 	}
 }

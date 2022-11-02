@@ -161,4 +161,17 @@ export class EditorUtilities {
 			}
 		}
 	}
+
+	/**
+	 * Resizes the blockly editor.
+	 */
+	public static resizeBlockly(): void {
+		setTimeout(() => {
+			if (this.currentProject.value) {
+				if (this.blocklyInstance && this.currentProject.value.type === "blocks") {
+					Blockly.svgResize(this.blocklyInstance);
+				}
+			}
+		}, 1);
+	}
 }

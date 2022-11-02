@@ -8,7 +8,9 @@ export enum ModalName {
 	ShareProject = "ShareProject",
 	DeleteShowcaseProject = "DeleteShowcaseProject",
 	Error = "Error",
-	Login = "Login"
+	Login = "Login",
+	ConnectMicrobit = "ConnectMicrobit",
+	Progress = "Progress"
 }
 
 /**
@@ -22,3 +24,5 @@ export type Modal =
  | "DeleteShowcaseProject"
  | "Error"
  | "Login"
+ | "ConnectMicrobit"
+ | "Progress"

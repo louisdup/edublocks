@@ -9,13 +9,16 @@
       />
       <eb-heading
         :label="title"
-        size="2xl"
+        :size="component.getHeadingSize(size)"
         :align="align"
         is-full-width
       />
     </div>
 
-    <div class="absolute top-5 right-4 flex items-center">
+    <div
+      v-if="showCloseButton !== false"
+      class="absolute top-5 right-4 flex items-center"
+    >
       <button
         class="h-10 w-10 rounded-md flex items-center justify-center text-gray-900 hover:bg-gray-100 cursor-pointer transition-colors"
         @click="$emit('close')"
@@ -27,11 +30,15 @@
 </template>
 
 <script setup lang="ts">
+import { component } from "./eb-modal-header-model";
+
 defineProps<{
 	title: string;
 	align: string;
-	icon: Array<string>;
-	iconColor: string;
+	icon?: Array<string>;
+	iconColor?: string;
+	size?: string;
+	showCloseButton?: boolean;
 }>();
 
 defineEmits(["close"]);
