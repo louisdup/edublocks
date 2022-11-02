@@ -5,7 +5,7 @@
       :icon="['far', 'hourglass-start']"
       icon-color="blue"
       align="center"
-      :show-close-button="false"
+      is-close-hidden
     />
 
     <eb-modal-content>

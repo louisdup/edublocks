@@ -16,7 +16,7 @@
     </div>
 
     <div
-      v-if="showCloseButton !== false"
+      v-if="!isCloseHidden"
       class="absolute top-5 right-4 flex items-center"
     >
       <button
@@ -38,7 +38,7 @@ defineProps<{
 	icon?: Array<string>;
 	iconColor?: string;
 	size?: string;
-	showCloseButton?: boolean;
+	isCloseHidden?: boolean;
 }>();
 
 defineEmits(["close"]);
