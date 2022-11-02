@@ -124,13 +124,15 @@ class EditorModel extends ViewModelBase {
 			if (response.wasSuccessful && response.data) {
 				EditorUtilities.clearCurrentProject();
 				
-				await EditorUtilities.setCurrentProject({
+				EditorUtilities.setCurrentProject({
 					name: response.data.name,
 					mode: ModeUtilities.getModeFromKey(response.data.mode),
 					type: response.data.type,
 					readOnly: ProjectsUtilities.shouldProjectBeReadOnly(userId, response.data),
 					firestore_project: response.data
 				});
+				
+				await this.fetchAndSetCurrentProjectCode();
 
 				if (EditorUtilities.currentProject.value) {
 					// If the current project is read only, hide the save button.
@@ -141,8 +143,6 @@ class EditorModel extends ViewModelBase {
 					// Enable the share button, as the project is stored in firestore and therefore shareable.
 					EditorUtilities.currentProject.value.mode.setHeaderButtonVisible("share");
 				}
-				
-				await this.fetchAndSetCurrentProjectCode();
 			}
 			else {
 				// Set no access to true to trigger the empty state telling the user.
