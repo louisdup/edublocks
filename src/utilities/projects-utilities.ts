@@ -31,7 +31,7 @@ export class ProjectsUtilities {
 				name: project.name,
 				mode: ModeUtilities.getModeFromKey(project.mode),
 				type: project.type,
-				firestore_project: project
+				firestoreProject: project
 			});
 		
 			router.push(`/project/${AuthenticationUtilities.currentUser.value.uid}/${project.id}`);

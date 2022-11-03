@@ -34,8 +34,8 @@ class ShareProjectModal extends ModalModelBase {
 		if (props.project) {
 			project = props.project as FirestoreProjectModel;
 		}
-		else if (EditorUtilities.currentProject.value && EditorUtilities.currentProject.value.firestore_project) {
-			project = EditorUtilities.currentProject.value.firestore_project;
+		else if (EditorUtilities.currentProject.value && EditorUtilities.currentProject.value.firestoreProject) {
+			project = EditorUtilities.currentProject.value.firestoreProject;
 		}
 
 		if (project) {

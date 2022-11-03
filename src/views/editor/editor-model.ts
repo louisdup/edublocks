@@ -74,7 +74,7 @@ class EditorModel extends ViewModelBase {
 		this.state.isProjectLoading = true;
 
 		// Check if there's already a firestore project set (i.e opened from the projects page).
-		if (EditorUtilities.currentProject.value && EditorUtilities.currentProject.value.firestore_project) {
+		if (EditorUtilities.currentProject.value && EditorUtilities.currentProject.value.firestoreProject) {
 			await this.fetchAndSetCurrentProjectCode();
 		}
 
@@ -98,8 +98,8 @@ class EditorModel extends ViewModelBase {
 	 * Fetches the current project code from firebase storage and sets the current project code value.
 	 */
 	private async fetchAndSetCurrentProjectCode(): Promise<void> {
-		if (EditorUtilities.currentProject.value && EditorUtilities.currentProject.value.firestore_project) {
-			await ProjectsProvider.getProjectCodeAsync(EditorUtilities.currentProject.value.firestore_project.path).then((response: StorageFetchResponse) => {
+		if (EditorUtilities.currentProject.value && EditorUtilities.currentProject.value.firestoreProject) {
+			await ProjectsProvider.getProjectCodeAsync(EditorUtilities.currentProject.value.firestoreProject.path).then((response: StorageFetchResponse) => {
 				if (EditorUtilities.currentProject.value && response.wasSuccessful && response.data) {
 					switch (EditorUtilities.currentProject.value.type) {
 						case "blocks":
@@ -129,7 +129,7 @@ class EditorModel extends ViewModelBase {
 					mode: ModeUtilities.getModeFromKey(response.data.mode),
 					type: response.data.type,
 					readOnly: ProjectsUtilities.shouldProjectBeReadOnly(userId, response.data),
-					firestore_project: response.data
+					firestoreProject: response.data
 				});
 				
 				await this.fetchAndSetCurrentProjectCode();

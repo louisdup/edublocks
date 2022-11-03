@@ -74,12 +74,12 @@ export class EditorUtilities {
 		if (this.currentProject.value) {
 			this.currentProject.value.name = newName;
 
-			if (this.currentProject.value.firestore_project) {
+			if (this.currentProject.value.firestoreProject) {
 				const body: object = {
 					name: newName,
 					updated: new Date().toISOString()
 				};
-				await ProjectsProvider.updateProjectAsync(this.currentProject.value.firestore_project.id, body);
+				await ProjectsProvider.updateProjectAsync(this.currentProject.value.firestoreProject.id, body);
 			}
 		}
 	}
@@ -106,13 +106,13 @@ export class EditorUtilities {
 			// If there's a logged in user, work with firestore.
 			if (AuthenticationUtilities.currentUser.value) {
 				// If project is already saved in firestore, update the code & project.
-				if (this.currentProject.value.firestore_project) {
-					await ProjectsProvider.updateProjectCodeAsync(this.currentProject.value.firestore_project.path, fileContent).then(async (response: StorageFetchResponse) => {
-						if (response.wasSuccessful && response.data && this.currentProject.value && this.currentProject.value.firestore_project) {
+				if (this.currentProject.value.firestoreProject) {
+					await ProjectsProvider.updateProjectCodeAsync(this.currentProject.value.firestoreProject.path, fileContent).then(async (response: StorageFetchResponse) => {
+						if (response.wasSuccessful && response.data && this.currentProject.value && this.currentProject.value.firestoreProject) {
 							const body: object = {
 								updated: new Date().toISOString()
 							};
-							await ProjectsProvider.updateProjectAsync(this.currentProject.value.firestore_project.id, body);
+							await ProjectsProvider.updateProjectAsync(this.currentProject.value.firestoreProject.id, body);
 						}
 					});
 				}
@@ -143,7 +143,7 @@ export class EditorUtilities {
 									await ProjectsProvider.getProjectAsync(AuthenticationUtilities.currentUser.value.uid, response.data).then((response: FirestoreFetchResponse<FirestoreProjectModel>) => {
 										if (response.wasSuccessful && response.data && AuthenticationUtilities.currentUser.value && this.currentProject.value) {
 											// Set the current project's linked firestore project
-											this.currentProject.value.firestore_project = response.data;
+											this.currentProject.value.firestoreProject = response.data;
 											
 											// Change the URL to be the direct link of the project.
 											router.push(`/project/${AuthenticationUtilities.currentUser.value.uid}/${response.data.id}`);

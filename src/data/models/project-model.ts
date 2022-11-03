@@ -11,5 +11,5 @@ export interface ProjectModel {
 	blocks?: string;
 	code?: string;
 	readOnly?: boolean;
-	firestore_project?: FirestoreProjectModel;
+	firestoreProject?: FirestoreProjectModel;
 }
