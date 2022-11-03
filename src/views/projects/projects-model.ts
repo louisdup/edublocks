@@ -100,6 +100,14 @@ class ProjectsModel extends ViewModelBase {
 	}
 
 	/**
+	 * Called when the user clicks the open local project button.
+	 * Imports & opens a local project.
+	 */
+	public onOpenLocalProjectClicked(): void {
+		ProjectsUtilities.openLocalProject();
+	}
+
+	/**
 	 * True if user is logged in and data layout is list.
 	 */
 	public isProjectsTableVisible(): boolean {

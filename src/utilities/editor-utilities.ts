@@ -9,6 +9,7 @@ import { FirestoreProjectModel } from "@/data/models/firestore-project-model";
 import router from "@/router";
 import { ModeModelBase } from "@/modes/base-classes/mode-model-base";
 import { View } from "@/views/constants";
+import { LocalProjectModel } from "@/data/models/local-project-model";
 
 /**
  * Utility functions for the editor.
@@ -53,13 +54,15 @@ export class EditorUtilities {
 	/**
 	 * Opens the editor with a blank project.
 	 */
-	public static openEditor(mode: ModeModelBase, type?: "blocks" | "text", name?: string): void {
+	public static openEditor(mode: ModeModelBase, type?: "blocks" | "text", name?: string, blocks?: string, code?: string): void {
 		router.push({
 			name: View.NewProject,
 			query: {
 				mode: mode.config.key,
 				type,
-				name
+				name,
+				blocks,
+				code
 			}
 		});
 	}
@@ -157,8 +160,26 @@ export class EditorUtilities {
 			}
 			// If current user is not logged in, save the file locally.
 			else {
-				saveAs(new Blob([fileContent]), fileName);
+				this.saveCurrentProjectLocally();
 			}
+		}
+	}
+
+	/**
+	 * Saves the current project locally.
+	 */
+	public static saveCurrentProjectLocally(): void {
+		if (this.currentProject.value) {
+			const project: LocalProjectModel = {
+				mode: this.currentProject.value.mode.config.key,
+				type: this.currentProject.value.type,
+				blocks: this.currentProject.value.blocks,
+				code: this.currentProject.value.code
+			};
+
+			const fileName: string = `${this.currentProject.value.name}.json`;
+
+			saveAs(new Blob([JSON.stringify(project)]), fileName);
 		}
 	}
 

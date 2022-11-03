@@ -30,6 +30,7 @@ class EbVStackModel extends ComponentModelBase {
 				8: "space-y-8",
 			},
 			margin: {
+				"-4": "-m-4",
 				"-3": "-m-3",
 				"-2": "-m-2",
 				"-1": "-m-1",

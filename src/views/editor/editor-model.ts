@@ -164,6 +164,10 @@ class EditorModel extends ViewModelBase {
 			
 			const nameQueryParam: string | undefined = router.currentRoute.value.query.name as string;
 			let name: string = "";
+
+			const blocksQueryParam: string | undefined = router.currentRoute.value.query.blocks as string;
+
+			const codeQueryParam: string | undefined = router.currentRoute.value.query.code as string;
 		
 			// If mode is valid, create a new project.
 			if (mode) {
@@ -195,7 +199,9 @@ class EditorModel extends ViewModelBase {
 				await EditorUtilities.setCurrentProject({
 					name,
 					mode,
-					type
+					type,
+					blocks: blocksQueryParam,
+					code: codeQueryParam
 				});
 			}
 			// If mode is invalid, redirect the user to the homepage and ask them to create a project manually.

@@ -1,6 +1,7 @@
 import { EbDropdownOption } from "@/components/eb-dropdown/eb-dropdown-types";
 import { EbTableItem } from "@/components/eb-table/eb-table-types";
 import { FirestoreProjectModel } from "@/data/models/firestore-project-model";
+import { LocalProjectModel } from "@/data/models/local-project-model";
 import { ModeModelBase } from "@/modes/base-classes/mode-model-base";
 import router from "@/router";
 import { AuthenticationUtilities } from "./authentication-utilities";
@@ -35,6 +36,49 @@ export class ProjectsUtilities {
 		
 			router.push(`/project/${AuthenticationUtilities.currentUser.value.uid}/${project.id}`);
 		}
+	}
+
+	/**
+	 * Imports & opens a local project.
+	 */
+	public static openLocalProject(): void {
+		// Create file input in order to open file chooser.
+		const fileInput: HTMLInputElement = document.createElement("input");
+		fileInput.type = "file";
+		fileInput.accept = ".json";
+		
+		// Runs when the user chooses a file.
+		fileInput.addEventListener("change", (event: Event) => {
+			const target: HTMLInputElement = event.target as HTMLInputElement;
+			const reader: FileReader = new FileReader();
+
+			reader.addEventListener("load", (event: ProgressEvent<FileReader>) => {
+				try {
+					// Parse JSON file and then open the editor with its contents.
+					if (event.target && target.files) {
+						const fileName: string = target.files[0].name.split(".")[0];
+						const project: LocalProjectModel = JSON.parse(event.target.result as string);
+						const mode: ModeModelBase = ModeUtilities.getModeFromKey(project.mode);
+
+						EditorUtilities.openEditor(mode, project.type, fileName, project.blocks, project.code);
+					}
+				}
+				catch (error) {
+					// If JSON file cannot be opened in the editor, show an error modal.
+					ModalUtilities.showModal({
+						modal: "Error"
+					});
+				}
+			});
+
+			// Trigger reading the uploaded file.
+			if (target.files) {
+				reader.readAsText(target.files[0]);
+			}
+		});
+
+		// Click on the file input to open a file chooser.
+		fileInput.click();
 	}
 
 	/**

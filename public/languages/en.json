@@ -97,7 +97,7 @@
         "open-project": "Open Project",
         "rename-project": "Rename Project",
         "delete-project": "Delete Project",
-        "import-project": "Import Project",
+        "open-local-project": "Open Local Project",
         "share-project": "Share Project",
         "new-project": "New Project",
         "text": "Text",

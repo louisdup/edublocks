@@ -12,10 +12,11 @@
       />
 
       <eb-button
-        :label="view.getText('import-project')"
+        :label="view.getText('open-local-project')"
         :icon="['far', 'file-import']"
         color="white"
         icon-color="darkGray"
+        @click="view.onOpenLocalProjectClicked()"
       />
     </eb-h-stack>
 
