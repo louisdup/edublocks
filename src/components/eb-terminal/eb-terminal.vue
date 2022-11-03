@@ -37,6 +37,6 @@ onMounted(() => {
 }
 
 .xterm {
-  @apply p-4;
+  @apply p-4 h-full;
 }
 </style>
