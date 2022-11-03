@@ -284,7 +284,6 @@ export class MicrobitModel extends ModeModelBase {
 					}
 				});
 				await DAPLinkUtilities.daplinkInstance.value.flash(image);
-				await DAPLinkUtilities.daplinkInstance.value.disconnect();
 			}
 			catch (error) {
 				ModalUtilities.showModal({
