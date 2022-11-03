@@ -9,6 +9,7 @@ import { ModeModelBase } from "../base-classes/mode-model-base";
 import { EditorUtilities } from "@/utilities/editor-utilities";
 import { WebUSBUtilities } from "@/utilities/webusb-utilities";
 import { ModalUtilities } from "@/utilities/modal-utilities";
+import { DAPLinkUtilities } from "@/utilities/daplink-utilities";
 import { ref, Ref, watchEffect } from "vue";
 
 // Micropython HEX Files
@@ -21,6 +22,7 @@ import WebUSBSettings from "./components/sidebar/webusb-settings/webusb-settings
 // Output Panel Components
 import PythonCode from "../common/components/output-panel/python-code/python-code.vue";
 import Simulator from "./components/output-panel/simulator/simulator.vue";
+import Serial from "./components/output-panel/serial/serial.vue";
 
 // Import Toolbox Categories
 import basic from "./blocks/basic/toolbox.xml?raw";
@@ -162,7 +164,13 @@ export class MicrobitModel extends ModeModelBase {
 		{
 			key: "simulator",
 			component: Simulator,
-			active: true
+			active: false
+		},
+		{
+			key: "serial",
+			component: Serial,
+			active: false,
+			visible: false
 		}
 	];
 
@@ -230,12 +238,16 @@ export class MicrobitModel extends ModeModelBase {
 	private watchForWebUSBDeviceConnection(): void {
 		watchEffect(() => {
 			if (WebUSBUtilities.device.value) {
+				DAPLinkUtilities.setupDAPLink();
 				this.setHeaderButtonHidden("download");
 				this.setHeaderButtonHidden("connect");
 				this.setHeaderButtonVisible("flash");
 				this.setSidebarTabVisible("webusb-settings");
+				this.setOutputPanelTabVisible("serial");
 			}
 			else {
+				this.setOutputPanelTabActive("code");
+				this.setOutputPanelTabHidden("serial");
 				this.setSidebarTabInactive("webusb-settings");
 				this.setSidebarTabHidden("webusb-settings");
 				this.setHeaderButtonHidden("flash");
@@ -253,18 +265,17 @@ export class MicrobitModel extends ModeModelBase {
 	private async flashMicrobit(): Promise<void> {
 		const universalHex: string | undefined = this.getUniversalHexFile();
 
-		if (WebUSBUtilities.device.value && universalHex) {
-			const transport: DAPjs.Transport = new DAPjs.WebUSB(WebUSBUtilities.device.value);
-			const daplink: DAPjs.DAPLink = new DAPjs.DAPLink(transport);
+		if (WebUSBUtilities.device.value && DAPLinkUtilities.daplinkInstance.value && universalHex) {
 			const image: ArrayBufferLike = new TextEncoder().encode(universalHex).buffer;
 			const flashProgress: Ref<number> = ref(0);
 
-			daplink.on(DAPjs.DAPLink.EVENT_PROGRESS, (progress: number) => {
+			DAPLinkUtilities.daplinkInstance.value.on(DAPjs.DAPLink.EVENT_PROGRESS, (progress: number) => {
 				flashProgress.value = Math.round(progress * 100);
 			});
 			
 			try {
-				await daplink.connect();
+				await DAPLinkUtilities.daplinkInstance.value.connect();
+				this.setOutputPanelTabActive("code");
 				ModalUtilities.showModal({
 					modal: "Progress",
 					options: {
@@ -272,7 +283,8 @@ export class MicrobitModel extends ModeModelBase {
 						progress: flashProgress
 					}
 				});
-				await daplink.flash(image);
+				await DAPLinkUtilities.daplinkInstance.value.flash(image);
+				await DAPLinkUtilities.daplinkInstance.value.disconnect();
 			}
 			catch (error) {
 				ModalUtilities.showModal({

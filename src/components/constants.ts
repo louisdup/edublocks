@@ -35,5 +35,6 @@ export enum ComponentName {
 	EbEmptyState = "EbEmptyState",
 	EbRange = "EbRange",
 	EbToggle = "EbToggle",
-	EbProgress = "EbProgress"
+	EbProgress = "EbProgress",
+	EbTerminal = "EbTerminal"
 }

@@ -142,7 +142,8 @@
         "code": "Code",
         "repl": "REPL",
         "output": "Output",
-        "simulator": "Simulator"
+        "simulator": "Simulator",
+        "serial": "Serial"
     },
     "project-settings": {
         "project": "Project",
