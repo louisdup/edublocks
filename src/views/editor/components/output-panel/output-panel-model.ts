@@ -1,6 +1,7 @@
 import { ComponentModelBase } from "@/components/base-classes/component-model-base";
 import { EditorOutputTabModel } from "@/data/models/editor-output-tab-model";
 import { EditorUtilities } from "@/utilities/editor-utilities";
+import { ScreenUtilities } from "@/utilities/screen-utilities";
 import { Component, markRaw } from "vue";
 
 /**
@@ -12,6 +13,13 @@ class OutputPanelModel extends ComponentModelBase {
 	 */
 	protected getLocalizationNamespace(): string {
 		return "output-panel";
+	}
+
+	/**
+	 * Returns a marging value for the output panel based on whether the user is on desktop or mobile.
+	 */
+	public getOutputPanelMargin(): string {
+		return ScreenUtilities.isMobile() ? "-4" : "0"; 
 	}
 
 	/**

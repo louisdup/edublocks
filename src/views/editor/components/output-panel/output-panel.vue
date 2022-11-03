@@ -5,6 +5,7 @@
     :padding-b="4"
     :padding-l="4"
     :padding-r="4"
+    :margin="component.getOutputPanelMargin()"
     is-full-height
   >
     <!-- Output Panel Tabs -->
