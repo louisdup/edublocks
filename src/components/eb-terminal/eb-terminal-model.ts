@@ -6,7 +6,7 @@ import { Data } from "../types";
 import { watch } from "vue";
 
 /**
- * Component model for the range component.
+ * Component model for the terminal component.
  */
 class EbTerminalModel extends ComponentModelBase {
 	/**
