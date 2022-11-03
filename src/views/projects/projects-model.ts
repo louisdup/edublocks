@@ -146,13 +146,6 @@ class ProjectsModel extends ViewModelBase {
 	}
 
 	/**
-	 * Returns a list of options for a project dropdown.
-	 */
-	public getProjectDropdownOptions(project: FirestoreProjectModel): Array<Array<EbDropdownOption>> {
-		return ProjectsUtilities.getProjectDropdownOptions(project);
-	}
-
-	/**
 	 * Called when the search input changes, and filters the projects list based on the search term.
 	 */
 	public onSearchInput(): void {
