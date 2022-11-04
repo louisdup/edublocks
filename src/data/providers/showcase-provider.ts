@@ -1,5 +1,5 @@
 import { FirestoreUtilities } from "@/utilities/firestore-utilities";
-import { collection, CollectionReference, limit, query, Query } from "firebase/firestore";
+import { collection, CollectionReference, limit, orderBy, query, Query, QueryConstraint } from "firebase/firestore";
 import { FirestoreFetchResponseModel } from "../models/firestore-fetch-response-model";
 import { ShowcaseProjectModel } from "../models/showcase-project-model";
 
@@ -12,7 +12,8 @@ import { ShowcaseProjectModel } from "../models/showcase-project-model";
  */
 export async function getShowcaseProjectsAsync(projectsLimit: number): Promise<FirestoreFetchResponseModel<Array<ShowcaseProjectModel>>> {
 	const collectionReference: CollectionReference = collection(FirestoreUtilities.getFirestore(), "showcase");
-	const collectionQuery: Query = query(collectionReference, limit(projectsLimit));
+	const constraints: Array<QueryConstraint> = [ orderBy("created", "desc"), limit(projectsLimit) ];
+	const collectionQuery: Query = query(collectionReference, ...constraints);
 	return FirestoreUtilities.fetchCollection(collectionQuery);
 }
 

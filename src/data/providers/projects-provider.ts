@@ -1,7 +1,6 @@
-import { CollectionReference, collection, limit, QueryConstraint, Query, query } from "@firebase/firestore";
+import { CollectionReference, collection, orderBy, limit, QueryConstraint, Query, query, QueryDocumentSnapshot } from "@firebase/firestore";
 import { AuthenticationUtilities } from "@/utilities/authentication-utilities";
 import { FirestoreProjectModel } from "../models/firestore-project-model";
-import { QueryDocumentSnapshot } from "@firebase/firestore";
 import { FirestoreFetchResponseModel } from "../models/firestore-fetch-response-model";
 import { FirestoreUtilities } from "@/utilities/firestore-utilities";
 import { StorageUtilities } from "@/utilities/storage-utilities";
@@ -16,7 +15,7 @@ import { StorageFetchResponseModel } from "../models/storage-fetch-response-mode
  */
 export async function getProjectsAsync(projectsLimit: number, searchTerm?: string, offset?: QueryDocumentSnapshot): Promise<FirestoreFetchResponseModel<Array<FirestoreProjectModel>>> {
 	const collectionReference: CollectionReference = collection(FirestoreUtilities.getFirestore(), `users/${AuthenticationUtilities.currentUser.value?.uid}/projects`);
-	const constraints: Array<QueryConstraint> = [ limit(projectsLimit), ...FirestoreUtilities.search(searchTerm), ...FirestoreUtilities.offset(offset) ];
+	const constraints: Array<QueryConstraint> = [ orderBy("updated", "desc"), limit(projectsLimit), ...FirestoreUtilities.search(searchTerm), ...FirestoreUtilities.offset(offset) ];
 	const collectionQuery: Query = query(collectionReference, ...constraints);
 	return FirestoreUtilities.fetchCollection(collectionQuery);
 }
