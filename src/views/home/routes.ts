@@ -1,13 +1,14 @@
-import type { RouteRecordRaw } from "vue-router";
+import { RouteRecordRaw } from "vue-router";
+import { Component } from "vue";
 import { View } from "@/views/constants";
-
-import Home from "@/views/home/home.vue";
 
 export const homeRoutes: Array<RouteRecordRaw> = [
 	{
 		path: "/",
 		name: View.Home,
-		component: Home,
+		component: async (): Promise<Component> => {
+			return import ("./home.vue");
+		},
 		meta: {
 			key: "home"
 		}

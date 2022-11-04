@@ -1,13 +1,14 @@
-import type { RouteRecordRaw } from "vue-router";
+import { RouteRecordRaw } from "vue-router";
+import { Component } from "vue";
 import { View } from "@/views/constants";
-
-import Editor from "@/views/editor/editor.vue";
 
 export const editorRoutes: Array<RouteRecordRaw> = [
 	{
 		path: "/project/new",
 		name: View.NewProject,
-		component: Editor,
+		component: async (): Promise<Component> => {
+			return import ("./editor.vue");
+		},
 		meta: {
 			key: "editor"
 		}
@@ -15,7 +16,9 @@ export const editorRoutes: Array<RouteRecordRaw> = [
 	{
 		path: "/project/:userId/:projectId",
 		name: View.Project,
-		component: Editor,
+		component: async (): Promise<Component> => {
+			return import ("./editor.vue");
+		},
 		meta: {
 			key: "editor"
 		}

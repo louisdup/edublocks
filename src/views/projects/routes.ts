@@ -1,13 +1,14 @@
-import type { RouteRecordRaw } from "vue-router";
+import { RouteRecordRaw } from "vue-router";
+import { Component } from "vue";
 import { View } from "@/views/constants";
-
-import Projects from "@/views/projects/projects.vue";
 
 export const projectsRoutes: Array<RouteRecordRaw> = [
 	{
 		path: "/projects",
 		name: View.Projects,
-		component: Projects,
+		component: async (): Promise<Component> => {
+			return import ("./projects.vue");
+		},
 		meta: {
 			key: "projects"
 		}
