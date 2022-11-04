@@ -12262,6 +12262,11 @@ vfile@^4.0.0:
     unist-util-stringify-position "^2.0.0"
     vfile-message "^2.0.0"
 
+vite-plugin-i18n-hot-reload@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/vite-plugin-i18n-hot-reload/-/vite-plugin-i18n-hot-reload-1.0.4.tgz#55f6294541688348e2f07d709b2c29b42c37dffe"
+  integrity sha512-xu8JHjz+YYCrAGo7EOvoSJWYELpWfCUhMPOihHVFOEUr9RSWs7UfQXRhuQ3W9v2ZeZTTRd02Jgrfh/dLu+la1Q==
+
 vite@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/vite/-/vite-3.0.4.tgz#c61688d6b97573e96cf5ac25f2d68597b5ce68e8"
