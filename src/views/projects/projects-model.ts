@@ -1,11 +1,10 @@
-import { FirestoreFetchResponse } from "@/data/firestore-fetch/firestore-fetch-types";
+import { FirestoreFetchResponseModel } from "@/data/models/firestore-fetch-response-model";
 import { reactive } from "vue";
 import { ViewModelBase } from "../base-classes/view-model-base";
 import { ProjectsState } from "./projects-state";
 import { FirestoreProjectModel } from "@/data/models/firestore-project-model";
 import * as ProjectsProvider from "@/data/providers/projects-provider";
 import { ProjectsUtilities } from "@/utilities/projects-utilities";
-import { EbDropdownOption } from "@/components/eb-dropdown/eb-dropdown-types";
 import { QueryDocumentSnapshot } from "@firebase/firestore";
 import { EbTableItem } from "@/components/eb-table/eb-table-types";
 import { AuthenticationUtilities } from "@/utilities/authentication-utilities";
@@ -60,7 +59,7 @@ class ProjectsModel extends ViewModelBase {
 		if (this.isCurrentUserLoggedIn()) {
 			this.state.isLoadingInitialProjects = true;
 
-			ProjectsProvider.getProjectsAsync(20, this.state.search).then((response: FirestoreFetchResponse<Array<FirestoreProjectModel>>) => {
+			ProjectsProvider.getProjectsAsync(20, this.state.search).then((response: FirestoreFetchResponseModel<Array<FirestoreProjectModel>>) => {
 				if (response.wasSuccessful && response.data) {
 					this.state.projects = response.data;
 				}
@@ -81,7 +80,7 @@ class ProjectsModel extends ViewModelBase {
 
 			const lastProjectSnapshot: QueryDocumentSnapshot = this.state.projects[this.state.projects.length-1].snapshot;
 
-			ProjectsProvider.getProjectsAsync(20, this.state.search, lastProjectSnapshot).then((response: FirestoreFetchResponse<Array<FirestoreProjectModel>>) => {
+			ProjectsProvider.getProjectsAsync(20, this.state.search, lastProjectSnapshot).then((response: FirestoreFetchResponseModel<Array<FirestoreProjectModel>>) => {
 				if (response.wasSuccessful && response.data) {
 					response.data.forEach((project: FirestoreProjectModel) => {
 						this.state.projects.push(project);

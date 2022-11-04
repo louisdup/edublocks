@@ -2,9 +2,9 @@ import { ProjectModel } from "@/data/models/project-model";
 import { ref, Ref } from "vue";
 import * as ProjectsProvider from "@/data/providers/projects-provider";
 import { AuthenticationUtilities } from "./authentication-utilities";
-import { StorageFetchResponse } from "@/data/storage-fetch/storage-fetch-types";
+import { StorageFetchResponseModel } from "@/data/models/storage-fetch-response-model";
 import { saveAs } from "file-saver";
-import { FirestoreFetchResponse } from "@/data/firestore-fetch/firestore-fetch-types";
+import { FirestoreFetchResponseModel } from "@/data/models/firestore-fetch-response-model";
 import { FirestoreProjectModel } from "@/data/models/firestore-project-model";
 import router from "@/router";
 import { ModeModelBase } from "@/modes/base-classes/mode-model-base";
@@ -107,7 +107,7 @@ export class EditorUtilities {
 			if (AuthenticationUtilities.currentUser.value) {
 				// If project is already saved in firestore, update the code & project.
 				if (this.currentProject.value.firestoreProject) {
-					await ProjectsProvider.updateProjectCodeAsync(this.currentProject.value.firestoreProject.path, fileContent).then(async (response: StorageFetchResponse) => {
+					await ProjectsProvider.updateProjectCodeAsync(this.currentProject.value.firestoreProject.path, fileContent).then(async (response: StorageFetchResponseModel) => {
 						if (response.wasSuccessful && response.data && this.currentProject.value && this.currentProject.value.firestoreProject) {
 							const body: object = {
 								updated: new Date().toISOString()
@@ -121,7 +121,7 @@ export class EditorUtilities {
 				else {
 					const path: string = `blocks/${AuthenticationUtilities.currentUser.value.uid}/${fileName}`;
 
-					await ProjectsProvider.updateProjectCodeAsync(path, fileContent).then(async (response: StorageFetchResponse) => {
+					await ProjectsProvider.updateProjectCodeAsync(path, fileContent).then(async (response: StorageFetchResponseModel) => {
 						if (response.wasSuccessful && response.data && this.currentProject.value && AuthenticationUtilities.currentUser.value) {
 							const body: object = {
 								name: this.currentProject.value.name,
@@ -137,10 +137,10 @@ export class EditorUtilities {
 							};
 
 							// Create the project in firestore.
-							await ProjectsProvider.createProjectAsync(body).then(async (response: FirestoreFetchResponse<string>) => {
+							await ProjectsProvider.createProjectAsync(body).then(async (response: FirestoreFetchResponseModel<string>) => {
 								if (response.wasSuccessful && response.data && AuthenticationUtilities.currentUser.value) {
 									// Get the project from firestore.
-									await ProjectsProvider.getProjectAsync(AuthenticationUtilities.currentUser.value.uid, response.data).then((response: FirestoreFetchResponse<FirestoreProjectModel>) => {
+									await ProjectsProvider.getProjectAsync(AuthenticationUtilities.currentUser.value.uid, response.data).then((response: FirestoreFetchResponseModel<FirestoreProjectModel>) => {
 										if (response.wasSuccessful && response.data && AuthenticationUtilities.currentUser.value && this.currentProject.value) {
 											// Set the current project's linked firestore project
 											this.currentProject.value.firestoreProject = response.data;

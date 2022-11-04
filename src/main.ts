@@ -8,7 +8,7 @@ import layouts from "./layouts";
 import modals from "./modals";
 
 // Import third-party plugins
-import firebase from "firebase/compat/app";
+import { onAuthStateChanged, User } from "firebase/auth";
 import "@splidejs/vue-splide/css";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -37,10 +37,10 @@ function startApplication(): void {
 // Setup firebase & vue app.
 function setupApplication(): void {
 	// Initialize firebase.
-	FirebaseUtilities.initalizeFirebase();
+	FirebaseUtilities.initializeApp();
 
 	// Get current logged in user and start the vue app.
-	AuthenticationUtilities.auth().onAuthStateChanged((user: firebase.User | null) => {
+	onAuthStateChanged(AuthenticationUtilities.getAuth(), (user: User | null) => {
 		if (!app) {
 			// Load language file for localization and start application.
 			LocalizationUtilities.loadPreferredLanguageAsync().then(() => {

@@ -1,13 +1,11 @@
+import { CollectionReference, collection, limit, QueryConstraint, Query, query } from "@firebase/firestore";
 import { AuthenticationUtilities } from "@/utilities/authentication-utilities";
-import * as FirestoreFetch from "../firestore-fetch/firestore-fetch";
-import * as StorageFetch from "../storage-fetch/storage-fetch";
-import { FirestoreFetchRequest } from "../firestore-fetch/firestore-fetch-request";
-import { FirestoreFetchResponse } from "../firestore-fetch/firestore-fetch-types";
 import { FirestoreProjectModel } from "../models/firestore-project-model";
-import firebase from "firebase/compat/app";
 import { QueryDocumentSnapshot } from "@firebase/firestore";
-import { StorageFetchRequest } from "../storage-fetch/storage-fetch-request";
-import { StorageFetchResponse } from "../storage-fetch/storage-fetch-types";
+import { FirestoreFetchResponseModel } from "../models/firestore-fetch-response-model";
+import { FirestoreUtilities } from "@/utilities/firestore-utilities";
+import { StorageUtilities } from "@/utilities/storage-utilities";
+import { StorageFetchResponseModel } from "../models/storage-fetch-response-model";
 
 // ----------------------------------------------------
 // Provides data access functions for projects.
@@ -16,48 +14,51 @@ import { StorageFetchResponse } from "../storage-fetch/storage-fetch-types";
 /**
  * Get a paged list of projects.
  */
-export async function getProjectsAsync(limit: number, searchTerm?: string, offset?: QueryDocumentSnapshot): Promise<FirestoreFetchResponse<Array<FirestoreProjectModel>>> {
-	return FirestoreFetch.fetchCollectionAsync(new FirestoreFetchRequest(`users/${AuthenticationUtilities.currentUser.value?.uid}/projects`, undefined, "updated", limit, offset, searchTerm));
+export async function getProjectsAsync(projectsLimit: number, searchTerm?: string, offset?: QueryDocumentSnapshot): Promise<FirestoreFetchResponseModel<Array<FirestoreProjectModel>>> {
+	const collectionReference: CollectionReference = collection(FirestoreUtilities.getFirestore(), `users/${AuthenticationUtilities.currentUser.value?.uid}/projects`);
+	const constraints: Array<QueryConstraint> = [ limit(projectsLimit), ...FirestoreUtilities.search(searchTerm), ...FirestoreUtilities.offset(offset) ];
+	const collectionQuery: Query = query(collectionReference, ...constraints);
+	return FirestoreUtilities.fetchCollection(collectionQuery);
 }
 
 /**
  * Get a single project.
  */
-export async function getProjectAsync(userId: string, projectId: string): Promise<FirestoreFetchResponse<FirestoreProjectModel>> {
-	return FirestoreFetch.fetchDocumentAsync(new FirestoreFetchRequest(`users/${userId}/projects/${projectId}`));
+export async function getProjectAsync(userId: string, projectId: string): Promise<FirestoreFetchResponseModel<FirestoreProjectModel>> {
+	return FirestoreUtilities.fetchDocument(`users/${userId}/projects/${projectId}`);
 }
 
 /**
  * Get the code associated with a project.
  */
-export async function getProjectCodeAsync(path: string): Promise<StorageFetchResponse> {
-	return StorageFetch.fetchStorageFileAsync(new StorageFetchRequest(path));
+export async function getProjectCodeAsync(path: string): Promise<StorageFetchResponseModel> {
+	return StorageUtilities.fetchFile(path);
 }
 
 /**
  * Update/save the code associated with a project.
  */
-export async function updateProjectCodeAsync(path: string, content: string): Promise<StorageFetchResponse> {
-	return StorageFetch.updateStorageFileAsync(new StorageFetchRequest(path, content));
+export async function updateProjectCodeAsync(path: string, content: string): Promise<StorageFetchResponseModel> {
+	return StorageUtilities.updateFile(path, content);
 }
 
 /**
  * Delete a single project.
  */
-export async function deleteProjectAsync(id: string): Promise<FirestoreFetchResponse<void>> {
-	return FirestoreFetch.deleteDocumentAsync(new FirestoreFetchRequest(`users/${AuthenticationUtilities.currentUser.value?.uid}/projects/${id}`));
+export async function deleteProjectAsync(id: string): Promise<FirestoreFetchResponseModel<void>> {
+	return FirestoreUtilities.deleteDocument(`users/${AuthenticationUtilities.currentUser.value?.uid}/projects/${id}`);
 }
 
 /**
  * Create a project.
  */
-export async function createProjectAsync(body: firebase.firestore.UpdateData): Promise<FirestoreFetchResponse<string>> {
-	return FirestoreFetch.createDocumentAsync(new FirestoreFetchRequest(`users/${AuthenticationUtilities.currentUser.value?.uid}/projects`, body));
+export async function createProjectAsync(body: object): Promise<FirestoreFetchResponseModel<string>> {
+	return FirestoreUtilities.createDocument(`users/${AuthenticationUtilities.currentUser.value?.uid}/projects`, body);
 }
 
 /**
  * Update a single project.
  */
-export async function updateProjectAsync(id: string, body: firebase.firestore.UpdateData): Promise<FirestoreFetchResponse<void>> {
-	return FirestoreFetch.updateDocumentAsync(new FirestoreFetchRequest(`users/${AuthenticationUtilities.currentUser.value?.uid}/projects/${id}`, body));
+export async function updateProjectAsync(id: string, body: object): Promise<FirestoreFetchResponseModel<void>> {
+	return FirestoreUtilities.updateDocument(`users/${AuthenticationUtilities.currentUser.value?.uid}/projects/${id}`, body);
 }

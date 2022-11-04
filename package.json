@@ -42,7 +42,7 @@
     "codemirror": "^6.0.1",
     "dapjs": "^2.3.0",
     "file-saver": "^2.0.5",
-    "firebase": "^9.9.2",
+    "firebase": "^9.13.0",
     "md5js": "^1.0.7",
     "pretty-bytes": "^6.0.0",
     "skulpt": "^1.2.0",

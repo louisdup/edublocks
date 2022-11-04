@@ -1,4 +1,4 @@
-import { FirestoreFetchResponse } from "@/data/firestore-fetch/firestore-fetch-types";
+import { FirestoreFetchResponseModel } from "@/data/models/firestore-fetch-response-model";
 import { reactive } from "vue";
 import { ViewModelBase } from "../base-classes/view-model-base";
 import { HomeState } from "./home-state";
@@ -64,7 +64,7 @@ class HomeModel extends ViewModelBase {
 	private loadShowcaseProjects(): void {
 		this.state.isLoadingShowcaseProjects = true;
 
-		ShowcaseProvider.getShowcaseProjectsAsync(10).then((response: FirestoreFetchResponse<Array<ShowcaseProjectModel>>) => {
+		ShowcaseProvider.getShowcaseProjectsAsync(10).then((response: FirestoreFetchResponseModel<Array<ShowcaseProjectModel>>) => {
 			if (response.wasSuccessful && response.data) {
 				this.state.showcaseProjects = response.data;
 			}
@@ -86,7 +86,7 @@ class HomeModel extends ViewModelBase {
 		if (this.isCurrentUserLoggedIn()) {
 			this.state.isLoadingRecentProjects = true;
 
-			ProjectsProvider.getProjectsAsync(5).then((response: FirestoreFetchResponse<Array<FirestoreProjectModel>>) => {
+			ProjectsProvider.getProjectsAsync(5).then((response: FirestoreFetchResponseModel<Array<FirestoreProjectModel>>) => {
 				if (response.wasSuccessful && response.data) {
 					this.state.recentProjects = response.data;
 				}

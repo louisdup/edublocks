@@ -5,7 +5,7 @@ import { ModalModelBase } from "../base-classes/modal-model-base";
 import { ShareProjectState } from "./share-project-state";
 import { EbRadioGroupOption } from "@/components/eb-radio-group/eb-radio-group-types";
 import * as ProjectsProvider from "@/data/providers/projects-provider";
-import { FirestoreFetchResponse } from "@/data/firestore-fetch/firestore-fetch-types";
+import { FirestoreFetchResponseModel } from "@/data/models/firestore-fetch-response-model";
 import { EditorUtilities } from "@/utilities/editor-utilities";
 import { AuthenticationUtilities } from "@/utilities/authentication-utilities";
 
@@ -95,7 +95,7 @@ class ShareProjectModal extends ModalModelBase {
 					access: this.state.data["access"],
 					updated: new Date().toISOString()
 				};
-				await ProjectsProvider.updateProjectAsync(project.id, body).then((response: FirestoreFetchResponse<void>) => {
+				await ProjectsProvider.updateProjectAsync(project.id, body).then((response: FirestoreFetchResponseModel<void>) => {
 					if (response.wasSuccessful) {
 						project.access = this.state.data["access"];
 						this.state.isBusy = false;

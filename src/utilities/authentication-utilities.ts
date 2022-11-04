@@ -1,10 +1,10 @@
-import { AuthError, GoogleAuthProvider, OAuthProvider } from "@firebase/auth";
-import firebase from "firebase/compat/app";
-import "firebase/compat/storage";
+import { getAuth, Auth, User, signInWithEmailAndPassword, signInWithPopup, signOut, UserCredential, AuthError, OAuthProvider, GoogleAuthProvider, initializeAuth, indexedDBLocalPersistence } from "firebase/auth";
 import { ref, Ref } from "vue";
 import { md5 } from "md5js";
 import { SocialAuthProviderModel } from "@/data/models/social-auth-provider-model";
 import { ContentUtilities } from "./content-utilities";
+import { Capacitor } from "@capacitor/core";
+import { FirebaseUtilities } from "./firebase-utilities";
 
 /**
  * Utility functions for authentication with firebase.
@@ -13,20 +13,27 @@ export class AuthenticationUtilities {
 	/**
 	 * Returns firebase auth instance.
 	 */
-	public static auth(): firebase.auth.Auth {
-		return firebase.auth();
+	public static getAuth(): Auth {
+		if (Capacitor.isNativePlatform()) {
+			return initializeAuth(FirebaseUtilities.app, {
+				persistence: indexedDBLocalPersistence
+			});
+		}
+		else {
+			return getAuth();
+		}
 	}
 
 	/**
 	 * Returns current user instance.
 	 */
-	public static currentUser: Ref<firebase.User | null> = ref(null);
+	public static currentUser: Ref<User | null> = ref(null);
 
 	/**
 	 * Login with an email and password, then set the current user instance.
 	 */
 	public static async loginWithEmailAndPassword(email: string, password: string): Promise<void | AuthError> {
-		return this.auth().signInWithEmailAndPassword(email, password).then((user: firebase.auth.UserCredential) => {
+		return signInWithEmailAndPassword(this.getAuth(), email, password).then((user: UserCredential) => {
 			this.currentUser.value = user.user;
 			ContentUtilities.triggerContentRefresh();
 		}).catch((error: AuthError) => {
@@ -38,7 +45,7 @@ export class AuthenticationUtilities {
 	 * Login with an a social auth provider, then set the current user instance.
 	 */
 	public static async loginWithSocialAuthProvider(provider: OAuthProvider | GoogleAuthProvider): Promise<void | AuthError> {
-		return this.auth().signInWithPopup(provider).then((user: firebase.auth.UserCredential) => {
+		return signInWithPopup(this.getAuth(), provider).then((user: UserCredential) => {
 			this.currentUser.value = user.user;
 			ContentUtilities.triggerContentRefresh();
 		}).catch((error: AuthError) => {
@@ -50,7 +57,7 @@ export class AuthenticationUtilities {
 	 * Logout the current user.
 	 */
 	public static async logout(): Promise<void> {
-		await this.auth().signOut();
+		await signOut(this.getAuth());
 		this.currentUser.value = null;
 		ContentUtilities.triggerContentRefresh();
 	}

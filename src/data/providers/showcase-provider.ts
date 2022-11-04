@@ -1,6 +1,6 @@
-import * as FirestoreFetch from "../firestore-fetch/firestore-fetch";
-import { FirestoreFetchRequest } from "../firestore-fetch/firestore-fetch-request";
-import { FirestoreFetchResponse } from "../firestore-fetch/firestore-fetch-types";
+import { FirestoreUtilities } from "@/utilities/firestore-utilities";
+import { collection, CollectionReference, limit, query, Query } from "firebase/firestore";
+import { FirestoreFetchResponseModel } from "../models/firestore-fetch-response-model";
 import { ShowcaseProjectModel } from "../models/showcase-project-model";
 
 // ----------------------------------------------------
@@ -10,20 +10,22 @@ import { ShowcaseProjectModel } from "../models/showcase-project-model";
 /**
  * Get a paged list of showcase projects.
  */
-export async function getShowcaseProjectsAsync(limit: number): Promise<FirestoreFetchResponse<Array<ShowcaseProjectModel>>> {
-	return FirestoreFetch.fetchCollectionAsync(new FirestoreFetchRequest("showcase", undefined, undefined, limit));
+export async function getShowcaseProjectsAsync(projectsLimit: number): Promise<FirestoreFetchResponseModel<Array<ShowcaseProjectModel>>> {
+	const collectionReference: CollectionReference = collection(FirestoreUtilities.getFirestore(), "showcase");
+	const collectionQuery: Query = query(collectionReference, limit(projectsLimit));
+	return FirestoreUtilities.fetchCollection(collectionQuery);
 }
 
 /**
  * Get a single project from the showcase.
  */
-export async function getShowcaseProjectAsync(id: string): Promise<FirestoreFetchResponse<ShowcaseProjectModel>> {
-	return FirestoreFetch.fetchDocumentAsync(new FirestoreFetchRequest(`showcase/${id}`));
+export async function getShowcaseProjectAsync(id: string): Promise<FirestoreFetchResponseModel<ShowcaseProjectModel>> {
+	return FirestoreUtilities.fetchDocument(`showcase/${id}`);
 }
 
 /**
  * Delete a single project from the showcase.
  */
-export async function deleteShowcaseProjectAsync(id: string): Promise<FirestoreFetchResponse<void>> {
-	return FirestoreFetch.deleteDocumentAsync(new FirestoreFetchRequest(`showcase/${id}`));
+export async function deleteShowcaseProjectAsync(id: string): Promise<FirestoreFetchResponseModel<void>> {
+	return FirestoreUtilities.deleteDocument(`showcase/${id}`);
 }

@@ -1,8 +1,4 @@
-import { FirebaseOptions } from "@firebase/app";
-import firebase from "firebase/compat/app";
-import "firebase/compat/auth";
-import "firebase/compat/firestore";
-import "firebase/compat/storage";
+import { FirebaseOptions, initializeApp, FirebaseApp } from "@firebase/app";
 
 /**
  * Utility functions for firebase.
@@ -21,12 +17,17 @@ export class FirebaseUtilities {
 		appId: import.meta.env.VITE_APP_ID as string,
 		measurementId: import.meta.env.VITE_MEASUREMENT_ID as string
 	};
-
+	
 	/**
-	 * Initalize firebase app.
+	 * Returns the initialized firebase app.
 	 */
-	public static initalizeFirebase(): void {
-		firebase.initializeApp(FirebaseUtilities.config);
+	public static app: FirebaseApp = initializeApp(FirebaseUtilities.config);
+	
+	/**
+	 * Returns the initialized firebase app.
+	 */
+	public static initializeApp(): FirebaseApp {
+		return this.app;
 	}
 }
 

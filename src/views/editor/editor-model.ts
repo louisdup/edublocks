@@ -9,8 +9,8 @@ import { ViewModelBase } from "../base-classes/view-model-base";
 import { View } from "../constants";
 import { EditorState } from "./editor-state";
 import * as ProjectsProvider from "@/data/providers/projects-provider";
-import { StorageFetchResponse } from "@/data/storage-fetch/storage-fetch-types";
-import { FirestoreFetchResponse } from "@/data/firestore-fetch/firestore-fetch-types";
+import { FirestoreFetchResponseModel } from "@/data/models/firestore-fetch-response-model";
+import { StorageFetchResponseModel } from "@/data/models/storage-fetch-response-model";
 import { ModeUtilities } from "@/utilities/mode-utilities";
 import { ModeModelBase } from "@/modes/base-classes/mode-model-base";
 import { FilenameUtilities } from "@/utilities/filename-utilities";
@@ -99,7 +99,7 @@ class EditorModel extends ViewModelBase {
 	 */
 	private async fetchAndSetCurrentProjectCode(): Promise<void> {
 		if (EditorUtilities.currentProject.value && EditorUtilities.currentProject.value.firestoreProject) {
-			await ProjectsProvider.getProjectCodeAsync(EditorUtilities.currentProject.value.firestoreProject.path).then((response: StorageFetchResponse) => {
+			await ProjectsProvider.getProjectCodeAsync(EditorUtilities.currentProject.value.firestoreProject.path).then((response: StorageFetchResponseModel) => {
 				if (EditorUtilities.currentProject.value && response.wasSuccessful && response.data) {
 					switch (EditorUtilities.currentProject.value.type) {
 						case "blocks":
@@ -120,7 +120,7 @@ class EditorModel extends ViewModelBase {
 	private async loadFirestoreProject(): Promise<void> {
 		const userId: string = router.currentRoute.value.params.userId as string;
 		const projectId: string = router.currentRoute.value.params.projectId as string;
-		await ProjectsProvider.getProjectAsync(userId, projectId).then(async (response: FirestoreFetchResponse<FirestoreProjectModel>) => {
+		await ProjectsProvider.getProjectAsync(userId, projectId).then(async (response: FirestoreFetchResponseModel<FirestoreProjectModel>) => {
 			if (response.wasSuccessful && response.data) {
 				EditorUtilities.clearCurrentProject();
 				
