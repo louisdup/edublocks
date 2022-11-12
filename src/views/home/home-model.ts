@@ -59,12 +59,12 @@ class HomeModel extends ViewModelBase {
 	}
 
 	/**
-	 * Loads 10 projects from the showcase to display on the homepage.
+	 * Loads 5 projects from the showcase to display on the homepage.
 	 */
 	private loadShowcaseProjects(): void {
 		this.state.isLoadingShowcaseProjects = true;
 
-		ShowcaseProvider.getShowcaseProjectsAsync(10).then((response: FirestoreFetchResponseModel<Array<ShowcaseProjectModel>>) => {
+		ShowcaseProvider.getShowcaseProjectsAsync(5).then((response: FirestoreFetchResponseModel<Array<ShowcaseProjectModel>>) => {
 			if (response.wasSuccessful && response.data) {
 				this.state.showcaseProjects = response.data;
 			}
