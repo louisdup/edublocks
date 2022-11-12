@@ -30,12 +30,24 @@
 
         <div class="grid grid-cols-3 gap-4">
           <eb-button
-            v-for="provider in modal.getSocialAuthProviders()"
-            :key="provider.name"
-            :icon="provider.icon"
+            :icon="['fab', 'google']"
             color="white"
             icon-color="gray"
-            @click.prevent="modal.onSocialAuthProviderClicked(provider)"
+            @click.prevent="modal.onGoogleClicked()"
+          />
+
+          <eb-button
+            :icon="['fab', 'microsoft']"
+            color="white"
+            icon-color="gray"
+            @click.prevent="modal.onMicrosoftClicked()"
+          />
+
+          <eb-button
+            :icon="['fab', 'apple']"
+            color="white"
+            icon-color="gray"
+            @click.prevent="modal.onAppleClicked()"
           />
         </div>
       </form>

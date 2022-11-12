@@ -26,3 +26,7 @@ storybook-static
 
 # Secret files
 *.env
+
+# Firebase config files
+GoogleService-Info.plist
+google-services.json

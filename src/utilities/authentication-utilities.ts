@@ -1,9 +1,9 @@
-import { getAuth, Auth, User, signInWithEmailAndPassword, signInWithPopup, signOut, UserCredential, AuthError, OAuthProvider, GoogleAuthProvider, initializeAuth, indexedDBLocalPersistence } from "firebase/auth";
+import { getAuth, Auth, User, signInWithEmailAndPassword, signOut, UserCredential, AuthError, OAuthProvider, GoogleAuthProvider, initializeAuth, indexedDBLocalPersistence, OAuthCredential, signInWithCredential } from "firebase/auth";
 import { ref, Ref } from "vue";
-import { SocialAuthProviderModel } from "@/data/models/social-auth-provider-model";
 import { ContentUtilities } from "./content-utilities";
 import { Capacitor } from "@capacitor/core";
 import { FirebaseUtilities } from "./firebase-utilities";
+import { FirebaseAuthentication } from "@capacitor-firebase/authentication";
 
 /**
  * Utility functions for authentication with firebase.
@@ -41,15 +41,54 @@ export class AuthenticationUtilities {
 	}
 
 	/**
-	 * Login with an a social auth provider, then set the current user instance.
+	 * Login with google, then set the current user instance.
 	 */
-	public static async loginWithSocialAuthProvider(provider: OAuthProvider | GoogleAuthProvider): Promise<void | AuthError> {
-		return signInWithPopup(this.getAuth(), provider).then((user: UserCredential) => {
-			this.currentUser.value = user.user;
+	public static async loginWithGoogle(): Promise<void | AuthError> {
+		try {
+			const result: any = await FirebaseAuthentication.signInWithGoogle();
+			const googleCredential: OAuthCredential = GoogleAuthProvider.credential(result.credential?.idToken);
+			const userCredential: UserCredential = await signInWithCredential(this.getAuth(), googleCredential);
+
+			this.currentUser.value = userCredential.user;
 			ContentUtilities.triggerContentRefresh();
-		}).catch((error: AuthError) => {
+		}
+		catch (error) {
 			throw error;
-		});
+		}
+	}
+
+	/**
+	 * Login with microsoft, then set the current user instance.
+	 */
+	public static async loginWithMicrosoft(): Promise<void | AuthError> {
+		try {
+			const result: any = await FirebaseAuthentication.signInWithMicrosoft();
+			const microsoftCredential: OAuthCredential = new OAuthProvider("microsoft.com").credential(result.credential?.idToken);
+			const userCredential: UserCredential = await signInWithCredential(this.getAuth(), microsoftCredential);
+
+			this.currentUser.value = userCredential.user;
+			ContentUtilities.triggerContentRefresh();
+		}
+		catch (error) {
+			throw error;
+		}
+	}
+
+	/**
+	 * Login with apple, then set the current user instance.
+	 */
+	public static async loginWithApple(): Promise<void | AuthError> {
+		try {
+			const result: any = await FirebaseAuthentication.signInWithApple();
+			const appleCredential: OAuthCredential = new OAuthProvider("apple.com").credential(result.credential?.idToken);
+			const userCredential: UserCredential = await signInWithCredential(this.getAuth(), appleCredential);
+
+			this.currentUser.value = userCredential.user;
+			ContentUtilities.triggerContentRefresh();
+		}
+		catch (error) {
+			throw error;
+		}
 	}
 
 	/**
@@ -60,26 +99,5 @@ export class AuthenticationUtilities {
 		this.currentUser.value = null;
 		ContentUtilities.triggerContentRefresh();
 	}
-
-	/**
-	 * Returns a list of social authentication providers.
-	 */
-	public static socialAuthProviders: Array<SocialAuthProviderModel> = [
-		{
-			name: "Google",
-			icon: ["fab", "google"],
-			provider: new GoogleAuthProvider
-		},
-		{
-			name: "Microsoft",
-			icon: ["fab", "microsoft"],
-			provider: new OAuthProvider("microsoft.com")
-		},
-		{
-			name: "Apple",
-			icon: ["fab", "apple"],
-			provider: new OAuthProvider("apple.com")
-		},
-	];
 }
 

@@ -1,6 +1,7 @@
 import { ComponentModelBase } from "@/components/base-classes/component-model-base";
-import { EbSidebarItem } from "@/components/eb-sidebar/eb-sidebar-types";
+import { EbBottombarItem } from "@/components/eb-bottombar/eb-bottombar-types";
 import router from "@/router";
+import { ModalUtilities } from "@/utilities/modal-utilities";
 
 /**
  * Component model for the desktop navigation component.
@@ -16,7 +17,7 @@ export class MobileNavModel extends ComponentModelBase {
 	/**
 	 * Returns a list of navigation items for the bottombar.
 	 */
-	public getItems(): Array<EbSidebarItem> {
+	public getItems(): Array<EbBottombarItem> {
 		return [
 			{
 				key: "home",
@@ -25,23 +26,23 @@ export class MobileNavModel extends ComponentModelBase {
 				href: "/"
 			},
 			{
+				key: "new-project",
+				component: "EbButton",
+				componentProps: {
+					icon: ["fas", "plus"]
+				},
+				action: (): void => {
+					ModalUtilities.showModal({
+						modal: "CreateProject"
+					});
+				}
+			},
+			{
 				key: "projects",
 				title: this.getText("projects"),
 				icon: ["far", "folder-open"],
 				href: "/projects"
-			},
-			{
-				key: "showcase",
-				title: this.getText("showcase"),
-				icon: ["far", "film"],
-				href: "/showcase"
-			},
-			{
-				key: "classroom",
-				title: this.getText("classroom"),
-				icon: ["far", "users"],
-				href: "/classroom"
-			},
+			}
 		];
 	}
 

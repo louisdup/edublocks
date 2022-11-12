@@ -5,7 +5,6 @@ import { reactive } from "vue";
 import { ModalModelBase } from "../base-classes/modal-model-base";
 import { LoginState } from "./login-state";
 import * as yup from "yup";
-import { SocialAuthProviderModel } from "@/data/models/social-auth-provider-model";
 
 /**
  * Modal model for the login modal.
@@ -47,24 +46,53 @@ class LoginModal extends ModalModelBase {
 	}
 
 	/**
-	 * Returns a list of social authentication providers.
+	 * Called when the google icon is clicked and prompts the user to login with google.
 	 */
-	public getSocialAuthProviders(): Array<SocialAuthProviderModel> {
-		return AuthenticationUtilities.socialAuthProviders;
+	public async onGoogleClicked(): Promise<void> {
+		this.state.isBusy = true;
+		try {
+			await AuthenticationUtilities.loginWithGoogle();
+			ModalUtilities.closeModal();
+		}
+		catch {
+			ModalUtilities.showModal({
+				modal: "Error"
+			});		
+		}
+		this.state.isBusy = false;
 	}
 
 	/**
-	 * Called when a social provider is clicked and attempts to login, if successful the login modal will close.
+	 * Called when the microsoft icon is clicked and prompts the user to login with microsoft.
 	 */
-	public async onSocialAuthProviderClicked(provider: SocialAuthProviderModel): Promise<void> {
+	public async onMicrosoftClicked(): Promise<void> {
 		this.state.isBusy = true;
-		await AuthenticationUtilities.loginWithSocialAuthProvider(provider.provider).then(() => {
+		try {
+			await AuthenticationUtilities.loginWithMicrosoft();
 			ModalUtilities.closeModal();
-		}).catch(() => {
+		}
+		catch {
+			ModalUtilities.showModal({
+				modal: "Error"
+			});		
+		}
+		this.state.isBusy = false;
+	}
+
+	/**
+	 * Called when the apple icon is clicked and prompts the user to login with apple.
+	 */
+	public async onAppleClicked(): Promise<void> {
+		this.state.isBusy = true;
+		try {
+			await AuthenticationUtilities.loginWithApple();
+			ModalUtilities.closeModal();
+		}
+		catch {
 			ModalUtilities.showModal({
 				modal: "Error"
 			});
-		});
+		}
 		this.state.isBusy = false;
 	}
 
@@ -75,11 +103,13 @@ class LoginModal extends ModalModelBase {
 	public async onLoginClicked(): Promise<void> {
 		if (this.state.isValid) {
 			this.state.isBusy = true;
-			await AuthenticationUtilities.loginWithEmailAndPassword(this.state.data["email"], this.state.data["password"]).then(() => {
+			try {
+				await AuthenticationUtilities.loginWithEmailAndPassword(this.state.data["email"], this.state.data["password"]);
 				ModalUtilities.closeModal();
-			}).catch(() => {
+			}
+			catch {
 				this.state.errors["email"] = this.getText("incorrect-email-password");
-			});
+			}
 			this.state.isBusy = false;
 		}
 	}
