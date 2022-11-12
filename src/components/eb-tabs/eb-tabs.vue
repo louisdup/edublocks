@@ -7,7 +7,7 @@
       <button
         v-if="option.visible !== false"
         class="px-3 py-2 font-medium text-sm rounded-md transition-colors"
-        :class="component.getOptionActiveClassList(active, option.key)"
+        :class="component.getOptionActiveClassList(active, option.key, pageBackground)"
         @click="$emit('onTabClicked', option)"
       >
         {{ option.label }}
@@ -23,6 +23,7 @@ import { EbTabsOption } from "./eb-tabs-types";
 defineProps<{
 	options: Array<EbTabsOption>;
 	active: string;
+	pageBackground?: string;
 }>();
 
 defineEmits(["onTabClicked"]);

@@ -36,6 +36,8 @@ import EbRange from "./eb-range/eb-range.vue";
 import EbToggle from "./eb-toggle/eb-toggle.vue";
 import EbProgress from "./eb-progress/eb-progress.vue";
 import EbTerminal from "./eb-terminal/eb-terminal.vue";
+import EbTextEditor from "./eb-text-editor/eb-text-editor.vue";
+import EbListItem from "./eb-list-item/eb-list-item.vue";
 
 /**
  * Export & install application components for use globally
@@ -77,5 +79,7 @@ export default {
 		app.component(ComponentName.EbToggle, EbToggle);
 		app.component(ComponentName.EbProgress, EbProgress);
 		app.component(ComponentName.EbTerminal, EbTerminal);
+		app.component(ComponentName.EbTextEditor, EbTextEditor);
+		app.component(ComponentName.EbListItem, EbListItem);
 	}
 };

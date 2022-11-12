@@ -36,6 +36,25 @@ class EbDropdownModel extends ComponentModelBase {
 		option.action();
 		this.closeDropdown();
 	}
+
+	/**
+	 * Returns a filtered list of dropdown options based on whether they're visible or not.
+	 */
+	public getFilteredDropdownOptions(options: Array<Array<EbDropdownOption>>): Array<Array<EbDropdownOption>> {
+		const filteredOptions: Array<Array<EbDropdownOption>> = [];
+
+		options.forEach((optionsGroup: Array<EbDropdownOption>) => {
+			const filteredGroup: Array<EbDropdownOption> = optionsGroup.filter((option: EbDropdownOption) => {
+				return option.visible !== false;
+			});
+			
+			if (filteredGroup.length) {
+				filteredOptions.push(filteredGroup);
+			}
+		});
+
+		return filteredOptions;
+	}
 }
 
 // Export the component model

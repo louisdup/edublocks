@@ -31,7 +31,10 @@
   </editor-desktop-layout>
 
   <!-- Project Loading Status Screen -->
-  <eb-loading v-if="view.isLoadingProject()" />
+  <eb-loading
+    v-if="view.isLoadingProject()"
+    background-color="white"
+  />
 
   <!-- No Access Empty State -->
   <eb-empty-state

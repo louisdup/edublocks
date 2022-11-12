@@ -1,5 +1,5 @@
-import { Icon, IconDefinition, library } from "@fortawesome/fontawesome-svg-core";
-import { faArrowDownToLine, faBan, faBoltLightning, faBookOpen, faCheck, faChevronRight, faCode, faCommentAlt, faFileImport, faFilm, faFolderOpen, faHome, faHourglassStart, faLink, faUsers } from "@fortawesome/pro-regular-svg-icons";
+import { IconDefinition, library } from "@fortawesome/fontawesome-svg-core";
+import { faArrowDownToLine, faBan, faBoltLightning, faBookOpen, faCheck, faChevronLeft, faChevronRight, faCode, faCommentAlt, faFileImport, faFilm, faFolderOpen, faHome, faHourglassStart, faLink, faRotateLeft, faUsers } from "@fortawesome/pro-regular-svg-icons";
 import { faCheckCircle, faPlay, faPlus, faRepeat, faSquare, faVolume, faVolumeXmark } from "@fortawesome/pro-solid-svg-icons";
 import { faArrowRightFromBracket, faArrowRightToArc, faBars, faCog, faEllipsis, faFile, faGrid2, faPencil, faSave, faSearch, faShare, faTimes, faTrash, faHome as farHome, faFolderOpen as farFolderOpen, faFilm as farFilm, faUsers as farUsers, faBooks, faBookOpen as farBookOpen, faPuzzlePiece } from "@fortawesome/pro-regular-svg-icons";
 import { faApple, faGoogle, faMicrosoft, faUsb } from "@fortawesome/free-brands-svg-icons";
@@ -54,5 +54,7 @@ library.add(
 	faVolumeXmark,
 	faUsb as IconDefinition,
 	faBoltLightning,
-	faHourglassStart
+	faHourglassStart,
+	faChevronLeft,
+	faRotateLeft
 );

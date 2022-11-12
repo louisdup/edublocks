@@ -2,6 +2,9 @@
 export enum View {
 	Home = "Home",
 	Projects = "Projects",
-	NewProject = "NewProject",
+	NewProject = "New Project",
 	Project = "Project",
+	ClassroomList = "Classroom List",
+	ClassroomDetail = "Classroom Detail",
+	AssignmentSubmissions = "Assignment Submissions",
 }

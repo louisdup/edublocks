@@ -30,9 +30,9 @@ export class EbSliderModel extends ComponentModelBase {
 	public variants: Function = cva(undefined, {
 		variants: {
 			margin: {
-				"-3": "-m-3",
-				"-2": "-m-2",
-				"-1": "-m-1",
+				"-3": "-mx-3 !mt-1",
+				"-2": "-mx-2 !mt-2",
+				"-1": "-mx-1 !mt-3",
 				"0": "m-0",
 				"2": "m-2",
 				"4": "m-4",

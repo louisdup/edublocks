@@ -1,6 +1,6 @@
 <template>
   <div :class="component.variants({ isFullHeight, isFullWidth, backgroundColor })">
-    <div class="text-center py-8">
+    <div class="text-center py-8 px-4">
       <eb-icon
         v-if="icon"
         :icon="icon"
@@ -11,7 +11,10 @@
       <h1 class="font-semibold text-sm text-gray-700">
         {{ title }}
       </h1>
-      <p class="mt-1 text-sm text-gray-500">
+      <p
+        v-if="subtitle"
+        class="mt-1 text-sm text-gray-500"
+      >
         {{ subtitle }}
       </p>
     </div>

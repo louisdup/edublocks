@@ -1,3 +1,4 @@
+import { ContentUtilities } from "@/utilities/content-utilities";
 import { LocalizationUtilities } from "@/utilities/localization-utilities";
 
 /**
@@ -9,6 +10,20 @@ export abstract class ComponentModelBase {
 	 * This is an abstract property that needs to be defined in the component model that extends this base class.
 	 */
 	protected abstract getLocalizationNamespace(): string;
+
+	/**
+	 * Watch for external trigger to refresh the content, and execute the specified callback function when it occurs.
+	 */
+	protected observeContentRefresh(callback: Function): void {
+		ContentUtilities.observeContentRefresh(callback);
+	}
+	
+	/**
+	 * Triggers a content refresh.
+	 */
+	protected triggerContentRefresh(): void {
+		ContentUtilities.triggerContentRefresh();
+	}
 
 	/**
 	 * Uses the specified key (and value of the 'localizationNamespace' property) to lookup localized text for displaying in the component.

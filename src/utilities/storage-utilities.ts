@@ -45,6 +45,7 @@ export class StorageUtilities {
 		catch (error) {
 			response.error = error as StorageError;
 			response.hasError = true;
+			console.log(error);
 			ModalUtilities.showModal({
 				modal: "Error"
 			});
@@ -72,6 +73,7 @@ export class StorageUtilities {
 		catch (error) {
 			response.error = error as StorageError;
 			response.hasError = true;
+			console.log(error);
 			ModalUtilities.showModal({
 				modal: "Error"
 			});
@@ -95,6 +97,7 @@ export class StorageUtilities {
 		catch (error) {
 			response.error = error as StorageError;
 			response.hasError = true;
+			console.log(error);
 			ModalUtilities.showModal({
 				modal: "Error"
 			});

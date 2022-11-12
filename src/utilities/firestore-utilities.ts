@@ -1,5 +1,5 @@
 import { FirestoreFetchResponseModel } from "@/data/models/firestore-fetch-response-model";
-import { getFirestore, Firestore, Query, getDocs, QuerySnapshot, QueryDocumentSnapshot, FirestoreError, getDoc, DocumentReference, DocumentSnapshot, doc, deleteDoc, QueryConstraint, where, query, startAfter, setDoc, addDoc, collection, updateDoc } from "firebase/firestore";
+import { getFirestore, Firestore, Query, getDocs, QuerySnapshot, QueryDocumentSnapshot, FirestoreError, getDoc, DocumentReference, DocumentSnapshot, doc, deleteDoc, QueryConstraint, where, query, startAfter, setDoc, addDoc, collection, updateDoc, getCountFromServer, AggregateQuerySnapshot, AggregateField } from "firebase/firestore";
 import { ModalUtilities } from "./modal-utilities";
 
 /**
@@ -73,6 +73,7 @@ export class FirestoreUtilities {
 		catch (error) {
 			response.error = error as FirestoreError;
 			response.hasError = true;
+			console.error(error);
 			ModalUtilities.showModal({
 				modal: "Error"
 			});
@@ -91,17 +92,20 @@ export class FirestoreUtilities {
 			const reference: DocumentReference = doc(this.getFirestore(), path);
 			const document: DocumentSnapshot = await getDoc(reference);
 		
-			const data: unknown = {
-				id: document.id,
-				...document.data()
-			};
+			if (document.data()) {
+				const data: unknown = {
+					id: document.id,
+					...document.data()
+				};
 
-			response.data = data as T;
-			response.wasSuccessful = true;
+				response.data = data as T;
+				response.wasSuccessful = true;
+			}
 		}
 		catch (error) {
 			response.error = error as FirestoreError;
 			response.hasError = true;
+			console.error(error, path);
 			ModalUtilities.showModal({
 				modal: "Error"
 			});
@@ -113,18 +117,26 @@ export class FirestoreUtilities {
 	/**
 	 * Creates a firestore document.
 	 */
-	public static async createDocument(path: string, body: object): Promise<FirestoreFetchResponseModel<string>> {
+	public static async createDocument(path: string, body: object, id?: string): Promise<FirestoreFetchResponseModel<string>> {
 		const response: FirestoreFetchResponseModel<string> = this.createFirestoreFetchResponse();
 
-		try {
-			const document: DocumentReference = await addDoc(collection(this.getFirestore(), path), body);
+		try {			
+			if (id) {
+				const reference: DocumentReference = doc(this.getFirestore(), `${path}/${id}`);
+				await setDoc(reference, body);
+				response.data = id;
+			}
+			else {
+				const document: DocumentReference = await addDoc(collection(this.getFirestore(), path), body);
+				response.data = document.id;
+			}
 
-			response.data = document.id;
 			response.wasSuccessful = true;
 		}
 		catch (error) {
 			response.error = error as FirestoreError;
 			response.hasError = true;
+			console.error(error);
 			ModalUtilities.showModal({
 				modal: "Error"
 			});
@@ -148,6 +160,7 @@ export class FirestoreUtilities {
 		catch (error) {
 			response.error = error as FirestoreError;
 			response.hasError = true;
+			console.error(error);
 			ModalUtilities.showModal({
 				modal: "Error"
 			});
@@ -172,6 +185,31 @@ export class FirestoreUtilities {
 		catch (error) {
 			response.error = error as FirestoreError;
 			response.hasError = true;
+			console.error(error);
+			ModalUtilities.showModal({
+				modal: "Error"
+			});
+		}
+
+		return response;
+	}
+
+	/**
+	 * Gets the number of documents in a collection.
+	 */
+	public static async getCollectionCount(query: Query): Promise<FirestoreFetchResponseModel<number>> {
+		const response: FirestoreFetchResponseModel<number> = this.createFirestoreFetchResponse();
+
+		try {
+			const collectionCount: AggregateQuerySnapshot<{ count: AggregateField<number> }> = await getCountFromServer(query);
+
+			response.data = collectionCount.data().count;
+			response.wasSuccessful = true;
+		}
+		catch (error) {
+			response.error = error as FirestoreError;
+			response.hasError = true;
+			console.error(error);
 			ModalUtilities.showModal({
 				modal: "Error"
 			});

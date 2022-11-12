@@ -10,7 +10,12 @@ export enum ModalName {
 	Error = "Error",
 	Login = "Login",
 	ConnectMicrobit = "ConnectMicrobit",
-	Progress = "Progress"
+	Progress = "Progress",
+	CreateAssignment = "CreateAssignment",
+	SubmitAssignment = "SubmitAssignment",
+	UnsubmitAssignment = "UnsubmitAssignment",
+	DeleteAssignment = "DeleteAssignment",
+	AssignmentTeacherFeedback = "AssignmentTeacherFeedback"
 }
 
 /**
@@ -26,3 +31,8 @@ export type Modal =
  | "Login"
  | "ConnectMicrobit"
  | "Progress"
+ | "CreateAssignment"
+ | "SubmitAssignment"
+ | "UnsubmitAssignment"
+ | "DeleteAssignment"
+ | "AssignmentTeacherFeedback"

@@ -161,6 +161,7 @@ export class PythonModel extends ModeModelBase {
 	 * Returns a list of tabs that to display in the output panel for python.
 	 */
 	public outputPanelTabs: Array<EditorOutputTabModel> = [
+		...this.commonOutputPanelTabs,
 		{
 			key: "code",
 			component: PythonCode,

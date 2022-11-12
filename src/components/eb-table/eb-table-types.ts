@@ -8,6 +8,7 @@ export interface EbTableItem {
 	meta: Array<EbTableItemMeta>;
 	action: VoidFunction;
 	thumbnail?: string;
+	icon?: Array<string>;
 	dropdownOptions?: Array<Array<EbDropdownOption>>;
 }
 
@@ -17,4 +18,5 @@ export interface EbTableItem {
 export interface EbTableItemMeta {
 	key: string;
 	label: string;
+	color?: string;
 }

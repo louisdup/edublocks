@@ -20,9 +20,9 @@
       />
     </eb-h-stack>
 
-    <!-- Projects List -->
+    <!-- Projects Table -->
     <eb-table
-      :items="view.getRecentProjects()"
+      :items="view.getProjects()"
       :is-loading="view.isProjectsTableLoading()"
       :empty-state-title="view.getProjectsTableEmptyStateTitle()"
       :empty-state-subtitle="view.getProjectsTableEmptyStateSubtitle()"

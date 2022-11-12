@@ -3,6 +3,7 @@ import { EbDropdownOption } from "@/components/eb-dropdown/eb-dropdown-types";
 import router from "@/router";
 import { AuthenticationUtilities } from "@/utilities/authentication-utilities";
 import { ModalUtilities } from "@/utilities/modal-utilities";
+import { UsersUtilities } from "@/utilities/users-utilities";
 
 /**
  * Component model for the user menu component.
@@ -43,7 +44,12 @@ export class UserMenuModel extends ComponentModelBase {
 	 * Returns a profile picture for the current user.
 	 */
 	public getCurrentUserProfilePicture(): string | undefined {
-		return AuthenticationUtilities.getCurrentUserProfilePicture();
+		if (AuthenticationUtilities.currentUser.value && AuthenticationUtilities.currentUser.value.email) {
+			return UsersUtilities.getProfilePictureForEmail(AuthenticationUtilities.currentUser.value.email);
+		}
+		else {
+			return undefined;
+		}
 	}
 
 	public getDropdownOptions(): Array<Array<EbDropdownOption>> {

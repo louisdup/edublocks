@@ -10,6 +10,11 @@ import Error from "./error/error.vue";
 import Login from "./login/login.vue";
 import ConnectMicrobit from "./connect-microbit/connect-microbit.vue";
 import Progress from "./progress/progress.vue";
+import CreateAssignment from "./create-assignment/create-assignment.vue";
+import SubmitAssignment from "./submit-assignment/submit-assignment.vue";
+import UnsubmitAssignment from "./unsubmit-assignment/unsubmit-assignment.vue";
+import DeleteAssignment from "./delete-assignment/delete-assignment.vue";
+import AssignmentTeacherFeedback from "./assignment-teacher-feedback/assignment-teacher-feedback.vue";
 
 /**
  * Export & install modals for use globally
@@ -25,5 +30,10 @@ export default {
 		app.component(ModalName.Login, Login);
 		app.component(ModalName.ConnectMicrobit, ConnectMicrobit);
 		app.component(ModalName.Progress, Progress);
+		app.component(ModalName.CreateAssignment, CreateAssignment);
+		app.component(ModalName.SubmitAssignment, SubmitAssignment);
+		app.component(ModalName.UnsubmitAssignment, UnsubmitAssignment);
+		app.component(ModalName.DeleteAssignment, DeleteAssignment);
+		app.component(ModalName.AssignmentTeacherFeedback, AssignmentTeacherFeedback);
 	}
 };

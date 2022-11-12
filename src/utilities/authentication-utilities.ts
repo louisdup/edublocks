@@ -1,6 +1,5 @@
 import { getAuth, Auth, User, signInWithEmailAndPassword, signInWithPopup, signOut, UserCredential, AuthError, OAuthProvider, GoogleAuthProvider, initializeAuth, indexedDBLocalPersistence } from "firebase/auth";
 import { ref, Ref } from "vue";
-import { md5 } from "md5js";
 import { SocialAuthProviderModel } from "@/data/models/social-auth-provider-model";
 import { ContentUtilities } from "./content-utilities";
 import { Capacitor } from "@capacitor/core";
@@ -82,17 +81,5 @@ export class AuthenticationUtilities {
 			provider: new OAuthProvider("apple.com")
 		},
 	];
-
-	/**
-	 * Returns a profile picture for the current user from gravatar.
-	 */
-	public static getCurrentUserProfilePicture(): string | undefined {
-		if (this.currentUser.value && this.currentUser.value.email) {
-			return `https://secure.gravatar.com/avatar/${md5(this.currentUser.value.email, 32)}?d=mp`;
-		}
-		else {
-			return undefined;
-		}
-	}
 }
 

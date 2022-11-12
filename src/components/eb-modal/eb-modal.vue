@@ -7,8 +7,8 @@
     />
 
     <!-- Modal -->
-    <div class="absolute inset-0 h-screen w-screen flex items-center justify-center z-[110] pointer-events-none">
-      <div class="max-w-2xl w-full bg-white rounded-md pointer-events-auto">
+    <div class="absolute inset-0 h-screen w-screen p-10 flex items-center justify-center z-[110] pointer-events-none">
+      <div class="max-h-full flex flex-col max-w-2xl w-full bg-white rounded-md pointer-events-auto overflow-hidden">
         <slot />
       </div>
     </div>

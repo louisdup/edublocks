@@ -40,32 +40,37 @@ export class FormatUtilities {
 			[], {"hour": "numeric", "minute": "numeric"}
 		);
 
-		if (seconds < 5) {
-			return this.getText("just-now");
-		}
-		else if (seconds < 60) {
-			return this.getText("seconds-ago", [seconds.toString()]);
-		}
-		else if (minutes === 1) {
-			return this.getText("1-minute-ago");
-		}
-		else if (minutes < 60) {
-			return this.getText("minutes-ago", [minutes.toString()]);
-		}
-		else if (hours === 1) {
-			return this.getText("1-hour-ago");
-		}
-		else if (hours < 1) {
-			return this.getText("hours-ago", [hours.toString()]);
-		}
-		else if (dateFormatter.format(date) === dateFormatter.format(today)) {
-			return this.getText("today-at", [timeFormatter.format(date)]);
-		}
-		else if (dateFormatter.format(date) === dateFormatter.format(yesterday)) {
-			return this.getText("yesterday-at", [timeFormatter.format(date)]);
+		if (date > today) {
+			return this.getText("at", [dateFormatter.format(date), timeFormatter.format(date)]);
 		}
 		else {
-			return this.getText("at", [dateFormatter.format(date), timeFormatter.format(date)]);
+			if (seconds < 5) {
+				return this.getText("just-now");
+			}
+			else if (seconds < 60) {
+				return this.getText("seconds-ago", [seconds.toString()]);
+			}
+			else if (minutes === 1) {
+				return this.getText("1-minute-ago");
+			}
+			else if (minutes < 60) {
+				return this.getText("minutes-ago", [minutes.toString()]);
+			}
+			else if (hours === 1) {
+				return this.getText("1-hour-ago");
+			}
+			else if (hours < 1) {
+				return this.getText("hours-ago", [hours.toString()]);
+			}
+			else if (dateFormatter.format(date) === dateFormatter.format(today)) {
+				return this.getText("today-at", [timeFormatter.format(date)]);
+			}
+			else if (dateFormatter.format(date) === dateFormatter.format(yesterday)) {
+				return this.getText("yesterday-at", [timeFormatter.format(date)]);
+			}
+			else {
+				return this.getText("at", [dateFormatter.format(date), timeFormatter.format(date)]);
+			}
 		}
 	}
 }

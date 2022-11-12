@@ -1,4 +1,5 @@
 import { QueryDocumentSnapshot } from "@firebase/firestore";
+import { FirestoreProjectAssignmentModel } from "./firestore-project-assignment-model";
 
 /**
  * Data model for a project in firestore.
@@ -15,4 +16,5 @@ export interface FirestoreProjectModel {
 	access: "private" | "public-read" | "public-write";
 	type: "blocks" | "text";
 	snapshot: QueryDocumentSnapshot;
+	assignment?: FirestoreProjectAssignmentModel;
 }

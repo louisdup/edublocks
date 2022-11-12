@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 import { onMounted } from "vue";
-import { view } from "./projects-model";
+import { view } from "./projects-model"; 
 
 // Import templates.
 import ProjectsDesktop from "./templates/projects-desktop.vue";
@@ -19,4 +19,4 @@ import ProjectsMobile from "./templates/projects-mobile.vue";
 onMounted(() => {
 	view.init();
 });
-</script>
+</script> 

@@ -135,6 +135,7 @@
         "download": "Download",
         "connect": "Connect",
         "flash": "Flash",
+        "assignment-submit": "Submit",
         "no-access": "No Access",
         "project-is-private": "The author has this project set to private"
     },
@@ -143,7 +144,8 @@
         "repl": "REPL",
         "output": "Output",
         "simulator": "Simulator",
-        "serial": "Serial"
+        "serial": "Serial",
+        "assignment": "Assignment"
     },
     "project-settings": {
         "project": "Project",
@@ -203,5 +205,107 @@
     },
     "microbit": {
         "flashing-code": "Flashing code"
+    },
+    "classroom": {
+        "view-submissions": "View Submissions",
+        "edit-assignment": "Edit Assignment",
+        "edit-starter-project": "Edit Starter Project",
+        "delete-assignment": "Delete Assignment",
+        "open-my-code": "Open my code",
+        "view-feedback": "View Feedback",
+        "submit": "Submit",
+        "unsubmit": "Unsubmit",
+        "due": "Due {1}",
+        "submissions-count": "{1} Submissions",
+        "started": "Started {1}",
+        "submitted": "Submitted {1}",
+        "marked": "Marked {1}",
+        "on-time": "On Time",
+        "late": "Late",
+        "submission-started": "{1} (Started)",
+        "submission-submitted": "{1} (Submitted)",
+        "submission-marked": "{1} (Marked)"
+    },
+    "classroom-list": {
+        "classroom": "Classroom",
+        "search-classrooms": "Search Classrooms...",
+        "no-classrooms-found": "No Classrooms Found",
+        "login-to-view-classrooms": "Login to view classrooms",
+        "get-started-by-joining-creating": "Get started by joining or creating a classrooms.",
+        "search-for-something-else": "Try searching for something else.",
+        "you-need-to-be-logged-in": "You need to be logged in to view your classrooms."
+    },
+    "classroom-detail": {
+        "back": "Back",
+        "new-assignment": "New Assignment",
+        "assignments": "Assignments",
+        "settings": "Settings",
+        "all": "All",
+        "not-started": "Not Started",
+        "work-in-progress": "Work in Progress",
+        "waiting-to-be-marked": "Waiting to be Marked",
+        "marked": "Marked",
+        "no-assignments-found": "No Assignments Found"
+    },
+    "create-assignment": {
+        "create-assignment": "Create Assignment",
+        "edit-assignment": "Edit Assignment",
+        "assignment-name": "Assignment Name",
+        "due-date": "Due Date",
+        "description": "Description",
+        "starter-project": "Starter Project",
+        "clone-existing-project": "Clone Existing Project",
+        "new-project": "New Project",
+        "cancel": "Cancel",
+        "create": "Create",
+        "save": "Save",
+        "project-name": "Project Name",
+        "mode": "Mode"
+    },
+    "submit-assignment": {
+        "submit-assignment": "Submit Assignment?",
+        "changes-no-longer-allowed": "You won't be able to make any further changes unless you unsubmit your code.",
+        "cancel": "Cancel",
+        "submit": "Submit"
+    },
+    "unsubmit-assignment": {
+        "unsubmit-hand-back": "Unsubmit & Hand Back?",
+        "unsubmit-assignment": "Unsubmit Assignment?",
+        "student-can-make-changes": "The student will be able to make changes to their code, but they'll need to resubmit it in order for you to mark it.",
+        "you-can-make-changes": "You'll be able to make changes to your code, but you'll need to resubmit it in order for your teacher to mark it.",
+        "cancel": "Cancel",
+        "unsubmit": "Unsubmit"
+    },
+    "delete-assignment": {
+        "delete-assignment": "Delete Assignment",
+        "are-you-sure-you-want-to-delete": "Are you sure you want to delete this assignment?",
+        "cancel": "Cancel",
+        "delete": "Delete"
+    },
+    "assignment-submissions": {
+        "submissions": "Submissions",
+        "back": "Back",
+        "all": "All",
+        "not-submitted": "Not Submitted",
+        "submitted": "Submitted",
+        "on-time": "On Time",
+        "late": "Late",
+        "waiting-to-be-marked": "Waiting to be Marked",
+        "marked": "Marked",
+        "no-submissions-found": "No Submissions Found",
+        "select-submission": "Select Submission",
+        "started-on": "Started - {1}",
+        "submitted-on": "Submitted - {1}",
+        "marked-on": "Marked - {1}",
+        "feedback": "Feedback",
+        "save": "Save",
+        "unsubmit-hand-back": "Unsubmit & Hand Back"
+    },
+    "assignment-teacher-feedback": {
+        "teacher-feedback": "Teacher Feedback",
+        "close": "Close"
+    },
+    "assignment": {
+        "due": "Due {1}"
     }
 }

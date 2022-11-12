@@ -22,13 +22,20 @@
           @click="item.action()"
         >
           <div
-            v-if="item.thumbnail"
+            v-if="item.thumbnail || item.icon"
             class="h-9 w-9 rounded-lg bg-gray-100 flex items-center justify-center flex-none"
           >
             <img
+              v-if="item.thumbnail"
               :src="item.thumbnail"
               class="w-4"
             >
+
+            <eb-icon
+              v-if="item.icon"
+              :icon="item.icon"
+              color="darkGray"
+            />
           </div>
           <div class="text-sm leading-6 items-center overflow-hidden">
             <h1 class="font-medium text-gray-900">
@@ -40,9 +47,13 @@
                 :key="metadata.key"
                 class="flex items-center space-x-2 overflow-hidden"
               >
-                <p class="truncate">
-                  {{ metadata.label }}
-                </p>
+                <eb-heading
+                  :label="metadata.label"
+                  size="xs"
+                  weight="normal"
+                  :color="component.getMetaItemColor(metadata.color)"
+                  class="truncate"
+                />
                 <div
                   v-if="index !== item.meta.length - 1"
                   class="h-1 w-1 rounded-full bg-gray-400"

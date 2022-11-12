@@ -17,6 +17,13 @@ class EbTableModel extends ComponentModelBase {
 	public isTableVisible(items: Array<any>, isLoading?: boolean): boolean | undefined {
 		return items.length > 0 || isLoading;
 	}
+
+	/**
+	 * Returns the color for a meta item.
+	 */
+	public getMetaItemColor(color?: string): string {
+		return color ? color : "lightGray";
+	}
 	
 	/**
 	 * True if there are no items and the table isn't loading.

@@ -5,7 +5,7 @@
     <div class="h-full w-full flex overflow-hidden">
       <desktop-nav />
       <div
-        class="h-full w-full flex flex-col overflow-y-auto"
+        class="relative h-full w-full flex flex-col overflow-y-auto"
         @scroll="$emit('scroll', $event)"
       >
         <div class="w-full p-10 max-w-5xl mx-auto space-y-8">

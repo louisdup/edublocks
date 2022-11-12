@@ -6,6 +6,7 @@ import { TextToBlocksDefinitionModel } from "@/data/models/text-to-blocks-defini
 import { EditorUtilities } from "@/utilities/editor-utilities";
 import { LocalizationUtilities } from "@/utilities/localization-utilities";
 import { ModalUtilities } from "@/utilities/modal-utilities";
+import { ClassroomUtilities } from "@/utilities/classroom-utilities";
 
 // Sidebar tab components.
 import ProjectSettings from "@/modes/common/components/sidebar/project-settings/project-settings.vue";
@@ -68,6 +69,7 @@ export abstract class ModeModelBase {
 	 * Get common header buttons that are used by most modes.
 	 */
 	public commonHeaderButtons: Array<EditorButtonModel> = [
+		...ClassroomUtilities.getClassroomHeaderButtons(),
 		{
 			key: "share",
 			icon: ["far", "share"],
@@ -102,13 +104,21 @@ export abstract class ModeModelBase {
 			key: "project-settings",
 			icon: ["far", "file"],
 			component: ProjectSettings
-		}
+		},
+		...ClassroomUtilities.getClassroomSidebarTabs()
 	];
 
 	/**
 	 * Returns a list of tabs that could be displayed in the output panel.
 	 */
 	public abstract outputPanelTabs: Array<EditorOutputTabModel>;
+
+	/**
+	 * Get common sidebar tabs that are used by most modes.
+	 */
+	public commonOutputPanelTabs: Array<EditorOutputTabModel> = [
+		...ClassroomUtilities.getClassroomOutputPanelTabs()
+	];
 
 	/**
 	 * Sets the specified header button to visible.

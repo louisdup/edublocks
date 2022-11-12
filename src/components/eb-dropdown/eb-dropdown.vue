@@ -10,7 +10,7 @@
     <template #content>
       <div class="origin-bottom-right w-56 rounded-lg shadow bg-white divide-y divide-gray-200">
         <div
-          v-for="(group, index) in options"
+          v-for="(group, index) in component.getFilteredDropdownOptions(options)"
           :key="index"
           class="p-2"
         >

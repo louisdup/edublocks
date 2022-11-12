@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen w-screen bg-white absolute inset-0 z-[100] flex items-center justify-center">
+  <div :class="component.variants({ backgroundColor })">
     <div class="scale-125">
       <img
         class="h-full animate-top-slide-in"
@@ -16,3 +16,11 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { component } from "./eb-loading-model";
+
+defineProps<{
+	backgroundColor?: string;
+}>();
+</script>

@@ -2,7 +2,6 @@ import { ProjectModel } from "@/data/models/project-model";
 import { ref, Ref } from "vue";
 import * as ProjectsProvider from "@/data/providers/projects-provider";
 import { AuthenticationUtilities } from "./authentication-utilities";
-import { StorageFetchResponseModel } from "@/data/models/storage-fetch-response-model";
 import { saveAs } from "file-saver";
 import { FirestoreFetchResponseModel } from "@/data/models/firestore-fetch-response-model";
 import { FirestoreProjectModel } from "@/data/models/firestore-project-model";
@@ -10,6 +9,7 @@ import router from "@/router";
 import { ModeModelBase } from "@/modes/base-classes/mode-model-base";
 import { View } from "@/views/constants";
 import { LocalProjectModel } from "@/data/models/local-project-model";
+import { ProjectsUtilities } from "./projects-utilities";
 
 /**
  * Utility functions for the editor.
@@ -89,73 +89,38 @@ export class EditorUtilities {
 	 */
 	public static async saveCurrentProject(): Promise<void> {
 		if (this.currentProject.value) {
-			let fileName: string = "";
-			let fileContent: string = "";
-
-			switch (this.currentProject.value.type) {
-				case "blocks":
-					fileName = `${this.currentProject.value.name}.xml`;
-					fileContent = this.currentProject.value.blocks as string;
-					break;
-				case "text":
-					fileName = `${this.currentProject.value.name}.${this.currentProject.value.mode.config.fileExtension}`;
-					fileContent = this.currentProject.value.code as string;
-					break;
-			}
-			
 			// If there's a logged in user, work with firestore.
 			if (AuthenticationUtilities.currentUser.value) {
 				// If project is already saved in firestore, update the code & project.
 				if (this.currentProject.value.firestoreProject) {
-					await ProjectsProvider.updateProjectCodeAsync(this.currentProject.value.firestoreProject.path, fileContent).then(async (response: StorageFetchResponseModel) => {
-						if (response.wasSuccessful && response.data && this.currentProject.value && this.currentProject.value.firestoreProject) {
-							const body: object = {
-								updated: new Date().toISOString()
-							};
-							await ProjectsProvider.updateProjectAsync(this.currentProject.value.firestoreProject.id, body);
-						}
-					});
+					ProjectsUtilities.updateFirestoreProject(this.currentProject.value);
 				}
 
 				// If project doesn't already exist in firestore, create a new firestore project.
 				else {
-					const path: string = `blocks/${AuthenticationUtilities.currentUser.value.uid}/${fileName}`;
+					// Create the project in firestore.
+					const projectId: string | undefined = await ProjectsUtilities.createFirestoreProject(
+						this.currentProject.value.name,
+						this.currentProject.value.mode.config.key,
+						this.currentProject.value.type,
+						this.currentProject.value.blocks,
+						this.currentProject.value.code
+					);
 
-					await ProjectsProvider.updateProjectCodeAsync(path, fileContent).then(async (response: StorageFetchResponseModel) => {
-						if (response.wasSuccessful && response.data && this.currentProject.value && AuthenticationUtilities.currentUser.value) {
-							const body: object = {
-								name: this.currentProject.value.name,
-								mode: this.currentProject.value.mode.config.key,
-								type: this.currentProject.value.type,
-								access: "private",
-								uid: AuthenticationUtilities.currentUser.value.uid,
-								path,
-								size: response.data.metadata.size,
-								extensions: null,
-								created: new Date().toISOString(),
-								updated: new Date().toISOString()
-							};
-
-							// Create the project in firestore.
-							await ProjectsProvider.createProjectAsync(body).then(async (response: FirestoreFetchResponseModel<string>) => {
-								if (response.wasSuccessful && response.data && AuthenticationUtilities.currentUser.value) {
-									// Get the project from firestore.
-									await ProjectsProvider.getProjectAsync(AuthenticationUtilities.currentUser.value.uid, response.data).then((response: FirestoreFetchResponseModel<FirestoreProjectModel>) => {
-										if (response.wasSuccessful && response.data && AuthenticationUtilities.currentUser.value && this.currentProject.value) {
-											// Set the current project's linked firestore project
-											this.currentProject.value.firestoreProject = response.data;
+					if (projectId) {
+						await ProjectsProvider.getProjectAsync(AuthenticationUtilities.currentUser.value.uid, projectId).then((response: FirestoreFetchResponseModel<FirestoreProjectModel>) => {
+							if (response.wasSuccessful && response.data && AuthenticationUtilities.currentUser.value && this.currentProject.value) {
+								// Set the current project's linked firestore project
+								this.currentProject.value.firestoreProject = response.data;
 											
-											// Change the URL to be the direct link of the project.
-											router.push(`/project/${AuthenticationUtilities.currentUser.value.uid}/${response.data.id}`);
+								// Change the URL to be the direct link of the project.
+								router.push(`/project/${AuthenticationUtilities.currentUser.value.uid}/${response.data.id}`);
 
-											// Enable the share button, as the project is stored in firestore and therefore shareable.
-											this.currentProject.value.mode.setHeaderButtonVisible("share");
-										}
-									});
-								}
-							});
-						}
-					});
+								// Enable the share button, as the project is stored in firestore and therefore shareable.
+								this.currentProject.value.mode.setHeaderButtonVisible("share");
+							}
+						});
+					}
 				}
 			}
 			// If current user is not logged in, save the file locally.

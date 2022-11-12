@@ -5,8 +5,14 @@
       class="block text-sm font-medium text-gray-500"
     >
       {{ label }}
+      <span
+        v-if="required"
+        class="ml-1 text-red-500"
+      >
+        *
+      </span>
     </label>
-    <div class="flex items-center space-x-6 w-full mt-4">
+    <div class="flex items-center space-x-6 w-full mt-2">
       <button
         v-for="option in options"
         :key="option.key"
@@ -17,7 +23,10 @@
         <h1 class="font-medium text-sm text-gray-900">
           {{ option.title }}
         </h1>
-        <p class="text-sm text-gray-500">
+        <p
+          v-if="option.subtitle"
+          class="text-sm text-gray-500"
+        >
           {{ option.subtitle }}
         </p>
         <eb-icon
@@ -39,6 +48,7 @@ defineProps<{
 	label?: string;
 	options: Array<EbRadioGroupOption>;
 	modelValue: string;
+	required?: boolean;
 }>();
 
 defineEmits(["update:modelValue", "input"]);

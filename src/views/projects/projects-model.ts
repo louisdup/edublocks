@@ -8,6 +8,7 @@ import { ProjectsUtilities } from "@/utilities/projects-utilities";
 import { QueryDocumentSnapshot } from "@firebase/firestore";
 import { EbTableItem } from "@/components/eb-table/eb-table-types";
 import { AuthenticationUtilities } from "@/utilities/authentication-utilities";
+
 /**
  * View model for the projects view.
  */
@@ -40,7 +41,6 @@ class ProjectsModel extends ViewModelBase {
 
 		// Reload the initial set of data if a content refresh is triggered.
 		this.observeContentRefresh(() => {
-			console.log("HELLO WORLD");
 			this.loadInitialData();
 		});
 	}
@@ -92,9 +92,9 @@ class ProjectsModel extends ViewModelBase {
 	}
 
 	/**
-	 * Returns a recent projects for the recent projects table.
+	 * Returns a list of projects for the table.
 	 */
-	public getRecentProjects(): Array<EbTableItem> {
+	public getProjects(): Array<EbTableItem> {
 		return ProjectsUtilities.remapProjectsForTable(this.state.projects);
 	}
 
@@ -104,13 +104,6 @@ class ProjectsModel extends ViewModelBase {
 	 */
 	public onOpenLocalProjectClicked(): void {
 		ProjectsUtilities.openLocalProject();
-	}
-
-	/**
-	 * True if user is logged in and data layout is list.
-	 */
-	public isProjectsTableVisible(): boolean {
-		return this.isCurrentUserLoggedIn();
 	}
 
 	/**

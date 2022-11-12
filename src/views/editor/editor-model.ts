@@ -15,6 +15,7 @@ import { ModeUtilities } from "@/utilities/mode-utilities";
 import { ModeModelBase } from "@/modes/base-classes/mode-model-base";
 import { FilenameUtilities } from "@/utilities/filename-utilities";
 import { ProjectsUtilities } from "@/utilities/projects-utilities";
+import { ClassroomUtilities } from "@/utilities/classroom-utilities";
 
 /**
  * View model for the editor view.
@@ -36,11 +37,19 @@ class EditorModel extends ViewModelBase {
 	 * Initialise the view model.
 	 */
 	public async init(): Promise<void> {
+		// Load project into the editor.
 		await this.loadProject();
+
+		// Update the page title based on the current project name.
 		this.updatePageTitleBasedOnCurrentProject();
+
+		// Initalize the current mode.
 		if (EditorUtilities.currentProject.value) {
 			EditorUtilities.currentProject.value.mode.init();
 		}
+
+		// If the current project is related to a classroom, configure the editor accordingly.
+		ClassroomUtilities.initalizeEditorForClassroomProject();
 	}
 
 	/**
@@ -123,12 +132,14 @@ class EditorModel extends ViewModelBase {
 		await ProjectsProvider.getProjectAsync(userId, projectId).then(async (response: FirestoreFetchResponseModel<FirestoreProjectModel>) => {
 			if (response.wasSuccessful && response.data) {
 				EditorUtilities.clearCurrentProject();
+
+				const isReadOnly: boolean = await ProjectsUtilities.shouldProjectBeReadOnly(userId, response.data);
 				
 				EditorUtilities.setCurrentProject({
 					name: response.data.name,
 					mode: ModeUtilities.getModeFromKey(response.data.mode),
 					type: response.data.type,
-					readOnly: ProjectsUtilities.shouldProjectBeReadOnly(userId, response.data),
+					readOnly: isReadOnly,
 					firestoreProject: response.data
 				});
 				
@@ -138,6 +149,9 @@ class EditorModel extends ViewModelBase {
 					// If the current project is read only, hide the save button.
 					if (EditorUtilities.currentProject.value.readOnly) {
 						EditorUtilities.currentProject.value.mode.setHeaderButtonHidden("save");
+					}
+					else {
+						EditorUtilities.currentProject.value.mode.setHeaderButtonVisible("save");
 					}
 
 					// Enable the share button, as the project is stored in firestore and therefore shareable.

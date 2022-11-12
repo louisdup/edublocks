@@ -50,7 +50,10 @@ class EbHeadingModel extends ComponentModelBase {
 				lightGray: "text-gray-500",
 				gray: "text-gray-700",
 				black: "text-gray-900",
-				white: "text-white"
+				white: "text-white",
+				blue: "text-blue-500",
+				green: "text-green-600",
+				red: "text-red-600"
 			},
 			isFullWidth: {
 				true: "w-full"

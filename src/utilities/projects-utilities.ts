@@ -1,4 +1,5 @@
 import { EbDropdownOption } from "@/components/eb-dropdown/eb-dropdown-types";
+import { EbSelectOption } from "@/components/eb-select/eb-select-types";
 import { EbTableItem } from "@/components/eb-table/eb-table-types";
 import { FirestoreProjectModel } from "@/data/models/firestore-project-model";
 import { LocalProjectModel } from "@/data/models/local-project-model";
@@ -10,6 +11,11 @@ import { FormatUtilities } from "./format-utilities";
 import { LocalizationUtilities } from "./localization-utilities";
 import { ModalUtilities } from "./modal-utilities";
 import { ModeUtilities } from "./mode-utilities";
+import * as ProjectsProvider from "@/data/providers/projects-provider";
+import { StorageFetchResponseModel } from "@/data/models/storage-fetch-response-model";
+import { FirestoreFetchResponseModel } from "@/data/models/firestore-fetch-response-model";
+import { ProjectModel } from "@/data/models/project-model";
+import { ClassroomUtilities } from "./classroom-utilities";
 
 /**
  * Utility functions for working with projects.
@@ -84,12 +90,18 @@ export class ProjectsUtilities {
 	/**
 	 * True if project access status is public read.
 	 */
-	public static shouldProjectBeReadOnly(userId: string, project: FirestoreProjectModel): boolean {
-		if (userId === AuthenticationUtilities.currentUser.value?.uid) {
-			return false;
+	public static async shouldProjectBeReadOnly(userId: string, project: FirestoreProjectModel): Promise<boolean> {
+		if (await ClassroomUtilities.shouldAssignmentSubmissionShouldBeReadOnly(project)) {
+			return true;
 		}
 		else if (project.access === "public-read") {
 			return true;
+		}
+		else if (project.assignment && userId !== AuthenticationUtilities.currentUser.value?.uid) {
+			return true;
+		}
+		else if (userId === AuthenticationUtilities.currentUser.value?.uid) {
+			return false;
 		}
 		else {
 			return false;
@@ -187,5 +199,107 @@ export class ProjectsUtilities {
 		});
 	
 		return tableItems;
+	}
+
+	/**
+	 * Remaps a list of projects for displaying in a select input.
+	 */
+	public static remapProjectsForSelect(projects: Array<FirestoreProjectModel>): Array<EbSelectOption> {
+		const selectOptions: Array<EbSelectOption> = [];
+		
+		projects.forEach((project: FirestoreProjectModel) => {
+			const projectMode: ModeModelBase = ModeUtilities.getModeFromKey(project.mode);
+	
+			selectOptions.push({
+				label: `${project.name} (${projectMode.config.name})`,
+				value: project.id
+			});
+		});
+		
+		return selectOptions;
+	}
+
+	/**
+	 * Creates a project in firestore.
+	 */
+	public static async createFirestoreProject(name: string, mode: string, type: "blocks" | "text", blocks?: string, code?: string, isAssignmentStarterProject?: boolean): Promise<string | undefined> {
+		if (AuthenticationUtilities.currentUser.value) {
+			const path: string = `blocks/${AuthenticationUtilities.currentUser.value.uid}/${name}`;
+			let fileContent: string = "";
+
+			switch (type) {
+				case "blocks":
+					if (blocks) {
+						fileContent = blocks;
+					}
+					break;
+				case "text":
+					if (code) {
+						fileContent = code;
+					}
+					break;
+			}
+
+			const projectCodeResponse: StorageFetchResponseModel = await ProjectsProvider.updateProjectCodeAsync(path, fileContent);
+			if (projectCodeResponse.wasSuccessful && projectCodeResponse.data) {
+				const body: object = {
+					name,
+					mode,
+					type,
+					access: "private",
+					uid: AuthenticationUtilities.currentUser.value.uid,
+					path,
+					size: projectCodeResponse.data.metadata.size,
+					extensions: null,
+					isAssignmentStarterProject: isAssignmentStarterProject ? true : null,
+					created: new Date().toISOString(),
+					updated: new Date().toISOString()
+				};
+
+				const createProjectResponse: FirestoreFetchResponseModel<string> = await ProjectsProvider.createProjectAsync(body);
+				if (createProjectResponse.wasSuccessful && createProjectResponse.data) {
+					return createProjectResponse.data;
+				}
+				else {
+					return undefined;
+				}
+			}
+			else {
+				return undefined;
+			}
+		}
+		else {
+			return undefined;
+		}
+	}
+
+	/**
+	 * Updates a project in firestore.
+	 */
+	public static async updateFirestoreProject(project: ProjectModel): Promise<void> {
+		if (AuthenticationUtilities.currentUser.value) {
+			let fileContent: string = "";
+
+			switch (project.type) {
+				case "blocks":
+					fileContent = project.blocks as string;
+					break;
+				case "text":
+					fileContent = project.code as string;
+					break;
+			}
+
+			if (project.firestoreProject) {
+				await ProjectsProvider.updateProjectCodeAsync(project.firestoreProject.path, fileContent).then(async (response: StorageFetchResponseModel) => {
+					if (response.wasSuccessful && response.data && project.firestoreProject) {
+						const body: object = {
+							updated: new Date().toISOString(),
+							size: response.data.metadata.size
+						};
+						await ProjectsProvider.updateProjectAsync(project.firestoreProject.id, body);
+					}
+				});
+			}
+		}
 	}
 }
