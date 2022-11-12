@@ -17,32 +17,6 @@
         />
       </eb-slider-slide> 
     </eb-slider>
-    
-    <!-- Grid of recent showcase projects. -->
-    <eb-slider
-      :label="view.getText('showcase')"
-      margin="-3"
-    >
-      <eb-card
-        v-for="card in 10"
-        v-if="view.state.isLoadingShowcaseProjects"
-        :key="card"
-        :is-loading="true"
-      />
-
-      <eb-slider-slide
-        v-for="project in view.state.showcaseProjects"
-        v-else
-        :key="project.id"
-      >
-        <eb-card 
-          :title="project.title"
-          :subtitle="project.mode"
-          :image="project.image"
-          :dropdown-options="view.getShowcaseProjectDropdownOptions(project)"
-        />
-      </eb-slider-slide> 
-    </eb-slider>
 
     <!-- Table of recent projects by the current user -->
     <eb-table
