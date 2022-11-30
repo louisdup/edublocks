@@ -2,6 +2,7 @@ import { ViewModelBase } from "@/views/base-classes/view-model-base";
 import { reactive } from "vue";
 import { ClassroomDetailState } from "./classroom-detail-state";
 import * as ClassroomProvider from "@/data/providers/classroom-provider";
+import * as UsersProvider from "@/data/providers/users-provider";
 import { FirestoreFetchResponseModel } from "@/data/models/firestore-fetch-response-model";
 import { ClassroomModel } from "@/data/models/classroom-model";
 import router from "@/router";
@@ -12,6 +13,7 @@ import { ClassroomUtilities } from "@/utilities/classroom-utilities";
 import { EbTableItem } from "@/components/eb-table/eb-table-types";
 import { ModalUtilities } from "@/utilities/modal-utilities";
 import { ClassroomAssignmentSubmissionModel } from "@/data/models/classroom-assignment-submission-model";
+import { UserModel } from "@/data/models/user-model";
 
 /**
  * View model for the classroom list view.
@@ -88,18 +90,39 @@ class ClassroomDetailModel extends ViewModelBase {
 	}
 
 	/**
+	 * Loads information about a user.
+	 */
+	private async loadUserInfo(id: string): Promise<UserModel | undefined> {
+		const response: FirestoreFetchResponseModel<UserModel> = await UsersProvider.getUserAsync(id);
+		
+		if (response.wasSuccessful && response.data) {
+			return response.data;
+		}
+		else {
+			return undefined;
+		}
+	}
+
+	/**
 	 * Loads users belonging to the classroom.
 	 */
 	private async loadClassroomUsers(): Promise<void> {
 		if (this.isCurrentUserLoggedIn() && this.state.classroom) {
 			this.state.isLoadingClassroomUsers = true;
 	
-			await ClassroomProvider.getClassroomUsers(this.state.classroom.id).then((response: FirestoreFetchResponseModel<Array<ClassroomUserModel>>) => {
+			await ClassroomProvider.getClassroomUsersAsync(this.state.classroom.id).then(async (response: FirestoreFetchResponseModel<Array<ClassroomUserModel>>) => {
 				if (response.wasSuccessful && response.data) {
 					this.state.classroomUsers = response.data;
 
 					// Checks if the current user is an admin.
 					this.checkIfCurrentUserIsAdmin();
+					
+					// Load data about each classroom user.
+					if (this.state.isCurrentUserAdmin) {
+						for await (const classroomUser of this.state.classroomUsers) {
+							classroomUser.user = await this.loadUserInfo(classroomUser.id);
+						}
+					}
 				}
 				this.state.isLoadingClassroomUsers = false;
 			});
@@ -116,7 +139,7 @@ class ClassroomDetailModel extends ViewModelBase {
 		if (this.isCurrentUserLoggedIn() && this.state.classroom) {
 			this.state.isLoadingClassroomAssignments = true;
 	
-			await ClassroomProvider.getClassroomAssignments(this.state.classroom.id, 20).then(async (response: FirestoreFetchResponseModel<Array<ClassroomAssignmentModel>>) => {
+			await ClassroomProvider.getClassroomAssignmentsAsync(this.state.classroom.id, 20).then(async (response: FirestoreFetchResponseModel<Array<ClassroomAssignmentModel>>) => {
 				if (response.wasSuccessful && response.data && this.state.classroom) {
 					for await (const assignment of response.data) {
 						// Get Submissions Count
@@ -221,6 +244,10 @@ class ClassroomDetailModel extends ViewModelBase {
 				{
 					label: this.getText("assignments"),
 					key: "assignments"
+				},
+				{
+					label: this.getText("settings"),
+					key: "settings"
 				}
 			];
 		}
@@ -320,6 +347,69 @@ class ClassroomDetailModel extends ViewModelBase {
 	 */
 	public isAssignmentsTableLoading(): boolean {
 		return this.state.isLoadingClassroomAssignments;
+	}
+
+	/**
+	 * Returns a list of classroom users for the users table.
+	 */
+	public getUsers(): Array<EbTableItem> {
+		if (this.state.classroom) {
+			return ClassroomUtilities.remapClassroomUsersForTable(this.state.classroom, this.state.classroomUsers);
+		}
+		else {
+			return [];
+		}
+	}
+
+	/**
+	 * True if the active tab is "settings".
+	 */
+	public isUsersTableVisible(): boolean {
+		return this.state.activeTab === "settings";
+	}
+	
+	/**
+	 * True if classroom users are loading.
+	 */
+	public isUsersTableLoading(): boolean {
+		return this.state.isLoadingClassroomUsers;
+	}
+
+	/**
+	 * Called when the add users button is clicks.
+	 * Opens the "add classroom users" modal.
+	 */
+	public onAddUsersButtonClicked(): void {
+		if (this.state.classroom) {
+			ModalUtilities.showModal({
+				modal: "AddClassroomUsers",
+				options: {
+					classroomId: this.state.classroom.id
+				}
+			});
+		}
+	}
+
+	/**
+	 * True if the active tab is "settings".
+	 */
+	public isDangerZoneVisible(): boolean {
+		return this.state.activeTab === "settings";
+	}
+
+	/**
+	 * Called when the user clicks the delete classroom button.
+	 * Opens the delete classroom modal.
+	 */
+	public onDeleteClassroomButtonClicked(): void {
+		if (this.state.classroom) {
+			ModalUtilities.showModal({
+				modal: "DeleteClassroom",
+				options: {
+					classroomId: this.state.classroom.id
+				}
+			});
+		}
 	}
 }
 

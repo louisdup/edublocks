@@ -24,6 +24,13 @@ class EbTableModel extends ComponentModelBase {
 	public getMetaItemColor(color?: string): string {
 		return color ? color : "lightGray";
 	}
+
+	/**
+	 * Returns the width for the thumbnail.
+	 */
+	public getThumbnailWidth(isFullWidth?: boolean): string {
+		return isFullWidth ? "w-full rounded-lg" : "w-4";
+	}
 	
 	/**
 	 * True if there are no items and the table isn't loading.

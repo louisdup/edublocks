@@ -15,7 +15,11 @@ export enum ModalName {
 	SubmitAssignment = "SubmitAssignment",
 	UnsubmitAssignment = "UnsubmitAssignment",
 	DeleteAssignment = "DeleteAssignment",
-	AssignmentTeacherFeedback = "AssignmentTeacherFeedback"
+	AssignmentTeacherFeedback = "AssignmentTeacherFeedback",
+	DeleteClassroom = "DeleteClassroom",
+	AddClassroomUsers = "AddClassroomUsers",
+	RemoveClassroomUser = "RemoveClassroomUser",
+	JoinClassroom = "JoinClassroom"
 }
 
 /**
@@ -36,3 +40,7 @@ export type Modal =
  | "UnsubmitAssignment"
  | "DeleteAssignment"
  | "AssignmentTeacherFeedback"
+ | "DeleteClassroom"
+ | "AddClassroomUsers"
+ | "RemoveClassroomUser"
+ | "JoinClassroom"

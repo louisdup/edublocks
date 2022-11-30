@@ -6,6 +6,7 @@ import { ClassroomModel } from "@/data/models/classroom-model";
 import { EbTableItem } from "@/components/eb-table/eb-table-types";
 import { ClassroomUtilities } from "@/utilities/classroom-utilities";
 import { AuthenticationUtilities } from "@/utilities/authentication-utilities";
+import { ModalUtilities } from "@/utilities/modal-utilities";
 
 /**
  * View model for the classroom list view.
@@ -65,6 +66,16 @@ class ClassroomListModel extends ViewModelBase {
 		else {
 			this.state.classrooms = [];
 		}
+	}
+
+	/**
+	 * Called when the join classroom button is clicked.
+	 * Opens the "Join Classroom" modal.
+	 */
+	public onJoinClassroomButtonClicked(): void {
+		ModalUtilities.showModal({
+			modal: "JoinClassroom"
+		});
 	}
 
 	/**

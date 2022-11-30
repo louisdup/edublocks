@@ -41,18 +41,54 @@ export async function getClassroomAsync(classroomId: string): Promise<FirestoreF
 }
 
 /**
+ * Delete a classroom.
+ */
+export async function deleteClassroomAsync(classroomId: string): Promise<FirestoreFetchResponseModel<void>> {
+	return FirestoreUtilities.deleteDocument(`classroom/${classroomId}`);
+}
+
+/**
  * Get a list of classroom users.
  */
-export async function getClassroomUsers(classroomId: string): Promise<FirestoreFetchResponseModel<Array<ClassroomUserModel>>> {
+export async function getClassroomUsersAsync(classroomId: string): Promise<FirestoreFetchResponseModel<Array<ClassroomUserModel>>> {
 	const collectionReference: CollectionReference = collection(FirestoreUtilities.getFirestore(), `classroom/${classroomId}/users`);
 	const collectionQuery: Query = query(collectionReference);
 	return FirestoreUtilities.fetchCollection(collectionQuery);
 }
 
 /**
+ * Get a count of classroom users.
+ */
+export async function getClassroomUsersCountAsync(classroomId: string, userId: string): Promise<FirestoreFetchResponseModel<number>> {
+	const collectionReference: CollectionReference = collection(FirestoreUtilities.getFirestore(), `classroom/${classroomId}/users`);
+	const constraints: Array<QueryConstraint> = [];
+
+	if (userId) {
+		constraints.push(where("uid", "==", userId));
+	}
+
+	const collectionQuery: Query = query(collectionReference, ...constraints);
+	return FirestoreUtilities.getCollectionCount(collectionQuery);
+}
+
+/**
+ * Create a classroom user.
+ */
+export async function createClassroomUserAsync(classroomId: string, userId: string, body: object): Promise<FirestoreFetchResponseModel<string>> {
+	return FirestoreUtilities.createDocument(`classroom/${classroomId}/users`, body, userId);
+}
+
+/**
+ * Delete a classroom user.
+ */
+export async function deleteClassroomUserAsync(classroomId: string, userId: string): Promise<FirestoreFetchResponseModel<void>> {
+	return FirestoreUtilities.deleteDocument(`classroom/${classroomId}/users/${userId}`);
+}
+
+/**
  * Get a paged list of classroom assignments.
  */
-export async function getClassroomAssignments(classroomId: string, assignmentsLimit: number, offset?: QueryDocumentSnapshot): Promise<FirestoreFetchResponseModel<Array<ClassroomAssignmentModel>>> {
+export async function getClassroomAssignmentsAsync(classroomId: string, assignmentsLimit: number, offset?: QueryDocumentSnapshot): Promise<FirestoreFetchResponseModel<Array<ClassroomAssignmentModel>>> {
 	const collectionReference: CollectionReference = collection(FirestoreUtilities.getFirestore(), `classroom/${classroomId}/assignments`);
 	const constraints: Array<QueryConstraint> = [ orderBy("created", "desc"), limit(assignmentsLimit), ...FirestoreUtilities.offset(offset) ];
 	const collectionQuery: Query = query(collectionReference, ...constraints);

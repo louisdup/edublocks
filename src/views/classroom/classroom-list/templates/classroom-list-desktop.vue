@@ -1,7 +1,22 @@
 <template>
   <desktop-layout>
-    <!-- Page Title -->
-    <eb-heading :label="view.getPageTitle()" />
+    <eb-h-stack
+      align-y="center"
+      justify-content="between"
+    >
+      <!-- Page Title -->
+      <eb-heading :label="view.getPageTitle()" />
+
+      <!-- Actions -->
+      <eb-h-stack :spacing="4">
+        <!-- Join Classroom Button -->
+        <eb-button
+          :label="view.getText('join-classroom')"
+          :icon="['far', 'user-plus']"
+          @click="view.onJoinClassroomButtonClicked()"
+        />
+      </eb-h-stack>
+    </eb-h-stack>
 
     <!-- Classrooms Table -->
     <eb-table

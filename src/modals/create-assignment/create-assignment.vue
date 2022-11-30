@@ -11,6 +11,7 @@
       <eb-v-stack
         is-full-width
         :spacing="6"
+        :padding-t="4"
       >
         <eb-h-stack
           is-full-width

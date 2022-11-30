@@ -1,4 +1,4 @@
-import { QueryDocumentSnapshot } from "firebase/firestore";
+import { UserModel } from "./user-model";
 
 /**
  * Data model for a classroom user.
@@ -7,5 +7,6 @@ export interface ClassroomUserModel {
 	id: string;
 	role: string;
 	enrolled: boolean;
-	snapshot: QueryDocumentSnapshot;
+	created: string;
+	user?: UserModel;
 }

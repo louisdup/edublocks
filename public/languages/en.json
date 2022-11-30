@@ -79,7 +79,8 @@
     },
     "validation": {
         "email": "Must be a valid email address",
-        "required": "{1} is required"
+        "required": "{1} is required",
+        "min-characters": "{1} must be at least {2} characters"
     },
     "showcase": {
         "project": "Project",
@@ -224,11 +225,16 @@
         "late": "Late",
         "submission-started": "{1} (Started)",
         "submission-submitted": "{1} (Submitted)",
-        "submission-marked": "{1} (Marked)"
+        "submission-marked": "{1} (Marked)",
+        "joined": "Joined {1}",
+        "admin": "Admin",
+        "student": "Student",
+        "remove-user": "Remove User"
     },
     "classroom-list": {
         "classroom": "Classroom",
-        "search-classrooms": "Search Classrooms...",
+        "new-classroom": "New Classroom",
+        "join-classroom": "Join Classroom",
         "no-classrooms-found": "No Classrooms Found",
         "login-to-view-classrooms": "Login to view classrooms",
         "get-started-by-joining-creating": "Get started by joining or creating a classrooms.",
@@ -245,7 +251,18 @@
         "work-in-progress": "Work in Progress",
         "waiting-to-be-marked": "Waiting to be Marked",
         "marked": "Marked",
-        "no-assignments-found": "No Assignments Found"
+        "no-assignments-found": "No Assignments Found",
+        "users": "Users",
+        "add-users": "Add Users",
+        "danger-zone": "Danger Zone",
+        "delete-classroom": "Delete Classroom",
+        "once-you-delete": "Once you delete this classroom, there is no going back."
+    },
+    "delete-classroom": {
+        "delete-classroom": "Delete Classroom",
+        "are-you-sure-you-want-to-delete": "Are you sure you want to delete this classroom?",
+        "cancel": "Cancel",
+        "delete": "Delete"
     },
     "create-assignment": {
         "create-assignment": "Create Assignment",
@@ -307,5 +324,26 @@
     },
     "assignment": {
         "due": "Due {1}"
+    },
+    "add-classroom-users": {
+        "classroom-code": "Classroom Code",
+        "copy-link": "Copy Link",
+        "copied": "Copied",
+        "close": "Close"
+    },
+    "remove-classroom-user": {
+        "remove-user": "Remove User",
+        "are-you-sure-you-want-to-remove": "Are you sure you want to remove this user?",
+        "cancel": "Cancel",
+        "remove": "Remove"
+    },
+    "join-classroom": {
+        "join-classroom": "Join Classroom",
+        "ask-teacher-for-code": "Ask your teacher for the classroom code.",
+        "code": "Code",
+        "cancel": "Cancel",
+        "join": "Join",
+        "cant-join-classroom": "Can't join classroom",
+        "you-are-already-a-member": "You're already a member"
     }
 }

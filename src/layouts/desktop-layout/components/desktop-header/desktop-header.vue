@@ -13,10 +13,8 @@
     </div>
 
     <eb-button
-      :label="component.getText('new')"
       :icon="['fas', 'plus']"
-      size="sm"
-      color="blue"
+      size="xs"
       @click="component.onNewClicked()"
     />
   </div>

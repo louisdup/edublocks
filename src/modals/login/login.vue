@@ -9,7 +9,7 @@
     />
 
     <eb-modal-content>
-      <form class="w-full max-w-sm mx-auto space-y-6">
+      <form class="w-full max-w-sm mx-auto space-y-6 pt-2">
         <eb-input
           v-model="modal.state.data['email']"
           :label="modal.getText('email-address')"

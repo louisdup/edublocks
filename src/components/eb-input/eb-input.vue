@@ -20,7 +20,7 @@
         :placeholder="placeholder"
         :disabled="isDisabled"
         :value="modelValue"
-        @input="$emit('update:modelValue', component.getInputValue($event))"
+        @input="component.updateModelValue($event, $emit)"
       >
     </div>
     <a

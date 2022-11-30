@@ -44,6 +44,11 @@ export class ClassroomUtilities {
 	public static isBusy: Ref<boolean> = ref(false);
 
 	/**
+	 * Returns the url used to join classrooms.
+	 */
+	public static joinUrl: string = "https://join.edublocks.org";
+
+	/**
 	 * Opens a classroom detail page.
 	 */
 	public static openClassroom(classroom: ClassroomModel): void {
@@ -321,14 +326,14 @@ export class ClassroomUtilities {
 		const isCurrentUserAdmin: boolean | undefined = this.isCurrentUserAdmin(users);
 	
 		assignments.forEach((assignment: ClassroomAssignmentModel) => {
-			const assignmentTableItem: EbTableItem = {
+			const tableItem: EbTableItem = {
 				title: assignment.name,
 				thumbnail: ModeUtilities.getModeFromKey(assignment.project.mode).config.logo,
 				dropdownOptions: this.getAssignmentDropdownOptions(classroom, assignment, users),
 				meta: [
 					{
-						label: this.getText("due", [FormatUtilities.formatDate(assignment.due)]),
-						key: "due"
+						key: "due",
+						label: this.getText("due", [FormatUtilities.formatDate(assignment.due)])
 					}
 				],
 				action: (): void => {
@@ -343,7 +348,7 @@ export class ClassroomUtilities {
 
 			if (isCurrentUserAdmin) {
 				if (assignment.submissionsCount !== undefined) {
-					assignmentTableItem.meta.push({
+					tableItem.meta.push({
 						label: this.getText("submissions-count", [assignment.submissionsCount.toString()]),
 						key: "submissions"
 					});
@@ -356,42 +361,42 @@ export class ClassroomUtilities {
 						const isLate: boolean | undefined = this.isAssignmentSubmissionLate(assignment, assignment.submission);
 
 						if (isOnTime) {
-							assignmentTableItem.meta.unshift({
-								label: this.getText("on-time"),
+							tableItem.meta.unshift({
 								key: "on-time",
-								color: "green",
+								label: this.getText("on-time"),
+								color: "green"
 							});	
 						}
 						else if (isLate) {
-							assignmentTableItem.meta.unshift({
-								label: this.getText("late"),
+							tableItem.meta.unshift({
 								key: "late",
-								color: "red",
+								label: this.getText("late"),
+								color: "red"
 							});	
 						}
 		
-						assignmentTableItem.meta.push({
-							label: this.getText("submitted", [FormatUtilities.formatDate(assignment.submission.submitted)]),
-							key: "submitted"
+						tableItem.meta.push({
+							key: "submitted",
+							label: this.getText("submitted", [FormatUtilities.formatDate(assignment.submission.submitted)])
 						});
 					}
 					else {
-						assignmentTableItem.meta.push({
-							label: this.getText("started", [FormatUtilities.formatDate(assignment.submission.created)]),
-							key: "started"
+						tableItem.meta.push({
+							key: "started",
+							label: this.getText("started", [FormatUtilities.formatDate(assignment.submission.created)])
 						});
 					}
 
 					if (assignment.submission.marked) {
-						assignmentTableItem.meta.push({
-							label: this.getText("marked", [FormatUtilities.formatDate(assignment.submission.marked)]),
-							key: "marked"
+						tableItem.meta.push({
+							key: "marked",
+							label: this.getText("marked", [FormatUtilities.formatDate(assignment.submission.marked)])
 						});
 					}
 				}
 			}
 
-			tableItems.push(assignmentTableItem);
+			tableItems.push(tableItem);
 		});
 	
 		return tableItems;
@@ -419,36 +424,36 @@ export class ClassroomUtilities {
 
 				if (isOnTime) {
 					tableItem.meta.unshift({
-						label: this.getText("on-time"),
 						key: "on-time",
-						color: "green",
+						label: this.getText("on-time"),
+						color: "green"
 					});	
 				}
 				else if (isLate) {
 					tableItem.meta.unshift({
-						label: this.getText("late"),
 						key: "late",
-						color: "red",
+						label: this.getText("late"),
+						color: "red"
 					});	
 				}
 
 				if (submission.submitted) {
 					tableItem.meta.push({
-						label: this.getText("submitted", [FormatUtilities.formatDate(submission.submitted)]),
-						key: "submitted"
+						key: "submitted",
+						label: this.getText("submitted", [FormatUtilities.formatDate(submission.submitted)])
 					});
 				}
 				else {
 					tableItem.meta.push({
-						label: this.getText("started", [FormatUtilities.formatDate(submission.created)]),
-						key: "started"
+						key: "started",
+						label: this.getText("started", [FormatUtilities.formatDate(submission.created)])
 					});
 				}
 
 				if (submission.marked) {
 					tableItem.meta.push({
-						label: this.getText("marked", [FormatUtilities.formatDate(submission.marked)]),
-						key: "late"
+						key: "late",
+						label: this.getText("marked", [FormatUtilities.formatDate(submission.marked)])
 					});
 				}
 
@@ -487,6 +492,78 @@ export class ClassroomUtilities {
 		});
 			
 		return selectOptions;
+	}
+
+	/**
+	 * Returns a list of options for classroom user dropdowns.
+	 */
+	public static getDropdownOptionsForClassroomUsers(classroom: ClassroomModel, classroomUser: ClassroomUserModel): Array<Array<EbDropdownOption>> | undefined {
+		if (classroomUser.role === "student") {
+			return [
+				[
+					{
+						title: this.getText("remove-user"),
+						icon: ["far", "ban"],
+						action: (): void => {
+							ModalUtilities.showModal({
+								modal: "RemoveClassroomUser",
+								options: {
+									classroomId: classroom.id,
+									userId: classroomUser.id
+								}
+							});
+						}
+					}
+				]
+			];
+		}
+		else {
+			return undefined;
+		}
+	}
+
+	/**
+	 * Remaps a list of users for displaying in a table.
+	 */
+	public static remapClassroomUsersForTable(classroom: ClassroomModel, users: Array<ClassroomUserModel>): Array<EbTableItem> {
+		const tableItems: Array<EbTableItem> = [];
+		
+		users.forEach((classroomUser: ClassroomUserModel) => {
+			if (classroomUser.user) {	
+				const tableItem: EbTableItem = {
+					title: classroomUser.user.name,
+					thumbnail: UsersUtilities.getProfilePictureForEmail(classroomUser.user.email),
+					isThumbnailFullWidth: true,
+					dropdownOptions: this.getDropdownOptionsForClassroomUsers(classroom, classroomUser),
+					meta: [
+						{
+							key: "joined",
+							label: this.getText("joined", [FormatUtilities.formatDate(classroomUser.created)])
+						}
+					],
+					action: (): void => {
+						//
+					}
+				};
+
+				if (classroomUser.role === "admin") {
+					tableItem.meta.unshift({
+						key: "admin",
+						label: this.getText("admin")
+					});
+				}
+				else {
+					tableItem.meta.unshift({
+						key: "student",
+						label: this.getText("student")
+					});
+				}
+
+				tableItems.push(tableItem);
+			}
+		});
+		
+		return tableItems;
 	}
 
 	/**

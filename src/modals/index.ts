@@ -15,6 +15,10 @@ import SubmitAssignment from "./submit-assignment/submit-assignment.vue";
 import UnsubmitAssignment from "./unsubmit-assignment/unsubmit-assignment.vue";
 import DeleteAssignment from "./delete-assignment/delete-assignment.vue";
 import AssignmentTeacherFeedback from "./assignment-teacher-feedback/assignment-teacher-feedback.vue";
+import DeleteClassroom from "./delete-classroom/delete-classroom.vue";
+import AddClassroomUsers from "./add-classroom-users/add-classroom-users.vue";
+import RemoveClassroomUser from "./remove-classroom-user/remove-classroom-user.vue";
+import JoinClassroom from "./join-classroom/join-classroom.vue";
 
 /**
  * Export & install modals for use globally
@@ -35,5 +39,9 @@ export default {
 		app.component(ModalName.UnsubmitAssignment, UnsubmitAssignment);
 		app.component(ModalName.DeleteAssignment, DeleteAssignment);
 		app.component(ModalName.AssignmentTeacherFeedback, AssignmentTeacherFeedback);
+		app.component(ModalName.DeleteClassroom, DeleteClassroom);
+		app.component(ModalName.AddClassroomUsers, AddClassroomUsers);
+		app.component(ModalName.RemoveClassroomUser, RemoveClassroomUser);
+		app.component(ModalName.JoinClassroom, JoinClassroom);
 	}
 };

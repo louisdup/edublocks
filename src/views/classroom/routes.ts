@@ -32,6 +32,16 @@ export const classroomRoutes: Array<RouteRecordRaw> = [
 		meta: {
 			key: "classroom"
 		}
+	},
+	{
+		path: "/classroom/:id/join",
+		name: View.JoinClassroom,
+		component: async (): Promise<Component> => {
+			return import ("./join-classroom/join-classroom.vue");
+		},
+		meta: {
+			key: "classroom"
+		}
 	}
 ];
 

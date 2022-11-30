@@ -14,8 +14,16 @@ class EbInputModel extends ComponentModelBase {
 	/**
 	 * Returns the value of the input.
 	 */
-	public getInputValue(event: Event): string {
+	private getInputValue(event: Event): string {
 		return (event.target as HTMLInputElement).value;
+	}
+
+	/**
+	 * Updates the modelValue to that of the select box.
+	 */
+	public updateModelValue(event: Event, emit: Function): void {
+		emit("update:modelValue", this.getInputValue(event));
+		emit("input", this.getInputValue(event));
 	}
 }
 

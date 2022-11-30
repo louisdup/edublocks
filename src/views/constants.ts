@@ -7,4 +7,5 @@ export enum View {
 	ClassroomList = "Classroom List",
 	ClassroomDetail = "Classroom Detail",
 	AssignmentSubmissions = "Assignment Submissions",
+	JoinClassroom = "Join Classroom"
 }

@@ -1,7 +1,6 @@
 import { EbRadioGroupOption } from "@/components/eb-radio-group/eb-radio-group-types";
 import { EbSelectOption } from "@/components/eb-select/eb-select-types";
 import { ModeModelBase } from "@/modes/base-classes/mode-model-base";
-import router from "@/router";
 import { EditorUtilities } from "@/utilities/editor-utilities";
 import { FilenameUtilities } from "@/utilities/filename-utilities";
 import { FormUtilities, ValidationSchema } from "@/utilities/form-utilities";

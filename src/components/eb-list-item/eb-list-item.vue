@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full flex items-center space-x-4">
+  <div class="flex items-center space-x-4">
     <div
       v-if="thumbnail || icon"
       class="h-8 flex items-center justify-center flex-none"

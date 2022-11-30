@@ -8,6 +8,7 @@ export interface EbTableItem {
 	meta: Array<EbTableItemMeta>;
 	action: VoidFunction;
 	thumbnail?: string;
+	isThumbnailFullWidth?: boolean;
 	icon?: Array<string>;
 	dropdownOptions?: Array<Array<EbDropdownOption>>;
 }

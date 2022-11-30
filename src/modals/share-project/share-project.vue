@@ -12,6 +12,7 @@
       <eb-v-stack
         is-full-width
         :spacing="6"
+        :padding-t="2"
       >
         <eb-h-stack
           v-if="modal.isCopyLinkVisible()"

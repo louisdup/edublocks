@@ -28,7 +28,7 @@
             <img
               v-if="item.thumbnail"
               :src="item.thumbnail"
-              class="w-4"
+              :class="component.getThumbnailWidth(item.isThumbnailFullWidth)"
             >
 
             <eb-icon
