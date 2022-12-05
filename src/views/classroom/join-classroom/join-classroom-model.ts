@@ -1,11 +1,9 @@
 import { ViewModelBase } from "@/views/base-classes/view-model-base";
 import { reactive } from "vue";
 import { JoinClassroomState } from "./join-classroom-state";
-import * as ClassroomProvider from "@/data/providers/classroom-provider";
-import * as UsersProvider from "@/data/providers/users-provider";
 import router from "@/router";
 import { AuthenticationUtilities } from "@/utilities/authentication-utilities";
-import { FirestoreFetchResponseModel } from "@/data/models/firestore-fetch-response-model";
+import { ClassroomUtilities } from "@/utilities/classroom-utilities";
 
 /**
  * View model for the join classroom view.
@@ -39,33 +37,7 @@ class JoinClassroomModel extends ViewModelBase {
 
 			const classroomId: string = router.currentRoute.value.params.id as string;
 
-			const classroomUsersCountResponse: FirestoreFetchResponseModel<number> = await ClassroomProvider.getClassroomUsersCountAsync(classroomId, AuthenticationUtilities.currentUser.value.uid);
-
-			if (classroomUsersCountResponse.wasSuccessful && classroomUsersCountResponse.data === 0) {
-				const classroomUserBody: object = {
-					uid: AuthenticationUtilities.currentUser.value.uid,
-					created: new Date().toISOString(),
-					enrolled: true,
-					role: "student"
-				};
-	
-				const classroomUserResponse: FirestoreFetchResponseModel<string> = await ClassroomProvider.createClassroomUserAsync(classroomId, AuthenticationUtilities.currentUser.value.uid, classroomUserBody);
-	
-				if (classroomUserResponse.wasSuccessful) {
-					const userClassroomBody: object = {
-						id: classroomId
-					};
-
-					const userClassroomResponse: FirestoreFetchResponseModel<string> = await UsersProvider.createUserClassroomAsync(AuthenticationUtilities.currentUser.value.uid, classroomId, userClassroomBody);
-
-					if (userClassroomResponse.wasSuccessful && userClassroomResponse.data) {
-						router.push("/classroom");
-					}
-				}
-			}
-			else {
-				this.state.isUserAlreadyAMember = true;
-			}
+			await ClassroomUtilities.addClassroomUser(classroomId, AuthenticationUtilities.currentUser.value.uid, "student");
 
 			this.state.isJoiningClassroom = false;
 		}

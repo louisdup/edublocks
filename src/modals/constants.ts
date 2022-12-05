@@ -19,7 +19,8 @@ export enum ModalName {
 	DeleteClassroom = "DeleteClassroom",
 	AddClassroomUsers = "AddClassroomUsers",
 	RemoveClassroomUser = "RemoveClassroomUser",
-	JoinClassroom = "JoinClassroom"
+	JoinClassroom = "JoinClassroom",
+	CreateClassroom = "CreateClassroom"
 }
 
 /**
@@ -44,3 +45,4 @@ export type Modal =
  | "AddClassroomUsers"
  | "RemoveClassroomUser"
  | "JoinClassroom"
+ | "CreateClassroom"

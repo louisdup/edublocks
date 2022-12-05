@@ -41,6 +41,13 @@ export async function getClassroomAsync(classroomId: string): Promise<FirestoreF
 }
 
 /**
+ * Create a classroom.
+ */
+export async function createClassroomAsync(body: object): Promise<FirestoreFetchResponseModel<string>> {
+	return FirestoreUtilities.createDocument("classroom", body);
+}
+
+/**
  * Delete a classroom.
  */
 export async function deleteClassroomAsync(classroomId: string): Promise<FirestoreFetchResponseModel<void>> {

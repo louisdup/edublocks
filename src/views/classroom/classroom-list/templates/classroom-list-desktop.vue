@@ -9,6 +9,14 @@
 
       <!-- Actions -->
       <eb-h-stack :spacing="4">
+        <!-- New Classroom Button -->
+        <eb-button
+          :label="view.getText('new-classroom')"
+          :icon="['fas', 'plus']"
+          color="white"
+          @click="view.onNewClassroomButtonClicked()"
+        />
+
         <!-- Join Classroom Button -->
         <eb-button
           :label="view.getText('join-classroom')"

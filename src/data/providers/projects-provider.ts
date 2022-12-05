@@ -15,7 +15,7 @@ import { StorageFetchResponseModel } from "../models/storage-fetch-response-mode
  */
 export async function getProjectsAsync(projectsLimit: number, searchTerm?: string, offset?: QueryDocumentSnapshot): Promise<FirestoreFetchResponseModel<Array<FirestoreProjectModel>>> {
 	const collectionReference: CollectionReference = collection(FirestoreUtilities.getFirestore(), `users/${AuthenticationUtilities.currentUser.value?.uid}/projects`);
-	const constraints: Array<QueryConstraint> = [ where("assignment", "==", null), where("isAssignmentStarterProject", "==", null), orderBy("updated", "desc"), limit(projectsLimit), ...FirestoreUtilities.search(searchTerm), ...FirestoreUtilities.offset(offset) ];
+	const constraints: Array<QueryConstraint> = [ where("assignment", "==", null), where("isAssignmentStarterProject", "==", null), ...FirestoreUtilities.search(searchTerm), orderBy("updated", "desc"), limit(projectsLimit), ...FirestoreUtilities.offset(offset) ];
 	const collectionQuery: Query = query(collectionReference, ...constraints);
 	return FirestoreUtilities.fetchCollection(collectionQuery);
 }

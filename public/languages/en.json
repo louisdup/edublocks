@@ -345,5 +345,11 @@
         "join": "Join",
         "cant-join-classroom": "Can't join classroom",
         "you-are-already-a-member": "You're already a member"
+    },
+    "create-classroom": {
+        "create-classroom": "Create Classroom",
+        "classroom-name": "Classroom Name",
+        "cancel": "Cancel",
+        "create": "Create"
     }
 }

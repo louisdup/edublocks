@@ -74,7 +74,7 @@ class ClassroomDetailModel extends ViewModelBase {
 	private async loadClassroom(): Promise<void> {
 		const classroomId: string = router.currentRoute.value.params.id as string;
 
-		if (this.isCurrentUserLoggedIn()) {
+		if (this.isCurrentUserLoggedIn() && classroomId) {
 			this.state.isLoadingClassroom = true;
 	
 			await ClassroomProvider.getClassroomAsync(classroomId).then((response: FirestoreFetchResponseModel<ClassroomModel>) => {

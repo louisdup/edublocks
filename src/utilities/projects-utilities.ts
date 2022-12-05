@@ -94,14 +94,14 @@ export class ProjectsUtilities {
 		if (await ClassroomUtilities.shouldAssignmentSubmissionShouldBeReadOnly(project)) {
 			return true;
 		}
-		else if (project.access === "public-read") {
-			return true;
+		else if (userId === AuthenticationUtilities.currentUser.value?.uid) {
+			return false;
 		}
 		else if (project.assignment && userId !== AuthenticationUtilities.currentUser.value?.uid) {
 			return true;
 		}
-		else if (userId === AuthenticationUtilities.currentUser.value?.uid) {
-			return false;
+		else if (project.access === "public-read") {
+			return true;
 		}
 		else {
 			return false;
@@ -252,6 +252,7 @@ export class ProjectsUtilities {
 					size: projectCodeResponse.data.metadata.size,
 					extensions: null,
 					isAssignmentStarterProject: isAssignmentStarterProject ? true : null,
+					assignment: null,
 					created: new Date().toISOString(),
 					updated: new Date().toISOString()
 				};

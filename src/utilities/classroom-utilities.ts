@@ -14,6 +14,7 @@ import { EbSelectOption } from "@/components/eb-select/eb-select-types";
 import { EditorUtilities } from "./editor-utilities";
 import * as ProjectsProvider from "@/data/providers/projects-provider";
 import * as ClassroomProvider from "@/data/providers/classroom-provider";
+import * as UsersProvider from "@/data/providers/users-provider";
 import { ProjectsUtilities } from "./projects-utilities";
 import { StorageFetchResponseModel } from "@/data/models/storage-fetch-response-model";
 import { FirestoreFetchResponseModel } from "@/data/models/firestore-fetch-response-model";
@@ -47,6 +48,36 @@ export class ClassroomUtilities {
 	 * Returns the url used to join classrooms.
 	 */
 	public static joinUrl: string = "https://join.edublocks.org";
+
+	/**
+	 * Adds a user to a specified classroom 
+	 */
+	public static async addClassroomUser(classroomId: string, userId: string, role: "admin" | "student"): Promise<void> {
+		const classroomUsersCountResponse: FirestoreFetchResponseModel<number> = await ClassroomProvider.getClassroomUsersCountAsync(classroomId, userId);
+
+		if (classroomUsersCountResponse.wasSuccessful && classroomUsersCountResponse.data === 0) {
+			const classroomUserBody: object = {
+				uid: userId,
+				created: new Date().toISOString(),
+				enrolled: true,
+				role
+			};
+	
+			const classroomUserResponse: FirestoreFetchResponseModel<string> = await ClassroomProvider.createClassroomUserAsync(classroomId, userId, classroomUserBody);
+	
+			if (classroomUserResponse.wasSuccessful) {
+				const userClassroomBody: object = {
+					id: classroomId
+				};
+
+				const userClassroomResponse: FirestoreFetchResponseModel<string> = await UsersProvider.createUserClassroomAsync(userId, classroomId, userClassroomBody);
+
+				if (userClassroomResponse.wasSuccessful && userClassroomResponse.data) {
+					router.push(`/classroom/${userClassroomResponse.data}`);
+				}
+			}
+		}
+	}
 
 	/**
 	 * Opens a classroom detail page.

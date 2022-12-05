@@ -19,6 +19,7 @@ import DeleteClassroom from "./delete-classroom/delete-classroom.vue";
 import AddClassroomUsers from "./add-classroom-users/add-classroom-users.vue";
 import RemoveClassroomUser from "./remove-classroom-user/remove-classroom-user.vue";
 import JoinClassroom from "./join-classroom/join-classroom.vue";
+import CreateClassroom from "./create-classroom/create-classroom.vue";
 
 /**
  * Export & install modals for use globally
@@ -43,5 +44,6 @@ export default {
 		app.component(ModalName.AddClassroomUsers, AddClassroomUsers);
 		app.component(ModalName.RemoveClassroomUser, RemoveClassroomUser);
 		app.component(ModalName.JoinClassroom, JoinClassroom);
+		app.component(ModalName.CreateClassroom, CreateClassroom);
 	}
 };

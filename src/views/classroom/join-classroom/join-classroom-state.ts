@@ -5,7 +5,7 @@ export class JoinClassroomState {
 	/**
 	 * True if the user is joining the classroom.
 	 */
-	public isJoiningClassroom: boolean = false;
+	public isJoiningClassroom: boolean = true;
 
 	/**
 	 * True if the current user is already a member of the classroom.

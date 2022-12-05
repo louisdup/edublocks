@@ -69,6 +69,16 @@ class ClassroomListModel extends ViewModelBase {
 	}
 
 	/**
+	 * Called when the new classroom button is clicked.
+	 * Opens the "Create Classroom" modal.
+	 */
+	public onNewClassroomButtonClicked(): void {
+		ModalUtilities.showModal({
+			modal: "CreateClassroom"
+		});
+	}
+
+	/**
 	 * Called when the join classroom button is clicked.
 	 * Opens the "Join Classroom" modal.
 	 */

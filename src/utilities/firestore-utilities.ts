@@ -1,5 +1,5 @@
 import { FirestoreFetchResponseModel } from "@/data/models/firestore-fetch-response-model";
-import { getFirestore, Firestore, Query, getDocs, QuerySnapshot, QueryDocumentSnapshot, FirestoreError, getDoc, DocumentReference, DocumentSnapshot, doc, deleteDoc, QueryConstraint, where, query, startAfter, setDoc, addDoc, collection, updateDoc, getCountFromServer, AggregateQuerySnapshot, AggregateField } from "firebase/firestore";
+import { getFirestore, Firestore, Query, getDocs, QuerySnapshot, QueryDocumentSnapshot, FirestoreError, getDoc, DocumentReference, DocumentSnapshot, doc, deleteDoc, QueryConstraint, where, query, startAfter, setDoc, addDoc, collection, updateDoc, getCountFromServer, AggregateQuerySnapshot, AggregateField, orderBy } from "firebase/firestore";
 import { ModalUtilities } from "./modal-utilities";
 
 /**
@@ -30,7 +30,7 @@ export class FirestoreUtilities {
 	 */
 	public static search(searchTerm?: string): Array<QueryConstraint> {
 		if (searchTerm && searchTerm.length > 2) {
-			return [ where("name", ">=", searchTerm), where("name", "<=", `${searchTerm}\uf8ff"`) ];
+			return [ where("name", ">=", searchTerm), where("name", "<=", `${searchTerm}\uf8ff"`), orderBy("name", "desc") ];
 		}	
 		else {
 			return [];
@@ -136,7 +136,7 @@ export class FirestoreUtilities {
 		catch (error) {
 			response.error = error as FirestoreError;
 			response.hasError = true;
-			console.error(error);
+			console.error(error, path);
 			ModalUtilities.showModal({
 				modal: "Error"
 			});
