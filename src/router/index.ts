@@ -4,12 +4,14 @@ import { homeRoutes } from "@/views/home/routes";
 import { projectsRoutes } from "@/views/projects/routes";
 import { editorRoutes } from "@/views/editor/routes";
 import { classroomRoutes } from "@/views/classroom/routes";
+import { showcaseRoutes } from "@/views/showcase/routes";
 
 const routes: Array<RouteRecordRaw> = [
 	...homeRoutes,
 	...projectsRoutes,
 	...editorRoutes,
-	...classroomRoutes
+	...classroomRoutes,
+	...showcaseRoutes
 ];
 
 const router: Router = createRouter({

@@ -38,5 +38,6 @@ export enum ComponentName {
 	EbProgress = "EbProgress",
 	EbTerminal = "EbTerminal",
 	EbTextEditor = "EbTextEditor",
-	EbListItem = "EbListItem"
+	EbListItem = "EbListItem",
+	EbBanner = "EbBanner"
 }

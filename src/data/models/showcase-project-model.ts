@@ -1,4 +1,5 @@
 import firebase from "firebase/compat/app";
+import { QueryDocumentSnapshot } from "firebase/firestore";
 
 /**
  * Data model for a showcase project.
@@ -13,4 +14,5 @@ export interface ShowcaseProjectModel {
 	cloneURL: string;
 	mode: string;
 	created: firebase.firestore.Timestamp;
+	snapshot: QueryDocumentSnapshot;
 }
