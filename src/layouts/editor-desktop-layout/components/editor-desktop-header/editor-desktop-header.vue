@@ -1,11 +1,17 @@
 <template>
   <div class="h-16 w-full bg-white flex items-center justify-between flex-none pl-2 pr-4 border-b border-gray-200">
     <div class="flex items-center space-x-2">
-      <eb-button
-        :icon="['far', 'bars']"
-        size="sm"
-        color="transparent"
-      />
+      <eb-dropdown
+        :options="component.getMenuDropdownOptions()"
+        placement="bottom-end"
+      >
+        <eb-button
+          :icon="['far', 'bars']"
+          size="sm"
+          color="transparent"
+        />
+      </eb-dropdown>
+      
       <eb-button
         :label="component.getCurrentProjectName()"
         :image="component.getCurrentModeLogo()"
@@ -14,6 +20,7 @@
         @click="$emit('onProjectButtonClicked')"
       />
     </div>
+
     <div class="flex items-center space-x-4">
       <template
         v-for="button in buttons"

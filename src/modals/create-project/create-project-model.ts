@@ -10,6 +10,8 @@ import { ModalModelBase } from "../base-classes/modal-model-base";
 import { CreateProjectState } from "./create-project-state";
 import * as yup from "yup";
 import { ModalUtilities } from "@/utilities/modal-utilities";
+import router from "@/router";
+import { View } from "@/views/constants";
 
 /**
  * Modal model for the create project modal.
@@ -113,7 +115,7 @@ class CreateProjectModel extends ModalModelBase {
 	 * Called when the user clicks the create button.
 	 * Sets the current project to what the user has defined and then redirects to the editor.
 	 */
-	public onCreateClicked(): void {
+	public async onCreateClicked(): Promise<void> {
 		if (this.state.isValid) {
 			const mode: ModeModelBase = ModeUtilities.getModeFromKey(this.state.data["mode"]);
 			let name: string = this.state.placeholderName;
@@ -124,7 +126,11 @@ class CreateProjectModel extends ModalModelBase {
 
 			ModalUtilities.closeModal();
 
-			EditorUtilities.openEditor(mode, this.state.data["type"], name);
+			await EditorUtilities.openEditor(mode, this.state.data["type"], name);
+
+			if (router.currentRoute.value.name === View.Project || router.currentRoute.value.name === View.NewProject) {
+				location.reload();
+			}
 		}
 	}
 

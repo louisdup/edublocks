@@ -1,6 +1,9 @@
 import { ComponentModelBase } from "@/components/base-classes/component-model-base";
+import { EbDropdownOption } from "@/components/eb-dropdown/eb-dropdown-types";
+import router from "@/router";
 import { EditorUtilities } from "@/utilities/editor-utilities";
 import { LogoUtilities } from "@/utilities/logo-utilities";
+import { ModalUtilities } from "@/utilities/modal-utilities";
 
 /**
  * Component model for the editor desktop header component.
@@ -42,6 +45,62 @@ export class EditorDesktopHeaderModel extends ComponentModelBase {
 		else {
 			return undefined;
 		}
+	}
+
+	/**
+	 * Returns a list of dropdown options for the menu.
+	 */
+	public getMenuDropdownOptions(): Array<Array<EbDropdownOption>> {
+		return [
+			[
+				{ 
+					title: this.getText("new-project"),
+					icon: ["fas", "plus"],
+					action: (): void => {
+						ModalUtilities.showModal({
+							modal: "CreateProject"
+						});
+					}
+				},
+			],
+			[
+				{
+					title: this.getText("home"),
+					icon: ["far", "home"],
+					action: (): void => {
+						router.push("/");
+					}
+				},
+				{
+					title: this.getText("projects"),
+					icon: ["far", "folder-open"],
+					action: (): void => {
+						router.push("/projects");
+					}
+				},
+				{
+					title: this.getText("showcase"),
+					icon: ["far", "film"],
+					action: (): void => {
+						router.push("/showcase");
+					}
+				},
+				{
+					title: this.getText("learn"),
+					icon: ["far", "book-open"],
+					action: (): void => {
+						router.push("/learn");
+					}
+				},
+				{
+					title: this.getText("classroom"),
+					icon: ["far", "users"],
+					action: (): void => {
+						router.push("/classroom");
+					}
+				},
+			]
+		];
 	}
 }
 

@@ -141,6 +141,14 @@
         "no-access": "No Access",
         "project-is-private": "The author has this project set to private"
     },
+    "editor-desktop-header": {
+        "new-project": "New Project",
+        "home": "Home",
+        "projects": "Projects",
+        "showcase": "Showcase",
+        "learn": "Learn",
+        "classroom": "Classroom"
+    },
     "output-panel": {
         "code": "Code",
         "repl": "REPL",

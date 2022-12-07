@@ -42,6 +42,7 @@ export class EditorUtilities {
 	 */
 	public static clearCurrentProject(): void {
 		this.currentProject.value = undefined;
+		document.title = "EduBlocks";
 	}
 
 	/**
@@ -54,8 +55,8 @@ export class EditorUtilities {
 	/**
 	 * Opens the editor with a blank project.
 	 */
-	public static openEditor(mode: ModeModelBase, type?: "blocks" | "text", name?: string, blocks?: string, code?: string): void {
-		router.push({
+	public static async openEditor(mode: ModeModelBase, type?: "blocks" | "text", name?: string, blocks?: string, code?: string): Promise<void> {
+		await router.push({
 			name: View.NewProject,
 			query: {
 				mode: mode.config.key,

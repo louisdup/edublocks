@@ -8,7 +8,7 @@
   >
     <slot />
     <template #content>
-      <div class="origin-bottom-right w-56 rounded-lg shadow bg-white divide-y divide-gray-200">
+      <div class="origin-bottom-right w-56 rounded-lg shadow bg-white divide-y divide-gray-200 border border-gray-100">
         <div
           v-for="(group, index) in component.getFilteredDropdownOptions(options)"
           :key="index"

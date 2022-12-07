@@ -33,7 +33,7 @@ class EbButtonModel extends ComponentModelBase {
 				green: ["bg-green-500", "text-white", "focus:ring-green-400", "hover:bg-green-400", "border-transparent"],
 				navy: ["bg-navy-500", "text-white", "focus:ring-navy-400", "hover:bg-navy-400", "border-transparent"],
 				red: ["bg-red-500", "text-white", "focus:ring-red-400", "hover:bg-red-400", "border-transparent"],
-				transparent: ["bg-transparent", "text-gray-700", "focus:ring-transparent", "hover:bg-gray-100", "border-transparent"],
+				transparent: ["bg-transparent", "text-gray-700", "focus:ring-transparent", "hover:bg-gray-100", "focus:bg-gray-100", "border-transparent"],
 				gray: ["bg-gray-100", "text-gray-700", "focus:ring-gray-200", "hover:bg-gray-200", "border-transparent"]
 			},
 			isFullWidth: {
