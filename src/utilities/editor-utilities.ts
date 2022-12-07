@@ -66,6 +66,12 @@ export class EditorUtilities {
 				code
 			}
 		});
+
+		// Force a refresh if the previous page is also the editor.
+		const previousPage: string = router.options.history.state.back as string;
+		if (previousPage.startsWith("/project")) {
+			location.reload();
+		}
 	}
 
 	/**

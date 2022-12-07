@@ -115,7 +115,7 @@ class CreateProjectModel extends ModalModelBase {
 	 * Called when the user clicks the create button.
 	 * Sets the current project to what the user has defined and then redirects to the editor.
 	 */
-	public async onCreateClicked(): Promise<void> {
+	public onCreateClicked(): void {
 		if (this.state.isValid) {
 			const mode: ModeModelBase = ModeUtilities.getModeFromKey(this.state.data["mode"]);
 			let name: string = this.state.placeholderName;
@@ -126,11 +126,7 @@ class CreateProjectModel extends ModalModelBase {
 
 			ModalUtilities.closeModal();
 
-			await EditorUtilities.openEditor(mode, this.state.data["type"], name);
-
-			if (router.currentRoute.value.name === View.Project || router.currentRoute.value.name === View.NewProject) {
-				location.reload();
-			}
+			EditorUtilities.openEditor(mode, this.state.data["type"], name);
 		}
 	}
 
