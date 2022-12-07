@@ -1,0 +1,47 @@
+<category name="Forms" colour="#00C0EA" css-icon="customIcon fad fa-clipboard">
+  <label text="Forms"></label>
+
+  <block type="form"></block>
+
+  <block type="input_element">
+    <value name="attributes">
+      <block type="attributes_join">
+        <mutation color="#00CA4D" items="1" limit="100" minimum="1" />
+        <value name="input_1">
+          <block type="type_attribute">
+            <value name="content">
+              <block type="input_types"></block>
+            </value>
+          </block>
+        </value>
+      </block>
+    </value>
+  </block>
+
+  <block type="button">
+    <value name="content">
+      <shadow type="textinline">
+        <field name="text">Submit</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="label_element">
+    <value name="attributes">
+      <block type="attributes_join">
+        <mutation color="#00CA4D" items="1" limit="100" minimum="1" />
+        <value name="input_1">
+          <block type="for_attribute">
+            <value name="content">
+              <shadow type="inline_string">
+                <field name="value"></field>
+              </shadow>
+            </value>
+          </block>
+        </value>
+      </block>
+    </value>
+  </block>
+
+  <block type="input_types"></block>
+</category>

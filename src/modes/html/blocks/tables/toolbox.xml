@@ -1,0 +1,7 @@
+<category name="Tables" colour="#FF4A76" css-icon="customIcon fad fa-table">
+  <label text="Tables"></label>
+  <block type="table"></block>
+  <block type="table_header"></block>
+  <block type="table_row"></block>
+  <block type="table_data"></block>
+</category>

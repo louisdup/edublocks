@@ -1,0 +1,111 @@
+<category name="Attributes" colour="#00CA4D" css-icon="customIcon fas fa-plus">
+  <label text="Attributes"></label>
+
+  <block type="attributes_join">
+    <mutation color="#00CA4D" items="1" limit="100" minimum="1" />
+  </block>
+
+  <block type="id_attribute">
+    <value name="content">
+      <shadow type="inline_string">
+        <field name="value">elementid</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="class_attribute">
+    <value name="content">
+      <shadow type="inline_string">
+        <field name="value">classname</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="style_attribute">
+    <value name="content">
+      <shadow type="inline_string">
+        <field name="value"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="height_attribute">
+    <value name="content">
+      <shadow type="inline_string">
+        <field name="value"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="width_attribute">
+    <value name="content">
+      <shadow type="inline_string">
+        <field name="value"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="value_attribute">
+    <value name="content">
+      <shadow type="inline_string">
+        <field name="value"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="src_attribute">
+    <value name="content">
+      <shadow type="inline_string">
+        <field name="value"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="href_attribute">
+    <value name="content">
+      <shadow type="inline_string">
+        <field name="value"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="for_attribute">
+    <value name="content">
+      <shadow type="inline_string">
+        <field name="value"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="rel_attribute">
+    <value name="content">
+      <shadow type="inline_string">
+        <field name="value"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="placeholder_attribute">
+    <value name="content">
+      <shadow type="inline_string">
+        <field name="value"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="type_attribute">
+    <value name="content">
+      <shadow type="inline_string">
+        <field name="value"></field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="onclick_attribute">
+    <value name="content">
+      <shadow type="inline_string">
+        <field name="value"></field>
+      </shadow>
+    </value>
+  </block>
+</category>

@@ -1,0 +1,73 @@
+<category name="Media" colour="#ED2CD5" css-icon="customIcon fad fa-film">
+  <label text="Media"></label>
+
+  <block type="iframe_element">
+    <value name="attributes">
+      <block type="attributes_join">
+        <mutation color="#00CA4D" items="1" limit="100" minimum="1" />
+        <value name="input_1">
+          <block type="src_attribute">
+            <value name="content">
+              <shadow type="inline_string">
+                <field name="value">URL</field>
+              </shadow>
+            </value>
+          </block>
+        </value>
+      </block>
+    </value>
+  </block>
+  
+  <block type="video_player">
+    <value name="attributes">
+      <block type="attributes_join">
+        <mutation color="#00CA4D" items="1" limit="100" minimum="1" />
+        <value name="input_1">
+          <block type="src_attribute">
+            <value name="content">
+              <shadow type="inline_string">
+                <field name="value">URL</field>
+              </shadow>
+            </value>
+          </block>
+        </value>
+      </block>
+    </value>
+  </block>
+
+  <block type="audio_player">
+    <value name="attributes">
+      <block type="attributes_join">
+        <mutation color="#00CA4D" items="1" limit="100" minimum="1" />
+        <value name="input_1">
+          <block type="src_attribute">
+            <value name="content">
+              <shadow type="inline_string">
+                <field name="value">URL</field>
+              </shadow>
+            </value>
+          </block>
+        </value>
+      </block>
+    </value>
+  </block>
+
+  <block type="image_element">
+    <value name="attributes">
+      <block type="attributes_join">
+        <mutation color="#00CA4D" items="1" limit="100" minimum="1" />
+        <value name="input_1">
+          <block type="src_attribute">
+            <value name="content">
+              <shadow type="inline_string">
+                <field name="value">URL</field>
+              </shadow>
+            </value>
+          </block>
+        </value>
+      </block>
+    </value>
+  </block>
+  
+  <block type="media_controls"></block>
+</category>

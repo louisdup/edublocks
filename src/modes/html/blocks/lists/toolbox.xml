@@ -1,0 +1,19 @@
+<category name="Lists" colour="#29C598" css-icon="customIcon fad fa-list">
+  <label text="Lists"></label>
+
+  <block type="li"></block>
+
+  <block type="ul"></block>
+
+  <block type="ol"></block>
+
+  <block type="select"></block>
+  
+  <block type="option">
+    <value name="content">
+      <shadow type="textinline">
+        <field name="text">Option 1</field>
+      </shadow>
+    </value>
+  </block>
+</category>

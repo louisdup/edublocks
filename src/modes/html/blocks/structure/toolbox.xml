@@ -1,0 +1,17 @@
+<category name="Structure" colour="#FF8500" css-icon="customIcon fad fa-cube">
+  <label text="Structure"></label>
+
+  <block type="div_container"></block>
+
+  <block type="header"></block>
+
+  <block type="footer"></block>
+
+  <block type="section"></block>
+
+  <block type="article"></block>
+
+  <block type="br"></block>
+  
+  <block type="hr"></block>
+</category>

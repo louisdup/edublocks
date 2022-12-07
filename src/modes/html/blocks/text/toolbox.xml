@@ -1,0 +1,51 @@
+<category name="Text" colour="#448EFF" css-icon="customIcon fas fa-heading">
+  <label text="Text"></label>
+
+  <block type="heading">
+    <value name="type">
+      <shadow type="heading_size_slider"></shadow>
+    </value>
+    <value name="content">
+      <shadow type="textinline">
+        <field name="text">Heading</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="paragraph">
+    <value name="content">
+      <shadow type="textinline">
+        <field name="text">Paragraph</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="span">
+    <value name="content">
+      <shadow type="textinline">
+        <field name="text">Span</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="link_element">
+    <value name="attributes">
+      <block type="attributes_join">
+        <mutation color="#00CA4D" items="1" limit="100" minimum="1" />
+        <value name="input_1">
+          <block type="href_attribute">
+            <value name="content">
+              <shadow type="inline_string">
+                <field name="value">URL</field>
+              </shadow>
+            </value>
+          </block>
+        </value>
+      </block>
+    </value>
+  </block>
+  
+  <block type="inline_text"></block>
+
+  <block type="inline_string"></block>
+</category>

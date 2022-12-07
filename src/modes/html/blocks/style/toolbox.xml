@@ -1,0 +1,514 @@
+<category name="Style" colour="#AD40FF" css-icon="customIcon fad fa-palette">
+  <label text="Style"></label>
+
+  <block type="style_block"></block>
+  
+  <block type="stylesheet">
+    <value name="attributes">
+      <block type="attributes_join">
+        <mutation color="#00CA4D" items="2" limit="100" minimum="1" />
+        <value name="input_1">
+          <block type="rel_attribute">
+            <value name="content">
+              <shadow type="inline_string">
+                <field name="value">stylesheet</field>
+              </shadow>
+            </value>
+          </block>
+        </value>
+        <value name="input_2">
+          <block type="href_attribute">
+            <value name="content">
+              <shadow type="inline_string">
+                <field name="value">URL</field>
+              </shadow>
+            </value>
+          </block>
+        </value>
+      </block>
+    </value>
+  </block>
+
+  <block type="element_style">
+    <value name="element">
+      <shadow type="textinline">
+        <field name="text">.classname</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="pseudo"></block>
+
+  <block type="color_picker"></block>
+
+  <block type="rgba">
+    <value name="r">
+      <shadow type="textinline">
+        <field name="text">r</field>
+      </shadow>
+    </value>
+    <value name="g">
+      <shadow type="textinline">
+        <field name="text">g</field>
+      </shadow>
+    </value>
+    <value name="b">
+      <shadow type="textinline">
+        <field name="text">b</field>
+      </shadow>
+    </value>
+    <value name="a">
+      <shadow type="textinline">
+        <field name="text">a</field>
+      </shadow>
+    </value>
+  </block>
+
+  <category name="Text" colour="#AD40FF" css-icon="customIcon fad fa-palette">
+    <label text="Text"></label>
+    
+    <label text="External" ></label>
+    <block type="text_color">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">#ff0066</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="font_family">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">serif</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="font_size_value">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">20</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="font_size_text">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">20</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="text_align"></block>
+    
+    <block type="text_transform"></block>
+
+    <block type="text_decoration"></block>
+
+    <block type="text_shadow">
+      <value name="h">
+        <shadow type="textinline">
+          <field name="text">h-shadow</field>
+        </shadow>
+      </value>
+      <value name="v">
+        <shadow type="textinline">
+          <field name="text">v-shadow</field>
+        </shadow>
+      </value>
+      <value name="blur">
+        <shadow type="textinline">
+          <field name="text">radius</field>
+        </shadow>
+      </value>
+      <value name="color">
+        <shadow type="textinline">
+          <field name="text">#ff0066</field>
+        </shadow>
+      </value>
+    </block>
+
+    <label text="Inline" ></label>
+    <block type="text_color_inline">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">#ff0066</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="font_family_inline">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">serif</field>
+        </shadow>
+      </value>
+    </block>
+    
+    <block type="font_size_value_inline">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">20</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="font_size_text_inline">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">20</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="text_align_inline"></block>
+
+    <block type="text_transform_inline"></block>
+
+    <block type="text_decoration_inline"></block>
+
+    <block type="text_shadow_inline">
+      <value name="h">
+        <shadow type="textinline">
+          <field name="text">h-shadow</field>
+        </shadow>
+      </value>
+      <value name="v">
+        <shadow type="textinline">
+          <field name="text">v-shadow</field>
+        </shadow>
+      </value>
+      <value name="blur">
+        <shadow type="textinline">
+          <field name="text">radius</field>
+        </shadow>
+      </value>
+      <value name="color">
+        <shadow type="textinline">
+          <field name="text">#ff0066</field>
+        </shadow>
+      </value>
+    </block>
+  </category>
+  
+  <category name="Display" colour="#AD40FF" css-icon="customIcon fad fa-palette">
+    <label text="Display"></label>
+
+    <label text="External" ></label>
+    <block type="display"></block>
+
+    <block type="overflow"></block>
+
+    <block type="float"></block>
+    <block type="element_height">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">20</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="element_width">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">20</field>
+        </shadow>
+      </value>
+    </block>
+
+    <label text="Inline" ></label>
+    <block type="display_inline"></block>
+
+    <block type="overflow_inline"></block>
+
+    <block type="float_inline"></block>
+
+    <block type="element_height_inline">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">20</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="element_width_inline">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">20</field>
+        </shadow>
+      </value>
+    </block>
+  </category>
+
+  <category name="Spacing" colour="#AD40FF" css-icon="customIcon fad fa-palette">
+    <label text="Spacing"></label>
+
+    <label text="External" ></label>
+    <block type="margin_direction">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">20</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="margin">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">20</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="padding_direction">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">20</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="padding">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">20</field>
+        </shadow>
+      </value>
+    </block>
+
+    <label text="Inline" ></label>
+    <block type="margin_direction_inline">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">20</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="margin_inline">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">20</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="padding_direction_inline">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">20</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="padding_inline">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">20</field>
+        </shadow>
+      </value>
+    </block>
+  </category>
+
+  <category name="Background" colour="#AD40FF" css-icon="customIcon fad fa-palette">
+    <label text="Background"></label>
+
+    <label text="External" ></label>
+    <block type="background_color">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">#ff0066</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="background_image">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">URL</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="background_repeat"></block>
+
+    <block type="background_position"></block>
+
+    <block type="background_size"></block>
+
+    <block type="background_clip"></block>
+
+    <label text="Inline" ></label>
+    <block type="background_color_inline">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">#ff0066</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="background_image_inline">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">URL</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="background_repeat_inline"></block>
+
+    <block type="background_position_inline"></block>
+    
+    <block type="background_size_inline"></block>
+
+    <block type="background_clip_inline"></block>
+  </category>
+
+  <category name="Border" colour="#AD40FF" css-icon="customIcon fad fa-palette">
+    <label text="Border"></label>
+
+    <label text="External" ></label>
+
+    <block type="border_set">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">1</field>
+        </shadow>
+      </value>
+      
+      <value name="color">
+        <shadow type="textinline">
+          <field name="text">#ff0066</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="border_direction_set">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">1</field>
+        </shadow>
+      </value>
+      <value name="color">
+        <shadow type="textinline">
+          <field name="text">#ff0066</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="border_radius">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">5</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="border_radius_direction">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">5</field>
+        </shadow>
+      </value>
+    </block>
+
+    <label text="Inline" ></label>
+    <block type="border_set_inline">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">1</field>
+        </shadow>
+      </value>
+      <value name="color_inline">
+        <shadow type="textinline">
+          <field name="text">#ff0066</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="border_direction_set_inline">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">1</field>
+        </shadow>
+      </value>
+      <value name="color">
+        <shadow type="textinline">
+          <field name="text">#ff0066</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="border_radius_inline">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">5</field>
+        </shadow>
+      </value>
+    </block>
+
+    <block type="border_radius_direction_inline">
+      <value name="content">
+        <shadow type="textinline">
+          <field name="text">5</field>
+        </shadow>
+      </value>
+    </block>
+  </category>
+
+  <category name="Other" colour="#AD40FF" css-icon="customIcon fad fa-palette">
+    <label text="Other"></label>
+
+    <label text="External" ></label>
+    <block type="cursor"></block>
+
+    <block type="box_shadow">
+      <value name="h">
+        <shadow type="textinline">
+          <field name="text">h-shadow</field>
+        </shadow>
+      </value>
+      <value name="v">
+        <shadow type="textinline">
+          <field name="text">v-shadow</field>
+        </shadow>
+      </value>
+      <value name="blur">
+        <shadow type="textinline">
+          <field name="text">radius</field>
+        </shadow>
+      </value>
+      <value name="color">
+        <shadow type="textinline">
+          <field name="text">#ff0066</field>
+        </shadow>
+      </value>
+    </block>
+
+    <label text="Inline" ></label>
+    <block type="cursor_inline"></block>
+    
+    <block type="box_shadow_inline">
+      <value name="h">
+        <shadow type="textinline">
+          <field name="text">h-shadow</field>
+        </shadow>
+      </value>
+      <value name="v">
+        <shadow type="textinline">
+          <field name="text">v-shadow</field>
+        </shadow>
+      </value>
+      <value name="blur">
+        <shadow type="textinline">
+          <field name="text">radius</field>
+        </shadow>
+      </value>
+      <value name="color">
+        <shadow type="textinline">
+          <field name="text">#ff0066</field>
+        </shadow>
+      </value>
+    </block>
+  </category>
+</category>

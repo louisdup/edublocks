@@ -1,0 +1,26 @@
+<category name="Script" colour="#FFAA00" css-icon="customIcon fad fa-code">
+  <label text="Script"></label>
+
+  <block type="external_script">
+    <value name="attributes">
+      <block type="attributes_join">
+        <mutation color="#00CA4D" items="1" limit="100" minimum="1" />
+        <value name="input_1">
+          <block type="src_attribute">
+            <value name="content">
+              <shadow type="inline_string">
+                <field name="value">URL</field>
+              </shadow>
+            </value>
+          </block>
+        </value>
+      </block>
+    </value>
+  </block>
+  
+  <block type="script">
+    <value name="content">
+      <block type="multiline"></block>
+    </value>
+  </block>
+</category>

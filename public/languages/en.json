@@ -136,6 +136,7 @@
         "download": "Download",
         "connect": "Connect",
         "flash": "Flash",
+        "popout": "Popout",
         "assignment-submit": "Submit",
         "no-access": "No Access",
         "project-is-private": "The author has this project set to private"
@@ -146,7 +147,8 @@
         "output": "Output",
         "simulator": "Simulator",
         "serial": "Serial",
-        "assignment": "Assignment"
+        "assignment": "Assignment",
+        "preview": "Preview"
     },
     "project-settings": {
         "project": "Project",

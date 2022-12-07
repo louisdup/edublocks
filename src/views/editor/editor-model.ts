@@ -81,10 +81,13 @@ class EditorModel extends ViewModelBase {
 	 */
 	private async loadProject(): Promise<void> {
 		this.state.isProjectLoading = true;
-
+		
 		// Check if there's already a firestore project set (i.e opened from the projects page).
 		if (EditorUtilities.currentProject.value && EditorUtilities.currentProject.value.firestoreProject) {
 			await this.fetchAndSetCurrentProjectCode();
+
+			// Enable the share button, as the project is stored in firestore and therefore shareable.
+			EditorUtilities.currentProject.value.mode.setHeaderButtonVisible("share");
 		}
 
 		// Check if the user is trying to access a firestore project. If so, load it.

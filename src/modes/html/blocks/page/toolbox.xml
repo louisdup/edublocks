@@ -1,0 +1,25 @@
+<category name="Page" colour="#FFC100" css-icon="customIcon fas fa-files">
+  <label text="Page"></label>
+
+  <block type="html"></block>
+
+  <block type="head"></block>
+
+  <block type="title">
+    <value name="content">
+      <shadow type="textinline">
+        <field name="text">Website Name</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="body"></block>
+  
+  <block type="text_content">
+    <value name="content">
+      <shadow type="textinline">
+        <field name="text">Text</field>
+      </shadow>
+    </value>
+  </block>
+</category>
