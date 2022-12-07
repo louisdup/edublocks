@@ -64,44 +64,83 @@ export class PythonModel extends ModeModelBase {
 	 */
 	public loadBlocks(): Promise<void> {
 		return new Promise(async (resolve: VoidFunction) => {
-			(await import("../common/blocks/python/common/definitions")).default();
-			(await import("../common/blocks/python/common/generators")).default();
-	
-			(await import("./blocks/deprecated/definitions")).default();
-			(await import("./blocks/deprecated/generators")).default();
-	
-			(await import("./blocks/imports/definitions")).default();
-			(await import("./blocks/imports/generators")).default();
-	
-			(await import("../common/blocks/python/variables/definitions")).default();
-			(await import("../common/blocks/python/variables/generators")).default();
-	
-			(await import("./blocks/statements/definitions")).default();
-			(await import("./blocks/statements/generators")).default();
-	
-			(await import("./blocks/text/definitions")).default();
-			(await import("./blocks/text/generators")).default();
-	
-			(await import("./blocks/math/definitions")).default();
-			(await import("./blocks/math/generators")).default();
-	
-			(await import("./blocks/logic/definitions")).default();
-			(await import("./blocks/logic/generators")).default();
-	
-			(await import("./blocks/lists/definitions")).default();
-			(await import("./blocks/lists/generators")).default();
-	
-			(await import("./blocks/loops/definitions")).default();
-			(await import("./blocks/loops/generators")).default();
-	
-			(await import("./blocks/definitions/definitions")).default();
-			(await import("./blocks/definitions/generators")).default();
-	
-			(await import("./blocks/turtle/definitions")).default();
-			(await import("./blocks/turtle/generators")).default();
-	
-			(await import("./blocks/graphs/definitions")).default();
-			(await import("./blocks/graphs/generators")).default();
+			const commonDefinitions: any = import("../common/blocks/python/common/definitions");
+			const commonGenerators: any = import("../common/blocks/python/common/generators");
+
+			const deprecatedDefinitions: any = import("./blocks/deprecated/definitions");
+			const deprecatedGenerators: any = import("./blocks/deprecated/generators");
+
+			const importsDefinitions: any = import("./blocks/imports/definitions");
+			const importsGenerators: any = import("./blocks/imports/generators");
+
+			const variablesDefinitions: any = import("../common/blocks/python/variables/definitions");
+			const variablesGenerators: any = import("../common/blocks/python/variables/generators");
+
+			const statementsDefinitions: any = import("./blocks/statements/definitions");
+			const statementsGenerators: any = import("./blocks/statements/generators");
+
+			const textDefinitions: any = import("./blocks/text/definitions");
+			const textGenerators: any = import("./blocks/text/generators");
+
+			const mathDefinitions: any = import("./blocks/math/definitions");
+			const mathGenerators: any = import("./blocks/math/generators");
+
+			const logicDefinitions: any = import("./blocks/logic/definitions");
+			const logicGenerators: any = import("./blocks/logic/generators");
+
+			const listsDefinitions: any = import("./blocks/lists/definitions");
+			const listsGenerators: any = import("./blocks/lists/generators");
+
+			const loopsDefinitions: any = import("./blocks/loops/definitions");
+			const loopsGenerators: any = import("./blocks/loops/generators");
+
+			const definitionsDefinitions: any = import("./blocks/definitions/definitions");
+			const definitionsGenerators: any = import("./blocks/definitions/generators");
+
+			const turtleDefinitions: any = import("./blocks/turtle/definitions");
+			const turtleGenerators: any = import("./blocks/turtle/generators");
+
+			const graphsDefinitions: any = import("./blocks/graphs/definitions");
+			const graphsGenerators: any = import("./blocks/graphs/generators");
+
+			(await commonDefinitions).default();
+			(await commonGenerators).default();
+
+			(await deprecatedDefinitions).default();
+			(await deprecatedGenerators).default();
+
+			(await importsDefinitions).default();
+			(await importsGenerators).default();
+
+			(await variablesDefinitions).default();
+			(await variablesGenerators).default();
+
+			(await statementsDefinitions).default();
+			(await statementsGenerators).default();
+
+			(await textDefinitions).default();
+			(await textGenerators).default();
+
+			(await mathDefinitions).default();
+			(await mathGenerators).default();
+
+			(await logicDefinitions).default();
+			(await logicGenerators).default();
+
+			(await listsDefinitions).default();
+			(await listsGenerators).default();
+
+			(await loopsDefinitions).default();
+			(await loopsGenerators).default();
+
+			(await definitionsDefinitions).default();
+			(await definitionsGenerators).default();
+
+			(await turtleDefinitions).default();
+			(await turtleGenerators).default();
+
+			(await graphsDefinitions).default();
+			(await graphsGenerators).default();
 
 			resolve();
 		});

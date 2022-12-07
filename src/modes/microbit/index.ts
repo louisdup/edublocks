@@ -71,23 +71,41 @@ export class MicrobitModel extends ModeModelBase {
 	 */
 	public loadBlocks(): Promise<void> {
 		return new Promise(async (resolve: VoidFunction) => {
-			(await import("../common/blocks/python/common/definitions")).default();
-			(await import("../common/blocks/python/common/generators")).default();
+			const commonDefinitions: any = import("../common/blocks/python/common/definitions");
+			const commonGenerators: any = import("../common/blocks/python/common/generators");
 
-			(await import("../common/blocks/python/basic/definitions")).default();
-			(await import("../common/blocks/python/basic/generators")).default();
+			const basicDefinitions: any = import("../common/blocks/python/basic/definitions");
+			const basicGenerators: any = import("../common/blocks/python/basic/generators");
 
-			(await import("./blocks/basic/definitions")).default();
-			(await import("./blocks/basic/generators")).default();
+			const microbitBasicDefinitions: any = import("./blocks/basic/definitions");
+			const microbitBasicGenerators: any = import("./blocks/basic/generators");
 
-			(await import("../common/blocks/python/variables/definitions")).default();
-			(await import("../common/blocks/python/variables/generators")).default();
+			const variablesDefinitions: any = import("../common/blocks/python/variables/definitions");
+			const variablesGenerators: any = import("../common/blocks/python/variables/generators");
 
-			(await import("./blocks/display/definitions")).default();
-			(await import("./blocks/display/generators")).default();
+			const displayDefinitions: any = import("./blocks/display/definitions");
+			const displayGenerators: any = import("./blocks/display/generators");
 
-			(await import("./blocks/buttons/definitions")).default();
-			(await import("./blocks/buttons/generators")).default();
+			const buttonsDefinitions: any = import("./blocks/buttons/definitions");
+			const buttonsGenerators: any = import("./blocks/buttons/generators");
+
+			(await commonDefinitions).default();
+			(await commonGenerators).default();
+
+			(await basicDefinitions).default();
+			(await basicGenerators).default();
+
+			(await microbitBasicDefinitions).default();
+			(await microbitBasicGenerators).default();
+
+			(await variablesDefinitions).default();
+			(await variablesGenerators).default();
+
+			(await displayDefinitions).default();
+			(await displayGenerators).default();
+
+			(await buttonsDefinitions).default();
+			(await buttonsGenerators).default();
 
 			resolve();
 		});

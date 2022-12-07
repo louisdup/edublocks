@@ -54,6 +54,11 @@ export class HTMLModel extends ModeModelBase {
 	}
 
 	/**
+	 * Returns the start block that appears at the top of all HTML code.
+	 */
+	public startBlock: string = "html";
+
+	/**
 	 * Loads block definitions and generators for the HTML mode.
 	 */
 	public loadBlocks(): Promise<void> {
