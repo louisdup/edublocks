@@ -21,9 +21,9 @@
     </value>
   </block>
 
-  <block type="style_attribute">
+  <block type="style">
     <value name="content">
-      <shadow type="inline_string">
+      <shadow type="inline_text">
         <field name="value"></field>
       </shadow>
     </value>
