@@ -64,10 +64,10 @@ export class HTMLModel extends ModeModelBase {
 	public loadBlocks(): Promise<void> {
 		return new Promise(async (resolve: VoidFunction) => {
 			const commonDefinitions: any = import("./blocks/common/definitions");
-			const commonGenerators: any = import("./blocks/common/definitions");
+			const commonGenerators: any = import("./blocks/common/generators");
 
 			const deprecatedDefinitions: any = import("./blocks/deprecated/definitions");
-			const deprecatedGenerators: any = import("./blocks/deprecated/definitions");
+			const deprecatedGenerators: any = import("./blocks/deprecated/generators");
 
 			const pageDefinitions: any = import("./blocks/page/definitions");
 			const pageGenerators: any = import("./blocks/page/generators");
