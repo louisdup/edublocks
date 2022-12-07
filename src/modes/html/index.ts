@@ -54,50 +54,81 @@ export class HTMLModel extends ModeModelBase {
 	}
 
 	/**
-	 * Returns the start block that appears at the top of all HTML code.
-	 */
-	public startBlock: string = "html";
-
-	/**
 	 * Loads block definitions and generators for the HTML mode.
 	 */
 	public loadBlocks(): Promise<void> {
 		return new Promise(async (resolve: VoidFunction) => {
-			(await import("./blocks/common/definitions")).default();
-			(await import("./blocks/common/generators")).default();
+			const commonDefinitions: any = import("./blocks/common/definitions");
+			const commonGenerators: any = import("./blocks/common/definitions");
 
-			(await import("./blocks/deprecated/definitions")).default();
-			(await import("./blocks/deprecated/generators")).default();
-			
-			(await import("./blocks/page/definitions")).default();
-			(await import("./blocks/page/generators")).default();
+			const deprecatedDefinitions: any = import("./blocks/deprecated/definitions");
+			const deprecatedGenerators: any = import("./blocks/deprecated/definitions");
 
-			(await import("./blocks/structure/definitions")).default();
-			(await import("./blocks/structure/generators")).default();
+			const pageDefinitions: any = import("./blocks/page/definitions");
+			const pageGenerators: any = import("./blocks/page/generators");
 
-			(await import("./blocks/text/definitions")).default();
-			(await import("./blocks/text/generators")).default();
+			const structureDefinitions: any = import("./blocks/structure/definitions");
+			const structureGenerators: any = import("./blocks/structure/generators");
 
-			(await import("./blocks/attributes/definitions")).default();
-			(await import("./blocks/attributes/generators")).default();
+			const textDefinitions: any = import("./blocks/text/definitions");
+			const textGenerators: any = import("./blocks/text/generators");
 
-			(await import("./blocks/style/definitions")).default();
-			(await import("./blocks/style/generators")).default();
+			const attributesDefinitions: any = import("./blocks/attributes/definitions");
+			const attributesGenerators: any = import("./blocks/attributes/generators");
 
-			(await import("./blocks/media/definitions")).default();
-			(await import("./blocks/media/generators")).default();
+			const styleDefinitions: any = import("./blocks/style/definitions");
+			const styleGenerators: any = import("./blocks/style/generators");
 
-			(await import("./blocks/forms/definitions")).default();
-			(await import("./blocks/forms/generators")).default();
+			const mediaDefinitions: any = import("./blocks/media/definitions");
+			const mediaGenerators: any = import("./blocks/media/generators");
 
-			(await import("./blocks/tables/definitions")).default();
-			(await import("./blocks/tables/generators")).default();
+			const formsDefinitions: any = import("./blocks/forms/definitions");
+			const formsGenerators: any = import("./blocks/forms/generators");
 
-			(await import("./blocks/lists/definitions")).default();
-			(await import("./blocks/lists/generators")).default();
+			const tablesDefinitions: any = import("./blocks/tables/definitions");
+			const tablesGenerators: any = import("./blocks/tables/generators");
 
-			(await import("./blocks/script/definitions")).default();
-			(await import("./blocks/script/generators")).default();
+			const listsDefinitions: any = import("./blocks/lists/definitions");
+			const listsGenerators: any = import("./blocks/lists/generators");
+
+			const scriptDefinitions: any = import("./blocks/script/definitions");
+			const scriptGenerators: any = import("./blocks/script/generators");
+
+			(await commonDefinitions).default();
+			(await commonGenerators).default();
+
+			(await deprecatedDefinitions).default();
+			(await deprecatedGenerators).default();
+
+			(await pageDefinitions).default();
+			(await pageGenerators).default();
+
+			(await structureDefinitions).default();
+			(await structureGenerators).default();
+
+			(await textDefinitions).default();
+			(await textGenerators).default();
+
+			(await attributesDefinitions).default();
+			(await attributesGenerators).default();
+
+			(await styleDefinitions).default();
+			(await styleGenerators).default();
+
+			(await mediaDefinitions).default();
+			(await mediaGenerators).default();
+
+			(await formsDefinitions).default();
+			(await formsGenerators).default();
+
+			(await tablesDefinitions).default();
+			(await tablesGenerators).default();
+
+			(await listsDefinitions).default();
+			(await listsGenerators).default();
+
+			(await scriptDefinitions).default();
+			(await scriptGenerators).default();
 
 			resolve();
 		});
