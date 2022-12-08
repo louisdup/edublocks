@@ -23,6 +23,7 @@ import loops from "./blocks/loops/toolbox.xml?raw";
 import definitions from "./blocks/definitions/toolbox.xml?raw";
 import turtle from "./blocks/turtle/toolbox.xml?raw";
 import graphs from "./blocks/graphs/toolbox.xml?raw";
+import requests from "./blocks/requests/toolbox.xml?raw";
 
 /** 
  * Mode model for the python mode.
@@ -103,6 +104,9 @@ export class PythonModel extends ModeModelBase {
 			const graphsDefinitions: any = import("./blocks/graphs/definitions");
 			const graphsGenerators: any = import("./blocks/graphs/generators");
 
+			const requestsDefinitions: any = import("./blocks/requests/definitions");
+			const requestsGenerators: any = import("./blocks/requests/generators");
+
 			(await commonDefinitions).default();
 			(await commonGenerators).default();
 
@@ -142,6 +146,9 @@ export class PythonModel extends ModeModelBase {
 			(await graphsDefinitions).default();
 			(await graphsGenerators).default();
 
+			(await requestsDefinitions).default();
+			(await requestsGenerators).default();
+
 			resolve();
 		});
 	}
@@ -161,7 +168,8 @@ export class PythonModel extends ModeModelBase {
 			loops,
 			definitions,
 			turtle,
-			graphs
+			graphs,
+			requests
 		];
 	}
 
