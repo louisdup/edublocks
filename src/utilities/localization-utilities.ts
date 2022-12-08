@@ -1,3 +1,4 @@
+import { EbSelectOption } from "@/components/eb-select/eb-select-types";
 import { state } from "@/data/state";
 
 /**
@@ -5,9 +6,33 @@ import { state } from "@/data/state";
  */
 export class LocalizationUtilities {
 	/**
+	 * Lookup localized text and get a localized value.
+	 */
+	public static getText(key: string, placeholderValues?: Array<string>): string {
+		return this.getLocalizedText("localization", key, placeholderValues);
+	}
+		
+	/**
+	 * Returns a list of supported languages.
+	 */ 
+	public static supportedLanguages: Array<string> = ["en", "fr"];
+
+	/**
 	 * Stores language resource strings for localization.
 	 */
 	private static textLookupTable: Record<string, string> = {};
+
+	/**
+	 * Remaps the list of supported languages for displaying in a select box.
+	 */
+	public static remapSupportedLanguagesForSelect(): Array<EbSelectOption> {
+		return this.supportedLanguages.map((language: string) => {
+			return {
+				label: this.getText(language),
+				value: language
+			};
+		});
+	}
 
 	/**
 	 * Take namespace for view/component and key to return a translated value from the lookup table.
@@ -67,11 +92,9 @@ export class LocalizationUtilities {
 			state.language = localStorage.getItem("language") as string;
 		}
 
-		const supportedLanguages: Array<string> = ["en", "fr"];
-
 		let preferredLanguage: string = defaultLanguage;
 
-		if (supportedLanguages.includes(state.language)) {
+		if (this.supportedLanguages.includes(state.language)) {
 			preferredLanguage = state.language;
 		}
 

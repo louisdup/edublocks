@@ -60,6 +60,12 @@ export class DesktopNavModel extends ComponentModelBase {
 				icon: ["far", "users"],
 				href: "/classroom"
 			},
+			{
+				key: "settings",
+				title: this.getText("settings"),
+				icon: ["far", "cog"],
+				href: "/settings"
+			},
 		];
 	}
 

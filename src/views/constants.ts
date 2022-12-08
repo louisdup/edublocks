@@ -11,5 +11,6 @@ export enum View {
 	ClassroomDetail = "Classroom Detail",
 	AssignmentSubmissions = "Assignment Submissions",
 	JoinClassroom = "Join Classroom",
-	NotFound = "Not Found"
+	NotFound = "Not Found",
+	Settings = "Settings"
 }

@@ -5,7 +5,8 @@
         "projects": "Projects",
         "showcase": "Showcase",
         "learn": "Learn",
-        "classroom": "Classroom"
+        "classroom": "Classroom",
+        "settings": "Settings"
     },
     "desktop-header": {
         "new": "New"
@@ -389,5 +390,20 @@
     },
     "not-found": {
         "sorry-but-we-cant-find": "Sorry, but we can't find the page you're looking for"
+    },
+    "settings": {
+        "settings": "Settings",
+        "account": "Account",
+        "profile": "Profile",
+        "name": "Name",
+        "email": "Email",
+        "joined": "Joined",
+        "language": "Language",
+        "change-language": "Change Language",
+        "save": "Save"
+    },
+    "localization": {
+        "en": "English",
+        "fr": "French"
     }
 }

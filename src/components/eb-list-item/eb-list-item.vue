@@ -18,7 +18,7 @@
       />
     </div>
 
-    <div>
+    <div v-if="title || subtitle">
       <h1 class="text-gray-900 text-sm font-medium">
         {{ title }}
       </h1>

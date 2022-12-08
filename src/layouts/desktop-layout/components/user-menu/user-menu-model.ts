@@ -59,7 +59,7 @@ export class UserMenuModel extends ComponentModelBase {
 					title: this.getText("account-settings"),
 					icon: ["far", "cog"],
 					action: (): void => {
-						router.push("/settings/account");
+						router.push("/settings");
 					}
 				},
 				{
