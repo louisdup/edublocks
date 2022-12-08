@@ -28,4 +28,14 @@ export default function getGenerators(): void {
 		const code: string = `from processing import *\n`;
 		return code;
 	};
+
+	Blockly.Python["import_requests"] = function(): string {
+		const code: string = `import requests\n`;
+		return code;
+	};
+
+	Blockly.Python["import_json"] = function(): string {
+		const code: string = `import json\n`;
+		return code;
+	};
 }

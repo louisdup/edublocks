@@ -12,4 +12,8 @@
   <block type="import_turtle"></block>
 
   <block type="import_processing"></block>
+
+  <block type="import_requests"></block>
+
+  <block type="import_json"></block>
 </category>

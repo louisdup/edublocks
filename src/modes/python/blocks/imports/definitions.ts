@@ -60,4 +60,24 @@ export default function getDefinitions(): void {
 			this.setColour(importsColor);
 		},
 	};
+
+	Blockly.Blocks["import_requests"] = {
+		init: function(): void {
+			this.appendDummyInput()
+				.appendField("import requests");
+			this.setPreviousStatement(true, null);
+			this.setNextStatement(true, null);
+			this.setColour(importsColor);
+		},
+	};
+
+	Blockly.Blocks["import_json"] = {
+		init: function(): void {
+			this.appendDummyInput()
+				.appendField("import json");
+			this.setPreviousStatement(true, null);
+			this.setNextStatement(true, null);
+			this.setColour(importsColor);
+		},
+	};
 }

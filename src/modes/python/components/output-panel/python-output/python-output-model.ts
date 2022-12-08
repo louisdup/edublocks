@@ -18,7 +18,7 @@ export class PythonOutputModel extends ComponentModelBase {
 	public getIframeSrc(): string | undefined {
 		if (EditorUtilities.currentProject.value) {
 			const code: string = encodeURIComponent(`#!/usr/bin/python3\n${EditorUtilities.currentProject.value.code}`);
-			return `https://trinket.io/tools/1.0/jekyll/embed/python?runOption=run&outputOnly=true&start=result#code=${code}`;
+			return `https://trinket.io/tools/1.0/jekyll/embed/${code.includes("requests") ? "python3" : "python"}?runOption=run&outputOnly=true&start=result#code=${code}`;
 		}
 		else {
 			return undefined;
