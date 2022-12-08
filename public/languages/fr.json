@@ -1,0 +1,409 @@
+{
+    "navigation": {
+        "home": "Domicile",
+        "editor": "Editeur",
+        "projects": "Projets",
+        "showcase": "Démonstration",
+        "learn": "Apprendre",
+        "classroom": "Salle de classe",
+        "settings": "Réglages"
+    },
+    "desktop-header": {
+        "new": "Nouveau"
+    },
+    "home": {
+        "home": "Domicile",
+        "new-project": "Nouveau projet",
+        "create-new-project": "Créer un nouveau projet",
+        "showcase": "Démonstration",
+        "recent-projects": "Projets récents",
+        "text": "Texte du texte",
+        "blocks": "Blocs",
+        "no-projects-found": "Aucun projet trouvé",
+        "get-started-by-creating": "Commencez par créer ou importer un projet.",
+        "login-to-view-projects": "Connectez-vous pour voir les projets récents",
+        "you-need-to-be-logged-in": "Vous devez être connecté pour voir vos projets récents."
+    },
+    "delete-project": {
+        "delete-project": "Supprimer le projet",
+        "cancel": "Abandonner",
+        "delete": "Supprimez",
+        "delete-confirmation": "Êtes-vous sûr de vouloir supprimer le projet suivant :"
+    },
+    "create-project": {
+        "create-project": "Créer un projet",
+        "cancel": "Abandonner",
+        "create": "Créer",
+        "project-name": "Nom du projet",
+        "mode": "Mode",
+        "type": "Type de texte",
+        "blocks": "Blocs",
+        "great-for-beginners": "Idéal pour les débutants",
+        "text-only": "Texte uniquement",
+        "ideal-for-advanced-users": "Idéal pour les utilisateurs avancés"
+    },
+    "share-project": {
+        "share-project": "Partager le projet",
+        "copy": "Copie",
+        "copied": "Copié",
+        "close": "Fermer",
+        "access": "Accès",
+        "private": "Privé",
+        "only-you-can-view-edit": "Seul vous pouvez voir et modifier",
+        "public": "Publique",
+        "anyone-with-link": "N'importe qui avec le lien peut voir",
+        "share": "Partager",
+        "showcase": "Démonstration",
+        "publish-project": "Publier le projet",
+        "google-classroom": "Salle de classe Google",
+        "microsoft-teams": "Équipes Microsoft"
+    },
+    "publish-to-showcase": {
+        "publish-to-showcase": "Publier dans la démonstration",
+        "cancel": "Abandonner",
+        "publish": "Publier",
+        "name": "Nom",
+        "description": "Libellé",
+        "preview": "Aperçu"
+    },
+    "delete-showcase-project": {
+        "delete-project": "Supprimer le projet de démonstration",
+        "cancel": "Abandonner",
+        "delete": "Supprimez",
+        "delete-confirmation": "Êtes-vous sûr de vouloir supprimer le projet de vitrine suivant :"
+    },
+    "error": {
+        "something-went-wrong": "Quelque chose s'est mal passé",
+        "problem-processing-request": "Désolé, un problème est survenu lors du traitement de votre demande. Veuillez réessayer ultérieurement. Si le problème persiste, veuillez contacter l'équipe d'EduBlocks.",
+        "close": "Fermer"
+    },
+    "login": {
+        "sign-into-account": "Connectez-vous à votre compte",
+        "login": "Se connecter",
+        "cancel": "Abandonner",
+        "email-address": "Adresse e-mail",
+        "password": "Mot de passe",
+        "incorrect-email-password": "E-mail ou mot de passe incorrect"
+    },
+    "user-menu": {
+        "login": "Se connecter",
+        "my-account": "Mon compte",
+        "logout": "Déconnexion",
+        "account-settings": "Paramètres du compte"
+    },
+    "validation": {
+        "email": "Doit être une adresse e-mail valide",
+        "required": "{1} est requis",
+        "min-characters": "{1} doit contenir au moins {2} caractères"
+    },
+    "showcase": {
+        "showcase": "Démonstration",
+        "featured-project": "Projet en vedette",
+        "introducing-the-html-editor": "Introduction de l'éditeur HTML",
+        "introducing-the-html-editor-description": "Faites vos premiers pas avec HTML et construisez votre propre site Web.",
+        "view-project": "Voir le projet",
+        "open-project": "Ouvrir un projet",
+        "delete-project": "Supprimer le projet"
+    },
+    "showcase-project-detail": {
+        "back": "Précédent",
+        "clone": "Cloner",
+        "about-this-project": "À propos de ce projet",
+        "created-by": "Créé par",
+        "description": "Libellé",
+        "no-description": "Aucune description"
+    },
+    "projects": {
+        "projects": "Projets",
+        "project": "Projet",
+        "type": "Type de texte",
+        "updated": "Mis à jour",
+        "size": "Taille",
+        "actions": "Actions",
+        "open-project": "Ouvrir un projet",
+        "open-showcase-project": "Ouvrir le projet de démonstration",
+        "rename-project": "Renommer le projet",
+        "delete-project": "Supprimer le projet",
+        "open-local-project": "Ouvrir un projet local",
+        "share-project": "Partager le projet",
+        "new-project": "Nouveau projet",
+        "text": "Texte du texte",
+        "blocks": "Blocs",
+        "edited": "Modifié {1}",
+        "search-projects": "Rechercher des projets...",
+        "no-projects-found": "Aucun projet trouvé",
+        "get-started-by-creating": "Commencez par créer ou importer un projet.",
+        "search-for-something-else": "Essayez de chercher autre chose.",
+        "login-to-view-projects": "Connectez-vous pour voir les projets récents",
+        "you-need-to-be-logged-in": "Vous devez être connecté pour voir vos projets récents."
+    },
+    "format": {
+        "just-now": "Juste maintenant",
+        "seconds-ago": "Il y a {1} secondes",
+        "minutes-ago": "Il y a {1} minutes",
+        "hours-ago": "Il y a {1} heures",
+        "1-minute-ago": "Il y a 1 minute",
+        "1-hour-ago": "Il y a 1 heure",
+        "today-at": "Aujourd'hui à {1}",
+        "yesterday-at": "Hier à {1}",
+        "at": "{1} à {2}"
+    },
+    "rename-project": {
+        "rename-project": "Renommer le projet",
+        "please-enter-new-name": "Veuillez entrer un nouveau nom pour",
+        "cancel": "Abandonner",
+        "name": "Nom"
+    },
+    "editor": {
+        "share": "Partager",
+        "save": "Enregistrer",
+        "run": "Exécuter",
+        "stop": "Arrêter",
+        "download": "Télécharger",
+        "connect": "Connecter",
+        "flash": "Clignoter",
+        "popout": "Popout",
+        "assignment-submit": "Soumettre",
+        "no-access": "Pas d'accès",
+        "project-is-private": "L'auteur a mis ce projet en privé"
+    },
+    "editor-desktop-header": {
+        "new-project": "Nouveau projet",
+        "home": "Domicile",
+        "projects": "Projets",
+        "showcase": "Démonstration",
+        "learn": "Apprendre",
+        "classroom": "Salle de classe"
+    },
+    "output-panel": {
+        "code": "Code",
+        "repl": "REPL",
+        "output": "Sortie",
+        "simulator": "Simulateur",
+        "serial": "Série",
+        "assignment": "Affectation",
+        "preview": "Aperçu"
+    },
+    "project-settings": {
+        "project": "Projet",
+        "update": "Mise à jour",
+        "project-name": "Nom du projet",
+        "export": "Exportation",
+        "export-code": "Exporter le code",
+        "export-blocks-screenshot": "Capture d'écran des blocs d'exportation"
+    },
+    "simulator": {
+        "sensors": "Capteurs",
+        "advanced": "Avancé",
+        "accelerometer": "Accelerometer",
+        "send": "Envoyer",
+        "up": "plus haut",
+        "down": "bas",
+        "left": "à gauche",
+        "right": "à droite",
+        "face-up": "face vers le haut",
+        "face-down": "face vers le bas",
+        "freefall": "freefall",
+        "3g": "3g",
+        "6g": "6g",
+        "8g": "8g",
+        "shake": "secouer",
+        "x": "x",
+        "y": "y",
+        "z": "Z",
+        "light-level": "Niveau de lumière",
+        "temperature": "Température",
+        "degrees-celcius": "°C",
+        "compass-heading": "En-tête de boussole",
+        "degrees": "deg",
+        "nano-teslas": "NT",
+        "sound-level": "Niveau sonore",
+        "buttons": "Boutons",
+        "press": "Presse",
+        "hold": "Suspendre",
+        "a": "A",
+        "b": "Os",
+        "pins": "Épingles",
+        "0": "0",
+        "1": "1",
+        "2": "2",
+        "logo": "Logo"
+    },
+    "connect-microbit": {
+        "back": "Précédent",
+        "next": "Suivant",
+        "connect-cable": "Connecter le câble",
+        "select-microbit": "Sélectionner micro:bit",
+        "select-microbit-from-list": "Dans la popup suivante, sélectionnez votre micro:bit dans la liste et cliquez sur 'Connecter'."
+    },
+    "webusb-settings": {
+        "webusb": "webUSB",
+        "disconnect-forget": "Déconnecter & Oublier"
+    },
+    "microbit": {
+        "flashing-code": "Code clignotant"
+    },
+    "classroom": {
+        "view-submissions": "Voir les remises",
+        "edit-assignment": "Modifier le devoir",
+        "edit-starter-project": "Modifier le projet de démarrage",
+        "delete-assignment": "Supprimer le devoir",
+        "open-my-code": "Ouvrir mon code",
+        "view-feedback": "Voir les commentaires",
+        "submit": "Soumettre",
+        "unsubmit": "Ne plus soumettre",
+        "due": "Echéance {1}",
+        "submissions-count": "{1} Soumissions",
+        "started": "Démarré {1}",
+        "submitted": "Soumis {1}",
+        "marked": "Marqué {1}",
+        "on-time": "À l'heure",
+        "late": "En retard",
+        "submission-started": "{1} (Démarré)",
+        "submission-submitted": "{1} (Envoyé)",
+        "submission-marked": "{1} (marqué)",
+        "joined": "A rejoint {1}",
+        "admin": "Administrateur",
+        "student": "Etudiant",
+        "remove-user": "Supprimer l'utilisateur"
+    },
+    "classroom-list": {
+        "classroom": "Salle de classe",
+        "new-classroom": "Nouvelle salle de classe",
+        "join-classroom": "Rejoindre la salle de classe",
+        "no-classrooms-found": "Aucune salle de classe trouvée",
+        "login-to-view-classrooms": "Connectez-vous pour voir les salles de classe",
+        "get-started-by-joining-creating": "Commencez par rejoindre ou créer une salle de classe.",
+        "search-for-something-else": "Essayez de chercher autre chose.",
+        "you-need-to-be-logged-in": "Vous devez être connecté pour voir vos classes."
+    },
+    "classroom-detail": {
+        "back": "Précédent",
+        "new-assignment": "Nouveau devoir",
+        "assignments": "Affectations",
+        "settings": "Réglages",
+        "all": "Tous",
+        "not-started": "Non démarré",
+        "work-in-progress": "En cours de travail",
+        "waiting-to-be-marked": "En attente d'être marqué",
+        "marked": "Marqué",
+        "no-assignments-found": "Aucun devoir trouvé",
+        "users": "Utilisateurs",
+        "add-users": "Ajouter des utilisateurs",
+        "danger-zone": "Zone de danger",
+        "delete-classroom": "Supprimer la salle de classe",
+        "once-you-delete": "Une fois que vous supprimez cette classe, il n'y a pas de retour en arrière."
+    },
+    "delete-classroom": {
+        "delete-classroom": "Supprimer la salle de classe",
+        "are-you-sure-you-want-to-delete": "Êtes-vous sûr de vouloir supprimer cette salle de classe ?",
+        "cancel": "Abandonner",
+        "delete": "Supprimez"
+    },
+    "create-assignment": {
+        "create-assignment": "Créer un devoir",
+        "edit-assignment": "Modifier le devoir",
+        "assignment-name": "Nom du devoir",
+        "due-date": "Date de fin",
+        "description": "Libellé",
+        "starter-project": "Projet de démarrage",
+        "clone-existing-project": "Cloner le projet existant",
+        "new-project": "Nouveau projet",
+        "cancel": "Abandonner",
+        "create": "Créer",
+        "save": "Enregistrer",
+        "project-name": "Nom du projet",
+        "mode": "Mode"
+    },
+    "submit-assignment": {
+        "submit-assignment": "Soumettre le devoir ?",
+        "changes-no-longer-allowed": "Vous ne pourrez plus apporter de modifications à moins de désoumettre votre code.",
+        "cancel": "Abandonner",
+        "submit": "Soumettre"
+    },
+    "unsubmit-assignment": {
+        "unsubmit-hand-back": "Annuler la soumission et revenir à la main ?",
+        "unsubmit-assignment": "Retirer le devoir ?",
+        "student-can-make-changes": "L'étudiant sera en mesure d'apporter des modifications à son code, mais il devra le soumettre à nouveau pour que vous le marquiez.",
+        "you-can-make-changes": "Tu pourras apporter des modifications à ton code, mais tu devras le soumettre à nouveau afin que ton enseignant puisse le marquer.",
+        "cancel": "Abandonner",
+        "unsubmit": "Ne plus soumettre"
+    },
+    "delete-assignment": {
+        "delete-assignment": "Supprimer le devoir",
+        "are-you-sure-you-want-to-delete": "Êtes-vous sûr de vouloir supprimer ce devoir ?",
+        "cancel": "Abandonner",
+        "delete": "Supprimez"
+    },
+    "assignment-submissions": {
+        "submissions": "Soumissions",
+        "back": "Précédent",
+        "all": "Tous",
+        "not-submitted": "Non soumis",
+        "submitted": "Soumis",
+        "on-time": "À l'heure",
+        "late": "En retard",
+        "waiting-to-be-marked": "En attente d'être marqué",
+        "marked": "Marqué",
+        "no-submissions-found": "Aucune remise trouvée",
+        "select-submission": "Sélectionner la remise",
+        "started-on": "Démarré - {1}",
+        "submitted-on": "Soumis - {1}",
+        "marked-on": "Marqué - {1}",
+        "feedback": "Vos commentaires",
+        "save": "Enregistrer",
+        "unsubmit-hand-back": "Annuler la soumission et revenir à la main"
+    },
+    "assignment-teacher-feedback": {
+        "teacher-feedback": "Commentaires de l'enseignant",
+        "close": "Fermer"
+    },
+    "assignment": {
+        "due": "Echéance {1}"
+    },
+    "add-classroom-users": {
+        "classroom-code": "Code de la classe",
+        "copy-link": "Copier le lien",
+        "copied": "Copié",
+        "close": "Fermer"
+    },
+    "remove-classroom-user": {
+        "remove-user": "Supprimer l'utilisateur",
+        "are-you-sure-you-want-to-remove": "Êtes-vous sûr de vouloir supprimer cet utilisateur ?",
+        "cancel": "Abandonner",
+        "remove": "Retirer"
+    },
+    "join-classroom": {
+        "join-classroom": "Rejoindre la salle de classe",
+        "ask-teacher-for-code": "Demandez à votre enseignant le code de la classe.",
+        "code": "Code",
+        "cancel": "Abandonner",
+        "join": "Rejoindre",
+        "cant-join-classroom": "Impossible de rejoindre la salle de classe",
+        "you-are-already-a-member": "Vous êtes déjà membre"
+    },
+    "create-classroom": {
+        "create-classroom": "Créer une salle de classe",
+        "classroom-name": "Nom de la classe",
+        "cancel": "Abandonner",
+        "create": "Créer"
+    },
+    "not-found": {
+        "sorry-but-we-cant-find": "Désolé, mais nous ne pouvons pas trouver la page que vous cherchez"
+    },
+    "settings": {
+        "settings": "Réglages",
+        "account": "Compte client",
+        "profile": "Profil",
+        "name": "Nom",
+        "email": "Courriel",
+        "joined": "Inscrit",
+        "language": "Langue",
+        "change-language": "Changer de langue",
+        "save": "Enregistrer"
+    },
+    "localization": {
+        "en": "Anglais",
+        "fr": "Français"
+    }
+}
