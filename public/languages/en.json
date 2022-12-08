@@ -53,7 +53,9 @@
         "anyone-with-link": "Anyone with the link can view",
         "share": "Share",
         "showcase": "Showcase",
-        "publish-project": "Publish Project"
+        "publish-project": "Publish Project",
+        "google-classroom": "Google Classroom",
+        "microsoft-teams": "Microsoft Teams"
     },
     "publish-to-showcase": {
         "publish-to-showcase": "Publish to Showcase",

@@ -142,6 +142,26 @@ class ShareProjectModal extends ModalModelBase {
 					});
 				}
 			},
+			{
+				title: this.getText("google-classroom"),
+				thumbnail: "/images/share/classroom.svg",
+				action: (): void => {
+					window.open(
+						`https://classroom.google.com/u/0/share?url=${encodeURIComponent(this.state.data["link"])}`,
+						"width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=600,top=300"
+					);
+				}
+			},
+			{
+				title: this.getText("microsoft-teams"),
+				thumbnail: "/images/share/teams.svg",
+				action: (): void => {
+					window.open(
+						`https://teams.microsoft.com/share?href=${encodeURIComponent(this.state.data["link"])}`,
+						"width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=600,top=300"
+					);				
+				}
+			},
 		];
 	}
 
