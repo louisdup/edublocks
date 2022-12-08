@@ -52,6 +52,9 @@ class ShowcaseProjectDetailModel extends ViewModelBase {
 			if (response.wasSuccessful && response.data) {
 				this.state.showcaseProject = response.data;
 			}
+			else {
+				router.push("/404");
+			}
 			this.state.isLoadingShowcaseProject = false;
 		});
 	}

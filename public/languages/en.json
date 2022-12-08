@@ -386,5 +386,8 @@
         "classroom-name": "Classroom Name",
         "cancel": "Cancel",
         "create": "Create"
+    },
+    "not-found": {
+        "sorry-but-we-cant-find": "Sorry, but we can't find the page you're looking for"
     }
 }

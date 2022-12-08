@@ -97,7 +97,7 @@ export class ClassroomUtilities {
 	 * Checks if the submission should be read only because it's already been submitted.
 	 */
 	public static async shouldAssignmentSubmissionShouldBeReadOnly(project: FirestoreProjectModel): Promise<boolean> {
-		if (AuthenticationUtilities.currentUser.value && project.assignment) {
+		if (AuthenticationUtilities.currentUser.value && project.assignment && project.assignment !== null) {
 			if (project.uid === AuthenticationUtilities.currentUser.value.uid) {
 				const classroomId: string = project.assignment.classroom;
 				const assignmentId: string = project.assignment.id;

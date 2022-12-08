@@ -81,6 +81,10 @@ class ClassroomDetailModel extends ViewModelBase {
 				if (response.wasSuccessful && response.data) {
 					this.state.classroom = response.data;
 				}
+				else {
+					ModalUtilities.closeModal();
+					router.push("/404");
+				}
 				this.state.isLoadingClassroom = false;
 			});
 		}
