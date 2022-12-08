@@ -70,13 +70,6 @@ class ShareProjectModal extends ModalModelBase {
 	}
 
 	/**
-	 * True if the project is public.
-	 */
-	public isCopyLinkVisible(): boolean {
-		return this.state.data["access"] === "public-read";
-	}
-
-	/**
 	 * True if the project belongs to the current user.
 	 */
 	public isAccessInputVisible(): boolean {
@@ -121,6 +114,13 @@ class ShareProjectModal extends ModalModelBase {
 				subtitle: this.getText("anyone-with-link"),
 			},
 		];
+	}
+
+	/**
+	 * True if the project is set to public.
+	 */
+	public isShareSectionVisible(): boolean {
+		return this.state.data["access"] !== "private";
 	}
 
 	/**

@@ -15,24 +15,6 @@
         :spacing="6"
         :padding-t="2"
       >
-        <eb-h-stack
-          v-if="modal.isCopyLinkVisible()"
-          :spacing="4"
-        >
-          <eb-input
-            v-model="modal.state.data['link']"
-            type="text"
-            is-disabled
-          />
-          <eb-button
-            :label="modal.getCopyButtonText()"
-            :icon="modal.getCopyButtonIcon()"
-            :color="modal.getCopyButtonColor()"
-            size="sm"
-            @click="modal.onCopyClicked()"
-          />
-        </eb-h-stack>
-
         <!-- Access Settings -->
         <eb-radio-group
           v-if="modal.isAccessInputVisible()"
@@ -41,18 +23,40 @@
           :options="modal.getAccessOptions()"
         />
 
-        <!-- External Share Options -->
+        <!-- Share Options -->
         <eb-v-stack
+          v-if="modal.isShareSectionVisible()"
           is-full-width
-          :spacing="2"
+          :spacing="6"
         >
-          <eb-heading
-            :label="modal.getText('share')"
-            size="sm"
-            color="lightGray"
-            weight="medium"
-          />
+          <eb-v-stack
+            is-full-width
+            :spacing="2"
+          >
+            <eb-heading
+              :label="modal.getText('share')"
+              size="sm"
+              color="lightGray"
+              weight="medium"
+            />
 
+            <eb-h-stack :spacing="4">
+              <eb-input
+                v-model="modal.state.data['link']"
+                type="text"
+                is-disabled
+              />
+              <eb-button
+                :label="modal.getCopyButtonText()"
+                :icon="modal.getCopyButtonIcon()"
+                :color="modal.getCopyButtonColor()"
+                size="sm"
+                @click="modal.onCopyClicked()"
+              />
+            </eb-h-stack>
+          </eb-v-stack>
+
+          <!-- External Share Options -->
           <eb-slider :spacing="4">
             <template
               v-for="option in modal.getShareOptions()"
