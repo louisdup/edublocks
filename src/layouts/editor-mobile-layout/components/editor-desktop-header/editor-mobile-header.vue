@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full flex-none bg-navy-500">
+  <div class="w-full flex-none">
     <div class="h-16 w-full flex items-center justify-between px-4 mt-safe">
       <eb-icon
         :icon="['far', 'bars']"
