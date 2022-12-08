@@ -8,7 +8,10 @@
       <eb-heading :label="view.getPageTitle()" />
 
       <!-- Actions -->
-      <eb-h-stack :spacing="4">
+      <eb-h-stack
+        v-if="view.isButtonSectionVisible()"
+        :spacing="4"
+      >
         <!-- New Classroom Button -->
         <eb-button
           :label="view.getText('new-classroom')"
@@ -30,6 +33,8 @@
     <eb-table
       :items="view.getClassrooms()"
       :is-loading="view.isClassroomsTableLoading()"
+      :empty-state-title="view.getClassroomsTableEmptyStateTitle()"
+      :empty-state-subtitle="view.getClassroomsTableEmptyStateSubtitle()"
     />
   </desktop-layout>
 </template>

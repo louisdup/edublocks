@@ -69,6 +69,13 @@ class ClassroomListModel extends ViewModelBase {
 	}
 
 	/**
+	 * True if the user is logged in.
+	 */
+	public isButtonSectionVisible(): boolean {
+		return AuthenticationUtilities.currentUser.value !== null;
+	}
+
+	/**
 	 * Called when the new classroom button is clicked.
 	 * Opens the "Create Classroom" modal.
 	 */
