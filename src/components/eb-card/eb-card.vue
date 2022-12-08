@@ -15,6 +15,7 @@
     <div
       v-if="image"
       class="h-40 w-60 rounded-md bg-gray-200 relative flex items-center"
+      @click="$emit('click')"
     >
       <img
         :src="image"
@@ -25,6 +26,7 @@
     <div
       v-else
       :class="component.thumbnailVariants({ color: thumbnailColor })"
+      @click="$emit('click')"
     >
       <div class="font-bold text-7xl text-white/10">
         <h1 class="ml-4">
@@ -60,12 +62,14 @@
       v-if="title || subtitle"
       class="w-60 relative"
     >
-      <h1 class="text-sm font-medium text-gray-900 truncate">
-        {{ title }}
-      </h1>
-      <p class="text-sm text-gray-500 truncate">
-        {{ subtitle }}
-      </p>
+      <div @click="$emit('click')">
+        <h1 class="text-sm font-medium text-gray-900 truncate">
+          {{ title }}
+        </h1>
+        <p class="text-sm text-gray-500 truncate">
+          {{ subtitle }}
+        </p>
+      </div>
       <div class="absolute right-0 top-1.5">
         <eb-dropdown
           v-if="dropdownOptions"
@@ -94,4 +98,6 @@ defineProps<{
 	isLoading?: boolean;
 	dropdownOptions?: Array<Array<EbDropdownOption>>;
 }>();
+
+defineEmits(["click"]);
 </script>

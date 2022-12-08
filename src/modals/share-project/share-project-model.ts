@@ -8,6 +8,8 @@ import * as ProjectsProvider from "@/data/providers/projects-provider";
 import { FirestoreFetchResponseModel } from "@/data/models/firestore-fetch-response-model";
 import { EditorUtilities } from "@/utilities/editor-utilities";
 import { AuthenticationUtilities } from "@/utilities/authentication-utilities";
+import { ShareOption } from "./share-project-types";
+import { ModalUtilities } from "@/utilities/modal-utilities";
 
 /**
  * Modal model for the share project modal.
@@ -29,20 +31,18 @@ class ShareProjectModal extends ModalModelBase {
 	 * Initialise the modal model.
 	 */
 	public init(props: Data): void {
-		let project: FirestoreProjectModel | undefined;
-
 		if (props.project) {
-			project = props.project as FirestoreProjectModel;
+			this.state.project = props.project as FirestoreProjectModel;
 		}
 		else if (EditorUtilities.currentProject.value && EditorUtilities.currentProject.value.firestoreProject) {
-			project = EditorUtilities.currentProject.value.firestoreProject;
+			this.state.project = EditorUtilities.currentProject.value.firestoreProject;
 		}
 
-		if (project) {
-			this.setAccessRadioGroupValue(project);
-			this.setLinkInputValueToProjectLink(project);
-			this.doesProjectBelongToCurrentUser(project);
-			this.onAccessChanged(project);
+		if (this.state.project) {
+			this.setAccessRadioGroupValue(this.state.project);
+			this.setLinkInputValueToProjectLink(this.state.project);
+			this.doesProjectBelongToCurrentUser(this.state.project);
+			this.onAccessChanged(this.state.project);
 		}
 	}
 
@@ -119,6 +119,28 @@ class ShareProjectModal extends ModalModelBase {
 				key: "public-read",
 				title: this.getText("public"),
 				subtitle: this.getText("anyone-with-link"),
+			},
+		];
+	}
+
+	/**
+	 * Returns a share options to populate the slider.
+	 */
+	public getShareOptions(): Array<ShareOption> {
+		return [
+			{
+				title: this.getText("showcase"),
+				subtitle: this.getText("publish-project"),
+				icon: ["far", "film"],
+				visible: this.state.project?.uid === AuthenticationUtilities.currentUser.value?.uid && (!this.state.project?.showcaseProject || this.state.project?.showcaseProject === null),
+				action: (): void => {
+					ModalUtilities.showModal({
+						modal: "PublishToShowcase",
+						options: {
+							project: this.state.project
+						}
+					});
+				}
 			},
 		];
 	}

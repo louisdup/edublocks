@@ -9,6 +9,7 @@
     />
 
     <eb-modal-content>
+      <!-- Share Link -->
       <eb-v-stack
         is-full-width
         :spacing="6"
@@ -32,12 +33,43 @@
           />
         </eb-h-stack>
 
+        <!-- Access Settings -->
         <eb-radio-group
           v-if="modal.isAccessInputVisible()"
           v-model="modal.state.data['access']"
           :label="modal.getText('access')"
           :options="modal.getAccessOptions()"
         />
+
+        <!-- External Share Options -->
+        <eb-v-stack
+          is-full-width
+          :spacing="2"
+        >
+          <eb-heading
+            :label="modal.getText('share')"
+            size="sm"
+            color="lightGray"
+            weight="medium"
+          />
+
+          <eb-slider :spacing="4">
+            <template
+              v-for="option in modal.getShareOptions()"
+              :key="option.title"
+            >
+              <eb-slider-slide v-if="option.visible !== false">
+                <eb-chip
+                  :title="option.title"
+                  :subtitle="option.subtitle"
+                  :icon="option.icon"
+                  :thumbnail="option.thumbnail"
+                  @click="option.action()"
+                />
+              </eb-slider-slide>
+            </template>
+          </eb-slider>
+        </eb-v-stack>
       </eb-v-stack>
     </eb-modal-content>
 

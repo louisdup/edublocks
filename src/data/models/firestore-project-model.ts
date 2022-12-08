@@ -15,6 +15,7 @@ export interface FirestoreProjectModel {
 	updated: string;
 	access: "private" | "public-read" | "public-write";
 	type: "blocks" | "text";
+	assignment?: FirestoreProjectAssignmentModel | null;
+	showcaseProject?: string | null;
 	snapshot: QueryDocumentSnapshot;
-	assignment?: FirestoreProjectAssignmentModel;
 }

@@ -16,6 +16,7 @@ import { StorageFetchResponseModel } from "@/data/models/storage-fetch-response-
 import { FirestoreFetchResponseModel } from "@/data/models/firestore-fetch-response-model";
 import { ProjectModel } from "@/data/models/project-model";
 import { ClassroomUtilities } from "./classroom-utilities";
+import { ShowcaseUtilities } from "./showcase-utilities";
 
 /**
  * Utility functions for working with projects.
@@ -122,6 +123,16 @@ export class ProjectsUtilities {
 					icon: ["far", "file"],
 					action: (): void => {
 						this.openProject(project);
+					}
+				},
+				{
+					title: this.getText("open-showcase-project"),
+					visible: project.showcaseProject !== undefined && project.showcaseProject !== null,
+					icon: ["far", "film"],
+					action: (): void => {
+						if (project.showcaseProject) {
+							ShowcaseUtilities.openShowcaseProject(project.showcaseProject);
+						}
 					}
 				}
 			],

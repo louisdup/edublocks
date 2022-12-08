@@ -29,6 +29,11 @@ class ShowcaseModel extends ViewModelBase {
 	 */
 	public init(): void {
 		this.loadInitialData();
+
+		// Reload the initial set of data if a content refresh is triggered.
+		this.observeContentRefresh(() => {
+			this.loadInitialData();
+		});
 	}
 
 	/**

@@ -25,6 +25,13 @@ export async function getShowcaseProjectAsync(id: string): Promise<FirestoreFetc
 }
 
 /**
+ * Create a showcase project.
+ */
+export async function createShowcaseProjectAsync(body: object): Promise<FirestoreFetchResponseModel<string>> {
+	return FirestoreUtilities.createDocument("showcase", body);
+}
+
+/**
  * Delete a single project from the showcase.
  */
 export async function deleteShowcaseProjectAsync(id: string): Promise<FirestoreFetchResponseModel<void>> {

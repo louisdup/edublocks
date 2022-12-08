@@ -1,9 +1,15 @@
+import { FirestoreProjectModel } from "@/data/models/firestore-project-model";
 import { FormData } from "@/utilities/form-utilities";
 
 /**
  * View state for the share project modal.
  */
 export class ShareProjectState {
+	/**
+	 * Returns the project to share.
+	 */
+	public project: FirestoreProjectModel | undefined;
+	
 	/**
 	 * Stores data from the share project modal.
 	 */

@@ -50,7 +50,18 @@
         "private": "Private",
         "only-you-can-view-edit": "Only you can view & edit",
         "public": "Public",
-        "anyone-with-link": "Anyone with the link can view"
+        "anyone-with-link": "Anyone with the link can view",
+        "share": "Share",
+        "showcase": "Showcase",
+        "publish-project": "Publish Project"
+    },
+    "publish-to-showcase": {
+        "publish-to-showcase": "Publish to Showcase",
+        "cancel": "Cancel",
+        "publish": "Publish",
+        "name": "Name",
+        "description": "Description",
+        "preview": "Preview"
     },
     "delete-showcase-project": {
         "delete-project": "Delete Showcase Project",
@@ -107,6 +118,7 @@
         "size": "Size",
         "actions": "Actions",
         "open-project": "Open Project",
+        "open-showcase-project": "Open Showcase Project",
         "rename-project": "Rename Project",
         "delete-project": "Delete Project",
         "open-local-project": "Open Local Project",

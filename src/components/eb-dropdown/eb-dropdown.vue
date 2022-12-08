@@ -20,10 +20,10 @@
           >
             <button
               v-if="option.visible !== false"
-              class="w-full px-3 py-2 justify-between flex items-center text-sm text-left font-medium text-gray-500 rounded-md hover:bg-gray-100 transition-colors"
+              class="w-full px-3 py-2 space-x-4 justify-between flex items-center text-sm text-left font-medium text-gray-500 rounded-md hover:bg-gray-100 transition-colors"
               @click="component.onOptionClicked(option)"
             >
-              <span>{{ option.title }}</span>
+              <span class="truncate">{{ option.title }}</span>
               <eb-icon
                 :icon="option.icon"
                 size="normal"

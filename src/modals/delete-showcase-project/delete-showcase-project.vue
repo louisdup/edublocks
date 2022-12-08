@@ -20,8 +20,10 @@
         color="white"
         @click="modal.onCloseClicked()"
       />
+
       <eb-button
         :label="modal.getText('delete')"
+        :is-loading="modal.isDeleteButtonLoading()"
         color="red"
         @click="modal.onDeleteClicked(project)"
       />

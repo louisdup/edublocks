@@ -6,6 +6,7 @@ export enum ModalName {
 	DeleteProject = "DeleteProject",
 	RenameProject = "RenameProject",
 	ShareProject = "ShareProject",
+	PublishToShowcase = "PublishToShowcase",
 	DeleteShowcaseProject = "DeleteShowcaseProject",
 	Error = "Error",
 	Login = "Login",
@@ -31,6 +32,7 @@ export type Modal =
  | "DeleteProject"
  | "RenameProject"
  | "ShareProject"
+ | "PublishToShowcase"
  | "DeleteShowcaseProject"
  | "Error"
  | "Login"

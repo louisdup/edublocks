@@ -15,7 +15,7 @@ class EbChipModel extends ComponentModelBase {
 	/**
 	 * Returns list of classes for the chip component.
 	 */
-	public variants: Function = cva(["bg-white", "px-3", "py-2.5", "rounded-lg", "border-2", "border-transparent", "hover:border-blue-500", "shadow-sm", "mb-0.5", "flex", "items-center", "space-x-3", "justify-between", "text-left", "transition-colors"], {
+	public variants: Function = cva(["bg-white", "px-3", "py-2.5", "m-0.5", "rounded-lg", "border", "hover:ring-2", "border-gray-200", "hover:ring-blue-500", "shadow-sm", "mb-0.5", "flex", "items-center", "space-x-3", "justify-between", "text-left", "transition-colors"], {
 		variants: {
 			isFullWidth: {
 				true: "w-full"
