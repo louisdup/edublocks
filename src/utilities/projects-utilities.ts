@@ -95,7 +95,7 @@ export class ProjectsUtilities {
 		if (await ClassroomUtilities.shouldAssignmentSubmissionShouldBeReadOnly(project)) {
 			return true;
 		}
-		else if (router.currentRoute.value.query) {
+		else if (router.currentRoute.value.query.embed) {
 			return true;
 		}
 		else if (userId === AuthenticationUtilities.currentUser.value?.uid) {
