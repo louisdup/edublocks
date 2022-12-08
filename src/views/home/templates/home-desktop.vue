@@ -43,9 +43,11 @@
       >
         <eb-card 
           :title="project.title"
-          :subtitle="project.mode"
-          :image="project.image"
+          :subtitle="view.getShowcaseProjectModeName(project)"
+          :thumbnail-color="view.getShowcaseProjectThumbnailColor(project)"
+          :thumbnail-icon="view.getShowcaseProjectThumbnailIcon(project)"
           :dropdown-options="view.getShowcaseProjectDropdownOptions(project)"
+          @click="view.onShowcaseProjectClicked(project)"
         />
       </eb-slider-slide> 
     </eb-slider>

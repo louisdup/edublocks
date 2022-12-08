@@ -10,6 +10,7 @@ export interface ShowcaseProjectModel {
 	description: string;
 	image: string;
 	uid: string;
+	project: string;
 	projectURL: string;
 	cloneURL: string;
 	mode: string;

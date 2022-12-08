@@ -2,6 +2,7 @@
   <div class="h-16 w-full bg-white flex items-center justify-between flex-none pl-2 pr-4 border-b border-gray-200">
     <div class="flex items-center space-x-2">
       <eb-dropdown
+        v-if="component.isMenuVisible()"
         :options="component.getMenuDropdownOptions()"
         placement="bottom-end"
       >
@@ -17,6 +18,7 @@
         :image="component.getCurrentModeLogo()"
         size="sm"
         color="gray"
+        :class="component.getProjectButtonClass()"
         @click="$emit('onProjectButtonClicked')"
       />
     </div>

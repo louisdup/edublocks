@@ -2,7 +2,6 @@ import { ComponentModelBase } from "@/components/base-classes/component-model-ba
 import { EbDropdownOption } from "@/components/eb-dropdown/eb-dropdown-types";
 import router from "@/router";
 import { EditorUtilities } from "@/utilities/editor-utilities";
-import { LogoUtilities } from "@/utilities/logo-utilities";
 import { ModalUtilities } from "@/utilities/modal-utilities";
 
 /**
@@ -17,10 +16,17 @@ export class EditorDesktopHeaderModel extends ComponentModelBase {
 	}
 
 	/**
-	 * Returns an image file path for the logo.
+	 * True if the editor is not in embed mode.
 	 */
-	public getLogoPath(): string {
-		return LogoUtilities.getMiniLogoPath();
+	public isMenuVisible(): boolean {
+		return router.currentRoute.value.query.embed ? false : true;
+	}
+
+	/**
+	 * Adds margin to the left of the project button if the editor is in embed mode.
+	 */
+	public getProjectButtonClass(): string {
+		return router.currentRoute.value.query.embed ? "ml-2" : "";
 	}
 
 	/**

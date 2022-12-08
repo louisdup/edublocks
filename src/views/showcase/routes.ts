@@ -12,6 +12,16 @@ export const showcaseRoutes: Array<RouteRecordRaw> = [
 		meta: {
 			key: "showcase"
 		}
+	},
+	{
+		path: "/showcase/:id",
+		name: View.ShowcaseProjectDetail,
+		component: async (): Promise<Component> => {
+			return import ("./showcase-project-detail/showcase-project-detail.vue");
+		},
+		meta: {
+			key: "showcase"
+		}
 	}
 ];
 

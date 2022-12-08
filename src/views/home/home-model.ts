@@ -80,6 +80,50 @@ class HomeModel extends ViewModelBase {
 	}
 
 	/**
+	 * Returns the mode color based on the showcase project.
+	 */
+	public getShowcaseProjectThumbnailColor(project: ShowcaseProjectModel): string | undefined {
+		if (project.mode) {
+			return this.getModeFromKey(project.mode).config.color;
+		}
+		else {
+			return undefined;
+		}
+	}
+
+	/**
+	 * Returns the mode logo based on the showcase project.
+	 */
+	public getShowcaseProjectThumbnailIcon(project: ShowcaseProjectModel): string | undefined {
+		if (project.mode) {
+			return this.getModeFromKey(project.mode).config.logo;
+		}
+		else {
+			return undefined;
+		}
+	}
+
+	/**
+	 * Returns the mode name based on the showcase project.
+	 */
+	public getShowcaseProjectModeName(project: ShowcaseProjectModel): string | undefined {
+		if (project.mode) {
+			return this.getModeFromKey(project.mode).config.name;
+		}
+		else {
+			return undefined;
+		}
+	}
+
+	/**
+	 * Called when a showcase project is clicked.
+	 * Opens the showcase project detail page.
+	 */
+	public onShowcaseProjectClicked(project: ShowcaseProjectModel): void {
+		ShowcaseUtilities.openShowcaseProject(project.id);
+	}
+
+	/**
 	 * Loads 5 recent projects belonging to the current user to display on the homepage.
 	 */
 	private loadRecentProjects(): void {

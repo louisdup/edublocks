@@ -11,6 +11,7 @@
     >   
       <!-- Sidebar -->
       <eb-split-view-pane
+        v-if="view.isSidebarVisible()"
         :size="view.getSidebarSize()"
         :min-size="view.getSidebarMinimumSize()"
         :max-size="view.getSidebarMaximumSize()"

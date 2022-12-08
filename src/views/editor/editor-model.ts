@@ -307,6 +307,13 @@ class EditorModel extends ViewModelBase {
 	}
 
 	/**
+	 * True if the editor is not in embed mode.
+	 */
+	public isSidebarVisible(): boolean {
+		return router.currentRoute.value.query.embed ? false : true;
+	}
+
+	/**
 	 * True if the sidebar is expanded.
 	 */
 	public isSidebarExpanded(): boolean | undefined {

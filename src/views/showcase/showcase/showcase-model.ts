@@ -104,10 +104,62 @@ class ShowcaseModel extends ViewModelBase {
 	}
 
 	/**
+	 * Called when a view project button is clicked.
+	 * Opens the featured showcase project detail page.
+	 */
+	public onViewFeaturedProjectClicked(): void {
+		ShowcaseUtilities.openShowcaseProject("4I4ly8Z0mRrurr9seUoP");
+	}
+
+	/**
+	 * Returns the mode color based on the showcase project.
+	 */
+	public getShowcaseProjectThumbnailColor(project: ShowcaseProjectModel): string | undefined {
+		if (project.mode) {
+			return this.getModeFromKey(project.mode).config.color;
+		}
+		else {
+			return undefined;
+		}
+	}
+	
+	/**
+	 * Returns the mode logo based on the showcase project.
+	 */
+	public getShowcaseProjectThumbnailIcon(project: ShowcaseProjectModel): string | undefined {
+		if (project.mode) {
+			return this.getModeFromKey(project.mode).config.logo;
+		}
+		else {
+			return undefined;
+		}
+	}
+	
+	/**
+	 * Returns the mode name based on the showcase project.
+	 */
+	public getShowcaseProjectModeName(project: ShowcaseProjectModel): string | undefined {
+		if (project.mode) {
+			return this.getModeFromKey(project.mode).config.name;
+		}
+		else {
+			return undefined;
+		}
+	}
+
+	/**
 	 * Returns a list of options for a showcase project dropdown.
 	 */
 	public getShowcaseProjectDropdownOptions(project: ShowcaseProjectModel): Array<Array<EbDropdownOption>> {
 		return ShowcaseUtilities.getShowcaseProjectDropdownOptions(project);
+	}
+
+	/**
+	 * Called when a showcase project is clicked.
+	 * Opens the showcase project detail page.
+	 */
+	public onShowcaseProjectClicked(project: ShowcaseProjectModel): void {
+		ShowcaseUtilities.openShowcaseProject(project.id);
 	}
 }
 

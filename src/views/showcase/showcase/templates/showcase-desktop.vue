@@ -11,6 +11,7 @@
       :button-label="view.getText('view-project')"
       thumbnail="/images/showcase/introducing-html.png"
       color="navy"
+      @buttonClick="view.onViewFeaturedProjectClicked()"
     />
 
     <!-- Showcase Projects Grid -->
@@ -24,18 +25,17 @@
       />
 
       <!-- Showcase Projects -->
-      <eb-slider-slide
+      <eb-card 
         v-for="project in view.state.showcaseProjects"
         v-else
         :key="project.id"
-      >
-        <eb-card 
-          :title="project.title"
-          :subtitle="project.mode"
-          :image="project.image"
-          :dropdown-options="view.getShowcaseProjectDropdownOptions(project)"
-        />
-      </eb-slider-slide> 
+        :title="project.title"
+        :subtitle="view.getShowcaseProjectModeName(project)"
+        :thumbnail-color="view.getShowcaseProjectThumbnailColor(project)"
+        :thumbnail-icon="view.getShowcaseProjectThumbnailIcon(project)"
+        :dropdown-options="view.getShowcaseProjectDropdownOptions(project)"
+        @click="view.onShowcaseProjectClicked(project)"
+      />
     </eb-grid>
   </desktop-layout>
 </template>

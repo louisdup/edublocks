@@ -87,7 +87,17 @@
         "featured-project": "Featured Project",
         "introducing-the-html-editor": "Introducing the HTML Editor",
         "introducing-the-html-editor-description": "Take your first steps with HTML and build your very own website.",
-        "view-project": "View Project"
+        "view-project": "View Project",
+        "open-project": "Open Project",
+        "delete-project": "Delete Project"
+    },
+    "showcase-project-detail": {
+        "back": "Back",
+        "clone": "Clone",
+        "about-this-project": "About this project",
+        "created-by": "Created by",
+        "description": "Description",
+        "no-description": "No Description"
     },
     "projects": {
         "projects": "Projects",

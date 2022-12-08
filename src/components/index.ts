@@ -39,6 +39,7 @@ import EbTerminal from "./eb-terminal/eb-terminal.vue";
 import EbTextEditor from "./eb-text-editor/eb-text-editor.vue";
 import EbListItem from "./eb-list-item/eb-list-item.vue";
 import EbBanner from "./eb-banner/eb-banner.vue";
+import EbRichText from "./eb-rich-text/eb-rich-text.vue";
 
 /**
  * Export & install application components for use globally
@@ -83,5 +84,6 @@ export default {
 		app.component(ComponentName.EbTextEditor, EbTextEditor);
 		app.component(ComponentName.EbListItem, EbListItem);
 		app.component(ComponentName.EbBanner, EbBanner);
+		app.component(ComponentName.EbRichText, EbRichText);
 	}
 };
