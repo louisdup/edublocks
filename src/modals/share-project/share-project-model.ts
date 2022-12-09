@@ -50,7 +50,7 @@ class ShareProjectModal extends ModalModelBase {
 	 * Sets the value of the link input to that of the current project.
 	 */
 	public setLinkInputValueToProjectLink(project: FirestoreProjectModel): void {
-		this.state.data["link"] = `https://${location.host}/project/${project.uid}/${project.id}`;
+		this.state.data["link"] = `${location.origin}/project/${project.uid}/${project.id}`;
 	}
 
 	/**

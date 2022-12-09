@@ -34,7 +34,7 @@ class AddClassroomUsersModel extends ModalModelBase {
 	 * Creates a dynamic short link for the classroom join link.
 	 */
 	private async createJoinLink(classroomId: string): Promise<void> {
-		const link: string = `https://${location.host}/classroom/${classroomId}/join`;
+		const link: string = `${location.origin}/classroom/${classroomId}/join`;
 		const body: object = {
 			dynamicLinkInfo: {
 				domainUriPrefix: ClassroomUtilities.joinUrl,
