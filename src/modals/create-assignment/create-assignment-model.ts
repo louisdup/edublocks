@@ -267,7 +267,7 @@ class CreateAssignmentModel extends ModalModelBase {
 					if (existingProjectCode.wasSuccessful && existingProjectCode.data) {
 						projectId = await ProjectsUtilities.createFirestoreProject(
 							this.state.data["name"], 
-							this.state.data["mode"], 
+							existingProject.mode, 
 							"blocks", 
 							existingProjectCode.data.content, 
 							undefined, 
