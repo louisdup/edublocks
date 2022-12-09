@@ -106,7 +106,7 @@ class ShowcaseProjectDetailModel extends ViewModelBase {
 	 * Returns the url of the showcase project for the iframe.
 	 */
 	public getIframeURL(): string | undefined {
-		return `http://localhost:8080/project/${this.state.showcaseProject?.uid}/${this.state.showcaseProject?.project}?embed=true`;
+		return `http://${location.host}/project/${this.state.showcaseProject?.uid}/${this.state.showcaseProject?.project}?embed=true`;
 	}
 
 	/**
