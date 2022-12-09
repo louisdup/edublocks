@@ -1,0 +1,95 @@
+<category name="Random" colour="#8BC248" css-icon="customIcon fad fa-shuffle">
+  <label text="Random"></label>
+
+  <block type="random_choice">
+    <value name="text">
+        <shadow type="parameters">
+            <mutation color="#8BC248" items="1" limit="1" inputType="text" />
+            <value name="input_1">
+                <block type="variable_get"></block>
+            </value>
+        </shadow>
+    </value>
+  </block>
+
+  <block type="random_randint">
+    <value name="text">
+        <shadow type="parameters">
+            <mutation color="#8BC248" items="2" limit="2" inputType="number" />
+            <value name="input_1">
+                <shadow type="inline_number">
+                    <field name="value">3</field>
+                </shadow>
+            </value>
+            <value name="input_2">
+                <shadow type="inline_number">
+                    <field name="value">9</field>
+                </shadow>
+            </value>
+        </shadow>
+    </value>
+  </block>
+
+  <block type="random_random"></block>
+ 
+  <block type="random_randrange">
+    <value name="text">
+        <shadow type="parameters">
+            <mutation color="#8BC248" items="2" limit="2" inputType="number" />
+            <value name="input_1">
+                <shadow type="inline_number">
+                    <field name="value">3</field>
+                </shadow>
+            </value>
+            <value name="input_2">
+                <shadow type="inline_number">
+                    <field name="value">9</field>
+                </shadow>
+            </value>
+        </shadow>
+    </value>
+  </block>
+
+  <block type="random_seed">
+    <value name="text">
+        <shadow type="parameters">
+            <mutation color="#8BC248" items="1" limit="2" inputType="number" />
+            <value name="input_1">
+                <shadow type="inline_number">
+                    <field name="value">10</field>
+                </shadow>
+            </value>
+        </shadow>
+    </value>
+  </block>
+
+  <block type="random_shuffle">
+    <value name="text">
+        <shadow type="parameters">
+            <mutation color="#8BC248" items="1" limit="1" inputType="text" />
+            <value name="input_1">
+                <block type="variable_get"></block>
+            </value>
+        </shadow>
+    </value>
+  </block>
+
+  <block type="random_uniform">
+    <value name="text">
+        <shadow type="parameters">
+            <mutation color="#8BC248" items="2" limit="2" inputType="number" />
+            <value name="input_1">
+                <shadow type="inline_number">
+                    <field name="value">20</field>
+                </shadow>
+            </value>
+            <value name="input_2">
+                <shadow type="inline_number">
+                    <field name="value">60</field>
+                </shadow>
+            </value>
+        </shadow>
+    </value>
+  </block>
+
+</category>
