@@ -4,9 +4,15 @@
 
     <block type="import_microbit"></block>
 
-    <block type="import_music"></block>
+    <block type="import_radio"></block>
 
     <block type="import_speech"></block>
+
+    <block type="import_music"></block>
+
+    <block type="import_audio"></block>
+
+    <block type="import_neopixel"></block>
 
     <block type="import_random"></block>
   </category>

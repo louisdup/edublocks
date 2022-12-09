@@ -11,10 +11,10 @@ export default function getDefinitions(): void {
 		},
 	};
 
-	Blockly.Blocks["import_music"] = {
+	Blockly.Blocks["import_radio"] = {
 		init: function(): void {
 			this.appendDummyInput()
-				.appendField("import music");
+				.appendField("import radio");
 			this.setPreviousStatement(true, null);
 			this.setNextStatement(true, null);
 			this.setColour(basicColor);
@@ -25,6 +25,36 @@ export default function getDefinitions(): void {
 		init: function(): void {
 			this.appendDummyInput()
 				.appendField("import speech");
+			this.setPreviousStatement(true, null);
+			this.setNextStatement(true, null);
+			this.setColour(basicColor);
+		},
+	};
+
+	Blockly.Blocks["import_music"] = {
+		init: function(): void {
+			this.appendDummyInput()
+				.appendField("import music");
+			this.setPreviousStatement(true, null);
+			this.setNextStatement(true, null);
+			this.setColour(basicColor);
+		},
+	};
+
+	Blockly.Blocks["import_audio"] = {
+		init: function(): void {
+			this.appendDummyInput()
+				.appendField("import audio");
+			this.setPreviousStatement(true, null);
+			this.setNextStatement(true, null);
+			this.setColour(basicColor);
+		},
+	};
+
+	Blockly.Blocks["import_neopixel"] = {
+		init: function(): void {
+			this.appendDummyInput()
+				.appendField("import neopixel");
 			this.setPreviousStatement(true, null);
 			this.setNextStatement(true, null);
 			this.setColour(basicColor);

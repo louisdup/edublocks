@@ -1,0 +1,93 @@
+<category name="Pins" colour="#E51616" css-icon="customIcon fas fa-bolt">
+  <label text="Pins"></label>
+  <block type="pin">
+    <value name="pin">
+        <shadow type="inline_number">
+          <field name="value">0</field>
+        </shadow>
+    </value>
+  </block>
+
+  <block type="pin_is_touched">
+    <value name="pin">
+        <shadow type="inline_number">
+          <field name="value">0</field>
+        </shadow>
+    </value>
+  </block>
+
+  <block type="pin_read_analog">
+    <value name="pin">
+        <shadow type="inline_number">
+          <field name="value">0</field>
+        </shadow>
+    </value>
+  </block>
+
+  <block type="pin_read_digital">
+    <value name="pin">
+        <shadow type="inline_number">
+          <field name="value">0</field>
+        </shadow>
+    </value>
+  </block>
+
+  <block type="pin_write_analog">
+    <value name="pin">
+        <shadow type="inline_number">
+          <field name="value">0</field>
+        </shadow>
+    </value>
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#E51616" items="1" limit="1" minimum="1" inputType="number" />
+          <value name="input_1">
+              <shadow type="pin_on_off">
+                  <field name="value">0</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="pin_write_digital">
+    <value name="pin">
+        <shadow type="inline_number">
+          <field name="value">0</field>
+        </shadow>
+    </value>
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#E51616" items="1" limit="1" minimum="1" inputType="number" />
+          <value name="input_1">
+              <shadow type="pin_on_off">
+                  <field name="value">0</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="pin_set_pull">
+    <value name="pin">
+        <shadow type="inline_number">
+          <field name="value">0</field>
+        </shadow>
+    </value>
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#E51616" items="1" limit="1" minimum="1" inputType="text" />
+          <value name="input_1">
+              <shadow type="inline_text">
+                  <field name="value"></field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <label text="V2 Only"></label>
+  <block type="pin_speaker"></block>
+
+  <block type="logo_is_touched"></block>
+</category> 

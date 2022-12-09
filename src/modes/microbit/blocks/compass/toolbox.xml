@@ -1,0 +1,10 @@
+<category name="Compass" colour="#A016E5" css-icon="customIcon fad fa-compass">
+  <label text="Compass"></label>
+  <block type="compass_calibrate"></block>
+
+  <block type="compass_is_calibrated"></block>
+
+  <block type="compass_heading"></block>
+
+  <block type="compass_get_axis"></block>
+</category> 

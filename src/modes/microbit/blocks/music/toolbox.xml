@@ -1,0 +1,88 @@
+<category name="Music" colour="#E5BC16" css-icon="customIcon fad fa-volume">
+  <label text="Music"></label>
+  <block type="music_play">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#E5BC16" items="1" limit="4" minimum="1" inputType="text" />
+          <value name="input_1">
+              <block type="music_songs"></block>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="music_songs"></block>
+
+  <block type="music_pitch">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#E5BC16" items="1" limit="4" minimum="1" inputType="number" />
+          <value name="input_1">
+              <shadow type="inline_number">
+                  <field name="value">185</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="music_set_tempo">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#E5BC16" items="1" limit="2" minimum="1" inputType="number" />
+          <value name="input_1">
+              <block type="inline_variable_set">
+                  <field name="variable_name">bpm</field>
+                  <value name="value">
+                      <shadow type="inline_number">
+                          <field name="value">120</field>
+                      </shadow>
+                  </value>
+              </block>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="music_reset"></block>
+
+  <block type="music_stop">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#E5BC16" items="1" limit="1" minimum="1" inputType="text" />
+          <value name="input_1">
+              <shadow type="inline_text"></shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="music_get_tempo"></block>
+
+  <label text="V2 Only"></label>
+  <block type="audio_play">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#E5BC16" items="1" limit="4" minimum="1" inputType="text" />
+          <value name="input_1">
+              <block type="audio_options"></block>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="audio_options"></block>
+
+  <block type="audio_set_volume">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#E5BC16" items="1" limit="1" minimum="1" inputType="number" />
+          <value name="input_1">
+              <shadow type="inline_number">
+                  <field name="value">127</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+</category> 

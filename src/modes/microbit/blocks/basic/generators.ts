@@ -4,13 +4,28 @@ export default function getGenerators(): void {
 		return code;
 	};
 
-	Blockly.Python["import_music"] = function(): string {
-		const code: string = `import music\n`;
+	Blockly.Python["import_radio"] = function(): string {
+		const code: string = `import radio\n`;
 		return code;
 	};
 
 	Blockly.Python["import_speech"] = function(): string {
 		const code: string = `import speech\n`;
+		return code;
+	};
+
+	Blockly.Python["import_music"] = function(): string {
+		const code: string = `import music\n`;
+		return code;
+	};
+
+	Blockly.Python["import_audio"] = function(): string {
+		const code: string = `import audio\n`;
+		return code;
+	};
+
+	Blockly.Python["import_neopixel"] = function(): string {
+		const code: string = `import neopixel\n`;
 		return code;
 	};
 

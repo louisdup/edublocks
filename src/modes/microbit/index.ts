@@ -29,6 +29,14 @@ import basic from "./blocks/basic/toolbox.xml?raw";
 import variables from "../common/blocks/python/variables/toolbox.xml?raw";
 import display from "./blocks/display/toolbox.xml?raw";
 import buttons from "./blocks/buttons/toolbox.xml?raw";
+import accelerometer from "./blocks/accelerometer/toolbox.xml?raw";
+import compass from "./blocks/compass/toolbox.xml?raw";
+import radio from "./blocks/radio/toolbox.xml?raw";
+import speech from "./blocks/speech/toolbox.xml?raw";
+import music from "./blocks/music/toolbox.xml?raw";
+import microphone from "./blocks/microphone/toolbox.xml?raw";
+import neopixel from "./blocks/neopixel/toolbox.xml?raw";
+import pins from "./blocks/pins/toolbox.xml?raw";
 
 /**
  * Mode model for the micro:bit mode.
@@ -89,6 +97,30 @@ export class MicrobitModel extends ModeModelBase {
 			const buttonsDefinitions: any = import("./blocks/buttons/definitions");
 			const buttonsGenerators: any = import("./blocks/buttons/generators");
 
+			const accelerometerDefinitions: any = import("./blocks/accelerometer/definitions");
+			const accelerometerGenerators: any = import("./blocks/accelerometer/generators");
+
+			const compassDefinitions: any = import("./blocks/compass/definitions");
+			const compassGenerators: any = import("./blocks/compass/generators");
+
+			const radioDefinitions: any = import("./blocks/radio/definitions");
+			const radioGenerators: any = import("./blocks/radio/generators");
+
+			const speechDefinitions: any = import("./blocks/speech/definitions");
+			const speechGenerators: any = import("./blocks/speech/generators");
+
+			const musicDefinitions: any = import("./blocks/music/definitions");
+			const musicGenerators: any = import("./blocks/music/generators");
+
+			const microphoneDefinitions: any = import("./blocks/microphone/definitions");
+			const microphoneGenerators: any = import("./blocks/microphone/generators");
+
+			const neopixelDefinitions: any = import("./blocks/neopixel/definitions");
+			const neopixelGenerators: any = import("./blocks/neopixel/generators");
+
+			const pinsDefinitions: any = import("./blocks/pins/definitions");
+			const pinsGenerators: any = import("./blocks/pins/generators");
+
 			(await commonDefinitions).default();
 			(await commonGenerators).default();
 
@@ -107,6 +139,30 @@ export class MicrobitModel extends ModeModelBase {
 			(await buttonsDefinitions).default();
 			(await buttonsGenerators).default();
 
+			(await accelerometerDefinitions).default();
+			(await accelerometerGenerators).default();
+
+			(await compassDefinitions).default();
+			(await compassGenerators).default();
+
+			(await radioDefinitions).default();
+			(await radioGenerators).default();
+
+			(await speechDefinitions).default();
+			(await speechGenerators).default();
+
+			(await musicDefinitions).default();
+			(await musicGenerators).default();
+
+			(await microphoneDefinitions).default();
+			(await microphoneGenerators).default();
+
+			(await neopixelDefinitions).default();
+			(await neopixelGenerators).default();
+
+			(await pinsDefinitions).default();
+			(await pinsGenerators).default();
+
 			resolve();
 		});
 	}
@@ -119,7 +175,15 @@ export class MicrobitModel extends ModeModelBase {
 			basic,
 			variables,
 			display,
-			buttons
+			buttons,
+			accelerometer,
+			compass,
+			radio,
+			speech,
+			music,
+			microphone,
+			neopixel,
+			pins
 		];
 	}
 

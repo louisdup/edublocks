@@ -1,0 +1,37 @@
+<category name="Radio" colour="#84cc16" css-icon="customIcon fad fa-tower-cell">
+  <label text="Radio"></label>
+  <block type="radio_on"></block>
+
+  <block type="radio_send">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#84cc16" items="1" limit="1" minimum="1" inputType="string" />
+          <value name="input_1">
+              <shadow type="inline_string">
+                  <field name="value">Hello</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="radio_config">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#84cc16" items="1" limit="2" minimum="1" inputType="number" />
+          <value name="input_1">
+              <block type="inline_variable_set">
+                  <field name="variable_name">group</field>
+                  <value name="value">
+                      <shadow type="inline_number">
+                          <field name="value">23</field>
+                      </shadow>
+                  </value>
+              </block>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="radio_receive"></block>
+</category> 

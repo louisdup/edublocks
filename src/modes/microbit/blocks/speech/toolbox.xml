@@ -1,0 +1,41 @@
+<category name="Speech" colour="#06b6d4" css-icon="customIcon fas fa-message-dots">
+  <label text="Speech"></label>
+  <block type="speech_say">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#06b6d4" items="1" limit="1" minimum="1" inputType="string" />
+          <value name="input_1">
+              <shadow type="inline_string">
+                  <field name="value">I am a DALEK - EXTERMINATE</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="speech_pronounce">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#06b6d4" items="1" limit="6" minimum="1" inputType="text" />
+          <value name="input_1">
+              <shadow type="inline_string">
+                  <field name="value">/HEHLOW</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="speech_sing">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#06b6d4" items="1" limit="6" minimum="1" inputType="text" />
+          <value name="input_1">
+              <shadow type="inline_string">
+                  <field name="value">Hello</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+</category> 
