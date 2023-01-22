@@ -39,9 +39,10 @@
 
         <!-- Author Details -->
         <eb-list-item
-          :thumbnail="view.getShowcaseProjectAuthorProfilePicture()"
+          v-if="view.state.showcaseProjectAuthor"
+          :thumbnail="view.state.showcaseProjectAuthor.image"
           :title="view.getText('created-by')"
-          :subtitle="view.state.showcaseProjectAuthor?.name"
+          :subtitle="view.state.showcaseProjectAuthor.name"
         />
 
         <!-- Description -->

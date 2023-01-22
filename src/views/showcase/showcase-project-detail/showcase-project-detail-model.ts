@@ -6,8 +6,8 @@ import * as UsersProvider from "@/data/providers/users-provider";
 import router from "@/router";
 import { FirestoreFetchResponseModel } from "@/data/models/firestore-fetch-response-model";
 import { ShowcaseProjectModel } from "@/data/models/showcase-project-model";
-import { UserModel } from "@/data/models/user-model";
-import { UsersUtilities } from "@/utilities/users-utilities";
+import { CloudFunctionsResponseModel } from "@/data/models/cloud-functions-fetch-response-model";
+import { OtherUserModel } from "@/data/models/other-user-model";
 
 /**
  * View model for the showcase project detail view.
@@ -64,10 +64,13 @@ class ShowcaseProjectDetailModel extends ViewModelBase {
 	 */
 	private async loadShowcaseProjectAuthor(): Promise<void> {
 		if (this.state.showcaseProject) {
-			await UsersProvider.getUserAsync(this.state.showcaseProject.uid).then((response: FirestoreFetchResponseModel<UserModel>) => {
+			this.state.isLoadingShowcaseProjectAuthor = true;
+
+			await UsersProvider.getUserAsync(this.state.showcaseProject.uid).then((response: CloudFunctionsResponseModel<OtherUserModel>) => {
 				if (response.wasSuccessful && response.data) {
 					this.state.showcaseProjectAuthor = response.data;
 				}
+				this.state.isLoadingShowcaseProjectAuthor = false;
 			});
 		}
 	}
@@ -83,7 +86,7 @@ class ShowcaseProjectDetailModel extends ViewModelBase {
 	 * True if the showcase project is loading.
 	 */
 	public isLoadingVisible(): boolean {
-		return this.state.isLoadingShowcaseProject;
+		return this.state.isLoadingShowcaseProject || this.state.isLoadingShowcaseProjectAuthor;
 	}
 
 	/**
@@ -107,18 +110,6 @@ class ShowcaseProjectDetailModel extends ViewModelBase {
 	 */
 	public getIframeURL(): string | undefined {
 		return `${location.origin}/project/${this.state.showcaseProject?.uid}/${this.state.showcaseProject?.project}?embed=true`;
-	}
-
-	/**
-	 * Returns the profile picture of the showcase project author.
-	 */
-	public getShowcaseProjectAuthorProfilePicture(): string | undefined {
-		if (this.state.showcaseProjectAuthor) {
-			return UsersUtilities.getProfilePictureForEmail(this.state.showcaseProjectAuthor.email);
-		}
-		else {
-			return undefined;
-		}
 	}
 
 	/**

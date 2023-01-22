@@ -1,6 +1,8 @@
 import { FirestoreFetchResponseModel } from "../models/firestore-fetch-response-model";
 import { FirestoreUtilities } from "@/utilities/firestore-utilities";
-import { UserModel } from "../models/user-model";
+import { OtherUserModel } from "../models/other-user-model";
+import { CloudFunctionsUtilities } from "@/utilities/cloud-functions-utilities";
+import { CloudFunctionsResponseModel } from "../models/cloud-functions-fetch-response-model";
 
 // ----------------------------------------------------
 // Provides data access functions for users.
@@ -9,8 +11,8 @@ import { UserModel } from "../models/user-model";
 /**
  * Get a single user.
  */
-export async function getUserAsync(id: string): Promise<FirestoreFetchResponseModel<UserModel>> {
-	return FirestoreUtilities.fetchDocument(`users/${id}`);
+export async function getUserAsync(id: string): Promise<CloudFunctionsResponseModel<OtherUserModel>> {
+	return CloudFunctionsUtilities.callFunction("getUser", { userId: id });
 }
 
 /**
