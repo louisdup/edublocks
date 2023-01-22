@@ -33,7 +33,9 @@ export class FetchUtilities {
 				}
 			});
 
-			response.data = await request.json() as T;
+			if (request.status !== 204) {
+				response.data = await request.json() as T;
+			}
 			response.wasSuccessful = true;
 		}
 		catch (error) {

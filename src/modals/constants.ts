@@ -21,7 +21,8 @@ export enum ModalName {
 	AddClassroomUsers = "AddClassroomUsers",
 	RemoveClassroomUser = "RemoveClassroomUser",
 	JoinClassroom = "JoinClassroom",
-	CreateClassroom = "CreateClassroom"
+	CreateClassroom = "CreateClassroom",
+	ConnectRaspberryPi = "ConnectRaspberryPi"
 }
 
 /**
@@ -48,3 +49,4 @@ export type Modal =
  | "RemoveClassroomUser"
  | "JoinClassroom"
  | "CreateClassroom"
+ | "ConnectRaspberryPi"

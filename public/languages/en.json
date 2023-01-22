@@ -94,7 +94,8 @@
     "validation": {
         "email": "Must be a valid email address",
         "required": "{1} is required",
-        "min-characters": "{1} must be at least {2} characters"
+        "min-characters": "{1} must be at least {2} characters",
+        "ip-address": "Must be a valid IP address"
     },
     "showcase": {
         "showcase": "Showcase",
@@ -182,7 +183,8 @@
         "simulator": "Simulator",
         "serial": "Serial",
         "assignment": "Assignment",
-        "preview": "Preview"
+        "preview": "Preview",
+        "terminal": "Terminal"
     },
     "project-settings": {
         "project": "Project",
@@ -405,5 +407,14 @@
     "localization": {
         "en": "English",
         "fr": "French"
+    },
+    "connect-raspberry-pi": {
+        "connect-to-raspberry-pi": "Connect to Raspberry Pi",
+        "please-enter-ip": "Please enter the IP address of your Raspberry Pi running EduBlocks Link to get started.",
+        "ip-address": "IP address",
+        "connect": "Connect",
+        "setup-guide": "Setup Guide",
+        "cancel": "Cancel",
+        "error-connecting": "Error connecting to Raspberry Pi"
     }
 }
