@@ -14,6 +14,8 @@ import { EbTableItem } from "@/components/eb-table/eb-table-types";
 import { ModalUtilities } from "@/utilities/modal-utilities";
 import { ClassroomAssignmentSubmissionModel } from "@/data/models/classroom-assignment-submission-model";
 import { UserModel } from "@/data/models/user-model";
+import { OtherUserModel } from "@/data/models/other-user-model";
+import { CloudFunctionsResponseModel } from "@/data/models/cloud-functions-fetch-response-model";
 
 /**
  * View model for the classroom list view.
@@ -96,8 +98,8 @@ class ClassroomDetailModel extends ViewModelBase {
 	/**
 	 * Loads information about a user.
 	 */
-	private async loadUserInfo(id: string): Promise<UserModel | undefined> {
-		const response: FirestoreFetchResponseModel<UserModel> = await UsersProvider.getUserAsync(id);
+	private async loadUserInfo(id: string): Promise<OtherUserModel | undefined> {
+		const response: CloudFunctionsResponseModel<OtherUserModel> = await UsersProvider.getUserAsync(id);
 		
 		if (response.wasSuccessful && response.data) {
 			return response.data;

@@ -1,4 +1,4 @@
-import { UserModel } from "./user-model";
+import { OtherUserModel } from "./other-user-model";
 
 /**
  * Data model for a classroom user.
@@ -8,5 +8,5 @@ export interface ClassroomUserModel {
 	role: string;
 	enrolled: boolean;
 	created: string;
-	user?: UserModel;
+	user?: OtherUserModel;
 }

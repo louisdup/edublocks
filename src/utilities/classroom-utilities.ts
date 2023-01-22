@@ -9,7 +9,6 @@ import { AuthenticationUtilities } from "./authentication-utilities";
 import { FormatUtilities } from "./format-utilities";
 import { LocalizationUtilities } from "./localization-utilities";
 import { ModeUtilities } from "./mode-utilities";
-import { UsersUtilities } from "./users-utilities";
 import { EbSelectOption } from "@/components/eb-select/eb-select-types";
 import { EditorUtilities } from "./editor-utilities";
 import * as ProjectsProvider from "@/data/providers/projects-provider";
@@ -446,7 +445,8 @@ export class ClassroomUtilities {
 
 				const tableItem: EbTableItem = {
 					title: submission.user.name,
-					thumbnail: UsersUtilities.getProfilePictureForEmail(submission.user.email),
+					thumbnail: submission.user.image,
+					isThumbnailFullWidth: true,
 					meta: [],
 					action: (): void => {
 						router.push(`/project/${submission.uid}/${submission.project}`);
@@ -563,7 +563,7 @@ export class ClassroomUtilities {
 			if (classroomUser.user) {	
 				const tableItem: EbTableItem = {
 					title: classroomUser.user.name,
-					thumbnail: UsersUtilities.getProfilePictureForEmail(classroomUser.user.email),
+					thumbnail: classroomUser.user.image,
 					isThumbnailFullWidth: true,
 					dropdownOptions: this.getDropdownOptionsForClassroomUsers(classroom, classroomUser),
 					meta: [

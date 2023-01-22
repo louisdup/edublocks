@@ -6,16 +6,16 @@ import * as yup from "yup";
 import * as ClassroomProvider from "@/data/providers/classroom-provider";
 import * as UsersProvider from "@/data/providers/users-provider";
 import { FirestoreFetchResponseModel } from "@/data/models/firestore-fetch-response-model";
-import { UserModel } from "@/data/models/user-model";
 import { ClassroomAssignmentModel } from "@/data/models/classroom-assignment-model";
 import { ClassroomAssignmentSubmissionModel } from "@/data/models/classroom-assignment-submission-model";
 import { EbSelectOption } from "@/components/eb-select/eb-select-types";
 import { ClassroomUtilities } from "@/utilities/classroom-utilities";
 import { EditorUtilities } from "@/utilities/editor-utilities";
-import { UsersUtilities } from "@/utilities/users-utilities";
 import { FormatUtilities } from "@/utilities/format-utilities";
 import router from "@/router";
 import { ModalUtilities } from "@/utilities/modal-utilities";
+import { CloudFunctionsResponseModel } from "@/data/models/cloud-functions-fetch-response-model";
+import { OtherUserModel } from "@/data/models/other-user-model";
 
 /**
  * Component model for the assignment submissions sidebar component.
@@ -107,8 +107,8 @@ class AssignmentSubmissionsModel extends ComponentModelBase {
 	/**
 	 * Loads information about a user.
 	 */
-	private async loadUserInfo(id: string): Promise<UserModel | undefined> {
-		const response: FirestoreFetchResponseModel<UserModel> = await UsersProvider.getUserAsync(id);
+	private async loadUserInfo(id: string): Promise<OtherUserModel | undefined> {
+		const response: CloudFunctionsResponseModel<OtherUserModel> = await UsersProvider.getUserAsync(id);
 	
 		if (response.wasSuccessful && response.data) {
 			return response.data;
@@ -246,7 +246,7 @@ class AssignmentSubmissionsModel extends ComponentModelBase {
 	 */
 	public getCurrentAssignmentSubmissionThumbnail(): string | undefined {
 		if (this.state.currentAssignmentSubmission && this.state.currentAssignmentSubmission.user) {
-			return UsersUtilities.getProfilePictureForEmail(this.state.currentAssignmentSubmission.user.email);
+			return this.state.currentAssignmentSubmission.user.image;
 		}
 		else {
 			return undefined;
