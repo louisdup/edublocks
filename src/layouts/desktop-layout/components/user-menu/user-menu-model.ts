@@ -24,13 +24,21 @@ export class UserMenuModel extends ComponentModelBase {
 	}
 
 	/**
-	 * Called when the login button is clicked.
-	 * Opens the login modal.
+	 * Called when the sign in button is clicked.
+	 * Opens the sign in modal.
 	 */
-	public onLoginClicked(): void {
+	public onSignInButtonClicked(): void {
 		ModalUtilities.showModal({
-			modal: "Login"
+			modal: "SignIn"
 		});
+	}
+
+	/**
+	 * Called when the sign in button is clicked.
+	 * Opens the sign in modal.
+	 */
+	public onRegisterButtonClicked(): void {
+		router.push("/register");
 	}
 
 	/**
@@ -63,10 +71,10 @@ export class UserMenuModel extends ComponentModelBase {
 					}
 				},
 				{
-					title: this.getText("logout"),
+					title: this.getText("sign-out"),
 					icon: ["far", "arrow-right-from-bracket"],
 					action: (): void => {
-						AuthenticationUtilities.logout();
+						AuthenticationUtilities.signOut();
 					}
 				}
 			]

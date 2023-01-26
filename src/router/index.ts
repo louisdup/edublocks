@@ -7,6 +7,7 @@ import { classroomRoutes } from "@/views/classroom/routes";
 import { showcaseRoutes } from "@/views/showcase/routes";
 import { notFoundRoutes } from "@/views/not-found/routes";
 import { settingsRoutes } from "@/views/settings/routes";
+import { registerRoutes } from "@/views/register/routes";
 
 const routes: Array<RouteRecordRaw> = [
 	...homeRoutes,
@@ -15,7 +16,8 @@ const routes: Array<RouteRecordRaw> = [
 	...classroomRoutes,
 	...showcaseRoutes,
 	...notFoundRoutes,
-	...settingsRoutes
+	...settingsRoutes,
+	...registerRoutes
 ];
 
 const router: Router = createRouter({

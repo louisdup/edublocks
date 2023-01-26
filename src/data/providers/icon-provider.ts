@@ -3,6 +3,7 @@ import { faArrowDownToLine, faArrowUpRightFromSquare, faBan, faBoltLightning, fa
 import { faCheckCircle, faPlay, faPlus, faRepeat, faSquare, faVolume, faVolumeXmark } from "@fortawesome/pro-solid-svg-icons";
 import { faArrowRightFromBracket, faArrowRightToArc, faBars, faCog, faEllipsis, faFile, faGrid2, faPencil, faSave, faSearch, faShare, faTimes, faTrash, faHome as farHome, faFolderOpen as farFolderOpen, faFilm as farFilm, faUsers as farUsers, faBooks, faBookOpen as farBookOpen, faPuzzlePiece } from "@fortawesome/pro-regular-svg-icons";
 import { faApple, faGoogle, faMicrosoft, faRaspberryPi, faUsb } from "@fortawesome/free-brands-svg-icons";
+import { faCheckCircle as fadCheckCircle } from "@fortawesome/pro-duotone-svg-icons";
 
 // Import CSS Icons 
 import "@fortawesome/fontawesome-pro/css/all.min.css";
@@ -60,5 +61,6 @@ library.add(
 	faUserPlus,
 	faArrowUpRightFromSquare,
 	faClone,
-	faRaspberryPi as IconDefinition
+	faRaspberryPi as IconDefinition,
+	fadCheckCircle
 );

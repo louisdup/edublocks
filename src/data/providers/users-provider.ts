@@ -16,6 +16,13 @@ export async function getUserAsync(id: string): Promise<CloudFunctionsResponseMo
 }
 
 /**
+ * Create a new user record.
+ */
+export async function createUserAsync(userId: string, body: object): Promise<FirestoreFetchResponseModel<string>> {
+	return FirestoreUtilities.createDocument(`users`, body, userId);
+}
+
+/**
  * Create a classroom record against a user.
  */
 export async function createUserClassroomAsync(userId: string, classroomId: string, body: object): Promise<FirestoreFetchResponseModel<string>> {

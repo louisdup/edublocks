@@ -28,7 +28,7 @@ export class UserMenuModel extends ComponentModelBase {
 	 */
 	public onLoginClicked(): void {
 		ModalUtilities.showModal({
-			modal: "Login"
+			modal: "SignIn"
 		});
 	}
 
@@ -51,10 +51,10 @@ export class UserMenuModel extends ComponentModelBase {
 		return [
 			[
 				{
-					title: this.getText("logout"),
+					title: this.getText("sign-out"),
 					icon: ["far", "arrow-right-from-bracket"],
 					action: (): void => {
-						AuthenticationUtilities.logout();
+						AuthenticationUtilities.signOut();
 					}
 				}
 			]

@@ -1,5 +1,4 @@
 import { ComponentModelBase } from "@/components/base-classes/component-model-base";
-import { EditorUtilities } from "@/utilities/editor-utilities";
 import { LogoUtilities } from "@/utilities/logo-utilities";
 import { ModalUtilities } from "@/utilities/modal-utilities";
 
@@ -19,18 +18,6 @@ export class DesktopHeaderModel extends ComponentModelBase {
 	 */
 	public getLogoPath(): string {
 		return LogoUtilities.getFullLogoPath();
-	}
-
-	/**
-	 * Returns an image file path for the logo of the current mode.
-	 */
-	public getCurrentModeLogo(): string | undefined {
-		if (EditorUtilities.currentProject.value) {
-			return EditorUtilities.currentProject.value.mode.config.logo;
-		}
-		else {
-			return undefined;
-		}	
 	}
 
 	/**

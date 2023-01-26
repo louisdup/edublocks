@@ -113,7 +113,7 @@ class ClassroomListModel extends ViewModelBase {
 	 * Returns a title for the classrooms table empty state.
 	 */
 	public getClassroomsTableEmptyStateTitle(): string {
-		return AuthenticationUtilities.currentUser.value ? this.getText("no-classrooms-found") : this.getText("login-to-view-classrooms");
+		return AuthenticationUtilities.currentUser.value ? this.getText("no-classrooms-found") : this.getText("sign-in-to-view-classrooms");
 	}
 	
 	/**
@@ -124,7 +124,7 @@ class ClassroomListModel extends ViewModelBase {
 			return this.getText("get-started-by-joining-creating");
 		}
 		else {
-			return this.getText("you-need-to-be-logged-in");
+			return this.getText("you-need-to-be-signed-in");
 		}
 	}
 }

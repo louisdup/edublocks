@@ -21,15 +21,24 @@
     </button>
   </eb-dropdown>
 
-  <eb-button
+  <div
     v-else
-    :label="component.getText('login')"
-    :icon="['far', 'arrow-right-to-arc']"
-    align="left"
-    color="transparent"
-    is-full-width
-    @click="component.onLoginClicked()"
-  />
+    class="flex items-center p-3 space-x-3"
+  >
+    <eb-button
+      :label="component.getText('sign-in')"
+      color="gray"
+      is-full-width
+      @click="component.onSignInButtonClicked()"
+    />
+
+    <eb-button
+      :label="component.getText('register')"
+      color="transparent"
+      is-full-width
+      @click="component.onRegisterButtonClicked()"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">

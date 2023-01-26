@@ -60,16 +60,16 @@
         @click="modal.onCloseClicked()"
       />
       <eb-button
-        :label="modal.getText('login')"
+        :label="modal.getText('sign-in')"
         color="blue"
-        :is-disabled="modal.isLoginButtonDisabled()"
-        :is-loading="modal.isLoginButtonLoading()"
-        @click="modal.onLoginClicked()"
+        :is-disabled="modal.isSignInButtonDisabled()"
+        :is-loading="modal.isSignInButtonLoading()"
+        @click="modal.onSignInClicked()"
       />
     </eb-modal-footer>
   </eb-modal>
 </template>
 
 <script setup lang="ts">
-import { modal } from "./login-model";
+import { modal } from "./sign-in-model";
 </script>

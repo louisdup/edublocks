@@ -117,7 +117,7 @@ class ProjectsModel extends ViewModelBase {
 	 * Returns a title for the projects table empty state.
 	 */
 	public getProjectsTableEmptyStateTitle(): string {
-		return AuthenticationUtilities.currentUser.value ? this.getText("no-projects-found") : this.getText("login-to-view-projects");
+		return AuthenticationUtilities.currentUser.value ? this.getText("no-projects-found") : this.getText("sign-in-to-view-projects");
 	}
 
 	/**
@@ -133,7 +133,7 @@ class ProjectsModel extends ViewModelBase {
 			}
 		}
 		else {
-			return this.getText("you-need-to-be-logged-in");
+			return this.getText("you-need-to-be-signed-in");
 		}
 	}
 

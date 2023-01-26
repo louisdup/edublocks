@@ -32,6 +32,9 @@ function startApplication(): void {
 		.use(layouts)
 		.component("font-awesome-icon", FontAwesomeIcon)
 		.mount("#app");
+
+	// Redirects the user to the email verification page if they need to verify their email.
+	AuthenticationUtilities.shouldRedirectToRegisterPage();
 }
 
 // Setup firebase & vue app.

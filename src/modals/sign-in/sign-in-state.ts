@@ -1,16 +1,16 @@
 import { FormData, FormErrors } from "@/utilities/form-utilities";
 
 /**
- * View state for the login modal.
+ * View state for the sign in modal.
  */
-export class LoginState {
+export class SignInState {
 	/**
-	 * Stores data from the login form.
+	 * Stores data from the sign in form.
 	 */
 	public data: FormData = {};
 	 
 	/**
-	 * Stores a list of errors from the login form.
+	 * Stores a list of errors from the sign in form.
 	 */
 	public errors: FormErrors = {};
 

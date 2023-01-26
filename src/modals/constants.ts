@@ -9,7 +9,7 @@ export enum ModalName {
 	PublishToShowcase = "PublishToShowcase",
 	DeleteShowcaseProject = "DeleteShowcaseProject",
 	Error = "Error",
-	Login = "Login",
+	SignIn = "SignIn",
 	ConnectMicrobit = "ConnectMicrobit",
 	Progress = "Progress",
 	CreateAssignment = "CreateAssignment",
@@ -36,7 +36,7 @@ export type Modal =
  | "PublishToShowcase"
  | "DeleteShowcaseProject"
  | "Error"
- | "Login"
+ | "SignIn"
  | "ConnectMicrobit"
  | "Progress"
  | "CreateAssignment"

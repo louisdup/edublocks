@@ -8,7 +8,7 @@ import ShareProject from "./share-project/share-project.vue";
 import PublishToShowcase from "./publish-to-showcase/publish-to-showcase.vue";
 import DeleteShowcaseProject from "./delete-showcase-project/delete-showcase-project.vue";
 import Error from "./error/error.vue";
-import Login from "./login/login.vue";
+import SignIn from "./sign-in/sign-in.vue";
 import ConnectMicrobit from "./connect-microbit/connect-microbit.vue";
 import Progress from "./progress/progress.vue";
 import CreateAssignment from "./create-assignment/create-assignment.vue";
@@ -35,7 +35,7 @@ export default {
 		app.component(ModalName.PublishToShowcase, PublishToShowcase);
 		app.component(ModalName.DeleteShowcaseProject, DeleteShowcaseProject);
 		app.component(ModalName.Error, Error);
-		app.component(ModalName.Login, Login);
+		app.component(ModalName.SignIn, SignIn);
 		app.component(ModalName.ConnectMicrobit, ConnectMicrobit);
 		app.component(ModalName.Progress, Progress);
 		app.component(ModalName.CreateAssignment, CreateAssignment);

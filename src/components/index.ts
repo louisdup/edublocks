@@ -41,6 +41,7 @@ import EbListItem from "./eb-list-item/eb-list-item.vue";
 import EbBanner from "./eb-banner/eb-banner.vue";
 import EbRichText from "./eb-rich-text/eb-rich-text.vue";
 import EbContainer from "./eb-container/eb-container.vue";
+import EbBulletList from "./eb-bullet-list/eb-bullet-list.vue";
 
 /**
  * Export & install application components for use globally
@@ -87,5 +88,6 @@ export default {
 		app.component(ComponentName.EbBanner, EbBanner);
 		app.component(ComponentName.EbRichText, EbRichText);
 		app.component(ComponentName.EbContainer, EbContainer);
+		app.component(ComponentName.EbBulletList, EbBulletList);
 	}
 };

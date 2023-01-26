@@ -21,8 +21,8 @@
         "blocks": "Blocks",
         "no-projects-found": "No Projects Found",
         "get-started-by-creating": "Get started by creating or importing a project.",
-        "login-to-view-projects": "Login to view recent projects",
-        "you-need-to-be-logged-in": "You need to be logged in to view your recent projects."
+        "sign-in-to-view-projects": "Sign in to view recent projects",
+        "you-need-to-be-signed-in": "You need to be signed in to view your recent projects."
     },
     "delete-project": {
         "delete-project": "Delete Project",
@@ -77,25 +77,43 @@
         "problem-processing-request": "Sorry, there was a problem processing your request. Please try again later. If this problem continues, please contact the EduBlocks team.",
         "close": "Close"
     },
-    "login": {
+    "sign-in": {
         "sign-into-account": "Sign in to your account",
-        "login": "Login",
+        "sign-in": "Sign in",
         "cancel": "Cancel",
         "email-address": "Email Address",
         "password": "Password",
         "incorrect-email-password": "Incorrect email or password"
     },
+    "register": {
+        "unlock-features": "Unlock the full potential of EduBlocks with a free account:",
+        "save-projects-to-cloud": "Save your projects to the cloud",
+        "share-projects": "Share your projects with the world",
+        "manage-student-work": "Easily manage student work with Classroom",
+        "register": "Register",
+        "register-for-free": "Register for free",
+        "name": "Name",
+        "email-address": "Email Address",
+        "password": "Password",
+        "confirm-password": "Confirm Password",
+        "verify-your-email-address": "Verify your email address",
+        "to-verify-your-email": "To verify your email address and use your EduBlocks account, please click on the link we've sent to {1}.",
+        "sign-out": "Sign out",
+        "resend-email": "Resend email"
+    },
     "user-menu": {
-        "login": "Login",
+        "sign-in": "Sign in",
+        "register": "Register",
         "my-account": "My account",
-        "logout": "Logout",
+        "sign-out": "Sign out",
         "account-settings": "Account settings"
     },
     "validation": {
         "email": "Must be a valid email address",
         "required": "{1} is required",
         "min-characters": "{1} must be at least {2} characters",
-        "ip-address": "Must be a valid IP address"
+        "ip-address": "Must be a valid IP address",
+        "passwords-must-match": "Passwords must match"
     },
     "showcase": {
         "showcase": "Showcase",
@@ -135,8 +153,8 @@
         "no-projects-found": "No Projects Found",
         "get-started-by-creating": "Get started by creating or importing a project.",
         "search-for-something-else": "Try searching for something else.",
-        "login-to-view-projects": "Login to view recent projects",
-        "you-need-to-be-logged-in": "You need to be logged in to view your recent projects."
+        "sign-in-to-view-projects": "Sign in to view recent projects",
+        "you-need-to-be-signed-in": "You need to be signed in to view your recent projects."
     },
     "format": {
         "just-now": "Just now",
@@ -274,10 +292,10 @@
         "new-classroom": "New Classroom",
         "join-classroom": "Join Classroom",
         "no-classrooms-found": "No Classrooms Found",
-        "login-to-view-classrooms": "Login to view classrooms",
+        "sign-in-to-view-classrooms": "Sign in to view classrooms",
         "get-started-by-joining-creating": "Get started by joining or creating a classroom.",
         "search-for-something-else": "Try searching for something else.",
-        "you-need-to-be-logged-in": "You need to be logged in to view your classrooms."
+        "you-need-to-be-signed-in": "You need to be signed in to view your classrooms."
     },
     "classroom-detail": {
         "back": "Back",
@@ -416,5 +434,5 @@
         "setup-guide": "Setup Guide",
         "cancel": "Cancel",
         "error-connecting": "Error connecting to Raspberry Pi"
-    }
+    } 
 }

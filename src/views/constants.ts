@@ -12,5 +12,6 @@ export enum View {
 	AssignmentSubmissions = "Assignment Submissions",
 	JoinClassroom = "Join Classroom",
 	NotFound = "Not Found",
-	Settings = "Settings"
+	Settings = "Settings",
+	Register = "Register"
 }

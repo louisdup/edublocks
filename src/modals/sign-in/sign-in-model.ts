@@ -3,27 +3,27 @@ import { FormUtilities, ValidationSchema } from "@/utilities/form-utilities";
 import { ModalUtilities } from "@/utilities/modal-utilities";
 import { reactive } from "vue";
 import { ModalModelBase } from "../base-classes/modal-model-base";
-import { LoginState } from "./login-state";
+import { SignInState } from "./sign-in-state";
 import * as yup from "yup";
 
 /**
- * Modal model for the login modal.
+ * Modal model for the sign in modal.
  */
-class LoginModal extends ModalModelBase {
+class SignInModal extends ModalModelBase {
 	/**
 	 * Specifies the localization namespace to use for getting localized text values.
 	 */
 	protected getLocalizationNamespace(): string {
-		return "login";
+		return "sign-in";
 	}
 
 	/**
 	 * Reactive instance of the modal state.
 	 */
-	public state: LoginState = reactive(new LoginState());
+	public state: SignInState = reactive(new SignInState());
 
 	/**
-	 * Returns validation schema for the login form.
+	 * Returns validation schema for the sign in form.
 	 */
 	public getValidationSchema(): ValidationSchema {
 		return {
@@ -46,12 +46,12 @@ class LoginModal extends ModalModelBase {
 	}
 
 	/**
-	 * Called when the google icon is clicked and prompts the user to login with google.
+	 * Called when the google icon is clicked and prompts the user to sign in with google.
 	 */
 	public async onGoogleClicked(): Promise<void> {
 		this.state.isBusy = true;
 		try {
-			await AuthenticationUtilities.loginWithGoogle();
+			await AuthenticationUtilities.signInWithGoogle();
 			ModalUtilities.closeModal();
 		}
 		catch {
@@ -63,12 +63,12 @@ class LoginModal extends ModalModelBase {
 	}
 
 	/**
-	 * Called when the microsoft icon is clicked and prompts the user to login with microsoft.
+	 * Called when the microsoft icon is clicked and prompts the user to sign in with microsoft.
 	 */
 	public async onMicrosoftClicked(): Promise<void> {
 		this.state.isBusy = true;
 		try {
-			await AuthenticationUtilities.loginWithMicrosoft();
+			await AuthenticationUtilities.signInWithMicrosoft();
 			ModalUtilities.closeModal();
 		}
 		catch {
@@ -80,12 +80,12 @@ class LoginModal extends ModalModelBase {
 	}
 
 	/**
-	 * Called when the apple icon is clicked and prompts the user to login with apple.
+	 * Called when the apple icon is clicked and prompts the user to sign in with apple.
 	 */
 	public async onAppleClicked(): Promise<void> {
 		this.state.isBusy = true;
 		try {
-			await AuthenticationUtilities.loginWithApple();
+			await AuthenticationUtilities.signInWithApple();
 			ModalUtilities.closeModal();
 		}
 		catch {
@@ -97,14 +97,14 @@ class LoginModal extends ModalModelBase {
 	}
 
 	/**
-	 * Called when a the user clicks the login button. 
-	 * Takes the entered email and password and sends them to firebase to login.
+	 * Called when a the user clicks the sign in button. 
+	 * Takes the entered email and password and sends them to firebase to sign in.
 	 */
-	public async onLoginClicked(): Promise<void> {
+	public async onSignInClicked(): Promise<void> {
 		if (this.state.isValid) {
 			this.state.isBusy = true;
 			try {
-				await AuthenticationUtilities.loginWithEmailAndPassword(this.state.data["email"], this.state.data["password"]);
+				await AuthenticationUtilities.signInWithEmailAndPassword(this.state.data["email"], this.state.data["password"]);
 				ModalUtilities.closeModal();
 			}
 			catch {
@@ -115,19 +115,19 @@ class LoginModal extends ModalModelBase {
 	}
 
 	/**
-	 * True if the login modal is busy. 
+	 * True if the sign in modal is busy. 
 	 */
-	public isLoginButtonLoading(): boolean {
+	public isSignInButtonLoading(): boolean {
 		return this.state.isBusy;
 	}
 
 	/**
-	 * True if the login form is not valid. 
+	 * True if the sign in form is not valid. 
 	 */
-	public isLoginButtonDisabled(): boolean {
+	public isSignInButtonDisabled(): boolean {
 		return !this.state.isValid;
 	}
 }
 
 // Export the modal model.
-export const modal: LoginModal = new LoginModal();
+export const modal: SignInModal = new SignInModal();
