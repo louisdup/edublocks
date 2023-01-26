@@ -18,6 +18,7 @@ import { ScreenUtilities } from "./utilities/screen-utilities";
 import { LocalizationUtilities } from "./utilities/localization-utilities";
 import { AuthenticationUtilities } from "./utilities/authentication-utilities";
 import { FirebaseUtilities } from "./utilities/firebase-utilities";
+import { AppCheckUtilities } from "./utilities/app-check-utilities";
 
 let app: ComponentPublicInstance | undefined;
 
@@ -41,6 +42,9 @@ function startApplication(): void {
 function setupApplication(): void {
 	// Initialize firebase.
 	FirebaseUtilities.initializeApp();
+
+	// Initalize firebase app check.
+	AppCheckUtilities.initializeAppCheck();
 
 	// Get current logged in user and start the vue app.
 	onAuthStateChanged(AuthenticationUtilities.getAuth(), (user: User | null) => {
