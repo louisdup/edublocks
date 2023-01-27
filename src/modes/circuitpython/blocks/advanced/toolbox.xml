@@ -1,0 +1,34 @@
+<category name="Advanced" colour="#06b6d4" css-icon="customIcon fas fa-circle-plus">
+  <label text="Advanced"></label>
+
+  <label text="CPU Temperature"></label>
+  <block type="advanced_cpu_temperature"></block>
+
+  <label text="Storage"></label>
+
+  <block type="storage_mount">
+    <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#06b6d4" items="1" limit="2" minimum="1" inputType="text" />
+            <value name="input_1">
+                <shadow type="inline_string">
+                    <field name="value">/</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+  </block>
+
+  <block type="storage_open">
+    <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#06b6d4" items="1" limit="2" minimum="1" inputType="text" />
+            <value name="input_1">
+                <shadow type="inline_string">
+                    <field name="value">/hello.txt</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+  </block>
+</category>

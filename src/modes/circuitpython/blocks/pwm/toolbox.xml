@@ -1,0 +1,59 @@
+<category name="PWM" colour="#ef4444" css-icon="customIcon fad fa-wave-pulse">
+  <label text="PWM"></label>
+
+  <block type="pwm_pulse_in">
+    <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#ef4444" items="1" limit="3" minimum="1" inputType="text" />
+            <value name="input_1">
+                <shadow type="inline_text">
+                    <field name="value">board.D7</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+  </block>
+
+  <block type="pwm_pulse_out">
+    <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#ef4444" items="1" limit="3" minimum="1" inputType="text" />
+            <value name="input_1">
+                <shadow type="inline_text">
+                    <field name="value">value=True</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+  </block>
+
+  <block type="pwm_pause"></block>
+
+  <block type="pwm_clear"></block>
+
+  <block type="pwm_resume">
+    <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#ef4444" items="1" limit="1" minimum="1" inputType="number" />
+            <value name="input_1">
+                <shadow type="inline_number">
+                    <field name="value">80</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+  </block>
+
+  <block type="pwm_send">
+    <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#ef4444" items="1" limit="1" minimum="1" inputType="text" />
+            <value name="input_1">
+                <shadow type="inline_text">
+                    <field name="value"></field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+  </block>
+</category>

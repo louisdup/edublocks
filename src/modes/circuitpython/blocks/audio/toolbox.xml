@@ -1,0 +1,72 @@
+<category name="Audio" colour="#00CA4D" css-icon="customIcon fad fa-music">
+  <label text="Audio"></label>
+
+  <block type="audio_out">
+    <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#00CA4D" items="1" limit="3" minimum="1" inputType="text" />
+            <value name="input_1">
+                <shadow type="inline_text">
+                    <field name="value">board.SPEAKER</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+  </block>
+
+  <block type="audio_switch_to_output">
+    <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#00CA4D" items="1" limit="1" minimum="1" inputType="text" />
+            <value name="input_1">
+                <shadow type="inline_text">
+                    <field name="value">value=True</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+  </block>
+
+  <block type="audio_wave_file">
+    <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#00CA4D" items="1" limit="2" minimum="1" inputType="text" />
+            <value name="input_1">
+                <shadow type="inline_text">
+                    <field name="value"></field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+  </block>
+
+  <block type="audio_play">
+    <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#00CA4D" items="1" limit="2" minimum="1" inputType="text" />
+            <value name="input_1">
+                <shadow type="inline_text">
+                    <field name="value"></field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+  </block>
+
+  <block type="audio_stop"></block>
+
+  <block type="audio_raw_sample">
+    <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#00CA4D" items="1" limit="3" minimum="1" inputType="text" />
+            <value name="input_1">
+                <shadow type="inline_text">
+                    <field name="value"></field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+  </block>
+
+  <block type="audio_playing"></block>
+</category>

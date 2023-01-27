@@ -1,0 +1,39 @@
+<category name="Analog" colour="#FF8500" css-icon="customIcon fas fa-gauge">
+  <label text="Analog"></label>
+
+  <block type="analog_in">
+    <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#FF8500" items="1" limit="1" minimum="1" inputType="text" />
+            <value name="input_1">
+                <shadow type="inline_text">
+                    <field name="value">board.A1</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+  </block>
+
+  <block type="analog_out">
+    <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#FF8500" items="1" limit="1" minimum="1" inputType="text" />
+            <value name="input_1">
+                <shadow type="inline_text">
+                    <field name="value">board.A1</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+  </block>
+
+  <block type="analog_pin_set_value">
+    <value name="value">
+        <shadow type="inline_text">
+            <field name="value">32768</field>
+        </shadow>
+      </value>
+  </block>
+
+  <block type="analog_pin_get_value"></block>
+</category>

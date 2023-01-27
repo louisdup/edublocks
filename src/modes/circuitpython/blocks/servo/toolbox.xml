@@ -1,0 +1,32 @@
+<category name="Servo" colour="#AD40FF" css-icon="customIcon fad fa-cog">
+  <label text="Servo"></label>
+
+  <block type="servo">
+    <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#AD40FF" items="1" limit="4" minimum="1" inputType="text" />
+            <value name="input_1">
+                <shadow type="inline_text">
+                    <field name="value"></field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+  </block>
+
+  <block type="servo_angle">
+    <value name="value">
+        <shadow type="inline_number">
+            <field name="value">180</field>
+        </shadow>
+      </value>
+  </block>
+
+  <block type="servo_actuation_range">
+    <value name="value">
+        <shadow type="inline_number">
+            <field name="value">135</field>
+        </shadow>
+      </value>
+  </block>
+</category>

@@ -1,0 +1,42 @@
+<category name="Digital" colour="#448EFF" css-icon="customIcon fad fa-bullseye">
+  <label text="Digital"></label>
+
+  <block type="digital_in_out">
+    <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#448EFF" items="1" limit="1" minimum="1" inputType="text" />
+            <value name="input_1">
+                <shadow type="inline_text">
+                    <field name="value">board.LED</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+  </block>
+
+  <block type="digital_pin_direction">
+    <value name="value">
+        <block type="digital_direction"></block>
+    </value>
+  </block>
+
+  <block type="digital_direction"></block>
+
+  <block type="digital_pull">
+    <value name="value">
+        <block type="digital_pull_direction"></block>
+    </value>
+  </block>
+
+  <block type="digital_pull_direction"></block>
+
+  <block type="digital_pin_set_value">
+    <value name="value">
+        <shadow type="inline_text">
+            <field name="value">True</field>
+        </shadow>
+      </value>
+  </block>
+
+  <block type="digital_pin_get_value"></block>
+</category>

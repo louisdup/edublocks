@@ -1,0 +1,18 @@
+<category name="Touch" colour="#FF4A76" css-icon="customIcon fad fa-fingerprint">
+  <label text="Touch"></label>
+
+  <block type="touch_in">
+    <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#FF4A76" items="1" limit="1" minimum="1" inputType="text" />
+            <value name="input_1">
+                <shadow type="inline_text">
+                    <field name="value">board.A1</field>
+                </shadow>
+            </value>
+        </shadow>
+      </value>
+  </block>
+
+  <block type="touch_get_value"></block>
+</category>

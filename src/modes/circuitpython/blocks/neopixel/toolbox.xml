@@ -1,0 +1,65 @@
+<category name="Neopixel" colour="#10b981" css-icon="customIcon fad fa-lightbulb">
+  <label text="Neopixel"></label>
+  <block type="neopixel_setup">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#10b981" items="2" limit="4" minimum="2" inputType="number" />
+          <value name="input_1">
+            <shadow type="inline_text">
+                <field name="value">board.A1</field>
+            </shadow>
+          </value>
+          <value name="input_2">
+              <shadow type="inline_number">
+                  <field name="value">8</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="neopixel_set">
+    <value name="value">
+      <shadow type="inline_number">
+          <field name="value">0</field>
+      </shadow>
+    </value>
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#10b981" items="3" limit="3" minimum="1" inputType="number" />
+          <value name="input_1">
+              <shadow type="inline_number">
+                  <field name="value">255</field>
+              </shadow>
+          </value>
+          <value name="input_2">
+              <shadow type="inline_number">
+                  <field name="value">0</field>
+              </shadow>
+          </value>
+          <value name="input_3">
+              <shadow type="inline_number">
+                  <field name="value">128</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="neopixel_fill">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#10b981" items="1" limit="1" minimum="1" inputType="number" />
+          <value name="input_1">
+            <shadow type="inline_text">
+                <field name="value"></field>
+            </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="neopixel_show"></block>
+
+  <block type="neopixel_clear"></block>
+</category> 
