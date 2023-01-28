@@ -1,9 +1,9 @@
 <template>
   <div class="h-screen w-screen bg-gray-100 flex flex-col overflow-hidden">
-    <desktop-header />
+    <desktop-header @on-menu-button-clicked="view.onMenuButtonClicked()" />
     
     <div class="h-full w-full flex overflow-hidden">
-      <desktop-nav />
+      <desktop-nav :minimize="view.state.isNavMinimized" />
       <div
         class="relative h-full w-full flex flex-col overflow-y-auto"
         @scroll="$emit('scroll', $event)"
@@ -35,6 +35,7 @@
 import DesktopNav from "./components/desktop-nav/desktop-nav.vue";
 import DesktopHeader from "./components/desktop-header/desktop-header.vue";
 
+import { view } from "./desktop-layout-model";
 import { state } from "@/data/state";
 
 defineEmits(["scroll"]);

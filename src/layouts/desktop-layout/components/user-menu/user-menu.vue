@@ -8,7 +8,7 @@
     <button class="w-full flex items-center text-left p-3 space-x-3 rounded-lg hover:bg-gray-100 focus:bg-gray-100 transition-all">
       <img
         :src="component.getCurrentUserProfilePicture()"
-        class="h-8 rounded-full"
+        class="h-8 rounded-full flex-none"
       >
       <div v-if="!minimize">
         <h1 class="text-gray-900 text-sm font-medium">
@@ -22,7 +22,7 @@
   </eb-dropdown>
 
   <div
-    v-else
+    v-else-if="!minimize"
     class="flex items-center p-3 space-x-3"
   >
     <eb-button
@@ -42,6 +42,7 @@
 </template>
 
 <script setup lang="ts">
+import { min } from "lodash";
 import { component } from "./user-menu-model";
 
 defineProps<{

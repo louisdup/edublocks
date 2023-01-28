@@ -5,6 +5,7 @@
         :icon="['far', 'bars']"
         size="lg"
         color="darkGray"
+        @click="$emit('onMenuButtonClicked')"
       />
       <img
         :src="component.getLogoPath()"
@@ -22,4 +23,6 @@
 
 <script setup lang="ts">
 import { component } from "./desktop-header-model";
+
+defineEmits(["onMenuButtonClicked"]);
 </script>

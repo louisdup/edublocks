@@ -77,10 +77,13 @@ export class DesktopNavModel extends ComponentModelBase {
 	}
 
 	/**
-	 * Returns if the sidebar should be in minimized mode because current device is a tablet (Width 1024px).
+	 * Returns if the sidebar should be in minimized mode because current device is a tablet (Width 1024px) or the user has specified that it should be minimized.
 	 */
-	public shouldSidebarBeMinimized(): boolean {
+	public shouldSidebarBeMinimized(minimize?: boolean): boolean {
 		if (ScreenUtilities.size.value <= 1024) {
+			return true;
+		}
+		else if (minimize) {
 			return true;
 		}
 		else {
