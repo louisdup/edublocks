@@ -9,6 +9,7 @@
       :extensions="component.getExtensions()"
       :style="component.getStyles()"
       :tab-size="component.getTabSize()"
+      :disabled="component.isEditorDisabled()"
       @input="component.onInput()"
       @focus="component.onFocus()"
       @blur="component.onBlur()"

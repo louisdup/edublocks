@@ -73,6 +73,18 @@ export class PythonCodeModel extends ComponentModelBase {
 	public onBlur(): void {
 		TextToBlocksUtilities.isTextEditorFocused.value = false;
 	}
+
+	/**
+	 * True if the current project is read only.
+	 */
+	public isEditorDisabled(): boolean {
+		if (EditorUtilities.currentProject.value && EditorUtilities.currentProject.value.readOnly) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 }
 
 // Export the component model.
