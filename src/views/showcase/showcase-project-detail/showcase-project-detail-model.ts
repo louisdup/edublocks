@@ -79,7 +79,7 @@ class ShowcaseProjectDetailModel extends ViewModelBase {
 	 * True if the showcase project is not loading.
 	 */
 	public isShowcaseProjectDetailVisible(): boolean {
-		return !this.state.isLoadingShowcaseProject;
+		return !this.state.isLoadingShowcaseProject && !this.state.isLoadingShowcaseProjectAuthor;
 	}
 	
 	/**

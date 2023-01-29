@@ -17,6 +17,6 @@ defineProps<{
 	paddingR?: number;
 	isFullHeight?: boolean;
 	isFullWidth?: boolean;
-	overflow?: boolean;
+	overflow?: string;
 }>();
 </script>

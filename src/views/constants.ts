@@ -7,6 +7,7 @@ export enum View {
 	ProjectEmbed = "Project Embed",
 	Showcase = "Showcase",
 	ShowcaseProjectDetail = "Showcase Project Detail",
+	Learn = "Learn",
 	ClassroomList = "Classroom List",
 	ClassroomDetail = "Classroom Detail",
 	AssignmentSubmissions = "Assignment Submissions",

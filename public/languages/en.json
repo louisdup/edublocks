@@ -434,5 +434,16 @@
         "setup-guide": "Setup Guide",
         "cancel": "Cancel",
         "error-connecting": "Error connecting to Raspberry Pi"
-    } 
+    },
+    "learn": {
+        "learn": "Learn",
+        "free-python-3-curriculum": "Free Python Curriculum",
+        "six-lessons": "Six Lessons & End of Unit Assessment",
+        "curriculum-description": "Covering key topics such as algorithms, sequencing, iteration and data types, our free Python curriculum is the best tool to teach Python using EduBlocks in a classroom environment. All with lesson plans, slideshows and an end of unit assessment.",
+        "learn-more": "Learn more",
+        "all": "All",
+        "no-guides-found": "No Guides Found",
+        "try-another-category": "Try another category.",
+        "back": "Back"
+    }
 }

@@ -18,6 +18,7 @@ class EbEmptyStateModel extends ComponentModelBase {
 	public variants: Function = cva(["flex", "items-center", "justify-center", "rounded-lg"], {
 		variants: {
 			backgroundColor: {
+				lightGray: "bg-gray-100",
 				gray: "bg-gray-200"
 			},
 			isFullHeight: {

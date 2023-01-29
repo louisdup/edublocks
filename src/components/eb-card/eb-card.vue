@@ -66,8 +66,11 @@
         <h1 class="text-sm font-medium text-gray-900 truncate">
           {{ title }}
         </h1>
-        <p class="text-sm text-gray-500 truncate">
+        <p class="text-sm text-gray-500 truncate w-44">
           {{ subtitle }}
+        </p>
+        <p class="text-sm text-gray-500">
+          {{ description }}
         </p>
       </div>
       <div class="absolute right-0 top-1.5">
@@ -92,6 +95,7 @@ import { EbDropdownOption } from "../eb-dropdown/eb-dropdown-types";
 defineProps<{
 	title: string;
 	subtitle?: string;
+	description?: string;
 	image?: string;
 	thumbnailColor?: string;
 	thumbnailIcon?: string;

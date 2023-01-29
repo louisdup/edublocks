@@ -24,13 +24,18 @@ export class FetchUtilities {
 		const response: FetchResponseModel<T> = this.createFetchResponse();
 
 		try {
+			const requestHeaders: HeadersInit = {
+				...headers
+			};
+
+			if (method !== "GET") {
+				requestHeaders["content-type"] = "application/json";
+			}
+
 			const request: Response = await fetch(url, {
 				method,
 				body: JSON.stringify(body),
-				headers: {
-					"content-type": "application/json",
-					...headers
-				}
+				headers: requestHeaders
 			});
 
 			if (request.status !== 204) {

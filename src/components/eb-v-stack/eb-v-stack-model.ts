@@ -79,7 +79,7 @@ class EbVStackModel extends ComponentModelBase {
 				true: "w-full"
 			},
 			overflow: {
-				auto: "overflow-y-auto",
+				auto: ["overflow-y-auto", "overflow-x-hidden"],
 				hidden: "overflow-y-hidden"
 			}
 		},

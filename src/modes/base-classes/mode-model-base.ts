@@ -10,6 +10,7 @@ import { ClassroomUtilities } from "@/utilities/classroom-utilities";
 
 // Sidebar tab components.
 import ProjectSettings from "@/modes/common/components/sidebar/project-settings/project-settings.vue";
+import Learn from "@/modes/common/components/sidebar/learn/learn.vue";
 
 /**
  * Base class exposing common functionality to all mode models.
@@ -104,6 +105,11 @@ export abstract class ModeModelBase {
 			key: "project-settings",
 			icon: ["far", "file"],
 			component: ProjectSettings
+		},
+		{
+			key: "learn",
+			icon: ["far", "book-open"],
+			component: Learn
 		},
 		...ClassroomUtilities.getClassroomSidebarTabs()
 	];

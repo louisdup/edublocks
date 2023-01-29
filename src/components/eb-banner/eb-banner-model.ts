@@ -22,6 +22,7 @@ class EbBannerModel extends ComponentModelBase {
 				white: "bg-white",
 				green: "bg-green-500",
 				navy: "bg-navy-500",
+				purple: "bg-purple-600",
 				red: "bg-red-500",
 				gray: "bg-gray-200"
 			}
