@@ -32,8 +32,7 @@
       :padding-l="4"
       :padding-r="4"
       is-full-height
-      is-full-width
-      class="border-l border-gray-200 relative"
+      class="border-l border-gray-200 relative w-72 flex-none"
     >
       <component
         :is="component.getSidebarActiveComponent()"

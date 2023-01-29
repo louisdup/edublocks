@@ -5,7 +5,7 @@
       @on-project-button-clicked="$emit('onProjectButtonClicked')"
     />
     <div class="h-full w-full flex flex-col bg-white overflow-hidden">
-      <div class="h-full w-full">
+      <div class="h-full w-full flex">
         <slot />
       </div>
     </div>

@@ -330,27 +330,6 @@ class EditorModel extends ViewModelBase {
 	}
 
 	/**
-	 * Returns the size of the sidebar.
-	 */
-	public getSidebarSize(): string {
-		return this.isSidebarExpanded() ? "28rem" : "4.20rem";
-	}
-
-	/**
-	 * Returns the minimum size of the sidebar.
-	 */
-	public getSidebarMinimumSize(): string {
-		return "4.20rem";
-	}
-
-	/**
-	 * Returns the maximum size of the sidebar.
-	 */
-	public getSidebarMaximumSize(): string {
-		return this.isSidebarExpanded() ? "100%" : "4.20rem";
-	}
-
-	/**
 	 * True if the output panel is expanded.
 	 */
 	public isOutputPanelExpanded(): Ref<boolean> {
@@ -363,13 +342,6 @@ class EditorModel extends ViewModelBase {
 	 */
 	public onOutputPanelExpanded(): void {
 		EditorUtilities.isOutputPanelExpanded.value = !EditorUtilities.isOutputPanelExpanded.value;
-	}
-
-	/**
-	 * Returns the initial size of the output panel.
-	 */
-	public getOutputPanelInitialSize(): string {
-		return "30rem";
 	}
 
 	/**

@@ -4,28 +4,22 @@
     :header-buttons="view.getHeaderButtonsForCurrentMode()"
     @onProjectButtonClicked="view.onProjectButtonClicked()"
   >
+    <!-- Sidebar -->
+    <sidebar />
+
+    <!-- Blocks/Output Split View -->
     <eb-split-view
       @ready="view.onSplitViewReady()"
       @resize="view.onSplitViewResize()" 
       @resized="view.onSplitViewResized()"
     >   
-      <!-- Sidebar -->
-      <eb-split-view-pane
-        v-if="view.isSidebarVisible()"
-        :size="view.getSidebarSize()"
-        :min-size="view.getSidebarMinimumSize()"
-        :max-size="view.getSidebarMaximumSize()"
-      >
-        <sidebar />
-      </eb-split-view-pane>
-    
       <!-- Blocks Editor -->
       <eb-split-view-pane v-if="view.isBlocksEditorVisible()">
         <blockly :is-resizing="view.state.isSplitViewBeingResized" />
       </eb-split-view-pane>
       
       <!-- Output Panel -->
-      <eb-split-view-pane :size="view.getOutputPanelInitialSize()">
+      <eb-split-view-pane :size="30">
         <output-panel :is-resizing="view.state.isSplitViewBeingResized" />
       </eb-split-view-pane>
     </eb-split-view>
