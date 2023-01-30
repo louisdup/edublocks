@@ -26,11 +26,6 @@
     <!-- Sidebar Component -->
     <eb-v-stack
       v-if="component.isSidebarExpanded()"
-      :spacing="4"
-      :padding-t="4"
-      :padding-b="4"
-      :padding-l="4"
-      :padding-r="4"
       is-full-height
       class="border-l border-gray-200 relative w-72 flex-none"
     >

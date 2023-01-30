@@ -1,6 +1,10 @@
 <template>
   <eb-v-stack
     :spacing="4"
+    :padding-t="4"
+    :padding-b="4"
+    :padding-l="4"
+    :padding-r="4"
     class="divide-y divide-gray-200"
   >
     <eb-v-stack>
