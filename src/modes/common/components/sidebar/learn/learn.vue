@@ -38,8 +38,17 @@
     />
   </eb-v-stack>
 
-  <eb-v-stack v-else>
-    <eb-v-stack :spacing="2">
+  <eb-v-stack
+    v-else
+    is-full-height
+  >
+    <eb-v-stack
+      :spacing="2"
+      :padding-t="4"
+      :padding-b="4"
+      :padding-l="4"
+      :padding-r="4"
+    >
       <eb-link
         :label="component.getText('back')"
         :icon="['far', 'chevron-left']"
@@ -52,13 +61,11 @@
       />
     </eb-v-stack> 
 
-    <div class="absolute top-20 left-0 h-[calc(100%-5rem)] w-full">
-      <iframe
-        :src="component.getLearnGuideUrl()"
-        class="h-full w-full bg-gray-100"
-        frameborder="0"
-      />
-    </div>
+    <iframe
+      :src="component.getLearnGuideUrl()"
+      class="h-full w-full bg-gray-100"
+      frameborder="0"
+    />
   </eb-v-stack>
 </template>
 
