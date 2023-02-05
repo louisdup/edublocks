@@ -17,5 +17,6 @@ export interface FirestoreProjectModel {
 	type: "blocks" | "text";
 	assignment?: FirestoreProjectAssignmentModel | null;
 	showcaseProject?: string | null;
+	extensions?: Array<string> | null;
 	snapshot: QueryDocumentSnapshot;
 }

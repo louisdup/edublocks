@@ -15,6 +15,26 @@ class SidebarModel extends ComponentModelBase {
 	}
 
 	/**
+	 * Initialise the component model.
+	 */
+	public init(): void {
+		this.configureSidebarTabs();
+	}
+
+	/**
+	 * Configures sidebar tabs.
+	 */
+	private configureSidebarTabs(): void {
+		if (EditorUtilities.currentProject.value) {
+			EditorUtilities.currentProject.value.mode.sidebarTabs.forEach((sidebarTab: EditorSidebarTabModel) => {
+				if (EditorUtilities.currentProject.value?.readOnly && sidebarTab.readOnly === false) {
+					EditorUtilities.currentProject.value.mode.setSidebarTabHidden(sidebarTab.key);
+				}
+			});
+		}
+	}
+
+	/**
 	 * Returns a list of tabs that could be displayed in the sidebar.
 	 */
 	public getSidebarTabsForCurrentMode(): Array<EditorSidebarTabModel> | undefined {

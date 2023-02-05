@@ -6,6 +6,10 @@ import { EditorUtilities } from "@/utilities/editor-utilities";
 import { TextToBlocksUtilities } from "@/utilities/text-to-blocks-utilities";
 import { TextToBlocksDefinitionModel } from "@/data/models/text-to-blocks-definition-model";
 import { EditorSidebarTabModel } from "@/data/models/editor-sidebar-tab-model";
+import { ExtensionsUtilities } from "@/utilities/extensions-utilities";
+
+// Sidebar tab Components
+import Extensions from "../common/components/sidebar/extensions/extensions.vue";
 
 // Output Panel Components
 import PythonCode from "../common/components/output-panel/python-code/python-code.vue";
@@ -177,7 +181,8 @@ export class PythonModel extends ModeModelBase {
 			turtle,
 			graphs,
 			random,
-			requests
+			requests,
+			ExtensionsUtilities.getToolboxEntriesForExtensions()
 		];
 	}
 
@@ -233,7 +238,13 @@ export class PythonModel extends ModeModelBase {
 	 * Returns a list of tabs to display in the sidebar for python.
 	 */
 	public sidebarTabs: Array<EditorSidebarTabModel> = [
-		...this.commonSidebarTabs
+		...this.commonSidebarTabs,
+		{
+			key: "extensions",
+			icon: ["far", "puzzle-piece"],
+			component: Extensions,
+			readOnly: false
+		}
 	];
 
 	/**

@@ -9,5 +9,6 @@ export interface EditorSidebarTabModel {
 	component: Component;
 	visible?: boolean;
 	active?: boolean;
+	readOnly?: boolean;
 	action?: VoidFunction;
 }

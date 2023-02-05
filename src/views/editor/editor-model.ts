@@ -16,6 +16,7 @@ import { ModeModelBase } from "@/modes/base-classes/mode-model-base";
 import { FilenameUtilities } from "@/utilities/filename-utilities";
 import { ProjectsUtilities } from "@/utilities/projects-utilities";
 import { ClassroomUtilities } from "@/utilities/classroom-utilities";
+import { ExtensionsUtilities } from "@/utilities/extensions-utilities";
 
 /**
  * View model for the editor view.
@@ -49,7 +50,7 @@ class EditorModel extends ViewModelBase {
 		}
 
 		// If the current project is related to a classroom, configure the editor accordingly.
-		ClassroomUtilities.initalizeEditorForClassroomProject();
+		ClassroomUtilities.initalizeEditorForClassroomProject();		
 	}
 
 	/**
@@ -99,6 +100,9 @@ class EditorModel extends ViewModelBase {
 		else if (router.currentRoute.value.name === View.NewProject) {
 			await this.loadBlankProject();
 		}
+
+		// Load required extensions for the current project.
+		await ExtensionsUtilities.loadExtensionsForCurrentProject();
 
 		// Load blocks for the current mode and set blockly XML to that of the current project.
 		await this.loadBlocks();
@@ -183,8 +187,9 @@ class EditorModel extends ViewModelBase {
 			let name: string = "";
 
 			const blocksQueryParam: string | undefined = router.currentRoute.value.query.blocks as string;
-
 			const codeQueryParam: string | undefined = router.currentRoute.value.query.code as string;
+
+			const extensionsQueryParam: string | undefined = router.currentRoute.value.query.extensions as string;
 		
 			// If mode is valid, create a new project.
 			if (mode) {
@@ -218,8 +223,16 @@ class EditorModel extends ViewModelBase {
 					mode,
 					type,
 					blocks: blocksQueryParam,
-					code: codeQueryParam
+					code: codeQueryParam,
 				});
+
+				// Load any extensions
+				if (extensionsQueryParam) {
+					const extensions: Array<string> = extensionsQueryParam.split(",");
+					for await (const extension of extensions) {
+						await ExtensionsUtilities.loadExtensionFromUrl(extension);
+					}
+				}
 			}
 			// If mode is invalid, redirect the user to the homepage and ask them to create a project manually.
 			else {

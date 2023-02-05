@@ -1,4 +1,5 @@
 import { ModeModelBase } from "@/modes/base-classes/mode-model-base";
+import { ExtensionModel } from "./extension-model";
 import { FirestoreProjectModel } from "./firestore-project-model";
 import { LearnGuideModel } from "./learn-guide-model";
 
@@ -14,4 +15,5 @@ export interface ProjectModel {
 	readOnly?: boolean;
 	firestoreProject?: FirestoreProjectModel;
 	learnGuide?: LearnGuideModel;
+	extensions?: Array<ExtensionModel>;
 }

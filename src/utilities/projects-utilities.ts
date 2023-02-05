@@ -17,6 +17,7 @@ import { FirestoreFetchResponseModel } from "@/data/models/firestore-fetch-respo
 import { ProjectModel } from "@/data/models/project-model";
 import { ClassroomUtilities } from "./classroom-utilities";
 import { ShowcaseUtilities } from "./showcase-utilities";
+import { ExtensionsUtilities } from "./extensions-utilities";
 
 /**
  * Utility functions for working with projects.
@@ -67,7 +68,7 @@ export class ProjectsUtilities {
 						const project: LocalProjectModel = JSON.parse(event.target.result as string);
 						const mode: ModeModelBase = ModeUtilities.getModeFromKey(project.mode);
 
-						EditorUtilities.openEditor(mode, project.type, fileName, project.blocks, project.code);
+						EditorUtilities.openEditor(mode, project.type, fileName, project.blocks, project.code, project.extensions);
 					}
 				}
 				catch (error) {
@@ -236,7 +237,7 @@ export class ProjectsUtilities {
 	/**
 	 * Creates a project in firestore.
 	 */
-	public static async createFirestoreProject(name: string, mode: string, type: "blocks" | "text", blocks?: string, code?: string, isAssignmentStarterProject?: boolean): Promise<string | undefined> {
+	public static async createFirestoreProject(name: string, mode: string, type: "blocks" | "text", blocks?: string, code?: string, isAssignmentStarterProject?: boolean, extensions?: Array<string> | null): Promise<string | undefined> {
 		if (AuthenticationUtilities.currentUser.value) {
 			const path: string = `blocks/${AuthenticationUtilities.currentUser.value.uid}/${name}`;
 			let fileContent: string = "";
@@ -264,9 +265,9 @@ export class ProjectsUtilities {
 					uid: AuthenticationUtilities.currentUser.value.uid,
 					path,
 					size: projectCodeResponse.data.metadata.size,
-					extensions: null,
 					isAssignmentStarterProject: isAssignmentStarterProject ? true : null,
 					assignment: null,
+					extensions: extensions ? extensions : null,
 					created: new Date().toISOString(),
 					updated: new Date().toISOString()
 				};
@@ -309,6 +310,7 @@ export class ProjectsUtilities {
 					if (response.wasSuccessful && response.data && project.firestoreProject) {
 						const body: object = {
 							updated: new Date().toISOString(),
+							extensions: ExtensionsUtilities.getExtensionsUrls(project.extensions),
 							size: response.data.metadata.size
 						};
 						await ProjectsProvider.updateProjectAsync(project.firestoreProject.id, body);

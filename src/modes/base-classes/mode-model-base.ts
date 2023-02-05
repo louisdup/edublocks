@@ -109,7 +109,8 @@ export abstract class ModeModelBase {
 		{
 			key: "learn",
 			icon: ["far", "book-open"],
-			component: Learn
+			component: Learn,
+			readOnly: false
 		},
 		...ClassroomUtilities.getClassroomSidebarTabs()
 	];

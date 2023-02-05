@@ -6,4 +6,5 @@ export interface LocalProjectModel {
 	type: "blocks" | "text";
 	blocks?: string;
 	code?: string;
+	extensions?: Array<string> | null;
 }

@@ -38,7 +38,8 @@
     <eb-heading
       :label="component.getText('export')"
       size="sm"
-      color="gray"
+      color="lightGray"
+      weight="medium"
     />
 
     <eb-button

@@ -10,6 +10,7 @@ import { ModeModelBase } from "@/modes/base-classes/mode-model-base";
 import { View } from "@/views/constants";
 import { LocalProjectModel } from "@/data/models/local-project-model";
 import { ProjectsUtilities } from "./projects-utilities";
+import { ExtensionsUtilities } from "./extensions-utilities";
 
 /**
  * Utility functions for the editor.
@@ -55,7 +56,7 @@ export class EditorUtilities {
 	/**
 	 * Opens the editor with a blank project.
 	 */
-	public static async openEditor(mode: ModeModelBase, type?: "blocks" | "text", name?: string, blocks?: string, code?: string): Promise<void> {
+	public static async openEditor(mode: ModeModelBase, type?: "blocks" | "text", name?: string, blocks?: string, code?: string, extensions?: Array<string> | null): Promise<void> {
 		await router.push({
 			name: View.NewProject,
 			query: {
@@ -63,7 +64,8 @@ export class EditorUtilities {
 				type,
 				name,
 				blocks,
-				code
+				code,
+				extensions: extensions?.join(",")
 			}
 		});
 
@@ -111,7 +113,9 @@ export class EditorUtilities {
 						this.currentProject.value.mode.config.key,
 						this.currentProject.value.type,
 						this.currentProject.value.blocks,
-						this.currentProject.value.code
+						this.currentProject.value.code,
+						undefined,
+						ExtensionsUtilities.getExtensionsUrls(this.currentProject.value.extensions)
 					);
 
 					if (projectId) {
@@ -146,7 +150,8 @@ export class EditorUtilities {
 				mode: this.currentProject.value.mode.config.key,
 				type: this.currentProject.value.type,
 				blocks: this.currentProject.value.blocks,
-				code: this.currentProject.value.code
+				code: this.currentProject.value.code,
+				extensions: ExtensionsUtilities.getExtensionsUrls(this.currentProject.value.extensions)
 			};
 
 			const fileName: string = `${this.currentProject.value.name}.json`;

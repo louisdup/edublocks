@@ -113,6 +113,7 @@
         "required": "{1} is required",
         "min-characters": "{1} must be at least {2} characters",
         "ip-address": "Must be a valid IP address",
+        "url": "Must be a valid URL",
         "passwords-must-match": "Passwords must match"
     },
     "showcase": {
@@ -445,5 +446,13 @@
         "no-guides-found": "No Guides Found",
         "try-another-category": "Try another category.",
         "back": "Back"
+    },
+    "extensions": {
+        "extensions": "Extensions",
+        "import-from-github": "Import from GitHub",
+        "import": "Import",
+        "approved-extensions": "Approved Extensions",
+        "no-extensions-found": "No Extensions Found",
+        "url": "URL"
     }
 }

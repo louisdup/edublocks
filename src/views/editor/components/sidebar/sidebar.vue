@@ -37,5 +37,10 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted } from "vue";
 import { component } from "./sidebar-model";
+
+onMounted(() => {
+	component.init();
+});
 </script>

@@ -10,6 +10,7 @@ import { EditorUtilities } from "@/utilities/editor-utilities";
 import { WebUSBUtilities } from "@/utilities/webusb-utilities";
 import { ModalUtilities } from "@/utilities/modal-utilities";
 import { DAPLinkUtilities } from "@/utilities/daplink-utilities";
+import { ExtensionsUtilities } from "@/utilities/extensions-utilities";
 import { ref, Ref, watchEffect } from "vue";
 
 // Micropython HEX Files
@@ -17,6 +18,7 @@ import microbitMicropythonV1 from "./micropython/microbit-micropython-v1.hex?raw
 import microbitMicropythonV2 from "./micropython/microbit-micropython-v2.hex?raw";
 
 // Sidebar tab Components
+import Extensions from "../common/components/sidebar/extensions/extensions.vue";
 import WebUSBSettings from "./components/sidebar/webusb-settings/webusb-settings.vue";
 
 // Output Panel Components
@@ -37,6 +39,8 @@ import music from "./blocks/music/toolbox.xml?raw";
 import microphone from "./blocks/microphone/toolbox.xml?raw";
 import neopixel from "./blocks/neopixel/toolbox.xml?raw";
 import pins from "./blocks/pins/toolbox.xml?raw";
+import { ExtensionModel } from "@/data/models/extension-model";
+import { ExtensionCodeFileModel } from "@/data/models/extension-code-file";
 
 /**
  * Mode model for the micro:bit mode.
@@ -82,6 +86,9 @@ export class MicrobitModel extends ModeModelBase {
 			const commonDefinitions: any = import("../common/blocks/python/common/definitions");
 			const commonGenerators: any = import("../common/blocks/python/common/generators");
 
+			const deprecatedDefinitions: any = import("./blocks/deprecated/definitions");
+			const deprecatedGenerators: any = import("./blocks/deprecated/generators");
+
 			const basicDefinitions: any = import("../common/blocks/python/basic/definitions");
 			const basicGenerators: any = import("../common/blocks/python/basic/generators");
 
@@ -123,6 +130,9 @@ export class MicrobitModel extends ModeModelBase {
 
 			(await commonDefinitions).default();
 			(await commonGenerators).default();
+
+			(await deprecatedDefinitions).default();
+			(await deprecatedGenerators).default();
 
 			(await basicDefinitions).default();
 			(await basicGenerators).default();
@@ -183,7 +193,8 @@ export class MicrobitModel extends ModeModelBase {
 			music,
 			microphone,
 			neopixel,
-			pins
+			pins,
+			ExtensionsUtilities.getToolboxEntriesForExtensions()
 		];
 	}
 
@@ -226,6 +237,12 @@ export class MicrobitModel extends ModeModelBase {
 	 */
 	public sidebarTabs: Array<EditorSidebarTabModel> = [
 		...this.commonSidebarTabs,
+		{
+			key: "extensions",
+			icon: ["far", "puzzle-piece"],
+			component: Extensions,
+			readOnly: false
+		},
 		{
 			key: "webusb-settings",
 			icon: ["fab", "usb"],
@@ -284,10 +301,24 @@ export class MicrobitModel extends ModeModelBase {
 	]);
 
 	/**
+	 * Adds files from active extensions to the filesystem.
+	 */
+	private addExtensionFilesToFilesystem(): void {
+		if (EditorUtilities.currentProject.value && EditorUtilities.currentProject.value.extensions) {
+			EditorUtilities.currentProject.value.extensions.forEach((extension: ExtensionModel) => {
+				extension.code.forEach((file: ExtensionCodeFileModel) => {
+					this.micropythonFs.write(file.name, file.content);
+				});
+			});
+		}
+	}
+
+	/**
 	 * Generates a universal hex file for transferring onto a microbit.
 	 */
 	private getUniversalHexFile(): string | undefined {
 		if (EditorUtilities.currentProject.value && EditorUtilities.currentProject.value.code) {
+			this.addExtensionFilesToFilesystem();
 			this.micropythonFs.write("main.py", EditorUtilities.currentProject.value.code);
 			return this.micropythonFs.getUniversalHex();
 		}

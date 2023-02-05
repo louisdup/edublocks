@@ -87,6 +87,9 @@ module.exports = {
             opacity: 1
           },
         }
+      },
+      height: {
+        page: "calc(100vh - 9rem)"
       }
     },
   },

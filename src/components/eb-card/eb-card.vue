@@ -63,7 +63,7 @@
       class="w-60 relative"
     >
       <div @click="$emit('click')">
-        <h1 class="text-sm font-medium text-gray-900 truncate">
+        <h1 class="text-sm font-medium text-gray-900 truncate w-48">
           {{ title }}
         </h1>
         <p class="text-sm text-gray-500 truncate w-44">
