@@ -1,0 +1,165 @@
+<category name="Minecraft" colour="#49B04D" css-icon="customIcon fad fa-cube">
+  <label text="Minecraft"></label>
+
+   <block type="minecraft_post_to_chat">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#49B04D" items="1" limit="1" minimum="1" inputType="string" />
+          <value name="input_1">
+              <shadow type="inline_string">
+                  <field name="value">Hello, world</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="minecraft_get_player_pos"></block>
+
+  <block type="minecraft_set_player_pos">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#49B04D" items="3" limit="3" minimum="3" inputType="number" />
+          <value name="input_1">
+              <shadow type="inline_number">
+                  <field name="value">0</field>
+              </shadow>
+          </value>
+          <value name="input_2">
+              <shadow type="inline_number">
+                  <field name="value">0</field>
+              </shadow>
+          </value>
+          <value name="input_3">
+              <shadow type="inline_number">
+                  <field name="value">0</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="minecraft_set_camera_pos">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#49B04D" items="3" limit="3" minimum="3" inputType="number" />
+          <value name="input_1">
+              <shadow type="inline_number">
+                  <field name="value">0</field>
+              </shadow>
+          </value>
+          <value name="input_2">
+              <shadow type="inline_number">
+                  <field name="value">0</field>
+              </shadow>
+          </value>
+          <value name="input_3">
+              <shadow type="inline_number">
+                  <field name="value">0</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="minecraft_get_block">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#49B04D" items="3" limit="3" minimum="3" inputType="number" />
+          <value name="input_1">
+              <shadow type="inline_number">
+                  <field name="value">0</field>
+              </shadow>
+          </value>
+          <value name="input_2">
+              <shadow type="inline_number">
+                  <field name="value">0</field>
+              </shadow>
+          </value>
+          <value name="input_3">
+              <shadow type="inline_number">
+                  <field name="value">0</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="minecraft_set_block">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#49B04D" items="4" limit="5" minimum="4" inputType="number" />
+          <value name="input_1">
+              <shadow type="inline_number">
+                  <field name="value">0</field>
+              </shadow>
+          </value>
+          <value name="input_2">
+              <shadow type="inline_number">
+                  <field name="value">0</field>
+              </shadow>
+          </value>
+          <value name="input_3">
+              <shadow type="inline_number">
+                  <field name="value">0</field>
+              </shadow>
+          </value>
+          <value name="input_4">
+              <shadow type="inline_text">
+                  <field name="value">id</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="minecraft_set_camera"></block>
+
+  <block type="minecraft_set_blocks">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#49B04D" items="8" limit="8" minimum="8" inputType="number" />
+          <value name="input_1">
+              <shadow type="inline_number">
+                  <field name="value">-1</field>
+              </shadow>
+          </value>
+          <value name="input_2">
+              <shadow type="inline_number">
+                  <field name="value">-1</field>
+              </shadow>
+          </value>
+          <value name="input_3">
+              <shadow type="inline_number">
+                  <field name="value">-1</field>
+              </shadow>
+          </value>
+          <value name="input_4">
+              <shadow type="inline_number">
+                  <field name="value">1</field>
+              </shadow>
+          </value>
+          <value name="input_5">
+              <shadow type="inline_number">
+                  <field name="value">1</field>
+              </shadow>
+          </value>
+          <value name="input_6">
+              <shadow type="inline_number">
+                  <field name="value">1</field>
+              </shadow>
+          </value>
+          <value name="input_7">
+              <shadow type="inline_number">
+                  <field name="value">1</field>
+              </shadow>
+          </value>
+          <value name="input_8">
+              <shadow type="inline_text">
+                  <field name="value">id</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+</category>

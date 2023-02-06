@@ -3,6 +3,7 @@ import { EditorOutputTabModel } from "@/data/models/editor-output-tab-model";
 import { EditorSidebarTabModel } from "@/data/models/editor-sidebar-tab-model";
 import { ModeConfigModel } from "@/data/models/mode-config-model";
 import { EditorUtilities } from "@/utilities/editor-utilities";
+import { ModalUtilities } from "@/utilities/modal-utilities";
 import { ModeModelBase } from "../base-classes/mode-model-base";
 import * as LinkProvider from "@/data/providers/link-provider";
 
@@ -11,8 +12,13 @@ import PythonCode from "../common/components/output-panel/python-code/python-cod
 import Terminal from "./components/output-panel/terminal/terminal.vue";
 
 // Import Toolbox Categories
+import basic from "./blocks/basic/toolbox.xml?raw";
 import variables from "../common/blocks/python/variables/toolbox.xml?raw";
-import { ModalUtilities } from "@/utilities/modal-utilities";
+import minecraft from "./blocks/minecraft/toolbox.xml?raw";
+import gpiozero from "./blocks/gpiozero/toolbox.xml?raw";
+import sonicPi from "./blocks/sonic-pi/toolbox.xml?raw";
+import requests from "./blocks/requests/toolbox.xml?raw";
+import turtle from "./blocks/turtle/toolbox.xml?raw";
 
 /**
  * Mode model for the Raspberry Pi mode.
@@ -60,11 +66,47 @@ export class RaspberryPiModel extends ModeModelBase {
 			const basicDefinitions: any = import("../common/blocks/python/basic/definitions");
 			const basicGenerators: any = import("../common/blocks/python/basic/generators");
 
+			const raspberryPiBasicDefinitions: any = import("./blocks/basic/definitions");
+			const raspberryPiBasicGenerators: any = import("./blocks/basic/generators");
+
+			const minecraftDefinitions: any = import("./blocks/minecraft/definitions");
+			const minecraftGenerators: any = import("./blocks/minecraft/generators");
+
+			const gpiozeroDefinitions: any = import("./blocks/gpiozero/definitions");
+			const gpiozeroGenerators: any = import("./blocks/gpiozero/generators");
+
+			const sonicPiDefinitions: any = import("./blocks/sonic-pi/definitions");
+			const sonicPiGenerators: any = import("./blocks/sonic-pi/generators");
+
+			const requestsDefinitions: any = import("./blocks/requests/definitions");
+			const requestsGenerators: any = import("./blocks/requests/generators");
+
+			const turtleDefinitions: any = import("./blocks/turtle/definitions");
+			const turtleGenerators: any = import("./blocks/turtle/generators");
+
 			(await commonDefinitions).default();
 			(await commonGenerators).default();
 
 			(await basicDefinitions).default();
 			(await basicGenerators).default();
+
+			(await raspberryPiBasicDefinitions).default();
+			(await raspberryPiBasicGenerators).default();
+
+			(await minecraftDefinitions).default();
+			(await minecraftGenerators).default();
+
+			(await gpiozeroDefinitions).default();
+			(await gpiozeroGenerators).default();
+
+			(await requestsDefinitions).default();
+			(await requestsGenerators).default();
+
+			(await sonicPiDefinitions).default();
+			(await sonicPiGenerators).default();
+
+			(await turtleDefinitions).default();
+			(await turtleGenerators).default();
 
 			resolve();
 		});
@@ -75,7 +117,13 @@ export class RaspberryPiModel extends ModeModelBase {
 	 */
 	public getToolbox(): Array<String> {
 		return [
-			variables
+			basic,
+			variables,
+			minecraft,
+			gpiozero,
+			sonicPi,
+			requests,
+			turtle
 		];
 	}
 	

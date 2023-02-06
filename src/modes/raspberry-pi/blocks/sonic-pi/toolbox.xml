@@ -1,0 +1,55 @@
+<category name="Sonic Pi" colour="#15BAD4" css-icon="customIcon fad fa-music">
+  <label text="Sonic Pi"></label>
+
+   <block type="sonic_pi_play">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#15BAD4" items="1" limit="1" minimum="1" inputType="number" />
+          <value name="input_1">
+              <shadow type="inline_number">
+                  <field name="value">90</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+   <block type="sonic_pi_sample">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#15BAD4" items="1" limit="1" minimum="1" inputType="text" />
+          <value name="input_1">
+              <shadow type="inline_text">
+                  <field name="value">PROPHET</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="sonic_pi_sleep">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#15BAD4" items="1" limit="1" minimum="1" inputType="number" />
+          <value name="input_1">
+              <shadow type="inline_number">
+                  <field name="value">1</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="sonic_pi_use_synth">
+    <value name="parameters">
+      <shadow type="parameters">
+          <mutation color="#15BAD4" items="1" limit="1" minimum="1" inputType="text" />
+          <value name="input_1">
+              <shadow type="inline_text">
+                  <field name="value">SAW</field>
+              </shadow>
+          </value>
+      </shadow>
+    </value>
+  </block>
+</category>

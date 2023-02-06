@@ -1,0 +1,356 @@
+<category name="GPIO Zero" colour="#F89621" css-icon="customIcon fad fa-lightbulb">
+  <category name="Inputs" colour="#F89621" css-icon="customIcon fad fa-keyboard">
+    <category name="Button" colour="#F89621">
+        <label text="Button"></label>
+
+        <block type="button_setup">
+            <value name="parameters">
+                <shadow type="parameters">
+                    <mutation color="#F89621" items="1" limit="1" minimum="1" inputType="text" />
+                    <value name="input_1">
+                        <shadow type="inline_number">
+                            <field name="value">4</field>
+                        </shadow>
+                    </value>
+                </shadow>
+            </value>
+        </block>
+
+        <block type="button_action"></block>
+    </category>
+
+    <category name="Line Sensor" colour="#F89621">
+        <label text="Line Sensor"></label>
+
+        <block type="line_sensor_setup">
+            <value name="parameters">
+                <shadow type="parameters">
+                    <mutation color="#F89621" items="1" limit="1" minimum="1" inputType="text" />
+                    <value name="input_1">
+                        <shadow type="inline_number">
+                            <field name="value">4</field>
+                        </shadow>
+                    </value>
+                </shadow>
+            </value>
+        </block>
+
+        <block type="line_sensor_action"></block>
+    </category>
+
+    <category name="Motion Sensor" colour="#F89621">
+        <label text="Motion Sensor"></label>
+
+        <block type="motion_sensor_setup">
+            <value name="parameters">
+                <shadow type="parameters">
+                    <mutation color="#F89621" items="1" limit="1" minimum="1" inputType="text" />
+                    <value name="input_1">
+                        <shadow type="inline_number">
+                            <field name="value">4</field>
+                        </shadow>
+                    </value>
+                </shadow>
+            </value>
+        </block>
+
+        <block type="motion_sensor_action"></block>
+    </category>
+
+    <category name="Light Sensor" colour="#F89621">
+        <label text="Light Sensor"></label>
+
+        <block type="light_sensor_setup">
+            <value name="parameters">
+                <shadow type="parameters">
+                    <mutation color="#F89621" items="1" limit="1" minimum="1" inputType="text" />
+                    <value name="input_1">
+                        <shadow type="inline_number">
+                            <field name="value">4</field>
+                        </shadow>
+                    </value>
+                </shadow>
+            </value>
+        </block>
+
+        <block type="light_sensor_action"></block>
+    </category>
+
+    <category name="Distance Sensor" colour="#F89621">
+        <label text="Distance Sensor"></label>
+
+        <block type="distance_sensor_setup">
+            <value name="parameters">
+                <shadow type="parameters">
+                    <mutation color="#F89621" items="1" limit="1" minimum="1" inputType="text" />
+                    <value name="input_1">
+                        <shadow type="inline_number">
+                            <field name="value">4</field>
+                        </shadow>
+                    </value>
+                </shadow>
+            </value>
+        </block>
+
+        <block type="distance_sensor_action"></block>
+    </category>
+  </category>
+
+  <category name="Outputs" colour="#F89621" css-icon="customIcon fad fa-lightbulb">
+    <category name="LED" colour="#F89621">
+        <label text="LED"></label>
+
+        <block type="led_setup">
+            <value name="parameters">
+                <shadow type="parameters">
+                    <mutation color="#F89621" items="1" limit="1" minimum="1" inputType="text" />
+                    <value name="input_1">
+                        <shadow type="inline_number">
+                            <field name="value">17</field>
+                        </shadow>
+                    </value>
+                </shadow>
+            </value>
+        </block>
+
+        <block type="led_action"></block>
+    </category>
+
+    <category name="PWMLED" colour="#F89621">
+        <label text="PWMLED"></label>
+
+        <block type="pwm_led_setup">
+            <value name="parameters">
+                <shadow type="parameters">
+                    <mutation color="#F89621" items="1" limit="1" minimum="1" inputType="text" />
+                    <value name="input_1">
+                        <shadow type="inline_number">
+                            <field name="value">17</field>
+                        </shadow>
+                    </value>
+                </shadow>
+            </value>
+        </block>
+
+        <block type="pwm_led_action"></block>
+    </category>
+
+    <category name="RGBLED" colour="#F89621">
+        <label text="RGBLED"></label>
+
+        <block type="rgb_led_setup">
+            <value name="parameters">
+                <shadow type="parameters">
+                    <mutation color="#F89621" items="3" limit="3" minimum="3" inputType="text" />
+                    <value name="input_1">
+                        <shadow type="inline_number">
+                            <field name="value">2</field>
+                        </shadow>
+                    </value>
+                    <value name="input_2">
+                        <shadow type="inline_number">
+                            <field name="value">3</field>
+                        </shadow>
+                    </value>
+                    <value name="input_3">
+                        <shadow type="inline_number">
+                            <field name="value">4</field>
+                        </shadow>
+                    </value>
+                </shadow>
+            </value>
+        </block>
+
+        <block type="rgb_led_action"></block>
+
+        <block type="rgb_led_color">
+            <value name="parameters">
+                <shadow type="parameters">
+                    <mutation color="#F89621" items="3" limit="3" minimum="3" inputType="text" />
+                    <value name="input_1">
+                        <shadow type="inline_number">
+                            <field name="value">1</field>
+                        </shadow>
+                    </value>
+                    <value name="input_2">
+                        <shadow type="inline_number">
+                            <field name="value">1</field>
+                        </shadow>
+                    </value>
+                    <value name="input_3">
+                        <shadow type="inline_number">
+                            <field name="value">0</field>
+                        </shadow>
+                    </value>
+                </shadow>
+            </value>
+        </block>
+    </category>
+
+    <category name="Buzzer" colour="#F89621">
+        <label text="Buzzer"></label>
+
+        <block type="buzzer_setup">
+            <value name="parameters">
+                <shadow type="parameters">
+                    <mutation color="#F89621" items="1" limit="1" minimum="1" inputType="text" />
+                    <value name="input_1">
+                        <shadow type="inline_number">
+                            <field name="value">17</field>
+                        </shadow>
+                    </value>
+                </shadow>
+            </value>
+        </block>
+
+        <block type="buzzer_action"></block>
+    </category>
+
+    <category name="Motor" colour="#F89621">
+        <label text="Motor"></label>
+
+        <block type="motor_setup">
+            <value name="parameters">
+                <shadow type="parameters">
+                    <mutation color="#F89621" items="2" limit="2" minimum="2" inputType="text" />
+                    <value name="input_1">
+                        <shadow type="inline_number">
+                            <field name="value">17</field>
+                        </shadow>
+                    </value>
+                    <value name="input_2">
+                        <shadow type="inline_number">
+                            <field name="value">18</field>
+                        </shadow>
+                    </value>
+                </shadow>
+            </value>
+        </block>
+
+        <block type="motor_action"></block>
+    </category>
+
+    <category name="Servo" colour="#F89621">
+        <label text="Servo"></label>
+
+        <block type="servo_setup">
+            <value name="parameters">
+                <shadow type="parameters">
+                    <mutation color="#F89621" items="1" limit="1" minimum="1" inputType="text" />
+                    <value name="input_1">
+                        <shadow type="inline_number">
+                            <field name="value">17</field>
+                        </shadow>
+                    </value>
+                </shadow>
+            </value>
+        </block>
+
+        <block type="servo_action"></block>
+
+        <block type="servo_value">
+            <value name="value">
+                <shadow type="inline_number">
+                    <field name="value">0.5</field>
+                </shadow>
+            </value>
+        </block>
+    </category>
+  </category>
+
+  <category name="Accessories" colour="#F89621" css-icon="customIcon fad fa-grid">
+    <category name="LEDBoard" colour="#F89621">
+        <label text="LEDBoard"></label>
+
+        <block type="led_board_setup">
+            <value name="parameters">
+                <shadow type="parameters">
+                    <mutation color="#F89621" items="5" limit="40" minimum="1" inputType="text" />
+                    <value name="input_1">
+                        <shadow type="inline_number">
+                            <field name="value">2</field>
+                        </shadow>
+                    </value>
+                    <value name="input_2">
+                        <shadow type="inline_number">
+                            <field name="value">3</field>
+                        </shadow>
+                    </value>
+                    <value name="input_3">
+                        <shadow type="inline_number">
+                            <field name="value">4</field>
+                        </shadow>
+                    </value>
+                    <value name="input_4">
+                        <shadow type="inline_number">
+                            <field name="value">5</field>
+                        </shadow>
+                    </value>
+                    <value name="input_5">
+                        <shadow type="inline_number">
+                            <field name="value">6</field>
+                        </shadow>
+                    </value>
+                </shadow>
+            </value>
+        </block>
+
+        <block type="led_board_action"></block>
+    </category>
+
+    <category name="Traffic Lights" colour="#F89621">
+        <label text="Traffic Lights"></label>
+
+        <block type="traffic_lights_setup">
+            <value name="parameters">
+                <shadow type="parameters">
+                    <mutation color="#F89621" items="3" limit="3" minimum="1" inputType="text" />
+                    <value name="input_1">
+                        <shadow type="inline_number">
+                            <field name="value">2</field>
+                        </shadow>
+                    </value>
+                    <value name="input_2">
+                        <shadow type="inline_number">
+                            <field name="value">3</field>
+                        </shadow>
+                    </value>
+                    <value name="input_3">
+                        <shadow type="inline_number">
+                            <field name="value">4</field>
+                        </shadow>
+                    </value>
+                </shadow>
+            </value>
+        </block>
+
+        <block type="traffic_lights_action"></block>
+    </category>
+
+    <category name="Energenie" colour="#F89621">
+        <label text="Energenie"></label>
+
+        <block type="energenie_setup">
+            <value name="parameters">
+                <shadow type="parameters">
+                    <mutation color="#F89621" items="1" limit="1" minimum="1" inputType="text" />
+                    <value name="input_1">
+                        <shadow type="inline_number">
+                            <field name="value">1</field>
+                        </shadow>
+                    </value>
+                </shadow>
+            </value>
+        </block>
+
+        <block type="energenie_action"></block>
+    </category>
+
+    <category name="CamJam Kit 3 Robot" colour="#F89621">
+        <label text="CamJam Kit 3 Robot"></label>
+
+        <block type="camjam_setup"></block>
+        <block type="camjam_action"></block>
+    </category>
+  </category>
+</category>

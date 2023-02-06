@@ -1,0 +1,107 @@
+<category name="Requests" colour="#FF69B4" css-icon="customIcon fad fa-link">
+  <label text="Requests"></label>
+  
+  <block type="requests_request">
+    <value name="parameters">
+        <shadow type="parameters">
+            <mutation color="#FF69B4" items="1" limit="1" inputType="string" />
+            <value name="input_1">
+                <shadow type="inline_string">
+                    <field name="value">https://api.github.com/events</field>
+                </shadow>
+            </value>
+        </shadow>
+    </value>
+  </block>
+
+  <block type="requests_head">
+    <value name="text">
+        <shadow type="parameters">
+            <mutation color="#FF69B4" items="1" limit="1" inputType="string" />
+            <value name="input_1">
+                <shadow type="inline_string">
+                    <field name="value">https://httpbin.org/get</field>
+                </shadow>
+            </value>
+        </shadow>
+    </value>
+  </block>
+
+  <block type="requests_options">
+    <value name="text">
+        <shadow type="parameters">
+            <mutation color="#FF69B4" items="1" limit="1" inputType="string" />
+            <value name="input_1">
+                <shadow type="inline_string">
+                    <field name="value">https://httpbin.org/get</field>
+                </shadow>
+            </value>
+        </shadow>
+    </value>
+  </block>
+
+  <block type="requests_url"></block>
+  
+  <block type="requests_url_func"></block>
+
+  <block type="requests_cookies">
+    <value name="text">
+        <shadow type="parameters">
+            <mutation color="#FF69B4" items="1" limit="3" inputType="text" />
+            <value name="input_1">
+                <shadow type="inline_string">
+                    <field name="value">example_cookie_name</field>
+                </shadow>
+            </value>
+        </shadow>
+    </value>
+  </block>
+
+  <block type="json_reference">
+    <value name="input">
+        <shadow type="parameters">
+            <mutation color="#FF69B4" items="1" limit="1" inputType="string" />
+            <value name="input_1">
+                <shadow type="inline_string">
+                    <field name="value">name</field>
+                </shadow>
+            </value>
+        </shadow>
+    </value>
+  </block>
+
+  <block type="requests_rjar"></block>
+
+  <block type="requests_jset">
+	<value name="NAME">
+        <shadow type="parameters">
+            <mutation color="#FF69B4" items="2" limit="4" inputType="string" />
+            <value name="input_1">
+                <shadow type="inline_string">
+                    <field name="value">tasty_cookie</field>
+                </shadow>
+            </value>
+            <value name="input_2">
+                <shadow type="inline_string">
+                    <field name="value">yum</field>
+                </shadow>
+            </value>
+        </shadow>
+    </value>
+  </block>
+
+  <block type="requests_hget">
+	<value name="NAME">
+        <shadow type="parameters">
+            <mutation color="#FF69B4" items="1" limit="1" inputType="string" />
+            <value name="input_1">
+                <shadow type="inline_string">
+                    <field name="value">content-type</field>
+                </shadow>
+            </value>
+        </shadow>
+    </value>
+  </block>
+
+  <block type="requests_raise"></block>
+</category>
