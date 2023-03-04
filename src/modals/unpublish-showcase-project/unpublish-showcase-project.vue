@@ -1,8 +1,8 @@
 <template>
   <eb-modal @close="modal.onCloseClicked()">
     <eb-modal-header
-      :title="modal.getText('delete-project')"
-      :icon="['far', 'trash']"
+      :title="modal.getText('unpublish-project')"
+      :icon="['far', 'rotate-left']"
       icon-color="red"
       align="center"
       @close="modal.onCloseClicked()"
@@ -10,7 +10,7 @@
 
     <eb-modal-content>
       <p class="w-full text-center text-gray-500">
-        {{ modal.getText('delete-confirmation') }} <span class="font-bold">{{ project.title }}</span>?
+        {{ modal.getText('unpublish-confirmation') }} <span class="font-bold">{{ project.title }}</span>?
       </p>
     </eb-modal-content>
 
@@ -22,10 +22,10 @@
       />
 
       <eb-button
-        :label="modal.getText('delete')"
-        :is-loading="modal.isDeleteButtonLoading()"
+        :label="modal.getText('unpublish')"
+        :is-loading="modal.isUnpublishButtonLoading()"
         color="red"
-        @click="modal.onDeleteClicked(project)"
+        @click="modal.onUnpublishClicked(project)"
       />
     </eb-modal-footer>
   </eb-modal>
@@ -33,7 +33,7 @@
 
 <script setup lang="ts">
 import { ShowcaseProjectModel } from "@/data/models/showcase-project-model";
-import { modal } from "./delete-showcase-project-model";
+import { modal } from "./unpublish-showcase-project-model";
 
 defineProps<{
 	project: ShowcaseProjectModel;

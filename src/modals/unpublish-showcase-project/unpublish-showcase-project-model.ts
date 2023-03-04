@@ -4,38 +4,38 @@ import * as ProjectsProvider from "@/data/providers/projects-provider";
 import { ShowcaseProjectModel } from "@/data/models/showcase-project-model";
 import { ContentUtilities } from "@/utilities/content-utilities";
 import { ModalUtilities } from "@/utilities/modal-utilities";
-import { DeleteShowcaseProjectState } from "./delete-showcase-project-state";
+import { UnpublishShowcaseProjectState } from "./unpublish-showcase-project-state";
 import { reactive } from "vue";
 import { FirestoreFetchResponseModel } from "@/data/models/firestore-fetch-response-model";
 
 /**
- * Modal model for the delete showcase project modal.
+ * Modal model for the unpublish showcase project modal.
  */
-class DeleteShowcaseProjectModel extends ModalModelBase {
+class UnpublishShowcaseProjectModel extends ModalModelBase {
 	/**
 	 * Specifies the localization namespace to use for getting localized text values.
 	 */
 	protected getLocalizationNamespace(): string {
-		return "delete-showcase-project";
+		return "unpublish-showcase-project";
 	}
 
 	/**
 	 * Reactive instance of the modal state.
 	 */
-	public state: DeleteShowcaseProjectState = reactive(new DeleteShowcaseProjectState());
+	public state: UnpublishShowcaseProjectState = reactive(new UnpublishShowcaseProjectState());
 
 	/**
-	 * True if the project is being deleted. 
+	 * True if the project is being unpublished. 
 	 */
-	public isDeleteButtonLoading(): boolean {
-		return this.state.isDeletingProject;
+	public isUnpublishButtonLoading(): boolean {
+		return this.state.isUnpublishingProject;
 	}
 
 	/**
-	 * Called when the delete button is clicked and deletes the project from the showcase.
+	 * Called when the unpublish button is clicked and deletes the project record from the showcase.
 	 */
-	public async onDeleteClicked(project: ShowcaseProjectModel): Promise<void> {
-		this.state.isDeletingProject = true;
+	public async onUnpublishClicked(project: ShowcaseProjectModel): Promise<void> {
+		this.state.isUnpublishingProject = true;
 
 		const deleteShowcaseProjectResponse: FirestoreFetchResponseModel<void> = await ShowcaseProvider.deleteShowcaseProjectAsync(project.id);
 
@@ -53,9 +53,9 @@ class DeleteShowcaseProjectModel extends ModalModelBase {
 			}
 		}
 
-		this.state.isDeletingProject = false;
+		this.state.isUnpublishingProject = false;
 	}
 }
 
 // Export the modal model.
-export const modal: DeleteShowcaseProjectModel = new DeleteShowcaseProjectModel();
+export const modal: UnpublishShowcaseProjectModel = new UnpublishShowcaseProjectModel();

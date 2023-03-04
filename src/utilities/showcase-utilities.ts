@@ -51,12 +51,12 @@ export class ShowcaseUtilities {
 			],
 			[
 				{
-					title: this.getText("delete-project"),
-					icon: ["far", "trash"],
+					title: this.getText("unpublish-project"),
+					icon: ["far", "rotate-left"],
 					visible: this.isAuthor(project.uid),
 					action: (): void => {
 						ModalUtilities.showModal({
-							modal: "DeleteShowcaseProject",
+							modal: "UnpublishShowcaseProject",
 							options: {
 								project
 							}

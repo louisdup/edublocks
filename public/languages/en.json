@@ -66,11 +66,11 @@
         "description": "Description",
         "preview": "Preview"
     },
-    "delete-showcase-project": {
-        "delete-project": "Delete Showcase Project",
+    "unpublish-showcase-project": {
+        "unpublish-project": "Unpublish Project",
         "cancel": "Cancel",
-        "delete": "Delete",
-        "delete-confirmation": "Are you sure you want to delete the following showcase project:"
+        "unpublish": "Unpublish",
+        "unpublish-confirmation": "Are you sure you want to unpublish the following showcase project:"
     },
     "error": {
         "something-went-wrong": "Something went wrong",
@@ -123,7 +123,7 @@
         "introducing-the-html-editor-description": "Take your first steps with HTML and build your very own website.",
         "view-project": "View Project",
         "open-project": "Open Project",
-        "delete-project": "Delete Project"
+        "unpublish-project": "Unpublish Project"
     },
     "showcase-project-detail": {
         "back": "Back",

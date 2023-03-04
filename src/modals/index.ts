@@ -6,7 +6,7 @@ import DeleteProject from "./delete-project/delete-project.vue";
 import RenameProject from "./rename-project/rename-project.vue";
 import ShareProject from "./share-project/share-project.vue";
 import PublishToShowcase from "./publish-to-showcase/publish-to-showcase.vue";
-import DeleteShowcaseProject from "./delete-showcase-project/delete-showcase-project.vue";
+import UnpublishShowcaseProject from "./unpublish-showcase-project/unpublish-showcase-project.vue";
 import Error from "./error/error.vue";
 import SignIn from "./sign-in/sign-in.vue";
 import ConnectMicrobit from "./connect-microbit/connect-microbit.vue";
@@ -33,7 +33,7 @@ export default {
 		app.component(ModalName.RenameProject, RenameProject);
 		app.component(ModalName.ShareProject, ShareProject);
 		app.component(ModalName.PublishToShowcase, PublishToShowcase);
-		app.component(ModalName.DeleteShowcaseProject, DeleteShowcaseProject);
+		app.component(ModalName.UnpublishShowcaseProject, UnpublishShowcaseProject);
 		app.component(ModalName.Error, Error);
 		app.component(ModalName.SignIn, SignIn);
 		app.component(ModalName.ConnectMicrobit, ConnectMicrobit);

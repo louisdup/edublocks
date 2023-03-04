@@ -59,7 +59,6 @@ class ShowcaseProjectDetailModel extends ViewModelBase {
 		await ShowcaseProvider.getShowcaseProjectAsync(id).then(async (response: FirestoreFetchResponseModel<ShowcaseProjectModel>) => {
 			if (response.wasSuccessful && response.data) {
 				this.state.showcaseProject = response.data;
-				console.log(this.state.showcaseProject);
 				await this.upgradeShowcaseProject();
 			}
 			else {
