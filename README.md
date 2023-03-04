@@ -71,4 +71,6 @@ List of notable scientists and hackers for the random filename generator: [Moby]
 
 Loading animation component: [Scratch GUI](https://github.com/LLK/scratch-gui).
 
-Connect cable micro:bit gif: [Micro:bit Foundation](https://microbit.org)
+Connect cable micro:bit gif: [Micro:bit Foundation](https://microbit.org).
+
+[Google Blockly](https://developers.google.com/blockly).
