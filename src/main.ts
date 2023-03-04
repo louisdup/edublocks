@@ -36,6 +36,11 @@ function startApplication(): void {
 
 	// Redirects the user to the email verification page if they need to verify their email.
 	AuthenticationUtilities.shouldRedirectToRegisterPage();
+
+	// Checks if the current user's account is compatible with this version of EduBlocks.
+	if (!AuthenticationUtilities.isCurrentUserCompatible()) {
+		router.push("/upgrade");
+	}
 }
 
 // Setup firebase & vue app.
@@ -47,17 +52,17 @@ function setupApplication(): void {
 	AppCheckUtilities.initializeAppCheck();
 
 	// Get current logged in user and start the vue app.
-	onAuthStateChanged(AuthenticationUtilities.getAuth(), (user: User | null) => {
+	onAuthStateChanged(AuthenticationUtilities.getAuth(), async (user: User | null) => {
+		// 	// Set current user instance if a logged in user already exists on app load.
+		if (user) {
+			await AuthenticationUtilities.setCurrentUser(user);
+		}
+				
 		if (!app) {
 			// Load language file for localization and start application.
 			LocalizationUtilities.loadPreferredLanguageAsync().then(() => {
 				startApplication();
 			});
-		}
-
-		// 	// Set current user instance if a logged in user already exists on app load.
-		if (user) {
-			AuthenticationUtilities.currentUser.value = user;
 		}
 	});
 }

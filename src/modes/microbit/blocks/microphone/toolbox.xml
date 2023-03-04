@@ -1,12 +1,12 @@
 <category name="Microphone" colour="#008080" css-icon="customIcon fad fa-microphone">
   <label text="Microphone (V2 Only)" web-class="myLabelStyle"></label>
-  <block type="microphone_current"></block>
+  <block type="microphone_current_sound"></block>
 
-  <block type="microphone_sound"></block>
+  <block type="microphone_sound_level"></block>
 
-  <block type="microphone_level"></block>
+  <block type="microphone_is_level"></block>
 
-  <block type="microphone_wassound">
+  <block type="microphone_was_sound">
     <value name="parameters">
       <shadow type="parameters">
           <mutation color="#008080" items="1" limit="1" minimum="1" inputType="text" />
@@ -17,11 +17,11 @@
     </value>
   </block>
 
-  <block type="microphone_getsounds"></block>
+  <block type="microphone_get_sounds"></block>
 
   <block type="sound_event"></block>
 
-  <block type="set_threshold">
+  <block type="microphone_set_threshold">
     <value name="parameters">
       <shadow type="parameters">
           <mutation color="#008080" items="2" limit="2" minimum="1" inputType="number" />

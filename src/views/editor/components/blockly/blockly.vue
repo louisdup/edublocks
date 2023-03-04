@@ -6,7 +6,7 @@
   <div
     v-show="!isResizing"
     id="blocklyDiv"
-    class="h-full w-full border-l border-gray-200"
+    class="h-full w-full"
   />
 </template>
 

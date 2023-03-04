@@ -27,7 +27,7 @@
         <!-- Name -->
         <eb-list-item
           :title="view.getText('name')"
-          :subtitle="view.getCurrentUserDisplayName()"
+          :subtitle="view.getCurrentUserName()"
         />
 
         <!-- Email -->

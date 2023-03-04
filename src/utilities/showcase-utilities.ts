@@ -66,4 +66,16 @@ export class ShowcaseUtilities {
 			]
 		];
 	}
+
+	/**
+	 * Checks if a showcase project is compatible with this version of EduBlocks.
+	 */
+	public static isShowcaseProjectCompatible(showcaseProject: ShowcaseProjectModel): boolean {
+		if (showcaseProject.project) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 }

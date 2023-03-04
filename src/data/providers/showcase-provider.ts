@@ -1,5 +1,7 @@
+import { CloudFunctionsUtilities } from "@/utilities/cloud-functions-utilities";
 import { FirestoreUtilities } from "@/utilities/firestore-utilities";
 import { collection, CollectionReference, limit, orderBy, query, Query, QueryConstraint, QueryDocumentSnapshot } from "firebase/firestore";
+import { CloudFunctionsResponseModel } from "../models/cloud-functions-fetch-response-model";
 import { FirestoreFetchResponseModel } from "../models/firestore-fetch-response-model";
 import { ShowcaseProjectModel } from "../models/showcase-project-model";
 
@@ -36,4 +38,11 @@ export async function createShowcaseProjectAsync(body: object): Promise<Firestor
  */
 export async function deleteShowcaseProjectAsync(id: string): Promise<FirestoreFetchResponseModel<void>> {
 	return FirestoreUtilities.deleteDocument(`showcase/${id}`);
+}
+
+/**
+ * Upgrade a showcase project to be compatible with this version of EduBlocks.
+ */
+export async function upgradeShowcaseProjectAsync(showcaseProject: ShowcaseProjectModel): Promise<CloudFunctionsResponseModel<void>> {
+	return CloudFunctionsUtilities.callFunction("upgradeShowcaseProject", showcaseProject);
 }

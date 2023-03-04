@@ -9,6 +9,7 @@ import { classroomRoutes } from "@/views/classroom/routes";
 import { settingsRoutes } from "@/views/settings/routes";
 import { registerRoutes } from "@/views/register/routes";
 import { notFoundRoutes } from "@/views/not-found/routes";
+import { userUpgradeRoutes } from "@/views/user-upgrade/routes";
 
 const routes: Array<RouteRecordRaw> = [
 	...homeRoutes,
@@ -19,7 +20,8 @@ const routes: Array<RouteRecordRaw> = [
 	...classroomRoutes,
 	...registerRoutes,
 	...settingsRoutes,
-	...notFoundRoutes
+	...notFoundRoutes,
+	...userUpgradeRoutes
 ];
 
 const router: Router = createRouter({

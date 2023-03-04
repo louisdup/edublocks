@@ -6,6 +6,9 @@ import { FirebaseUtilities } from "./firebase-utilities";
 import { FirebaseAuthentication } from "@capacitor-firebase/authentication";
 import * as UsersProvider from "@/data/providers/users-provider";
 import router from "@/router";
+import { CurrentUserModel } from "@/data/models/current-user-model";
+import { FirestoreFetchResponseModel } from "@/data/models/firestore-fetch-response-model";
+import { UserDetailsModel } from "@/data/models/user-details-model";
 
 /**
  * Utility functions for authentication with firebase.
@@ -28,7 +31,25 @@ export class AuthenticationUtilities {
 	/**
 	 * Returns current user instance.
 	 */
-	public static currentUser: Ref<User | null> = ref(null);
+	public static currentUser: Ref<CurrentUserModel | null> = ref(null);
+
+	/**
+	 * Sets the value of the current user and fetches info about the user from firestore.
+	 */
+	public static async setCurrentUser(user: User): Promise<void> {
+		const response: FirestoreFetchResponseModel<UserDetailsModel> = await UsersProvider.getCurrentUserDetailsAsync(user.uid);
+		
+		if (response.wasSuccessful && response.data) {
+			this.currentUser.value = {
+				details: response.data,
+				...user
+			};
+
+			if (!this.isCurrentUserCompatible()) {
+				router.push("/upgrade");
+			}
+		}
+	}
 
 	/**
 	 * True if the user has verified their email.
@@ -48,7 +69,7 @@ export class AuthenticationUtilities {
 	public static async signInWithEmailAndPassword(email: string, password: string): Promise<void | AuthError> {
 		try {
 			const userCredential: UserCredential = await signInWithEmailAndPassword(this.getAuth(), email, password);
-			this.currentUser.value = userCredential.user;
+			this.setCurrentUser(userCredential.user);
 			ContentUtilities.triggerContentRefresh();
 		}
 		catch (error) {
@@ -65,7 +86,7 @@ export class AuthenticationUtilities {
 			const googleCredential: OAuthCredential = GoogleAuthProvider.credential(result.credential?.idToken);
 			const userCredential: UserCredential = await signInWithCredential(this.getAuth(), googleCredential);
 
-			this.currentUser.value = userCredential.user;
+			this.setCurrentUser(userCredential.user);
 			this.shouldRedirectToRegisterPage();
 			ContentUtilities.triggerContentRefresh();
 		}
@@ -83,7 +104,7 @@ export class AuthenticationUtilities {
 			const microsoftCredential: OAuthCredential = new OAuthProvider("microsoft.com").credential(result.credential?.idToken);
 			const userCredential: UserCredential = await signInWithCredential(this.getAuth(), microsoftCredential);
 
-			this.currentUser.value = userCredential.user;
+			this.setCurrentUser(userCredential.user);
 			ContentUtilities.triggerContentRefresh();
 		}
 		catch (error) {
@@ -100,7 +121,7 @@ export class AuthenticationUtilities {
 			const appleCredential: OAuthCredential = new OAuthProvider("apple.com").credential(result.credential?.idToken);
 			const userCredential: UserCredential = await signInWithCredential(this.getAuth(), appleCredential);
 
-			this.currentUser.value = userCredential.user;
+			this.setCurrentUser(userCredential.user);
 			ContentUtilities.triggerContentRefresh();
 		}
 		catch (error) {
@@ -122,11 +143,9 @@ export class AuthenticationUtilities {
 	 */
 	private static async updateDisplayName(name: string): Promise<void> {
 		try {
-			if (this.currentUser.value) {
-				await updateProfile(this.currentUser.value, {
-					displayName: name
-				});
-			}
+			await updateProfile(this.getAuth().currentUser as User, {
+				displayName: name
+			});
 		}
 		catch (error) {
 			throw error;
@@ -167,7 +186,7 @@ export class AuthenticationUtilities {
 			await this.createNewUserRecord(userCredential.user, name);
 			await this.updateDisplayName(name);
 			await this.sendVerificationEmail(userCredential.user);
-			this.currentUser.value = userCredential.user;
+			this.setCurrentUser(userCredential.user);
 			ContentUtilities.triggerContentRefresh();
 		}
 		catch (error) {
@@ -181,6 +200,23 @@ export class AuthenticationUtilities {
 	public static shouldRedirectToRegisterPage(): void {
 		if (AuthenticationUtilities.currentUser.value && !this.hasVerifiedEmail()) {
 			router.push("/register");
+		}
+	}
+
+	/**
+	 * Checks if the current user is compatible with this version of EduBlocks.
+	 */
+	public static isCurrentUserCompatible(): boolean {
+		if (AuthenticationUtilities.currentUser.value && AuthenticationUtilities.currentUser.value.emailVerified) {
+			if (AuthenticationUtilities.currentUser.value.details.version === 5) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else {
+			return true;
 		}
 	}
 }

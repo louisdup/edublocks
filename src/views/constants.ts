@@ -14,5 +14,6 @@ export enum View {
 	JoinClassroom = "Join Classroom",
 	NotFound = "Not Found",
 	Settings = "Settings",
-	Register = "Register"
+	Register = "Register",
+	UserUpgrade = "User Upgrade"
 }

@@ -2,16 +2,21 @@
 
 export default function getGenerators(): void {
 	Blockly.Python["variables_get"] = function(block: Blockly.BlockSvg) {
-		const variable_var = Blockly.Python.variableDB_.getName(block.getFieldValue("VAR"), Blockly.Variables.NAME_TYPE);
+		const variable_var = Blockly.Python.variableDB_.getName(block.getFieldValue("VAR"), Blockly.VARIABLE_CATEGORY_NAME);
 		const code = variable_var;
 		return [code, 0];
 	};
 
 	Blockly.Python["variables_set"] = function(block: Blockly.BlockSvg) {
-		const variable_name = Blockly.Python.variableDB_.getName(block.getFieldValue("VAR"), Blockly.Variables.NAME_TYPE);
+		const variable_name = Blockly.Python.variableDB_.getName(block.getFieldValue("VAR"), Blockly.VARIABLE_CATEGORY_NAME);
 		const text_text = block.getFieldValue("NAME");
 		const value_name = Blockly.Python.valueToCode(block, "varset", 0);
 		const code = variable_name + " " +text_text+ " " +value_name+ "\n";
+		return code;
+	};
+
+	Blockly.Python["random"] = function (block: Blockly.BlockSvg) {
+		const code = "import random\n";
 		return code;
 	};
 
@@ -167,34 +172,34 @@ export default function getGenerators(): void {
 	};
 
 	Blockly.Python["create_list"] = function(block: Blockly.BlockSvg) {
-		const variable_list = Blockly.Python.variableDB_.getName(block.getFieldValue("list"), Blockly.Variables.NAME_TYPE);
+		const variable_list = Blockly.Python.variableDB_.getName(block.getFieldValue("list"), Blockly.VARIABLE_CATEGORY_NAME);
 		const value_text = Blockly.Python.valueToCode(block, "text", 0);
 		const code = variable_list+ " = [" +value_text+ "]\n";
 		return code;
 	};
 
 	Blockly.Python["calllist"] = function(block: Blockly.BlockSvg) {
-		const variable_list = Blockly.Python.variableDB_.getName(block.getFieldValue("list"), Blockly.Variables.NAME_TYPE);
+		const variable_list = Blockly.Python.variableDB_.getName(block.getFieldValue("list"), Blockly.VARIABLE_CATEGORY_NAME);
 		const code = variable_list;
 		return code;
 	};
 
 	Blockly.Python["selectlist"] = function(block: Blockly.BlockSvg) {
-		const variable_list = Blockly.Python.variableDB_.getName(block.getFieldValue("list"), Blockly.Variables.NAME_TYPE);
+		const variable_list = Blockly.Python.variableDB_.getName(block.getFieldValue("list"), Blockly.VARIABLE_CATEGORY_NAME);
 		const value_name = Blockly.Python.valueToCode(block, "NAME", 0);
 		const code = variable_list + "[" +value_name+ "]\n";
 		return code;
 	};
 
 	Blockly.Python["selectlist2"] = function(block: Blockly.BlockSvg) {
-		const variable_list = Blockly.Python.variableDB_.getName(block.getFieldValue("list"), Blockly.Variables.NAME_TYPE);
+		const variable_list = Blockly.Python.variableDB_.getName(block.getFieldValue("list"), Blockly.VARIABLE_CATEGORY_NAME);
 		const value_name = Blockly.Python.valueToCode(block, "NAME", 0);
 		const code = variable_list + "[" +value_name+ "]";
 		return [code, 0];
 	};
 
 	Blockly.Python["optionlist"] = function(block: Blockly.BlockSvg) {
-		const variable_list = Blockly.Python.variableDB_.getName(block.getFieldValue("list"), Blockly.Variables.NAME_TYPE);
+		const variable_list = Blockly.Python.variableDB_.getName(block.getFieldValue("list"), Blockly.VARIABLE_CATEGORY_NAME);
 		const dropdown_options = block.getFieldValue("options");
 		const value_text = Blockly.Python.valueToCode(block, "text", 0);
 		const code = variable_list+ "." +dropdown_options+ "(" +value_text+ ")\n";
@@ -202,7 +207,7 @@ export default function getGenerators(): void {
 	};
 
 	Blockly.Python["assign_index_array"] = function(block: Blockly.BlockSvg) {
-		const variable_list = Blockly.Python.variableDB_.getName(block.getFieldValue("list"), Blockly.Variables.NAME_TYPE);
+		const variable_list = Blockly.Python.variableDB_.getName(block.getFieldValue("list"), Blockly.VARIABLE_CATEGORY_NAME);
 		const value_index = Blockly.Python.valueToCode(block, "index", 0);
 		const value_value = Blockly.Python.valueToCode(block, "value", 0);
 		const code = `${variable_list}[${value_index}] = ${value_value}\n`;
@@ -210,7 +215,7 @@ export default function getGenerators(): void {
 	};
 
 	Blockly.Python["get_array"] = function(block: Blockly.BlockSvg) {
-		const variable_list = Blockly.Python.variableDB_.getName(block.getFieldValue("list"), Blockly.Variables.NAME_TYPE);
+		const variable_list = Blockly.Python.variableDB_.getName(block.getFieldValue("list"), Blockly.VARIABLE_CATEGORY_NAME);
 		const code = variable_list;
 		return [code, 0];
 	};
@@ -247,7 +252,7 @@ export default function getGenerators(): void {
 	};
 
 	Blockly.Python["loop_get"] = function(block: Blockly.BlockSvg) {
-		const variable_var = Blockly.Python.variableDB_.getName(block.getFieldValue("VAR"), Blockly.Variables.NAME_TYPE);
+		const variable_var = Blockly.Python.variableDB_.getName(block.getFieldValue("VAR"), Blockly.VARIABLE_CATEGORY_NAME);
 		const code = variable_var;
 		return [code, 0];
 	};
@@ -275,7 +280,7 @@ export default function getGenerators(): void {
 	};
 
 	Blockly.Python["self"] = function(block: Blockly.BlockSvg) {
-		const variable_name = Blockly.Python.variableDB_.getName(block.getFieldValue("VAR"), Blockly.Variables.NAME_TYPE);
+		const variable_name = Blockly.Python.variableDB_.getName(block.getFieldValue("VAR"), Blockly.VARIABLE_CATEGORY_NAME);
 		const text_text = block.getFieldValue("NAME");
 		const value_name = Blockly.Python.valueToCode(block, "varset", 0);
 		const code = "self." + variable_name + " " +text_text+ " " +value_name+ "\n";
@@ -290,33 +295,33 @@ export default function getGenerators(): void {
 	};
 
 	Blockly.Python["turtle"] = function(block: Blockly.BlockSvg) {
-		const variable_turtle = Blockly.Python.variableDB_.getName(block.getFieldValue("turtle"), Blockly.Variables.NAME_TYPE);
+		const variable_turtle = Blockly.Python.variableDB_.getName(block.getFieldValue("turtle"), Blockly.VARIABLE_CATEGORY_NAME);
 		const code = variable_turtle+ " = Turtle()\n";
 		return code;
 	};
 	
 	Blockly.Python["screeninit"] = function(block: Blockly.BlockSvg) {
-		const variable_wn = Blockly.Python.variableDB_.getName(block.getFieldValue("wn"), Blockly.Variables.NAME_TYPE);
+		const variable_wn = Blockly.Python.variableDB_.getName(block.getFieldValue("wn"), Blockly.VARIABLE_CATEGORY_NAME);
 		const code = variable_wn+ " = Screen()\n";
 		return code;
 	};
 
 	Blockly.Python["turtle_fill"] = function(block: Blockly.BlockSvg) {
-		const variable_turtle = Blockly.Python.variableDB_.getName(block.getFieldValue("turtle"), Blockly.Variables.NAME_TYPE);
+		const variable_turtle = Blockly.Python.variableDB_.getName(block.getFieldValue("turtle"), Blockly.VARIABLE_CATEGORY_NAME);
 		const dropdown_fill = block.getFieldValue("fill");
 		const code = `${variable_turtle}.${dropdown_fill}()\n`;
 		return code;
 	};
 
 	Blockly.Python["background"] = function(block: Blockly.BlockSvg) {
-		const variable_wn = Blockly.Python.variableDB_.getName(block.getFieldValue("wn"), Blockly.Variables.NAME_TYPE);
+		const variable_wn = Blockly.Python.variableDB_.getName(block.getFieldValue("wn"), Blockly.VARIABLE_CATEGORY_NAME);
 		const text_color = Blockly.Python.valueToCode(block, "text", 0);
 		const code = variable_wn+ ".bgcolor(" +text_color+ ")\n";
 		return code;
 	};
 
 	Blockly.Python["directions"] = function(block: Blockly.BlockSvg) {
-		const variable_turtle = Blockly.Python.variableDB_.getName(block.getFieldValue("turtle"), Blockly.Variables.NAME_TYPE);
+		const variable_turtle = Blockly.Python.variableDB_.getName(block.getFieldValue("turtle"), Blockly.VARIABLE_CATEGORY_NAME);
 		const dropdown_options = block.getFieldValue("options");
 		const text_dist = Blockly.Python.valueToCode(block, "text", 0);
 		const code = variable_turtle+ "." +dropdown_options+ "(" +text_dist+ ")\n";
@@ -324,90 +329,90 @@ export default function getGenerators(): void {
 	};
 
 	Blockly.Python["penud"] = function(block: Blockly.BlockSvg) {
-		const variable_turtle = Blockly.Python.variableDB_.getName(block.getFieldValue("turtle"), Blockly.Variables.NAME_TYPE);
+		const variable_turtle = Blockly.Python.variableDB_.getName(block.getFieldValue("turtle"), Blockly.VARIABLE_CATEGORY_NAME);
 		const dropdown_options = block.getFieldValue("options");
 		const code = variable_turtle+ ".pen" +dropdown_options+ "()\n";
 		return code;
 	};
 
 	Blockly.Python["pen"] = function(block: Blockly.BlockSvg) {
-		const variable_turtle = Blockly.Python.variableDB_.getName(block.getFieldValue("turtle"), Blockly.Variables.NAME_TYPE);
+		const variable_turtle = Blockly.Python.variableDB_.getName(block.getFieldValue("turtle"), Blockly.VARIABLE_CATEGORY_NAME);
 		const code = variable_turtle+".Pen()\n";
 		return code;
 	};
 
 	Blockly.Python["colourpen"] = function(block: Blockly.BlockSvg) {
-		const variable_turtle = Blockly.Python.variableDB_.getName(block.getFieldValue("turtle"), Blockly.Variables.NAME_TYPE);
+		const variable_turtle = Blockly.Python.variableDB_.getName(block.getFieldValue("turtle"), Blockly.VARIABLE_CATEGORY_NAME);
 		const text_dist = Blockly.Python.valueToCode(block, "text", 0);
 		const code = variable_turtle+".pencolor(" +text_dist+ ")\n";
 		return code;
 	};
 
 	Blockly.Python["fillcolor"] = function(block: Blockly.BlockSvg) {
-		const variable_turtle = Blockly.Python.variableDB_.getName(block.getFieldValue("turtle"), Blockly.Variables.NAME_TYPE);
+		const variable_turtle = Blockly.Python.variableDB_.getName(block.getFieldValue("turtle"), Blockly.VARIABLE_CATEGORY_NAME);
 		const text_dist = Blockly.Python.valueToCode(block, "text", 0);
 		const code = variable_turtle+".fillcolor(" +text_dist+ ")\n";
 		return code;
 	};
 
 	Blockly.Python["screen_setup"] = function(block: Blockly.BlockSvg) {
-		const variable_screen = Blockly.Python.variableDB_.getName(block.getFieldValue("screen"), Blockly.Variables.NAME_TYPE);
+		const variable_screen = Blockly.Python.variableDB_.getName(block.getFieldValue("screen"), Blockly.VARIABLE_CATEGORY_NAME);
 		const text_dist = Blockly.Python.valueToCode(block, "text", 0);
 		const code = variable_screen+".setup(" +text_dist+ ")\n";
 		return code;
 	};
 
 	Blockly.Python["colour"] = function(block: Blockly.BlockSvg) {
-		const variable_turtle = Blockly.Python.variableDB_.getName(block.getFieldValue("turtle"), Blockly.Variables.NAME_TYPE);
+		const variable_turtle = Blockly.Python.variableDB_.getName(block.getFieldValue("turtle"), Blockly.VARIABLE_CATEGORY_NAME);
 		const text_dist = Blockly.Python.valueToCode(block, "text", 0);
 		const code = variable_turtle+".color(" +text_dist+ ")\n";
 		return code;
 	};
 
 	Blockly.Python["colourmode"] = function(block: Blockly.BlockSvg) {
-		const variable_turtle = Blockly.Python.variableDB_.getName(block.getFieldValue("wn"), Blockly.Variables.NAME_TYPE);
+		const variable_turtle = Blockly.Python.variableDB_.getName(block.getFieldValue("wn"), Blockly.VARIABLE_CATEGORY_NAME);
 		const text_dist = Blockly.Python.valueToCode(block, "text", 0);
 		const code = variable_turtle+".colormode(" +text_dist+ ")\n";
 		return code;
 	};
 
 	Blockly.Python["penwidth"] = function(block: Blockly.BlockSvg) {
-		const variable_turtle = Blockly.Python.variableDB_.getName(block.getFieldValue("turtle"), Blockly.Variables.NAME_TYPE);
+		const variable_turtle = Blockly.Python.variableDB_.getName(block.getFieldValue("turtle"), Blockly.VARIABLE_CATEGORY_NAME);
 		const text_dist = Blockly.Python.valueToCode(block, "text", 0);
 		const code = variable_turtle+".width(" +text_dist+ ")\n";
 		return code;
 	};
 	
 	Blockly.Python["turtlespeed"] = function(block: Blockly.BlockSvg) {
-		const variable_turtle = Blockly.Python.variableDB_.getName(block.getFieldValue("turtle"), Blockly.Variables.NAME_TYPE);
+		const variable_turtle = Blockly.Python.variableDB_.getName(block.getFieldValue("turtle"), Blockly.VARIABLE_CATEGORY_NAME);
 		const text_dist = Blockly.Python.valueToCode(block, "text", 0);
 		const code = variable_turtle+".speed(" +text_dist+ ")\n";
 		return code;
 	};
 
 	Blockly.Python["turtleshape"] = function(block: Blockly.BlockSvg) {
-		const variable_turtle = Blockly.Python.variableDB_.getName(block.getFieldValue("turtle"), Blockly.Variables.NAME_TYPE);
+		const variable_turtle = Blockly.Python.variableDB_.getName(block.getFieldValue("turtle"), Blockly.VARIABLE_CATEGORY_NAME);
 		const text_dist = Blockly.Python.valueToCode(block, "text", 0);
 		const code = variable_turtle+".shape(" +text_dist+ ")\n";
 		return code;
 	};
 
 	Blockly.Python["circle"] = function(block: Blockly.BlockSvg) {
-		const variable_turtle = Blockly.Python.variableDB_.getName(block.getFieldValue("turtle"), Blockly.Variables.NAME_TYPE);
+		const variable_turtle = Blockly.Python.variableDB_.getName(block.getFieldValue("turtle"), Blockly.VARIABLE_CATEGORY_NAME);
 		const text_dist = Blockly.Python.valueToCode(block, "text", 0);
 		const code = variable_turtle+".circle(" +text_dist+ ")\n";
 		return code;
 	};
 
 	Blockly.Python["goto"] = function(block: Blockly.BlockSvg) {
-		const variable_turtle = Blockly.Python.variableDB_.getName(block.getFieldValue("turtle"), Blockly.Variables.NAME_TYPE);
+		const variable_turtle = Blockly.Python.variableDB_.getName(block.getFieldValue("turtle"), Blockly.VARIABLE_CATEGORY_NAME);
 		const text_dist = Blockly.Python.valueToCode(block, "text", 0);
 		const code = variable_turtle+".goto(" +text_dist+ ")\n";
 		return code;
 	};
 
 	Blockly.Python["chart_type"] = function(block: Blockly.BlockSvg) {
-		const variable_name = Blockly.Python.variableDB_.getName(block.getFieldValue("name"), Blockly.Variables.NAME_TYPE);
+		const variable_name = Blockly.Python.variableDB_.getName(block.getFieldValue("name"), Blockly.VARIABLE_CATEGORY_NAME);
 		const dropdown_charttypes = block.getFieldValue("chartTypes");
 		const value_text = Blockly.Python.valueToCode(block, "text", 0);
 		const code = variable_name + " = pygal." +dropdown_charttypes+ "(" +value_text+ ")\n";
@@ -415,7 +420,7 @@ export default function getGenerators(): void {
 	};
 
 	Blockly.Python["chart_title"] = function(block: Blockly.BlockSvg) {
-		const variable_name = Blockly.Python.variableDB_.getName(block.getFieldValue("name"), Blockly.Variables.NAME_TYPE);
+		const variable_name = Blockly.Python.variableDB_.getName(block.getFieldValue("name"), Blockly.VARIABLE_CATEGORY_NAME);
 		const value_text = Blockly.Python.valueToCode(block, "text", 0);
 		// TODO: Assemble Python into code variable.
 		const code = variable_name + ".title = " +value_text+ "\n";
@@ -423,7 +428,7 @@ export default function getGenerators(): void {
 	};
 
 	Blockly.Python["chart_add"] = function(block: Blockly.BlockSvg) {
-		const variable_name = Blockly.Python.variableDB_.getName(block.getFieldValue("name"), Blockly.Variables.NAME_TYPE);
+		const variable_name = Blockly.Python.variableDB_.getName(block.getFieldValue("name"), Blockly.VARIABLE_CATEGORY_NAME);
 		const value_text = Blockly.Python.valueToCode(block, "text", 0);
 		const value_text1 = Blockly.Python.valueToCode(block, "text1", 0);
 		// TODO: Assemble Python into code variable.
@@ -432,7 +437,7 @@ export default function getGenerators(): void {
 	};
 
 	Blockly.Python["chart_xlabels"] = function(block: Blockly.BlockSvg) {
-		const variable_name = Blockly.Python.variableDB_.getName(block.getFieldValue("name"), Blockly.Variables.NAME_TYPE);
+		const variable_name = Blockly.Python.variableDB_.getName(block.getFieldValue("name"), Blockly.VARIABLE_CATEGORY_NAME);
 		const value_name = Blockly.Python.valueToCode(block, "text", 0);
 		// TODO: Assemble Python into code variable.
 		const code = variable_name + ".x_labels = " +value_name+ "\n";
@@ -440,7 +445,7 @@ export default function getGenerators(): void {
 	};
 
 	Blockly.Python["chart_render"] = function(block: Blockly.BlockSvg) {
-		const variable_name = Blockly.Python.variableDB_.getName(block.getFieldValue("name"), Blockly.Variables.NAME_TYPE);
+		const variable_name = Blockly.Python.variableDB_.getName(block.getFieldValue("name"), Blockly.VARIABLE_CATEGORY_NAME);
 		// TODO: Assemble Python into code variable.
 		const code = variable_name+ ".render()\n";
 		return code;

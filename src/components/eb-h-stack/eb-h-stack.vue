@@ -1,5 +1,5 @@
 <template>
-  <div :class="component.variants({ backgroundColor, spacing, alignX, alignY, justifyContent, paddingT, paddingB, paddingL, paddingR, isFullHeight, isFullWidth })">
+  <div :class="component.variants({ backgroundColor, spacing, alignX, alignY, justifyContent, paddingT, paddingB, paddingL, paddingR, isFullPageHeight, isFullHeight, isFullWidth })">
     <slot />
   </div>
 </template>
@@ -17,6 +17,7 @@ defineProps<{
 	paddingB?: number;
 	paddingL?: number;
 	paddingR?: number;
+	isFullPageHeight?: boolean;
 	isFullHeight?: boolean;
 	isFullWidth?: boolean;
 }>();

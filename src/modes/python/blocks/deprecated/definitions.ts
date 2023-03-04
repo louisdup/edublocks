@@ -23,6 +23,18 @@ export default function getDefinitions(): void {
 		}
 	};
 
+	Blockly.Blocks["random"] = {
+		init: function(): void {
+			this.appendDummyInput()
+				.appendField("import random");
+			this.setPreviousStatement(true, null);
+			this.setNextStatement(true, null);
+			this.setColour("#ff0066");
+			this.setTooltip("Imports the random library.");
+			this.setHelpUrl("");
+		},
+	};
+
 	Blockly.Blocks["websleepnew"] = {
 		init: function(): void {
 			this.appendDummyInput()

@@ -12,7 +12,7 @@
       >
       <div v-if="!minimize">
         <h1 class="text-gray-900 text-sm font-medium">
-          {{ component.getCurrentUserDisplayName() }}
+          {{ component.getCurrentUserName() }}
         </h1>
         <p class="text-gray-500 text-xs">
           {{ component.getText('my-account') }}

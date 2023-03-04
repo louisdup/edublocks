@@ -8,6 +8,7 @@ import { ViewModelBase } from "@/views/base-classes/view-model-base";
 import { reactive } from "vue";
 import { RegisterState } from "./register-state";
 import * as yup from "yup";
+import { User } from "firebase/auth";
 
 /**
  * View model for the register view.
@@ -226,9 +227,7 @@ class RegisterModel extends ViewModelBase {
 	public async onResendEmailButtonClicked(): Promise<void> {
 		this.state.isBusy = true;
 		try {
-			if (AuthenticationUtilities.currentUser.value) {
-				await AuthenticationUtilities.sendVerificationEmail(AuthenticationUtilities.currentUser.value);
-			}
+			await AuthenticationUtilities.sendVerificationEmail(AuthenticationUtilities.getAuth().currentUser as User);
 		}
 		catch {
 			ModalUtilities.showModal({

@@ -1,10 +1,11 @@
 /**
- * Data model for a user.
+ * Data model for user details.
  */
-export interface UserModel {
+export interface UserDetailsModel {
 	id: string;
 	name: string;
 	email: string;
 	uid: string;
 	verified: boolean;
+	version: number;
 }

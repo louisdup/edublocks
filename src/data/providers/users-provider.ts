@@ -3,6 +3,7 @@ import { FirestoreUtilities } from "@/utilities/firestore-utilities";
 import { OtherUserModel } from "../models/other-user-model";
 import { CloudFunctionsUtilities } from "@/utilities/cloud-functions-utilities";
 import { CloudFunctionsResponseModel } from "../models/cloud-functions-fetch-response-model";
+import { UserDetailsModel } from "../models/user-details-model";
 
 // ----------------------------------------------------
 // Provides data access functions for users.
@@ -13,6 +14,20 @@ import { CloudFunctionsResponseModel } from "../models/cloud-functions-fetch-res
  */
 export async function getUserAsync(id: string): Promise<CloudFunctionsResponseModel<OtherUserModel>> {
 	return CloudFunctionsUtilities.callFunction("getUser", { userId: id });
+}
+
+/**
+ * Get the current user details.
+ */
+export async function getCurrentUserDetailsAsync(uid: string): Promise<FirestoreFetchResponseModel<UserDetailsModel>> {
+	return FirestoreUtilities.fetchDocument(`users/${uid}`);
+}
+
+/**
+ * Updates the current user details.
+ */
+export async function updateCurrentUserDetailsAsync(userId: string, body: object): Promise<FirestoreFetchResponseModel<void>> {
+	return FirestoreUtilities.updateDocument(`users/${userId}`, body);
 }
 
 /**

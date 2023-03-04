@@ -1,7 +1,7 @@
 const microphoneColor: string = "#008080";
 
 export default function getDefinitions(): void {
-	Blockly.Blocks["microphone_current"] = {
+	Blockly.Blocks["microphone_current_sound"] = {
 		init: function(): void {
 			this.appendDummyInput()
 				.appendField("microphone.current_sound()");
@@ -11,7 +11,7 @@ export default function getDefinitions(): void {
 		},
 	};
 
-	Blockly.Blocks["microphone_level"] = {
+	Blockly.Blocks["microphone_is_level"] = {
 		init: function(): void {
 			this.appendDummyInput()
 				.appendField("microphone.")
@@ -22,7 +22,7 @@ export default function getDefinitions(): void {
 		}
 	};
 
-	Blockly.Blocks["microphone_sound"] = {
+	Blockly.Blocks["microphone_sound_level"] = {
 		init: function(): void {
 			this.appendDummyInput()
 				.appendField("microphone.sound_level()");
@@ -32,7 +32,7 @@ export default function getDefinitions(): void {
 		}
 	};
 
-	Blockly.Blocks["microphone_wassound"] = {
+	Blockly.Blocks["microphone_was_sound"] = {
 		init: function(): void {
 			this.appendDummyInput()
 				.appendField("microphone.was_sound(");
@@ -47,7 +47,7 @@ export default function getDefinitions(): void {
 		}
 	};
 
-	Blockly.Blocks["set_threshold"] = {
+	Blockly.Blocks["microphone_set_threshold"] = {
 		init: function(): void {
 			this.appendDummyInput()
 				.appendField("microphone.set_threshold(");
@@ -62,7 +62,7 @@ export default function getDefinitions(): void {
 		}
 	};
 
-	Blockly.Blocks["microphone_getsounds"] = {
+	Blockly.Blocks["microphone_get_sounds"] = {
 		init: function(): void {
 			this.appendDummyInput()
 				.appendField("microphone.get_sounds()");

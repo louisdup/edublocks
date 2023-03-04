@@ -65,6 +65,9 @@ export class CircuitPythonModel extends ModeModelBase {
 			const commonDefinitions: any = import("../common/blocks/python/common/definitions");
 			const commonGenerators: any = import("../common/blocks/python/common/generators");
 
+			const deprecatedDefinitions: any = import("./blocks/deprecated/definitions");
+			const deprecatedGenerators: any = import("./blocks/deprecated/generators");
+
 			const basicDefinitions: any = import("../common/blocks/python/basic/definitions");
 			const basicGenerators: any = import("../common/blocks/python/basic/generators");
 
@@ -103,6 +106,9 @@ export class CircuitPythonModel extends ModeModelBase {
 
 			(await commonDefinitions).default();
 			(await commonGenerators).default();
+
+			(await deprecatedDefinitions).default();
+			(await deprecatedGenerators).default();
 
 			(await basicDefinitions).default();
 			(await basicGenerators).default();

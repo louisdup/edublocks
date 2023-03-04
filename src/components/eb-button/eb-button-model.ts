@@ -15,7 +15,7 @@ class EbButtonModel extends ComponentModelBase {
 	/**
 	 * Returns list of classes for a specific button variant
 	 */
-	public variants: Function = cva(["inline-flex", "items-center", "border", "text-sm", "font-medium", "rounded-md", "focus:ring-2", "focus:ring-offset-2", "focus:outline-none", "transition-all"], {
+	public variants: Function = cva(["inline-flex", "items-center", "border", "text-sm", "font-medium", "rounded-md", "outline-none", "focus:ring-2", "focus:ring-offset-2", "transition-all"], {
 		variants: {
 			align: {
 				left: "justify-start",

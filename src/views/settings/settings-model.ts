@@ -84,9 +84,9 @@ class SettingsModel extends ViewModelBase {
 	}
 
 	/**
-	 * Returns the display name of the logged in user.
+	 * Returns the name of the logged in user.
 	 */
-	public getCurrentUserDisplayName(): string | null | undefined {
+	public getCurrentUserName(): string | null | undefined {
 		return AuthenticationUtilities.currentUser.value?.displayName;
 	}
 

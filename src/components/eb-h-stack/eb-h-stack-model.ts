@@ -76,6 +76,9 @@ class EbHStackModel extends ComponentModelBase {
 			isFullHeight: {
 				true: "h-full"
 			},
+			isFullPageHeight: {
+				true: "h-page"
+			},
 			isFullWidth: {
 				true: "w-full"
 			}

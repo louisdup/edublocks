@@ -1,5 +1,8 @@
 <template>
-  <eb-h-stack is-full-height>
+  <eb-h-stack
+    class="border-r border-gray-200"
+    is-full-height
+  >
     <!-- Sidebar Tabs -->
     <eb-v-stack
       :spacing="1"

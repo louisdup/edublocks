@@ -13,7 +13,6 @@ import { ClassroomUtilities } from "@/utilities/classroom-utilities";
 import { EbTableItem } from "@/components/eb-table/eb-table-types";
 import { ModalUtilities } from "@/utilities/modal-utilities";
 import { ClassroomAssignmentSubmissionModel } from "@/data/models/classroom-assignment-submission-model";
-import { UserModel } from "@/data/models/user-model";
 import { OtherUserModel } from "@/data/models/other-user-model";
 import { CloudFunctionsResponseModel } from "@/data/models/cloud-functions-fetch-response-model";
 

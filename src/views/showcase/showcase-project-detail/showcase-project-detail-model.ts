@@ -8,6 +8,7 @@ import { FirestoreFetchResponseModel } from "@/data/models/firestore-fetch-respo
 import { ShowcaseProjectModel } from "@/data/models/showcase-project-model";
 import { CloudFunctionsResponseModel } from "@/data/models/cloud-functions-fetch-response-model";
 import { OtherUserModel } from "@/data/models/other-user-model";
+import { ShowcaseUtilities } from "@/utilities/showcase-utilities";
 
 /**
  * View model for the showcase project detail view.
@@ -40,6 +41,13 @@ class ShowcaseProjectDetailModel extends ViewModelBase {
 		await this.loadShowcaseProjectAuthor();
 	}
 
+	private async upgradeShowcaseProject(): Promise<void> {
+		if (this.state.showcaseProject && !ShowcaseUtilities.isShowcaseProjectCompatible(this.state.showcaseProject)) {
+			await ShowcaseProvider.upgradeShowcaseProjectAsync(this.state.showcaseProject);
+			this.loadShowcaseProject();
+		}
+	}
+
 	/**
 	 * Loads the requested showcase project and saves it in state.
 	 */
@@ -48,9 +56,11 @@ class ShowcaseProjectDetailModel extends ViewModelBase {
 
 		this.state.isLoadingShowcaseProject = true;
 		
-		await ShowcaseProvider.getShowcaseProjectAsync(id).then((response: FirestoreFetchResponseModel<ShowcaseProjectModel>) => {
+		await ShowcaseProvider.getShowcaseProjectAsync(id).then(async (response: FirestoreFetchResponseModel<ShowcaseProjectModel>) => {
 			if (response.wasSuccessful && response.data) {
 				this.state.showcaseProject = response.data;
+				console.log(this.state.showcaseProject);
+				await this.upgradeShowcaseProject();
 			}
 			else {
 				router.push("/404");

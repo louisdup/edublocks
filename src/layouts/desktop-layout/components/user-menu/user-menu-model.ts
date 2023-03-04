@@ -42,10 +42,10 @@ export class UserMenuModel extends ComponentModelBase {
 	}
 
 	/**
-	 * Returns the display name of the logged in user.
+	 * Returns the name of the logged in user.
 	 */
-	public getCurrentUserDisplayName(): string | null | undefined {
-		return AuthenticationUtilities.currentUser.value?.displayName;
+	public getCurrentUserName(): string | undefined {
+		return AuthenticationUtilities.currentUser.value?.details.name;
 	}
 
 	/**

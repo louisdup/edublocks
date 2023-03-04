@@ -454,5 +454,9 @@
         "approved-extensions": "Approved Extensions",
         "no-extensions-found": "No Extensions Found",
         "url": "URL"
+    },
+    "user-upgrade": {
+        "upgrading-account": "Upgrading account",
+        "were-upgrading-your-account": "We're upgrading your account to be compatible with the new EduBlocks. This should only take a few seconds."
     }
 }
