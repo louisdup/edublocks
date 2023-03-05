@@ -42,5 +42,6 @@ export enum ComponentName {
 	EbBanner = "EbBanner",
 	EbRichText = "EbRichText",
 	EbContainer = "EbContainer",
-	EbBulletList = "EbBulletList"
+	EbBulletList = "EbBulletList",
+	EbToastNotification = "EbToastNotification"
 }

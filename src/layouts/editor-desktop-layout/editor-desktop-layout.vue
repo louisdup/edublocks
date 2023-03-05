@@ -16,6 +16,9 @@
     :is="state.modal?.modal"
     v-bind="state.modal?.options"
   />
+
+  <!-- Toast Notification -->
+  <eb-toast-notification :content="ToastUtilities.notification.value" />
 </template>
 
 <script setup lang="ts">
@@ -23,6 +26,7 @@ import { EditorButtonModel } from "@/data/models/editor-button-model";
 import EditorDesktopHeader from "./components/editor-desktop-header/editor-desktop-header.vue";
 
 import { state } from "@/data/state";
+import { ToastUtilities } from "@/utilities/toast-utilities";
 
 defineProps<{
 	headerButtons: Array<EditorButtonModel>;

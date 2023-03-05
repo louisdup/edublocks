@@ -185,7 +185,9 @@
         "popout": "Popout",
         "assignment-submit": "Submit",
         "no-access": "No Access",
-        "project-is-private": "The author has this project set to private"
+        "project-is-private": "The author has this project set to private",
+        "saving": "Saving",
+        "saved": "Saved"
     },
     "editor-desktop-header": {
         "new-project": "New Project",

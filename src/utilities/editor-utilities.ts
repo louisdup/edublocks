@@ -11,11 +11,21 @@ import { View } from "@/views/constants";
 import { LocalProjectModel } from "@/data/models/local-project-model";
 import { ProjectsUtilities } from "./projects-utilities";
 import { ExtensionsUtilities } from "./extensions-utilities";
+import { ToastUtilities } from "./toast-utilities";
+import { ModalUtilities } from "./modal-utilities";
+import { LocalizationUtilities } from "./localization-utilities";
 
 /**
  * Utility functions for the editor.
  */
 export class EditorUtilities {
+	/**
+	 * Lookup localized text and get a localized value.
+	 */
+	private static getText(key: string, placeholderValues?: Array<string>): string {
+		return LocalizationUtilities.getLocalizedText("editor", key, placeholderValues);
+	}
+		
 	/**
 	 * Returns the current project loaded in the editor.
 	 */
@@ -97,47 +107,67 @@ export class EditorUtilities {
 	 * Saves the current project either locally or to firebase storage.
 	 */
 	public static async saveCurrentProject(): Promise<void> {
-		if (this.currentProject.value) {
-			// If there's a logged in user, work with firestore.
-			if (AuthenticationUtilities.currentUser.value) {
-				// If project is already saved in firestore, update the code & project.
-				if (this.currentProject.value.firestoreProject) {
-					ProjectsUtilities.updateFirestoreProject(this.currentProject.value);
-				}
+		try {
+			if (this.currentProject.value) {
+				// Show saving notification.
+				ToastUtilities.showNotification({
+					label: this.getText("saving"),
+					isLoading: true
+				});
 
-				// If project doesn't already exist in firestore, create a new firestore project.
-				else {
-					// Create the project in firestore.
-					const projectId: string | undefined = await ProjectsUtilities.createFirestoreProject(
-						this.currentProject.value.name,
-						this.currentProject.value.mode.config.key,
-						this.currentProject.value.type,
-						this.currentProject.value.blocks,
-						this.currentProject.value.code,
-						undefined,
-						ExtensionsUtilities.getExtensionsUrls(this.currentProject.value.extensions)
-					);
+				// If there's a logged in user, work with firestore.
+				if (AuthenticationUtilities.currentUser.value) {
+					// If project is already saved in firestore, update the code & project.
+					if (this.currentProject.value.firestoreProject) {
+						await ProjectsUtilities.updateFirestoreProject(this.currentProject.value);
+					}
 
-					if (projectId) {
-						await ProjectsProvider.getProjectAsync(AuthenticationUtilities.currentUser.value.uid, projectId).then((response: FirestoreFetchResponseModel<FirestoreProjectModel>) => {
-							if (response.wasSuccessful && response.data && AuthenticationUtilities.currentUser.value && this.currentProject.value) {
+					// If project doesn't already exist in firestore, create a new firestore project.
+					else {
+						// Create the project in firestore.
+						const projectId: string | undefined = await ProjectsUtilities.createFirestoreProject(
+							this.currentProject.value.name,
+							this.currentProject.value.mode.config.key,
+							this.currentProject.value.type,
+							this.currentProject.value.blocks,
+							this.currentProject.value.code,
+							undefined,
+							ExtensionsUtilities.getExtensionsUrls(this.currentProject.value.extensions)
+						);
+
+						if (projectId) {
+							await ProjectsProvider.getProjectAsync(AuthenticationUtilities.currentUser.value.uid, projectId).then((response: FirestoreFetchResponseModel<FirestoreProjectModel>) => {
+								if (response.wasSuccessful && response.data && AuthenticationUtilities.currentUser.value && this.currentProject.value) {
 								// Set the current project's linked firestore project
-								this.currentProject.value.firestoreProject = response.data;
+									this.currentProject.value.firestoreProject = response.data;
 											
-								// Change the URL to be the direct link of the project.
-								router.push(`/project/${AuthenticationUtilities.currentUser.value.uid}/${response.data.id}`);
+									// Change the URL to be the direct link of the project.
+									router.push(`/project/${AuthenticationUtilities.currentUser.value.uid}/${response.data.id}`);
 
-								// Enable the share button, as the project is stored in firestore and therefore shareable.
-								this.currentProject.value.mode.setHeaderButtonVisible("share");
-							}
-						});
+									// Enable the share button, as the project is stored in firestore and therefore shareable.
+									this.currentProject.value.mode.setHeaderButtonVisible("share");
+								}
+							});
+						}
 					}
 				}
+				// If current user is not logged in, save the file locally.
+				else {
+					this.saveCurrentProjectLocally();
+				}
+
+				// Show saved notification.
+				ToastUtilities.showNotification({
+					label: this.getText("saved"),
+					icon: ["far", "circle-check"],
+					iconColor: "green"
+				});
 			}
-			// If current user is not logged in, save the file locally.
-			else {
-				this.saveCurrentProjectLocally();
-			}
+		}
+		catch {
+			ModalUtilities.showModal({
+				modal: "Error"
+			});
 		}
 	}
 
