@@ -1,0 +1,17 @@
+{
+  "background_color": "#ffffff",
+  "description": "Blocks to Text Programming Made Easy!",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "EduBlocks",
+  "scope": "/",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/images/logo/logo-pwa.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

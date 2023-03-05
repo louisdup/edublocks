@@ -10,10 +10,16 @@
     <script src="/blockly/blockly_compressed.js"></script>
     <script src="/blockly/python_compressed.js"></script>
     <script src="/blockly/msg/js/en.js"></script>
+    <link rel="manifest" href="/manifest.json">
     <title>EduBlocks</title>
   </head>
   <body class="h-full overflow-hidden">
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
+    <script>
+      if (typeof navigator.serviceWorker !== 'undefined') {
+        navigator.serviceWorker.register('sw.js')
+      }
+    </script>
   </body>
 </html>
