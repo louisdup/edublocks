@@ -16,3 +16,9 @@
         margin-bottom: env(safe-area-inset-bottom);
     }
 }
+
+@supports (height: 100svh) {
+    .h-screen {
+        height: 100svh;
+    }
+}
