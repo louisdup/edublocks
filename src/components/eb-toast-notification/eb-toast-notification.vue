@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute z-[100] h-16 w-full inset-0 flex items-center justify-center pointer-events-none">
+  <div class="absolute z-[100] w-full top-2 flex items-center justify-center pointer-events-none">
     <transition
       enter-active-class="transform transition ease-in-out duration-300"
       enter-from-class="-translate-y-full"
