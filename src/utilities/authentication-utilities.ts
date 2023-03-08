@@ -56,7 +56,7 @@ export class AuthenticationUtilities {
 	 */
 	public static hasVerifiedEmail(): boolean | undefined {
 		if (this.currentUser.value) {
-			return this.currentUser.value.emailVerified || new Date(this.currentUser.value.metadata.creationTime as string) < new Date("2023-03-08T00:00:00.00Z");
+			return this.currentUser.value.emailVerified || new Date(this.currentUser.value.metadata.creationTime as string) < new Date("2023-03-31T00:00:00.00Z");
 		}
 		else {
 			return undefined;

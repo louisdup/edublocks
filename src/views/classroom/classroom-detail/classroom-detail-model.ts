@@ -48,16 +48,29 @@ class ClassroomDetailModel extends ViewModelBase {
 	 * Initialise the view model.
 	 */
 	public async init(): Promise<void> {
+		// Checks if the current user is allowed to access this page.
+		this.checkIfCurrentUserCanAccessPage(); 
+
 		// Load the initial data.
 		await this.loadInitialData();
 
 		// Reload the initial set of data if a content refresh is triggered.
 		this.observeContentRefresh(() => {
+			this.checkIfCurrentUserCanAccessPage(); 
 			this.loadInitialData();
 		});
 
 		// Set the initally active tab.
 		this.setInitialActiveTab();
+	}
+
+	/**
+	 * Checks if the current user is allowed to access this page.
+	 */
+	private checkIfCurrentUserCanAccessPage(): void {
+		if (!this.isCurrentUserLoggedIn()) {
+			router.push("/classroom");
+		}
 	}
 
 	/**

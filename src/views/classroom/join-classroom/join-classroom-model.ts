@@ -4,6 +4,7 @@ import { JoinClassroomState } from "./join-classroom-state";
 import router from "@/router";
 import { AuthenticationUtilities } from "@/utilities/authentication-utilities";
 import { ClassroomUtilities } from "@/utilities/classroom-utilities";
+import { ModalUtilities } from "@/utilities/modal-utilities";
 
 /**
  * View model for the join classroom view.
@@ -30,7 +31,7 @@ class JoinClassroomModel extends ViewModelBase {
 
 	/**
 	 * Adds a user record to the specified classroom 
-	 */
+	 */ 
 	private async joinClassroom(): Promise<void> {
 		if (AuthenticationUtilities.currentUser.value) {
 			this.state.isJoiningClassroom = true;
@@ -40,6 +41,12 @@ class JoinClassroomModel extends ViewModelBase {
 			await ClassroomUtilities.addClassroomUser(classroomId, AuthenticationUtilities.currentUser.value.uid, "student");
 
 			this.state.isJoiningClassroom = false;
+		}
+		else {
+			router.push("/classroom");
+			ModalUtilities.showModal({
+				modal: "SignIn"
+			});
 		}
 	}
 

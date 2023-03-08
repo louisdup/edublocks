@@ -45,8 +45,24 @@ class AssignmentSubmissionsModel extends ViewModelBase {
 	 * Initialise the view model.
 	 */
 	public init(): void {
+		// Checks if the current user is allowed to access this page.
+		this.checkIfCurrentUserCanAccessPage(); 
+
+		this.observeContentRefresh(() => {
+			this.checkIfCurrentUserCanAccessPage(); 
+		});
+
 		// Load the initial data.
 		this.loadInitialData();
+	}
+
+	/**
+	 * Checks if the current user is allowed to access this page.
+	 */
+	private checkIfCurrentUserCanAccessPage(): void {
+		if (!this.isCurrentUserLoggedIn()) {
+			router.push("/classroom");
+		}
 	}
 
 	/**
