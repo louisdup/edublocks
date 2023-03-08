@@ -207,7 +207,7 @@ export class AuthenticationUtilities {
 	 * Checks if the current user is compatible with this version of EduBlocks.
 	 */
 	public static isCurrentUserCompatible(): boolean {
-		if (AuthenticationUtilities.currentUser.value && AuthenticationUtilities.currentUser.value.emailVerified) {
+		if (AuthenticationUtilities.currentUser.value) {
 			if (AuthenticationUtilities.currentUser.value.details.version === 5) {
 				return true;
 			}
