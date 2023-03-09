@@ -44,6 +44,7 @@ jobs:
           VITE_INSTRUMENTATION_KEY: ${{ secrets.VITE_INSTRUMENTATION_KEY }}
           VITE_RECAPTCHA_KEY: ${{ secrets.VITE_RECAPTCHA_KEY }}
           VITE_STORYBLOK_TOKEN: ${{ secrets.VITE_STORYBLOK_TOKEN }}
+          VITE_TINY_MCE_KEY: ${{ secrets.VITE_TINY_MCE_KEY }}
 
 
   close_pull_request_job:
