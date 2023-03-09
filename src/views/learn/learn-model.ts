@@ -5,12 +5,12 @@ import { reactive } from "vue";
 import { LearnState } from "./learn-state";
 import * as LearnProvider from "@/data/providers/learn-provider";
 import { FetchResponseModel } from "@/data/models/fetch-response-model";
-import { LearnGuidesModel } from "@/data/models/learn-guides-model";
 import { LearnGuideModel } from "@/data/models/learn-guide-model";
-import { LearnUtilities } from "@/utilities/learn-utilities";
 import { ModeModelBase } from "@/modes/base-classes/mode-model-base";
 import { EditorUtilities } from "@/utilities/editor-utilities";
 import router from "@/router";
+import { StoryblokResponseModel } from "@/data/models/storyblok-response-model";
+import { StoryblokStoryModel } from "@/data/models/storyblok-story-model";
 
 /**
  * View model for the learn view.
@@ -54,11 +54,15 @@ class LearnModel extends ViewModelBase {
 	 */
 	private loadLearnGuides(): void {
 		this.state.isLoadingLearnGuides = true;
-	
-		LearnProvider.getLearnGuidesAsync().then((response: FetchResponseModel<LearnGuidesModel>) => {
-			if (response.wasSuccessful && response.data) {
-				this.state.learnGuides = LearnUtilities.formatLearnGuides(response.data.codelabs);
 
+		this.state.learnGuides = [];
+	
+		LearnProvider.getLearnGuidesAsync().then((response: FetchResponseModel<StoryblokResponseModel<LearnGuideModel>>) => {
+			if (response.wasSuccessful && response.data) {
+				response.data.stories.forEach((story: StoryblokStoryModel<LearnGuideModel>) => {
+					story.content.slug = story.slug;
+					this.state.learnGuides.push(story.content);
+				});
 			}
 			this.state.isLoadingLearnGuides = false;
 		});
@@ -107,6 +111,7 @@ class LearnModel extends ViewModelBase {
 	 */
 	public async onLearnGuideClicked(guide: LearnGuideModel): Promise<void> {
 		const mode: ModeModelBase = ModeUtilities.getModeFromKey(guide.mode);
+		
 		EditorUtilities.setCurrentProject({
 			name: guide.title,
 			mode: mode,

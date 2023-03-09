@@ -3,10 +3,10 @@ import { reactive } from "vue";
 import { LearnState } from "./learn-state";
 import * as LearnProvider from "@/data/providers/learn-provider";
 import { FetchResponseModel } from "@/data/models/fetch-response-model";
-import { LearnGuidesModel } from "@/data/models/learn-guides-model";
 import { LearnGuideModel } from "@/data/models/learn-guide-model";
 import { EditorUtilities } from "@/utilities/editor-utilities";
-import { LearnUtilities } from "@/utilities/learn-utilities";
+import { StoryblokResponseModel } from "@/data/models/storyblok-response-model";
+import { StoryblokStoryModel } from "@/data/models/storyblok-story-model";
 
 /**
  * Component model for the project settings component.
@@ -50,10 +50,15 @@ class LearnModel extends ComponentModelBase {
 	 */
 	private loadLearnGuides(): void {
 		this.state.isLoadingLearnGuides = true;
+
+		this.state.learnGuides = [];
 		
-		LearnProvider.getLearnGuidesAsync().then((response: FetchResponseModel<LearnGuidesModel>) => {
+		LearnProvider.getLearnGuidesAsync().then((response: FetchResponseModel<StoryblokResponseModel<LearnGuideModel>>) => {
 			if (response.wasSuccessful && response.data) {
-				this.state.learnGuides = LearnUtilities.formatLearnGuides(response.data.codelabs);
+				response.data.stories.forEach((story: StoryblokStoryModel<LearnGuideModel>) => {
+					story.content.slug = story.slug;
+					this.state.learnGuides.push(story.content);
+				});
 			}
 			this.state.isLoadingLearnGuides = false;
 		});
@@ -123,7 +128,7 @@ class LearnModel extends ComponentModelBase {
 	 */
 	public getLearnGuideUrl(): string | undefined {
 		if (EditorUtilities.currentProject.value && EditorUtilities.currentProject.value.learnGuide) {
-			return `https://guidesengine.edublocks.org/tutorial/${EditorUtilities.currentProject.value.learnGuide.url}`;
+			return `https://learn.edublocks.org/guide/${EditorUtilities.currentProject.value.learnGuide.slug}`;
 		}
 		else {
 			return undefined;

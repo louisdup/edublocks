@@ -29,10 +29,10 @@
     <eb-card 
       v-for="guide in component.getFilteredLearnGuides()"
       v-else
-      :key="guide.id"
+      :key="guide.title"
       :title="guide.title"
-      :description="guide.summary"
-      :image="guide.image"
+      :description="guide.description"
+      :image="guide.image.filename"
       class="-m-3"
       @click="component.onLearnGuideClicked(guide)"
     />
@@ -63,7 +63,7 @@
 
     <iframe
       :src="component.getLearnGuideUrl()"
-      class="h-full w-full bg-gray-100"
+      class="h-full w-full"
       frameborder="0"
     />
   </eb-v-stack>

@@ -43,6 +43,7 @@ jobs:
           VITE_MEASUREMENT_ID: ${{ vars.VITE_MEASUREMENT_ID }}
           VITE_INSTRUMENTATION_KEY: ${{ secrets.VITE_INSTRUMENTATION_KEY }}
           VITE_RECAPTCHA_KEY: ${{ secrets.VITE_RECAPTCHA_KEY }}
+          VITE_STORYBLOK_TOKEN: ${{ secrets.VITE_STORYBLOK_TOKEN }}
 
 
   close_pull_request_job:

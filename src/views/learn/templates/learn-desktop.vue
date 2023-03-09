@@ -44,10 +44,10 @@
       <eb-card 
         v-for="guide in view.getFilteredLearnGuides()"
         v-else
-        :key="guide.id"
+        :key="guide.title"
         :title="guide.title"
-        :description="guide.summary"
-        :image="guide.image"
+        :description="guide.description"
+        :image="guide.image.filename"
         @click="view.onLearnGuideClicked(guide)"
       />
     </eb-grid>
