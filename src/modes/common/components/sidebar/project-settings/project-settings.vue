@@ -43,7 +43,7 @@
     />
 
     <eb-button
-      :label="component.getText('export-code')"
+      :label="component.getText('code')"
       size="sm"
       color="white"
       is-full-width
@@ -51,11 +51,11 @@
     />
 
     <eb-button
-      :label="component.getText('export-blocks-screenshot')"
+      :label="component.getText('project')"
       size="sm"
       color="white"
       is-full-width
-      @click="component.exportBlocksScreenshot()"
+      @click="component.exportProject()"
     />
   </eb-v-stack>
 </template>

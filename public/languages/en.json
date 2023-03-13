@@ -212,8 +212,7 @@
         "update": "Update",
         "project-name": "Project Name",
         "export": "Export",
-        "export-code": "Export Code",
-        "export-blocks-screenshot": "Export Blocks Screenshot"
+        "code": "Code"
     },
     "simulator": {
         "sensors": "Sensors",

@@ -135,44 +135,10 @@ class ProjectSettingsModel extends ComponentModelBase {
 	}
 
 	/**
-	 * Takes a screenshot of the blockly workspace and exports a PNG image.
+	 * Exports the current project.
 	 */
-	public exportBlocksScreenshot(): void {
-		if (EditorUtilities.blocklyInstance) {
-			const svgBlockCanvas: SVGGraphicsElement = EditorUtilities.blocklyInstance.svgBlockCanvas_.cloneNode(true) as SVGGraphicsElement;
-			svgBlockCanvas.removeAttribute("transform");
-			
-			const blocklyCssContent: string = `${Blockly.Css.CONTENT.join("")} .blocklyConnectionIndicator{display:none;} .blocklyEditableText text.blocklyText{fill: #575E75;}`;
-			const svgCss: string = `<defs><style type="text/css" xmlns="http://www.w3.org/1999/xhtml"><![CDATA[${blocklyCssContent}]]></style></defs>`;
-
-			const blocklyBlockCanvas: SVGGraphicsElement = document.getElementsByClassName("blocklyBlockCanvas")[0] as SVGGraphicsElement;
-			const bbox: DOMRect = blocklyBlockCanvas.getBBox();
-			const canvasContent: string = new XMLSerializer().serializeToString(svgBlockCanvas);
-
-			const svg: string = `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${bbox.width}" height="${bbox.height}" viewBox="${bbox.x-5} ${bbox.y-5} ${bbox.width+5} ${bbox.height+6}">${svgCss}>${canvasContent}</svg>`;
-
-			const image: HTMLImageElement = new Image();
-
-			image.src = URL.createObjectURL(new Blob([svg], {
-				type: "image/svg+xml;base64"
-			}));
-
-			image.onload = function(): void {
-				const canvas: HTMLCanvasElement = document.createElement("canvas");
-				canvas.style.padding = "20px";
-				canvas.width = bbox.width * 5 + 20;
-				canvas.height = bbox.height * 5 + 20;
-				canvas.getContext("2d")?.scale(5,5);
-				canvas.getContext("2d")?.drawImage(image, 0, 0);
-	
-				if (EditorUtilities.currentProject.value) {
-					const fileName: string = `${EditorUtilities.currentProject.value.name}.svg`;
-					saveAs(URL.createObjectURL(new Blob([svg], {
-						type: "image/svg+xml;base64"
-					})), fileName);
-				}
-			};
-		}
+	public exportProject(): void {
+		EditorUtilities.saveCurrentProjectLocally();
 	}
 }
 
